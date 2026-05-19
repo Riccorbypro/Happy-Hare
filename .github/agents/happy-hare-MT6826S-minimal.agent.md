@@ -28,9 +28,11 @@ spi_miso_pin: mmu:PB14
 
 [mmu_encoder_mt6826s mmu_encoder]
 encoder_angle: mmu_encoder_angle
-pwm_pin: mmu:PB3
-desired_headroom: 5.0			# The clog/runout headroom that MMU attempts to maintain (closest point to triggering runout)
-average_samples: 4			# The "damping" effect of last measurement (higher value means slower automatic clog_length reduction)
+pwm_pin: ^mmu:PB3
+pwm_pulses_per_revolution: 4096		# MT6826S has 4096 pulses per revolution (0.088° resolution)
+rotation_distance: 8.0			# The distance the filament moves per full revolution of the encoder (depends on the gear ratio and pulley circumference)
+desired_headroom: 5.0			# The clog/runout headroom in mm that MMU attempts to maintain (closest point to triggering runout)
+average_samples: 40			# The "damping" effect of last measurement (higher value means slower automatic clog_length reduction)
 flowrate_samples: 20			# How many "movements" of the extruder to measure average flowrate over
 ```
 - Ensure multi-mmu MT6826S configuration works as a target acceptance case:

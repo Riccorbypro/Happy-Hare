@@ -16,6 +16,16 @@ class MmuEncoderMt6826s(MmuEncoder):
         if pwm_pin is None:
             raise config.error("[mmu_encoder_mt6826s] requires 'pwm_pin'")
 
+        # Calculate encoder_resolution from MT6826S-specific parameters if provided
+        pwm_pulses = config.getfloat('pwm_pulses_per_revolution', None, above=0.)
+        rotation_dist = config.getfloat('rotation_distance', None, above=0.)
+        if pwm_pulses is not None and rotation_dist is not None:
+            # encoder_resolution = distance per pulse (mm/pulse)
+            calculated_resolution = rotation_dist / pwm_pulses
+            section_name = config.get_name()
+            if not config.fileconfig.has_option(section_name, 'encoder_resolution'):
+                config.fileconfig.set(section_name, 'encoder_resolution', str(calculated_resolution))
+
         # Reuse the existing mmu encoder implementation by mapping pwm_pin onto
         # the expected encoder_pin field if it is not explicitly supplied.
         section_name = config.get_name()
