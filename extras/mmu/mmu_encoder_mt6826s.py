@@ -43,4 +43,13 @@ class MmuEncoderMt6826s(MmuEncoder):
 
 
 def load_config_prefix(config):
-    return MmuEncoderMt6826s(config)
+    encoder = MmuEncoderMt6826s(config)
+
+    # Compatibility alias: expose MT6826S-backed encoder under the same
+    # object namespace used by pulsed encoders.
+    alias_name = 'mmu_encoder %s' % encoder.name
+    printer = config.get_printer()
+    if printer.lookup_object(alias_name, None) is None:
+        printer.add_object(alias_name, encoder)
+
+    return encoder
