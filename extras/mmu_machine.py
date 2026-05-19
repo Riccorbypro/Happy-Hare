@@ -317,8 +317,14 @@ class MmuMachine:
                 % (GEAR_STEPPER_CONFIG, BLDC_GEAR_CONFIG)
             )
 
+        used_unit_bldc_sections = set()
         for unit in self.units:
-            unit_has_bldc = any(config.has_section(section) for section in self.get_bldc_section_names_for_unit(unit, include_shared=False))
+            unit_bldc_section = self.resolve_bldc_section_for_unit(
+                config, unit, used_sections=used_unit_bldc_sections, include_shared=False
+            )
+            unit_has_bldc = unit_bldc_section is not None
+            if unit_has_bldc:
+                used_unit_bldc_sections.add(unit_bldc_section)
             if unit_has_bldc or has_shared_bldc:
                 self.unit_gear_drives[unit.unit_index] = 'bldc'
             elif has_stepper_gear:
@@ -435,6 +441,15 @@ class MmuMachine:
         if include_shared:
             section_names.append(BLDC_GEAR_CONFIG)
         return section_names
+
+    def resolve_bldc_section_for_unit(self, config, unit, used_sections=None, include_shared=True):
+        for section_name in self.get_bldc_section_names_for_unit(unit, include_shared=include_shared):
+            if not config.has_section(section_name):
+                continue
+            if section_name != BLDC_GEAR_CONFIG and used_sections is not None and section_name in used_sections:
+                continue
+            return section_name
+        return None
 
     def unit_uses_bldc(self, unit_index):
         return self.unit_gear_drives.get(unit_index) == 'bldc'

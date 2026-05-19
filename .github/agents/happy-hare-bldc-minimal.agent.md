@@ -24,9 +24,12 @@ dir_pin: mmu:YAMMU_BLDC_DIR_0
 pwm_pin: mmu:YAMMU_BLDC_PWM_0
 pwm_min: 0.85
 pwm_max: 1.00
-hardware_pwm: True   # See klipper doc
-cycle_time: 0.00005  # 20 khz
-mm_per_rev: 1.0
+tachometer_pin: mmu:YAMMU_BLDC_TACH_0
+tachometer_ppr: 20
+tachometer_poll_interval: 0.01
+hardware_pwm: False     # See klipper doc
+cycle_time: 0.00005    # 20 khz
+rotation_distance: 1.0 # 1.0 mm of filament per full rotation, similar to a stepper with 200 steps/rev and 1.0 mm/rev
 ```
 - Ensure multi-mmu BLDC configuration works as a target acceptance case:
 ```ini
@@ -39,6 +42,8 @@ num_gates: 4,4
 - Meaning: `unit1` controls the first 4 gates (0-3) and `unit2` controls the second 4 gates (4-7).
 - Ensure all synchronization modes work: `gear`, `extruder`, `gear+extruder`, and `extruder+gear`.
 - In `gear+extruder` and `extruder+gear` modes, both the extruder and BLDC gear drive must move concurrently (not sequentially).
+- Ensure that the BLDC gear prioritizes reacting to sensor feedback (e.g. filament compression) over strictly following the extruder's target speed, to prevent damage or jams.
+- Since each MMU is only expected to have one BLDC gear, when preloading, use the espoolers for each gate to feed filament to the BLDC gear instead of attempting to use the existing stepper gear feed logic. This logic is designed for MMUs that have one stepper gear per gate, so it does not make sense to try to reuse it for a BLDC gear that may be shared across multiple gates. Instead, the espooler logic can be reused to feed filament to the BLDC gear, which is a more direct mapping and avoids trying to shoehorn the BLDC behavior into the existing stepper feed logic.
 
 ## Approach
 1. Locate relevant Happy Hare modules and read nearby patterns before editing.

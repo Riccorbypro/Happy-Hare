@@ -30,14 +30,10 @@
 - Full details: `.github/skills/output-pin-interactions/SKILL.md`.
 
 ## Build and Test
-- Preferred workflow: use existing VS Code tasks in `Happy-Hare` workspace folder:
-  - `Export Code to Test Rig`
-  - `Export Startup.gcode to Test Rig`
-  - `Start on Test Rig`
-  - `Stop on Test Rig`
-  - `Run Startup.gcode on Test Rig`
-  - `Read klippy.log on Test Rig`
-- For test execution guidance in chat, use `.github/prompts/run-test-rig.prompt.md`.
+- Validate changes with narrowest relevant checks first (example: unit tests, then integration tests, then manual logs).
+- For BLDC work, always request manual deployment and testing on real hardware before accepting changes, due to risk of damage/jams.
+- Do not attempt to use any automated test or simulation as a gate for BLDC work, since they cannot reliably validate the nuanced behavior and safety constraints required.
+- Do not attempt to use the VSCode deploy/run workloads for testing, as the machine they are designed for is not currently accessible.
 
 ## Docs (Link, Do Not Duplicate)
 - Project overview: `README.md`

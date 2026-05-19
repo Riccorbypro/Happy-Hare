@@ -262,6 +262,8 @@ class Mmu:
         self.use_bldc_gear = self.mmu_machine.use_bldc_gear
         self.use_stepper_gear = self.mmu_machine.use_stepper_gear
         self.bldc_by_unit = {}
+        self.encoder_by_unit = {}
+        self.encoder_sensors = []
         self.calibration_status = 0b0
         self.w3c_colors = dict(self.W3C_COLORS)
         self.filament_remaining = 0.
@@ -723,11 +725,8 @@ class Mmu:
         self.sensor_manager = MmuSensorManager(self)
         self.led_manager = MmuLedManager(self)
 
-        # Get optional encoder setup. TODO Multi-encoder: rework to default name to None and then use lookup to determine if present
-        self.encoder_name = config.get('encoder_name', 'mmu_encoder')
-        self.encoder_sensor = self.printer.lookup_object('mmu_encoder %s' % self.encoder_name, None)
-        if not self.encoder_sensor:
-            logging.warning("MMU: No [mmu_encoder] definition found in mmu_hardware.cfg. Assuming encoder is not available")
+        # Get optional encoder setup
+        self._setup_encoder_sensors(config)
 
         # Load espooler if it exists
         self.espooler = self.printer.lookup_object('mmu_espooler mmu_espooler', None)
@@ -747,6 +746,61 @@ class Mmu:
             logging.info("MMU: Log: %s" % mmu_log)
             self.mmu_logger = MmuLogger(mmu_log)
             self.mmu_logger.log("\n\n\nMMU Startup -----------------------------------------------\n")
+
+    def _lookup_encoder_sensor(self, sensor_name):
+        if not sensor_name:
+            return None
+
+        prefixes = ['mmu_encoder', 'mmu_encoder_mt6826s']
+        for prefix in prefixes:
+            sensor = self.printer.lookup_object('%s %s' % (prefix, sensor_name), None)
+            if sensor:
+                return sensor
+        return None
+
+    def _get_encoder_section_names_for_unit(self, unit):
+        section_names = [unit.name, 'unit%d' % (unit.unit_index + 1)]
+        if unit.unit_index == 0:
+            section_names.extend([self.encoder_name, 'mmu_encoder'])
+
+        deduped = []
+        for name in section_names:
+            if name and name not in deduped:
+                deduped.append(name)
+        return deduped
+
+    def _set_active_encoder_for_unit(self, unit_index):
+        self.encoder_sensor = self.encoder_by_unit.get(unit_index, self.encoder_by_unit.get(0, None))
+
+    def _setup_encoder_sensors(self, config):
+        self.encoder_name = config.get('encoder_name', 'mmu_encoder')
+        self.encoder_by_unit = {}
+        self.encoder_sensors = []
+        used_encoder_section_names = set()
+
+        shared_sensor = self._lookup_encoder_sensor(self.encoder_name)
+
+        for unit in self.mmu_machine.units:
+            sensor = None
+            for section_name in self._get_encoder_section_names_for_unit(unit):
+                if section_name in used_encoder_section_names:
+                    continue
+                sensor = self._lookup_encoder_sensor(section_name)
+                if sensor:
+                    used_encoder_section_names.add(section_name)
+                    break
+
+            if sensor is None:
+                sensor = shared_sensor
+
+            if sensor:
+                self.encoder_by_unit[unit.unit_index] = sensor
+                if sensor not in self.encoder_sensors:
+                    self.encoder_sensors.append(sensor)
+
+        self._set_active_encoder_for_unit(0)
+        if not self.encoder_sensor:
+            logging.warning("MMU: No [mmu_encoder] or [mmu_encoder_mt6826s] definition found in mmu_hardware.cfg. Assuming encoder is not available")
 
     def handle_connect(self):
         self._setup_logging()
@@ -898,9 +952,10 @@ class Mmu:
 
         # Load encoder configuration (calibration set with MMU_CALIBRATE_ENCODER) ---------------------------
         self.encoder_resolution = 1.0
-        if self.has_encoder():
-            self.encoder_sensor.set_logger(self.log_debug)       # Combine with MMU log
-            self.encoder_sensor.set_extruder(self.extruder_name) # Ensure it has extruder name
+        if self.encoder_sensors:
+            for encoder_sensor in self.encoder_sensors:
+                encoder_sensor.set_logger(self.log_debug)       # Combine with MMU log
+                encoder_sensor.set_extruder(self.extruder_name) # Ensure it has extruder name
 
             # Setup FlowGuard mode and detection length
             self.sync_feedback_manager.set_encoder_mode()
@@ -910,7 +965,8 @@ class Mmu:
             cal_res = self.save_variables.allVariables.get(self.VARS_MMU_ENCODER_RESOLUTION, None)
             if cal_res:
                 self.encoder_resolution = cal_res
-                self.encoder_sensor.set_resolution(cal_res)
+                for encoder_sensor in self.encoder_sensors:
+                    encoder_sensor.set_resolution(cal_res)
                 self.log_debug("Loaded saved encoder resolution: %.4f" % cal_res)
                 self.calibration_status |= self.CALIBRATED_ENCODER
             else:
@@ -3470,18 +3526,16 @@ class Mmu:
     def _setup_bldc_gear(self, config):
         self.bldc_by_unit = {}
         shared_bldc = None
+        used_unit_bldc_sections = set()
 
         for unit in self.mmu_machine.units:
             if not self.mmu_machine.unit_uses_bldc(unit.unit_index):
                 continue
 
             section_names = self.mmu_machine.get_bldc_section_names_for_unit(unit)
-
-            section_name = None
-            for candidate in section_names:
-                if config.has_section(candidate):
-                    section_name = candidate
-                    break
+            section_name = self.mmu_machine.resolve_bldc_section_for_unit(
+                config, unit, used_sections=used_unit_bldc_sections, include_shared=True
+            )
 
             if section_name is None:
                 raise self.config.error("Missing BLDC section for unit %d. Define [%s], [%s], or [%s]." % (unit.unit_index + 1, section_names[0], section_names[1], section_names[2]))
@@ -3494,6 +3548,7 @@ class Mmu:
             else:
                 bldc_cfg = config.getsection(section_name)
                 self.bldc_by_unit[unit.unit_index] = MmuGearBldc(bldc_cfg, self, unit.first_gate, unit.num_gates)
+                used_unit_bldc_sections.add(section_name)
 
     def _get_bldc_for_gate(self, gate=None):
         if not self.has_bldc_gear():
@@ -6295,6 +6350,9 @@ class Mmu:
         else:
             self._restore_gear_current()  # 100%
 
+        if self.has_bldc_gear():
+            self._route_bldc_sync_to_selected_gate(sync)
+
 
     @contextlib.contextmanager
     def wrap_sync_gear_to_extruder(self):
@@ -6668,6 +6726,8 @@ class Mmu:
         if new_unit != self.unit_selected:
             self.unit_selected = new_unit
             self.sensor_manager.reset_active_unit(new_unit)
+
+        self._set_active_encoder_for_unit(self.unit_selected)
 
         self.sensor_manager.reset_active_gate(self.gate_selected) # Call after unit_selected is set
 
