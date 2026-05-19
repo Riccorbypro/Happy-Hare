@@ -13,7 +13,7 @@
     "dim_sec": 300,
     "drm_device": "",
     "gcode_render_mode": 0,
-    "screensaver_type": 2,
+    "screensaver_type": 0,
     "sleep_sec": 0,
     "sleep_while_printing": false,
     "theme": "bad_dragon",
@@ -180,7 +180,8 @@
           "temperature_fan _pi_fan",
           "filament_switch_sensor extruder_sensor",
           "filament_switch_sensor filament_compression_sensor",
-          "filament_switch_sensor filament_tension_sensor"
+          "filament_switch_sensor filament_tension_sensor",
+          "fan_generic ouglesauce"
         ],
         "last_snapshot": {
           "fans": [
@@ -193,7 +194,20 @@
             "fan_generic exhaust_fan",
             "fan_generic ouglesauce"
           ],
-          "filament_sensors": [],
+          "filament_sensors": [
+            "filament_switch_sensor runout_sensor",
+            "filament_switch_sensor mmu_pre_gate_0",
+            "filament_switch_sensor mmu_pre_gate_1",
+            "filament_switch_sensor mmu_pre_gate_2",
+            "filament_switch_sensor mmu_pre_gate_3",
+            "filament_switch_sensor mmu_gear_0",
+            "filament_switch_sensor mmu_gear_1",
+            "filament_switch_sensor mmu_gear_2",
+            "filament_switch_sensor mmu_gear_3",
+            "filament_switch_sensor extruder_sensor",
+            "filament_switch_sensor filament_tension_sensor",
+            "filament_switch_sensor filament_compression_sensor"
+          ],
           "heaters": [
             "heater_bed",
             "heater_generic chamber",
@@ -207,15 +221,15 @@
             "temperature_sensor toolhead_mcu_temp",
             "tmc5160 stepper_x",
             "tmc5160 stepper_y",
-            "temperature_sensor btt_eddy_mcu",
-            "temperature_sensor btt_eddy",
+            "temperature_sensor cartographer_coil",
+            "temperature_sensor cartographer",
             "temperature_sensor catalyst_mcu_temp",
             "temperature_sensor BTT_Pi_temp",
             "temperature_fan chamber_fan",
             "temperature_fan _board_fan",
             "temperature_fan _pi_fan"
           ],
-          "timestamp": "2026-04-29T14:46:40Z"
+          "timestamp": "2026-05-19T21:06:43Z"
         },
         "optional": [
           "controller_fan board_driver_fan",
@@ -420,7 +434,7 @@
                   "col": 0,
                   "colspan": 2,
                   "config": {
-                    "material_index": 2
+                    "material_index": 1
                   },
                   "enabled": true,
                   "id": "preheat",
@@ -652,7 +666,8 @@
   },
   "safety": {
     "cancel_escalation_enabled": false,
-    "cancel_escalation_timeout_seconds": 120
+    "cancel_escalation_timeout_seconds": 120,
+    "macro_require_confirmation": false
   },
   "sound_theme": "retro",
   "sounds": {
@@ -679,5 +694,6 @@
     }
   },
   "ui_sounds_enabled": false,
+  "wifi_expected": true,
   "wizard_completed": true
 }
