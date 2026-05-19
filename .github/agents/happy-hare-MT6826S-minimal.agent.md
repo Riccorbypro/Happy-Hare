@@ -20,11 +20,11 @@ You are a specialist for integrating MT6826S magnetic rotation sensor behavior i
 - Ensure this MT6826S configuration works as a target acceptance case:
 ```ini
 [angle mmu_encoder_angle]
-sensor_type: "mt6826s"
+sensor_type: mt6826s
 cs_pin: mmu:PB12
-spi_clock_pin: mmu:PB13
-spi_mosi_pin: mmu:PB15
-spi_miso_pin: mmu:PB14
+spi_software_sclk_pin: mmu:PB13
+spi_software_mosi_pin: mmu:PB15
+spi_software_miso_pin: mmu:PB14
 
 [mmu_encoder_mt6826s mmu_encoder]
 encoder_angle: mmu_encoder_angle
