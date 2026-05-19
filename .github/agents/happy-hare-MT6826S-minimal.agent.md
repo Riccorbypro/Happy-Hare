@@ -28,9 +28,7 @@ spi_miso_pin: mmu:PB14
 
 [mmu_encoder_mt6826s mmu_encoder]
 encoder_angle: mmu_encoder_angle
-pwm_pin: ^mmu:PB3
-pwm_pulses_per_revolution: 4096		# MT6826S has 4096 pulses per revolution (0.088° resolution)
-rotation_distance: 8.0			# The distance the filament moves per full revolution of the encoder (depends on the gear ratio and pulley circumference)
+rotation_distance: 4.0			# The distance the filament moves per full revolution of the encoder (depends on the gear ratio and pulley circumference)
 desired_headroom: 5.0			# The clog/runout headroom in mm that MMU attempts to maintain (closest point to triggering runout)
 average_samples: 40			# The "damping" effect of last measurement (higher value means slower automatic clog_length reduction)
 flowrate_samples: 20			# How many "movements" of the extruder to measure average flowrate over
@@ -49,6 +47,14 @@ num_gates: 4,4
 - Ensure that the MT6826S integration does not interfere with existing extruder and BLDC gear behavior when the encoder is not in use, to maintain backward compatibility for users who do not have the sensor.
 - Ensure that filament movement measurements from the MT6826S are properly integrated into the existing MMU logic for preloading, so that the system can use the encoder feedback to more accurately control filament feeding during preloads, rather than relying solely on timing-based estimates.
 - Ensure that the MT6826S integration operates correctly under the same synchronization modes as the BLDC gear: `gear`, `extruder`, `gear+extruder`, and `extruder+gear`, and that the encoder feedback is used effectively in each mode to maintain accurate filament tracking and responsive control. Additionally, in `gear+extruder` and `extruder+gear` modes, ensure that the encoder feedback is used to allow the BLDC gear to react to real-time filament conditions (e.g. compression) while still maintaining the overall synchronization between the extruder and gear drive.
+- When reading the MT6826S sensor data, use the angle in degrees rather than raw pulse counts, to allow for more direct integration with the existing MMU logic that is based on filament distance traveled. Ensure that the conversion from angle to distance is accurate and accounts for the specific geometry of the encoder setup (e.g. pulley circumference, gear ratio).
+- The angle information from the MT6826S is stored in registers that can be read via SPI. Ensure that the implementation correctly handles the SPI communication to read the angle data at the required frequency for accurate filament tracking, and that it properly handles any potential communication errors or edge cases (e.g. sensor disconnection). The specific SPI pins for the MT6826S are defined in the configuration, so ensure that the implementation correctly uses these pins for communication.
+- The MT6826S angle information register addresses are as follows:
+  - Angle Register: 0x003 to 0x004 (15 bits for angle data, with the 16th bit fixed at 0)
+  - Status Register: 0x005 (fixed at 0x00 when no error, with specific bits indicating different error conditions such as magnetic field strength issues or internal errors)
+  - CRC Register: 0x006 (used for validating the integrity of the angle and status data, with a specific CRC algorithm defined in the MT6826S datasheet)
+- Ensure that the implementation correctly reads from these registers, applies the necessary bit masking and shifting to extract the angle data, and uses the status register to detect any potential issues with the sensor readings. Additionally, implement the CRC validation to ensure that the data being read from the sensor is accurate and has not been corrupted during communication.
+- Ensure that the MT6826S integration is robust against potential noise or interference in the sensor readings, which could lead to false positives for clogs or runout. This may involve implementing filtering or smoothing algorithms on the angle data, or using the status register information to detect and ignore erroneous readings.
 
 ## Approach
 1. Locate relevant Happy Hare modules and read nearby patterns before editing.

@@ -12,25 +12,21 @@ from ..mmu_encoder import MmuEncoder
 class MmuEncoderMt6826s(MmuEncoder):
     def __init__(self, config):
         self.encoder_angle = config.get('encoder_angle')
-        pwm_pin = config.get('pwm_pin', None)
-        if pwm_pin is None:
-            raise config.error("[mmu_encoder_mt6826s] requires 'pwm_pin'")
+        self.rotation_distance = config.getfloat('rotation_distance', 4.0, above=0.)
 
-        # Calculate encoder_resolution from MT6826S-specific parameters if provided
-        pwm_pulses = config.getfloat('pwm_pulses_per_revolution', None, above=0.)
-        rotation_dist = config.getfloat('rotation_distance', None, above=0.)
-        if pwm_pulses is not None and rotation_dist is not None:
-            # encoder_resolution = distance per pulse (mm/pulse)
-            calculated_resolution = rotation_dist / pwm_pulses
-            section_name = config.get_name()
-            if not config.fileconfig.has_option(section_name, 'encoder_resolution'):
-                config.fileconfig.set(section_name, 'encoder_resolution', str(calculated_resolution))
-
-        # Reuse the existing mmu encoder implementation by mapping pwm_pin onto
-        # the expected encoder_pin field if it is not explicitly supplied.
+        # MT6826S uses angle data instead of pulse counting. Set encoder_resolution
+        # based on rotation_distance to ensure filament movement is accurately tracked.
+        # For a 360° rotation, filament moves by rotation_distance mm.
+        # encoder_resolution = distance per degree = rotation_distance / 360
+        calculated_resolution = self.rotation_distance / 360.0
         section_name = config.get_name()
+        if not config.fileconfig.has_option(section_name, 'encoder_resolution'):
+            config.fileconfig.set(section_name, 'encoder_resolution', str(calculated_resolution))
+
+        # MT6826S requires a dummy encoder_pin for base class compatibility
         if not config.fileconfig.has_option(section_name, 'encoder_pin'):
-            config.fileconfig.set(section_name, 'encoder_pin', pwm_pin)
+            # Use a placeholder value; actual angle data comes from angle sensor
+            config.fileconfig.set(section_name, 'encoder_pin', 'mmu:PA0')
 
         super(MmuEncoderMt6826s, self).__init__(config)
 
