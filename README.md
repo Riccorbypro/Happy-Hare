@@ -1,3 +1,5 @@
+# Fair warning: This repo is likely unusable. I am using this as a learning ground. Continue at your own risk.
+
 <p align="center">
   <img src="https://github.com/moggieuk/Happy-Hare/wiki/resources/happy_hare_logo.jpg" alt='Happy Hare' width='30%'>
   <h1 align="center">Happy Hare</h1>
