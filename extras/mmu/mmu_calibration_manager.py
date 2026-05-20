@@ -29,6 +29,15 @@ class MmuCalibrationManager:
     def __init__(self, mmu):
         self.mmu = mmu
 
+    def _save_encoder_resolution(self, resolution, save=True):
+        self.mmu.encoder_sensor.set_resolution(resolution)
+        self.mmu.encoder_resolution = resolution
+        self.mmu.encoder_min = 1.5 * resolution
+        if save:
+            self.mmu.save_variable(self.mmu.VARS_MMU_ENCODER_RESOLUTION, round(resolution, 8), write=True)
+            self.mmu.log_always("Encoder calibration has been saved")
+            self.mmu.calibration_status |= self.mmu.CALIBRATED_ENCODER
+
 
     # -------------------- Bowden length manipulation --------------------
     # Notes:
@@ -393,18 +402,63 @@ class MmuCalibrationManager:
                 self.mmu.log_warning("Warning: Encoder is not detecting the expected number of counts based on CAD parameters which may indicate an issue")
 
             msg = "Before calibration measured length: %.2fmm" % old_result
-            msg += "\nCalculated resolution of the encoder: %.4f (currently: %.4f)" % (resolution, self.mmu.encoder_sensor.get_resolution())
+            msg += "\nCalculated resolution of the encoder: %.8f (currently: %.8f)" % (resolution, self.mmu.encoder_sensor.get_resolution())
             self.mmu.log_always(msg)
 
             if save:
-                self.mmu.encoder_sensor.set_resolution(resolution)
-                self.mmu.save_variable(self.mmu.VARS_MMU_ENCODER_RESOLUTION, round(resolution, 4), write=True)
-                self.mmu.log_always("Encoder calibration has been saved")
-                self.mmu.calibration_status |= self.mmu.CALIBRATED_ENCODER
+                self._save_encoder_resolution(resolution, save=True)
 
         except MmuError as ee:
             # Add some more context to the error and re-raise
             raise MmuError("Calibration of encoder failed. Aborting, because:\n%s" % str(ee))
+
+        finally:
+            if mean == 0:
+                self.mmu._set_filament_pos_state(self.mmu.FILAMENT_POS_UNKNOWN)
+
+    def calibrate_encoder_with_extruder(self, length, repeats, speed, accel, save=True):
+        pos_values, neg_values = [], []
+        self.mmu.log_always("%s encoder against extruder motion over %.1fmm..." % ("Calibrating" if save else "Validating calibration", length))
+        mean = 0
+
+        try:
+            for x in range(repeats):
+                direction = 1 if x % 2 == 0 else -1
+                self.mmu._initialize_filament_position(dwell=True)
+                self.mmu.trace_filament_move(None, direction * length, speed=speed, accel=accel, motor="extruder", wait=True, encoder_dwell=True)
+                counts = self.mmu._get_encoder_counts(dwell=True)
+                if direction > 0:
+                    pos_values.append(counts)
+                    self.mmu.log_always("%s+ counts: %d" % (UI_SPACE*2, counts))
+                else:
+                    neg_values.append(counts)
+                    self.mmu.log_always("%s- counts: %d" % (UI_SPACE*2, counts))
+                if counts == 0:
+                    break
+
+            all_values = pos_values + neg_values
+            mean = self.mmu._sample_stats(all_values)['mean'] if all_values else 0
+            if mean == 0:
+                self.mmu.log_always("No counts measured. Ensure filament is loaded through the encoder and gripped by the extruder before running calibration")
+                return
+
+            resolution = length / mean
+            old_result = mean * self.mmu.encoder_sensor.get_resolution()
+
+            msg = "Extruder-referenced samples: mean=%(mean).2f stdev=%(stdev).2f min=%(min)d max=%(max)d range=%(range)d" % self.mmu._sample_stats(all_values)
+            if pos_values:
+                msg += "\nLoad direction:             mean=%(mean).2f stdev=%(stdev).2f min=%(min)d max=%(max)d range=%(range)d" % self.mmu._sample_stats(pos_values)
+            if neg_values:
+                msg += "\nUnload direction:           mean=%(mean).2f stdev=%(stdev).2f min=%(min)d max=%(max)d range=%(range)d" % self.mmu._sample_stats(neg_values)
+            msg += "\nBefore calibration measured length: %.2fmm" % old_result
+            msg += "\nCalculated resolution of the encoder: %.8f (currently: %.8f)" % (resolution, self.mmu.encoder_sensor.get_resolution())
+            self.mmu.log_always(msg)
+
+            if save:
+                self._save_encoder_resolution(resolution, save=True)
+
+        except MmuError as ee:
+            raise MmuError("Extruder-referenced calibration of encoder failed. Aborting, because:\n%s" % str(ee))
 
         finally:
             if mean == 0:

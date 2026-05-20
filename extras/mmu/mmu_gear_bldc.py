@@ -1011,7 +1011,7 @@ class MmuGearBldc:
             % (applied_pwm, self.brake_pwm, brake_time, reverse_dir, self.section_name)
         )
 
-    def start_move(self, dist, speed):
+    def start_move(self, dist, speed, use_tach_position=True):
         speed = abs(speed)
         if dist == 0. or speed <= EPSILON:
             self.stop()
@@ -1027,7 +1027,7 @@ class MmuGearBldc:
         stop_time = self._floored_print_time(start_time + move_duration)
 
         tach_start_count = self.tachometer.get_count()
-        if tach_start_count is not None and self.tachometer.has_tachometer():
+        if use_tach_position and tach_start_count is not None and self.tachometer.has_tachometer():
             target_revs = abs(mapped_dist) / self.rotation_distance
             self.motion_tach_start_count = tach_start_count
             self.motion_tach_target_delta = self.tachometer.revs_to_counts(target_revs)
@@ -1037,7 +1037,11 @@ class MmuGearBldc:
                 % (mapped_dist, self.rotation_distance, target_revs, self.motion_tach_target_delta, stop_time, self.section_name)
             )
         else:
-            self.mmu.log_stepper("BLDC_POSITION: tachometer unavailable, using timed stop unit=%s" % self.section_name)
+            self.motion_tach_start_count = self.motion_tach_target_delta = None
+            if use_tach_position:
+                self.mmu.log_stepper("BLDC_POSITION: tachometer unavailable, using timed stop unit=%s" % self.section_name)
+            else:
+                self.mmu.log_stepper("BLDC_POSITION: tachometer position disabled by caller unit=%s" % self.section_name)
 
         # Apply the first phase immediately so standalone MMU_TEST_MOVE does not
         # depend on the timer as the initial source of BLDC power.

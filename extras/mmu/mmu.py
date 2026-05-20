@@ -2637,12 +2637,16 @@ class Mmu:
         if self.check_if_disabled(): return
         if self._check_has_encoder(): return
         if self.check_if_bypass(): return
-        if self.check_if_not_calibrated(self.CALIBRATED_GEAR_0, check_gates=[self.gate_selected]): return
+
+        motor = gcmd.get('MOTOR', "gear").lower()
+        if motor not in ["gear", "extruder"]:
+            raise gcmd.error("MOTOR must be 'gear' or 'extruder'")
+        if motor == "gear" and self.check_if_not_calibrated(self.CALIBRATED_GEAR_0, check_gates=[self.gate_selected]): return
 
         length = gcmd.get_float('LENGTH', 400., above=0.)
         repeats = gcmd.get_int('REPEATS', 3, minval=1, maxval=10)
-        speed = gcmd.get_float('SPEED', self.gear_from_buffer_speed, minval=10.)
-        accel = gcmd.get_float('ACCEL', self.gear_from_buffer_accel, minval=10.)
+        speed = gcmd.get_float('SPEED', self.extruder_load_speed if motor == "extruder" else self.gear_from_buffer_speed, minval=10.)
+        accel = gcmd.get_float('ACCEL', self.extruder_accel if motor == "extruder" else self.gear_from_buffer_accel, minval=10.)
         min_speed = gcmd.get_float('MINSPEED', speed, above=0.)
         max_speed = gcmd.get_float('MAXSPEED', speed, above=0.)
         save = gcmd.get_int('SAVE', 1, minval=0, maxval=1)
@@ -2653,12 +2657,15 @@ class Mmu:
                 with self._require_encoder():
                     self.selector.filament_drive()
                     self.calibrating = True
-                    _,_,measured,_ = self.trace_filament_move("Checking for filament", advance)
-                    if measured < self.encoder_min:
-                        raise MmuError("Filament not detected in encoder. Ensure filament is available and try again")
-                    self._unload_tool()
-                    self.calibration_manager.calibrate_encoder(length, repeats, speed, min_speed, max_speed, accel, save)
-                    _,_,_,_ = self.trace_filament_move("Parking filament", -advance)
+                    if motor == "extruder":
+                        self.calibration_manager.calibrate_encoder_with_extruder(length, repeats, speed, accel, save)
+                    else:
+                        _,_,measured,_ = self.trace_filament_move("Checking for filament", advance)
+                        if measured < self.encoder_min:
+                            raise MmuError("Filament not detected in encoder. Ensure filament is available and try again")
+                        self._unload_tool()
+                        self.calibration_manager.calibrate_encoder(length, repeats, speed, min_speed, max_speed, accel, save)
+                        _,_,_,_ = self.trace_filament_move("Parking filament", -advance)
         except MmuError as ee:
             self.handle_mmu_error(str(ee))
         finally:
@@ -5979,9 +5986,39 @@ class Mmu:
                 else:
                     if self.log_enabled(self.LOG_STEPPER):
                         self.log_stepper("%s MOVE: dist=%.1f, speed=%.1f, accel=%.1f, wait=%s" % (motor.upper(), dist, speed, accel, wait))
+                    encoder_bounded_bldc = bldc_active_move and motor == "gear" and self._can_use_encoder()
                     if bldc_active_move:
-                        bldc.start_move(dist, speed)
-                    if bldc_active_move and motor == "gear":
+                        bldc.start_move(dist, speed, use_tach_position=not encoder_bounded_bldc)
+                    if encoder_bounded_bldc:
+                        target = abs(dist)
+                        direction = 1. if dist >= 0. else -1.
+                        timeout = max((target / max(speed, 1e-6)) * 4., (target / max(speed, 1e-6)) + 2.)
+                        poll_time = min(max(bldc.motion_sample_time, 0.02), 0.10)
+                        start_time = last_progress_time = self.reactor.monotonic()
+                        last_measured = 0.
+                        measured = 0.
+                        try:
+                            while True:
+                                now = self.reactor.monotonic()
+                                measured = abs(self.get_encoder_distance(dwell=None) - encoder_start)
+                                if measured + self.encoder_min >= target:
+                                    break
+                                if measured > last_measured + self.encoder_min:
+                                    last_measured = measured
+                                    last_progress_time = now
+                                if now - start_time > timeout:
+                                    raise MmuError("BLDC encoder-bounded move timed out after %.1fs: requested %.1fmm, encoder measured %.1fmm" % (timeout, target, measured))
+                                if now - last_progress_time > 2.0:
+                                    raise MmuError("BLDC encoder-bounded move stalled: requested %.1fmm, encoder measured %.1fmm" % (target, measured))
+                                self.reactor.pause(now + poll_time)
+                        finally:
+                            bldc.stop()
+                            bldc_stopped = True
+                        actual = direction * measured
+                        pos[1] += actual
+                        self.mmu_toolhead.set_position(pos)
+                        self.log_stepper("BLDC_ENCODER_POSITION: target=%.3f measured=%.3f actual=%.3f" % (dist, measured, actual))
+                    elif bldc_active_move and motor == "gear":
                         pause_time = abs(dist) / max(speed, 1e-6)
                         if wait:
                             pause_time += bldc.motion_sample_time
