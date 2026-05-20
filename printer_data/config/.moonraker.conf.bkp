@@ -4,7 +4,6 @@ port = 7125
 klippy_uds_address = /home/riccorbypro/printer_data/comms/klippy.sock
 
 [authorization]
-force_logins = False
 trusted_clients = 
 	127.0.0.0/8
 	kevin.local
