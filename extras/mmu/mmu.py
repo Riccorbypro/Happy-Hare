@@ -5907,6 +5907,11 @@ class Mmu:
             wait = wait or self._wait_for_espooler # Allow eSpooler wrapper to force wait
             bldc = self.get_bldc_for_gate() if self.has_bldc_gear(self.gate_selected) else None
             bldc_active_move = bldc is not None and motor in ["gear", "gear+extruder", "synced"] and homing_move == 0
+            if self.log_enabled(self.LOG_STEPPER) and motor in ["gear", "gear+extruder", "synced"]:
+                self.log_stepper("BLDC_ROUTE: gate=%s motor=%s homing=%s active=%s unit=%s" % (
+                    self.gate_selected, motor, homing_move, bldc_active_move,
+                    getattr(bldc, 'section_name', 'none') if bldc is not None else 'none',
+                ))
             bldc_stopped = False
 
             # Gear rail is driving the filament

@@ -431,6 +431,7 @@ class MmuGearBldc:
         self.last_pwm = self.last_effective_pwm = 0.
         self._last_pwm_write_print_time = 0.
         self.last_dir = None
+        self.last_enable = None
         self.section_name = config.get_name()
         self.commanded_rpm = self.commanded_linear_speed = 0.
         self.commanded_source = None
@@ -460,6 +461,13 @@ class MmuGearBldc:
         self.mcu_dir_pin.setup_max_duration(0.)
         self.mcu_dir_pin.setup_start_value(0., 0.)
 
+        enable_pin = config.get('enable_pin', None)
+        self.mcu_enable_pin = None
+        if enable_pin:
+            self.mcu_enable_pin = ppins.setup_pin('digital_out', enable_pin)
+            self.mcu_enable_pin.setup_max_duration(0.)
+            self.mcu_enable_pin.setup_start_value(0., 0.)
+
         pwm_pin_params = ppins.lookup_pin(config.get('pwm_pin'), can_invert=True)
         if 'config' in inspect.signature(MCU_queued_pwm.__init__).parameters:
             self.mcu_pwm_pin = MCU_queued_pwm(config, pwm_pin_params)
@@ -473,6 +481,7 @@ class MmuGearBldc:
         self.motion_sample_time = max(
             self.mcu_pwm_pin.get_mcu().min_schedule_time(),
             self.mcu_dir_pin.get_mcu().min_schedule_time(),
+            self.mcu_enable_pin.get_mcu().min_schedule_time() if self.mcu_enable_pin is not None else 0.,
         )
 
         self.active_sync_monitor = None
@@ -702,6 +711,16 @@ class MmuGearBldc:
         self.mmu.log_stepper("BLDC_SET_PIN: pin=%s applied=%.4f time=%.3f unit=%s" % (str(getattr(self.mcu_dir_pin, '_pin', 'unknown')), ivalue, log_time, self.section_name))
         return None
 
+    def _set_enable_callback(self, print_time, value):
+        log_time = print_time if print_time is not None else 0.
+        ivalue = 1 if value else 0
+        if self.last_enable == ivalue:
+            return 'discard', 0.
+        self.last_enable = ivalue
+        self.mcu_enable_pin.set_digital(print_time, ivalue)
+        self.mmu.log_stepper("BLDC_SET_PIN: pin=%s applied=%.4f time=%.3f unit=%s" % (str(getattr(self.mcu_enable_pin, '_pin', 'unknown')), ivalue, log_time, self.section_name))
+        return None
+
     def _send_pin(self, mcu_pin, value, print_time):
         min_sched_time = mcu_pin.get_mcu().min_schedule_time()
         while True:
@@ -709,6 +728,8 @@ class MmuGearBldc:
                 ret = self._set_pwm_callback(print_time, value)
             elif mcu_pin is self.mcu_dir_pin:
                 ret = self._set_dir_callback(print_time, value)
+            elif mcu_pin is self.mcu_enable_pin:
+                ret = self._set_enable_callback(print_time, value)
             else:
                 break
             if ret is None:
@@ -731,7 +752,17 @@ class MmuGearBldc:
             return
         self._send_pin(self.mcu_dir_pin, desired_dir, self._floored_print_time(print_time))
 
+    def _safe_set_enable(self, enabled, print_time=None):
+        if self.mcu_enable_pin is None:
+            return
+        desired_enable = int(enabled)
+        if self.last_enable == desired_enable:
+            return
+        self._send_pin(self.mcu_enable_pin, desired_enable, self._floored_print_time(print_time))
+
     def _safe_set_pwm(self, value, print_time=None):
+        if value > EPSILON:
+            self._safe_set_enable(True, print_time)
         if abs(value - self.last_pwm) < self.PWM_WRITE_MIN_DELTA:
             return
         if value > EPSILON:
@@ -807,6 +838,7 @@ class MmuGearBldc:
                 self.last_effective_pwm = 0.
                 self.tachometer.set_commanded(0., source)
                 self._send_pin(self.mcu_pwm_pin, 0., self._floored_print_time(print_time))
+            self._safe_set_enable(False, print_time)
             return True
         forward = self._map_forward_for_gate(speed_mm_s > 0., speed_mm_s)
         self._set_rpm(60. * abs(speed_mm_s) / self.rotation_distance, forward, source, abs(speed_mm_s), print_time)
@@ -852,6 +884,7 @@ class MmuGearBldc:
         if descriptor.pwm is not None:
             t = self._floored_print_time(dispatch_print_time)
             dir_val = 1 if descriptor.direction > 0 else 0
+            self._safe_set_enable(descriptor.pwm > EPSILON, t)
             self._send_pin(self.mcu_dir_pin, dir_val, t)
             self._send_pin(self.mcu_pwm_pin, descriptor.pwm, t)
             self.mmu.log_stepper("BLDC_MOTION: pwm_direct pwm=%.4f dir=%d time=%.3f unit=%s" % (descriptor.pwm, dir_val, dispatch_print_time, self.section_name))
@@ -884,6 +917,7 @@ class MmuGearBldc:
         effective_pwm = self.tachometer.apply_control(pwm, source)
         self.last_effective_pwm = effective_pwm
         self._log_speed(source, linear_speed, requested_rpm, rpm, effective_pwm, forward)
+        self._safe_set_enable(effective_pwm > EPSILON, t0)
         self._safe_set_direction(forward, t0)
         self._send_pin(self.mcu_pwm_pin, effective_pwm, t0)
 
@@ -910,8 +944,10 @@ class MmuGearBldc:
 
     def stop(self, print_time=None):
         self._reset_motion(self.MOTION_STATE_STOP, 'stop')
+        t0 = self._floored_print_time(print_time)
         if abs(self.last_pwm) > EPSILON:
-            self._send_pin(self.mcu_pwm_pin, 0., self._floored_print_time(print_time))
+            self._send_pin(self.mcu_pwm_pin, 0., t0)
+        self._safe_set_enable(False, t0)
         toolhead = self.printer.lookup_object('toolhead', None)
         if toolhead is not None and hasattr(toolhead, 'flush_step_generation'):
             toolhead.flush_step_generation()
@@ -932,6 +968,7 @@ class MmuGearBldc:
         stop_descriptor = MotionStop(t0 + brake_time)
         self.motion_queue.append((brake_descriptor, 'brake'))
         self.motion_queue.append((stop_descriptor, 'brake'))
+        self._safe_set_enable(True, t0)
         self._send_pin(self.mcu_dir_pin, 0 if reverse_dir else 1, t0)
         self._send_pin(self.mcu_pwm_pin, self.brake_pwm, t0)
         self._ensure_motion_timer()
@@ -946,6 +983,9 @@ class MmuGearBldc:
         if dist == 0. or speed <= EPSILON:
             self.stop()
             return
+        self.motion_queue = []
+        self.motion_state = self.MOTION_STATE_MOVING
+        self._last_pwm_write_print_time = 0.
         mapped_dist = self._map_distance_for_gate(dist)[0]
         direction = 1 if mapped_dist > 0. else -1
         target_speed = speed * direction
@@ -953,24 +993,34 @@ class MmuGearBldc:
         move_duration = abs(mapped_dist) / speed
         stop_time = self._floored_print_time(start_time + move_duration)
 
-        # Queue fixed-duration move phases so standalone MMU_TEST_MOVE keeps BLDC active
-        # for full move duration and stops deterministically at the end of the window.
+        # Apply the first phase immediately so standalone MMU_TEST_MOVE does not
+        # depend on the timer as the initial source of BLDC power.
         kick_time = min(self.kick_start_time, move_duration)
         if kick_time > EPSILON:
-            self.motion_queue.append((
-                MotionPwmDirect(direction, self.pwm_max, kick_time, start_time),
+            t = self._floored_print_time(start_time)
+            dir_val = 1 if direction > 0 else 0
+            self._safe_set_enable(True, t)
+            self._send_pin(self.mcu_dir_pin, dir_val, t)
+            self._send_pin(self.mcu_pwm_pin, self.pwm_max, t)
+            self.mmu.log_stepper(
+                "BLDC_MOTION: immediate pwm_direct pwm=%.4f dir=%d time=%.3f unit=%s"
+                % (self.pwm_max, dir_val, start_time, self.section_name)
+            )
+        else:
+            self._dispatch_motion_descriptor(
+                MotionDescriptor(target_speed, True, start_time, direction),
                 'move',
-            ))
+                start_time,
+            )
 
         cruise_start_time = self._floored_print_time(start_time + kick_time)
-        if move_duration - kick_time > EPSILON:
+        if kick_time > EPSILON and move_duration - kick_time > EPSILON:
             self.motion_queue.append((
                 MotionDescriptor(target_speed, True, cruise_start_time, direction),
                 'move',
             ))
 
         self.motion_queue.append((MotionStop(stop_time), 'move'))
-        self.motion_state = self.MOTION_STATE_MOVING
         self._ensure_motion_timer()
         self.reactor.update_timer(self.motion_timer, self.reactor.NOW)
 
