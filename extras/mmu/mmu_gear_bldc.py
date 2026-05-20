@@ -325,6 +325,15 @@ class BldcTachometer:
             'integral_correction_pwm': self.integral_correction_pwm,
         }
 
+    def get_count(self):
+        return self._tach_last_count
+
+    def revs_to_counts(self, revs):
+        return abs(revs) * self.tachometer_ppr * 2.
+
+    def counts_to_revs(self, counts):
+        return abs(counts) / (self.tachometer_ppr * 2.)
+
     def set_control_state(self, reason, correction_pwm=0., error_rpm=None):
         self.control_reason = reason
         self.control_correction_pwm = correction_pwm
@@ -427,6 +436,7 @@ class MmuGearBldc:
         self.motion_state = self.MOTION_STATE_IDLE
         self.motion_queue = []
         self.motion_timer = None
+        self.motion_tach_start_count = self.motion_tach_target_delta = None
 
         self.last_pwm = self.last_effective_pwm = 0.
         self._last_pwm_write_print_time = 0.
@@ -849,17 +859,39 @@ class MmuGearBldc:
     def _get_motion_waketime(self, eventtime, current_print_time):
         if not self.motion_queue:
             return self.reactor.NEVER
+        if self.motion_tach_target_delta is not None:
+            return eventtime + self.motion_sample_time
         next_print_time = min(descriptor.print_time for descriptor, _ in self.motion_queue)
         delta_to_deadline = (next_print_time - self.motion_sample_time) - current_print_time
         if delta_to_deadline <= EPSILON:
             return eventtime + EPSILON
         return eventtime + min(self.motion_sample_time, delta_to_deadline)
 
+    def _check_tach_position_complete(self):
+        if self.motion_tach_start_count is None or self.motion_tach_target_delta is None:
+            return False
+        tach_count = self.tachometer.get_count()
+        if tach_count is None:
+            return False
+        moved_counts = abs(tach_count - self.motion_tach_start_count)
+        if moved_counts + EPSILON < self.motion_tach_target_delta:
+            return False
+        moved_revs = self.tachometer.counts_to_revs(moved_counts)
+        self.mmu.log_stepper(
+            "BLDC_POSITION: reached target_counts=%.1f actual_counts=%.1f actual_revs=%.4f unit=%s"
+            % (self.motion_tach_target_delta, moved_counts, moved_revs, self.section_name)
+        )
+        self.stop()
+        return True
+
     def _motion_timer_callback(self, eventtime):
         if self.motion_state != self.MOTION_STATE_MOVING:
             return self.reactor.NEVER
 
         current_print_time = self.mcu_pwm_pin.get_mcu().estimated_print_time(eventtime)
+
+        if self._check_tach_position_complete():
+            return self.reactor.NEVER
 
         self.motion_queue = [
             (descriptor, source) for descriptor, source in self.motion_queue
@@ -934,6 +966,7 @@ class MmuGearBldc:
         if self.motion_timer is not None:
             self.reactor.update_timer(self.motion_timer, self.reactor.NEVER)
         self.motion_queue = []
+        self.motion_tach_start_count = self.motion_tach_target_delta = None
         self.commanded_rpm = 0.
         self.commanded_source = source
         self.commanded_linear_speed = 0.
@@ -992,6 +1025,19 @@ class MmuGearBldc:
         start_time = self._floored_print_time()
         move_duration = abs(mapped_dist) / speed
         stop_time = self._floored_print_time(start_time + move_duration)
+
+        tach_start_count = self.tachometer.get_count()
+        if tach_start_count is not None and self.tachometer.has_tachometer():
+            target_revs = abs(mapped_dist) / self.rotation_distance
+            self.motion_tach_start_count = tach_start_count
+            self.motion_tach_target_delta = self.tachometer.revs_to_counts(target_revs)
+            stop_time = self._floored_print_time(start_time + max(move_duration * 2., move_duration + 0.25))
+            self.mmu.log_stepper(
+                "BLDC_POSITION: target_dist=%.3f rotation_distance=%.4f target_revs=%.4f target_counts=%.1f timeout=%.3f unit=%s"
+                % (mapped_dist, self.rotation_distance, target_revs, self.motion_tach_target_delta, stop_time, self.section_name)
+            )
+        else:
+            self.mmu.log_stepper("BLDC_POSITION: tachometer unavailable, using timed stop unit=%s" % self.section_name)
 
         # Apply the first phase immediately so standalone MMU_TEST_MOVE does not
         # depend on the timer as the initial source of BLDC power.
