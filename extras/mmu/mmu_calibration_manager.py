@@ -464,6 +464,24 @@ class MmuCalibrationManager:
             if mean == 0:
                 self.mmu._set_filament_pos_state(self.mmu.FILAMENT_POS_UNKNOWN)
 
+    def calibrate_encoder_manual(self, length, save=True):
+        counts = self.mmu._get_encoder_counts(dwell=True)
+        if counts == 0:
+            self.mmu.log_always("No counts measured. Run 'MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1', manually pull a measured length through the encoder, then run this command again with LENGTH=<measured_mm>")
+            return
+
+        resolution = length / counts
+        old_result = counts * self.mmu.encoder_sensor.get_resolution()
+
+        msg = "%s manual encoder calibration over %.1fmm..." % ("Calibrating" if save else "Validating calibration", length)
+        msg += "\nMeasured encoder counts: %d" % counts
+        msg += "\nBefore calibration measured length: %.2fmm" % old_result
+        msg += "\nCalculated resolution of the encoder: %.8f (currently: %.8f)" % (resolution, self.mmu.encoder_sensor.get_resolution())
+        self.mmu.log_always(msg)
+
+        if save:
+            self._save_encoder_resolution(resolution, save=True)
+
 
     # Automatically calibrate the rotation_distance for gate>0 using encoder measurements and gate 0 as reference
     # Gate 0 is always calibrated with MMU_CALILBRATE_GEAR

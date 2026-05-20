@@ -2639,11 +2639,14 @@ class Mmu:
         if self.check_if_bypass(): return
 
         motor = gcmd.get('MOTOR', "gear").lower()
-        if motor not in ["gear", "extruder"]:
-            raise gcmd.error("MOTOR must be 'gear' or 'extruder'")
+        if motor not in ["gear", "extruder", "manual"]:
+            raise gcmd.error("MOTOR must be 'gear', 'extruder' or 'manual'")
         if motor == "gear" and self.check_if_not_calibrated(self.CALIBRATED_GEAR_0, check_gates=[self.gate_selected]): return
 
-        length = gcmd.get_float('LENGTH', 400., above=0.)
+        reset = bool(gcmd.get_int('RESET', 0, minval=0, maxval=1))
+        length = gcmd.get_float('LENGTH', None if motor == "manual" else 400., above=0.)
+        if motor == "manual" and not reset and length is None:
+            raise gcmd.error("Manual encoder calibration requires LENGTH=<measured_mm> unless RESET=1")
         repeats = gcmd.get_int('REPEATS', 3, minval=1, maxval=10)
         speed = gcmd.get_float('SPEED', self.extruder_load_speed if motor == "extruder" else self.gear_from_buffer_speed, minval=10.)
         accel = gcmd.get_float('ACCEL', self.extruder_accel if motor == "extruder" else self.gear_from_buffer_accel, minval=10.)
@@ -2653,19 +2656,26 @@ class Mmu:
         advance = 60. # Ensure filament is in encoder even if not loaded by user
 
         try:
-            with self.wrap_sync_gear_to_extruder():
-                with self._require_encoder():
-                    self.selector.filament_drive()
-                    self.calibrating = True
-                    if motor == "extruder":
-                        self.calibration_manager.calibrate_encoder_with_extruder(length, repeats, speed, accel, save)
+            with self._require_encoder():
+                self.calibrating = True
+                if motor == "manual":
+                    if reset:
+                        self._initialize_encoder(dwell=True)
+                        self.log_always("Manual encoder calibration counts reset. Pull a known length through the encoder, then run 'MMU_CALIBRATE_ENCODER MOTOR=manual LENGTH=<measured_mm>'")
                     else:
-                        _,_,measured,_ = self.trace_filament_move("Checking for filament", advance)
-                        if measured < self.encoder_min:
-                            raise MmuError("Filament not detected in encoder. Ensure filament is available and try again")
-                        self._unload_tool()
-                        self.calibration_manager.calibrate_encoder(length, repeats, speed, min_speed, max_speed, accel, save)
-                        _,_,_,_ = self.trace_filament_move("Parking filament", -advance)
+                        self.calibration_manager.calibrate_encoder_manual(length, save)
+                else:
+                    with self.wrap_sync_gear_to_extruder():
+                        self.selector.filament_drive()
+                        if motor == "extruder":
+                            self.calibration_manager.calibrate_encoder_with_extruder(length, repeats, speed, accel, save)
+                        else:
+                            _,_,measured,_ = self.trace_filament_move("Checking for filament", advance)
+                            if measured < self.encoder_min:
+                                raise MmuError("Filament not detected in encoder. Ensure filament is available and try again")
+                            self._unload_tool()
+                            self.calibration_manager.calibrate_encoder(length, repeats, speed, min_speed, max_speed, accel, save)
+                            _,_,_,_ = self.trace_filament_move("Parking filament", -advance)
         except MmuError as ee:
             self.handle_mmu_error(str(ee))
         finally:
