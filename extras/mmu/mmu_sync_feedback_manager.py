@@ -670,6 +670,9 @@ class MmuSyncFeedbackManager:
             ss = self.SF_STATE_NEUTRAL
         return ss
 
+    def get_sensor_state(self):
+        return self._get_sensor_state()
+
 
     def _get_sensor_type(self):
         """

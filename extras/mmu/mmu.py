@@ -2652,6 +2652,9 @@ class Mmu:
         accel = gcmd.get_float('ACCEL', self.extruder_accel if motor == "extruder" else self.gear_from_buffer_accel, minval=10.)
         min_speed = gcmd.get_float('MINSPEED', speed, above=0.)
         max_speed = gcmd.get_float('MAXSPEED', speed, above=0.)
+        assist = bool(gcmd.get_int('ASSIST', 0, minval=0, maxval=1))
+        if assist and motor != "extruder":
+            raise gcmd.error("ASSIST=1 is only supported with MOTOR=extruder")
         save = gcmd.get_int('SAVE', 1, minval=0, maxval=1)
         advance = 60. # Ensure filament is in encoder even if not loaded by user
 
@@ -2668,7 +2671,7 @@ class Mmu:
                     with self.wrap_sync_gear_to_extruder():
                         self.selector.filament_drive()
                         if motor == "extruder":
-                            self.calibration_manager.calibrate_encoder_with_extruder(length, repeats, speed, accel, save)
+                            self.calibration_manager.calibrate_encoder_with_extruder(length, repeats, speed, accel, save, assist=assist)
                         else:
                             _,_,measured,_ = self.trace_filament_move("Checking for filament", advance)
                             if measured < self.encoder_min:

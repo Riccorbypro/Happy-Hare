@@ -416,7 +416,138 @@ class MmuCalibrationManager:
             if mean == 0:
                 self.mmu._set_filament_pos_state(self.mmu.FILAMENT_POS_UNKNOWN)
 
-    def calibrate_encoder_with_extruder(self, length, repeats, speed, accel, save=True):
+    def _sync_feedback_state_is_tension(self):
+        sf = self.mmu.sync_feedback_manager
+        state = sf.get_sensor_state()
+        _, _, has_proportional = sf.get_active_sensors()
+        return state <= -0.10 if has_proportional else state == sf.SF_STATE_TENSION
+
+    def _seek_sync_feedback_tension(self, max_move, speed):
+        sf = self.mmu.sync_feedback_manager
+        has_tension, _, has_proportional = sf.get_active_sensors()
+        if not (has_tension or has_proportional):
+            raise MmuError("ASSIST=1 encoder calibration requires a tension switch or proportional sync-feedback sensor")
+
+        if self._sync_feedback_state_is_tension():
+            return 0., True
+
+        if has_tension:
+            actual, homed, _, _ = self.mmu.trace_filament_move(
+                "Homing to sync-feedback tension",
+                max_move,
+                speed=speed,
+                motor="extruder",
+                homing_move=1,
+                endstop_name=self.mmu.SENSOR_TENSION,
+            )
+            return abs(actual), homed
+
+        moved = 0.
+        step = min(2., max_move)
+        while moved < max_move:
+            actual, _, _, _ = self.mmu.trace_filament_move(
+                "Seeking proportional sync-feedback tension",
+                min(step, max_move - moved),
+                speed=speed,
+                motor="extruder",
+                wait=True,
+            )
+            moved += abs(actual)
+            if self._sync_feedback_state_is_tension():
+                return moved, True
+        return moved, False
+
+    def _relieve_sync_feedback_tension(self):
+        if not self._sync_feedback_state_is_tension():
+            return 0., True
+        return self.mmu.sync_feedback_manager.adjust_filament_tension(use_gear_motor=True)
+
+    def _calibrate_encoder_with_extruder_assist(self, length, repeats, speed, accel, save=True):
+        count_values, reference_values, resolution_values = [], [], []
+        sf = self.mmu.sync_feedback_manager
+        has_tension, _, has_proportional = sf.get_active_sensors()
+        if not (has_tension or has_proportional):
+            raise MmuError("ASSIST=1 encoder calibration requires a tension switch or proportional sync-feedback sensor")
+
+        self.mmu.log_always("%s encoder against extruder motion with sync-feedback assist over %.1fmm..." % ("Calibrating" if save else "Validating calibration", length))
+        max_boundary_move = max(length, sf.sync_feedback_buffer_maxrange * 4., 10.)
+        step = min(max(length / 10., 2.), max(sf.sync_feedback_extrude_threshold, 2.))
+        mean = 0
+
+        try:
+            for x in range(repeats):
+                self.mmu.log_always("Assisted test run #%d of %d" % (x + 1, repeats))
+                _, homed = self._seek_sync_feedback_tension(max_boundary_move, speed)
+                if not homed:
+                    raise MmuError("Could not establish the starting sync-feedback tension boundary")
+
+                self.mmu._initialize_filament_position(dwell=True)
+                reference = 0.
+
+                while reference < length:
+                    _, success = self._relieve_sync_feedback_tension()
+                    if success is False:
+                        raise MmuError("Could not relieve filament tension with gear assist")
+                    move = min(step, length - reference)
+                    actual, _, _, _ = self.mmu.trace_filament_move(
+                        "Extruder encoder calibration movement",
+                        move,
+                        speed=speed,
+                        accel=accel,
+                        motor="extruder",
+                        wait=True,
+                        encoder_dwell=None,
+                    )
+                    reference += abs(actual)
+
+                _, success = self._relieve_sync_feedback_tension()
+                if success is False:
+                    raise MmuError("Could not relieve filament tension before final tension seek")
+
+                actual, homed = self._seek_sync_feedback_tension(max_boundary_move, speed)
+                if not homed:
+                    raise MmuError("Could not establish the ending sync-feedback tension boundary")
+                reference += abs(actual)
+
+                counts = self.mmu._get_encoder_counts(dwell=True)
+                if counts == 0:
+                    break
+                resolution = reference / counts
+                count_values.append(counts)
+                reference_values.append(reference)
+                resolution_values.append(resolution)
+                self.mmu.log_always("%sreference=%.2fmm counts=%d resolution=%.8f" % (UI_SPACE*2, reference, counts, resolution))
+
+            mean_counts = self.mmu._sample_stats(count_values)['mean'] if count_values else 0
+            mean = mean_counts
+            if mean_counts == 0:
+                self.mmu.log_always("No counts measured. Ensure filament is loaded through the encoder and gripped by the extruder before running calibration")
+                return
+
+            resolution = sum(reference_values) / sum(count_values)
+            old_result = mean_counts * self.mmu.encoder_sensor.get_resolution()
+
+            msg = "Assisted references: mean=%(mean).2f stdev=%(stdev).2f min=%(min).2f max=%(max).2f range=%(range).2f" % self.mmu._sample_stats(reference_values)
+            msg += "\nEncoder counts:      mean=%(mean).2f stdev=%(stdev).2f min=%(min)d max=%(max)d range=%(range)d" % self.mmu._sample_stats(count_values)
+            msg += "\nResolution samples:  mean=%(mean).8f stdev=%(stdev).8f min=%(min).8f max=%(max).8f range=%(range).8f" % self.mmu._sample_stats(resolution_values)
+            msg += "\nBefore calibration measured length: %.2fmm" % old_result
+            msg += "\nCalculated resolution of the encoder: %.8f (currently: %.8f)" % (resolution, self.mmu.encoder_sensor.get_resolution())
+            self.mmu.log_always(msg)
+
+            if save:
+                self._save_encoder_resolution(resolution, save=True)
+
+        except MmuError as ee:
+            raise MmuError("Sync-feedback assisted calibration of encoder failed. Aborting, because:\n%s" % str(ee))
+
+        finally:
+            if mean == 0:
+                self.mmu._set_filament_pos_state(self.mmu.FILAMENT_POS_UNKNOWN)
+
+    def calibrate_encoder_with_extruder(self, length, repeats, speed, accel, save=True, assist=False):
+        if assist:
+            return self._calibrate_encoder_with_extruder_assist(length, repeats, speed, accel, save)
+
         pos_values, neg_values = [], []
         self.mmu.log_always("%s encoder against extruder motion over %.1fmm..." % ("Calibrating" if save else "Validating calibration", length))
         mean = 0
