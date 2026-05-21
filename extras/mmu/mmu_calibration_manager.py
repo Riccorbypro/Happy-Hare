@@ -598,7 +598,21 @@ class MmuCalibrationManager:
     def calibrate_encoder_manual(self, length, save=True):
         counts = self.mmu._get_encoder_counts(dwell=True)
         if counts == 0:
-            self.mmu.log_always("No counts measured. Run 'MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1', manually pull a measured length through the encoder, then run this command again with LENGTH=<measured_mm>")
+            msg = "No counts measured. Run 'MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1', manually pull a measured length through the encoder, then run this command again with LENGTH=<measured_mm>"
+            if self.mmu.encoder_sensor:
+                status = self.mmu.encoder_sensor.get_status(self.mmu.reactor.monotonic())
+                msg += "\nEncoder diagnostics: counts=%s distance=%smm angle_client=%s batches=%s empty_batches=%s samples=%s errors=%s last_raw=%s last_batch_samples=%s last_batch_delta=%s" % (
+                    status.get('encoder_counts', 'n/a'),
+                    status.get('encoder_pos', 'n/a'),
+                    status.get('angle_client_registered', 'n/a'),
+                    status.get('angle_batches', 'n/a'),
+                    status.get('angle_empty_batches', 'n/a'),
+                    status.get('angle_samples', 'n/a'),
+                    status.get('angle_errors', 'n/a'),
+                    status.get('angle_last_raw', 'n/a'),
+                    status.get('angle_last_batch_samples', 'n/a'),
+                    status.get('angle_last_batch_delta', 'n/a'))
+            self.mmu.log_always(msg)
             return
 
         resolution = length / counts
