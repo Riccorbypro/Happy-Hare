@@ -39,6 +39,7 @@ class MmuEncoderMt6826s:
         self._last_angle = None
         self._last_time = None
         self._movement = False
+        self._angle_client_registered = False
 
         self.extruder_name = config.get('extruder', 'extruder')
         self.desired_headroom = config.getfloat('desired_headroom', 6., above=0.)
@@ -62,13 +63,16 @@ class MmuEncoderMt6826s:
         self.samples = []
         self.flowrate_samples = config.getint('flowrate_samples', 20, minval=5)
 
-        self.angle_sensor.add_client(self._angle_batch_cb)
-
         self.printer.register_event_handler('klippy:ready', self._handle_ready)
         self.printer.register_event_handler('klippy:connect', self._handle_connect)
         self.printer.register_event_handler('idle_timeout:printing', self._handle_printing)
         self.printer.register_event_handler('idle_timeout:ready', self._handle_not_printing)
         self.printer.register_event_handler('idle_timeout:idle', self._handle_not_printing)
+
+    def _register_angle_client(self):
+        if not self._angle_client_registered:
+            self.angle_sensor.add_client(self._angle_batch_cb)
+            self._angle_client_registered = True
 
     def _angle_batch_cb(self, msg):
         samples = msg.get('data', [])
@@ -96,6 +100,7 @@ class MmuEncoderMt6826s:
             pass
 
     def _handle_ready(self):
+        self._register_angle_client()
         self.min_event_systime = self.reactor.monotonic() + 2.
         self._reset_filament_runout_params()
         self._extruder_pos_update_timer = self.reactor.register_timer(self._extruder_pos_update_event)
