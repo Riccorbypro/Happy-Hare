@@ -9,7 +9,7 @@ CPU: 4 core ?
 Device: BigTreeTech CB2
 Linux: Linux version 6.1.115-btt-rk35xx (build@armbian) (aarch64-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #1 SMP Mon Apr 28 18:57:36 CST 2025
 Python: '3.11.2 (main, Apr  8 2026, 01:58:00) [GCC 12.2.0]'
-Start printer at Thu May 21 08:04:22 2026 (1779343462.2 316.8)
+Start printer at Thu May 21 08:09:53 2026 (1779343793.4 648.0)
 ===== Config file =====
 [virtual_sdcard]
 path = ~/printer_data/gcodes
@@ -4175,20 +4175,126 @@ mcu_version = CARTOGRAPHER V4 6.1.0
 calibration = 2.191260273026277e-05,10.540187732088915,0.0,-1.5e-323
 =======================
 [cartographer] Loaded Cartographer3D Plugin version 1.6.0 using KlipperIntegrator
+MMU: Hardware Initialization -------------------------------
+MMU: Filament sensor mmu_gate is not defined in [mmu_sensors]
+MMU: Filament sensor toolhead is not defined in [mmu_sensors]
+MMU: Filament sensor mmu_gear_touch is not defined in [mmu_sensors]
+Extruder max_extrude_ratio=2078.758440
+mcu 'mcu': Starting serial connect
+webhooks client 281473152852432: New connection
+webhooks client 281473152852432: Client info {'program': 'Moonraker', 'version': 'v0.10.0-20-g9008485'}
+Loaded MCU 'mcu' 145 commands (v0.13.0-623-gaea1bcf5-dirty-20260414_234329-kevin / gcc: (15:12.2.rel1-1) 12.2.1 20221205 binutils: (2.40-2+18+b1) 2.40)
+MCU 'mcu' config: ADC_MAX=4095 BUS_PINS_i2c1_PB6_PB7=PB6,PB7 BUS_PINS_i2c1_PB8_PB9=PB8,PB9 BUS_PINS_i2c2_PB10_PB11=PB10,PB11 BUS_PINS_i2c3_PA8_PC9=PA8,PC9 BUS_PINS_spi1=PA6,PA7,PA5 BUS_PINS_spi1a=PB4,PB5,PB3 BUS_PINS_spi2=PB14,PB15,PB13 BUS_PINS_spi2a=PC2,PC3,PB10 BUS_PINS_spi2b=PI2,PI3,PI1 BUS_PINS_spi3a=PC11,PC12,PC10 BUS_PINS_spi4=PE13,PE14,PE12 BUS_PINS_spi5=PF8,PF9,PF7 BUS_PINS_spi5a=PH7,PF11,PH6 BUS_PINS_spi6=PG12,PG14,PG13 CLOCK_FREQ=520000000 INITIAL_PINS=!PB4,PA15,PB2 MCU=stm32h723xx PWM_MAX=32768 RESERVE_PINS_USB=PA11,PA12 RESERVE_PINS_crystal=PH0,PH1 STATS_SUMSQ_BASE=256 STEPPER_STEP_BOTH_EDGE=1
+mcu 'toolhead': Starting serial connect
+Loaded MCU 'toolhead' 142 commands (v0.13.0-595-gb0e6ca45-dirty-20260407_015344-kevin / gcc: (15:12.2.rel1-1) 12.2.1 20221205 binutils: (2.40-2+18+b1) 2.40)
+MCU 'toolhead' config: ADC_MAX=4095 BUS_PINS_i2c1_PA13_PA14=PA13,PA14 BUS_PINS_i2c1_PA15_PA14=PA15,PA14 BUS_PINS_i2c1_PB8_PB7=PB8,PB7 BUS_PINS_i2c1_PB8_PB9=PB8,PB9 BUS_PINS_i2c2_PA9_PA8=PA9,PA8 BUS_PINS_i2c2_PC4_PF0=PC4,PF0 BUS_PINS_i2c3_PC8_PC11=PC8,PC11 BUS_PINS_i2c3_PC8_PC9=PC8,PC9 BUS_PINS_spi1=PA6,PA7,PA5 BUS_PINS_spi1_PA6_PA7_PA5=PA6,PA7,PA5 BUS_PINS_spi1_PB4_PB5_PB3=PB4,PB5,PB3 BUS_PINS_spi1a=PB4,PB5,PB3 BUS_PINS_spi2=PB14,PB15,PB13 BUS_PINS_spi2_PA10_PA11_PF1=PA10,PA11,PF1 BUS_PINS_spi2_PB14_PB15_PB13=PB14,PB15,PB13 BUS_PINS_spi3=PB4,PB5,PB3 BUS_PINS_spi3_PB4_PB5_PB3=PB4,PB5,PB3 BUS_PINS_spi3_PC11_PC12_PC10=PC11,PC12,PC10 BUS_PINS_spi3a=PC11,PC12,PC10 CLOCK_FREQ=170000000 MCU=stm32g431xx RESERVE_PINS_USB=PA11,PA12 RESERVE_PINS_crystal=PF0,PF1 STATS_SUMSQ_BASE=256 STEPPER_OPTIMIZED_EDGE=22 STEPPER_STEP_BOTH_EDGE=1
+mcu 'cartographer': Starting serial connect
+mcu 'cartographer': got {'clock': 2368704840, 'data': 27263216, 'temp': 55500, '#name': 'cartographer_data', '#sent_time': 657.592828156, '#receive_time': 657.630759989}
+mcu 'cartographer': got {'clock': 2388704966, 'data': 27263216, 'temp': 55500, '#name': 'cartographer_data', '#sent_time': 657.696879948, '#receive_time': 657.748742948}
+mcu 'cartographer': got {'clock': 2408704840, 'data': 27263605, 'temp': 55495, '#name': 'cartographer_data', '#sent_time': 657.853026615, '#receive_time': 657.866768198}
+Loaded MCU 'cartographer' 102 commands (CARTOGRAPHER V4 6.1.0 / )
+MCU 'cartographer' config: ADC_MAX=4095 BUS_PINS_spi1=PA6,PA7,PA5 BUS_PINS_spi1_PA6_PA7_PA5=PA6,PA7,PA5 BUS_PINS_spi1_PB4_PB5_PB3=PB4,PB5,PB3 BUS_PINS_spi1a=PB4,PB5,PB3 BUS_PINS_spi2=PB14,PB15,PB13 BUS_PINS_spi2_PA10_PA11_PF1=PA10,PA11,PF1 BUS_PINS_spi2_PB14_PB15_PB13=PB14,PB15,PB13 BUS_PINS_spi3=PB4,PB5,PB3 BUS_PINS_spi3_PB4_PB5_PB3=PB4,PB5,PB3 BUS_PINS_spi3_PC11_PC12_PC10=PC11,PC12,PC10 BUS_PINS_spi3a=PC11,PC12,PC10 CARTOGRAPHER_ADC_SMOOTH_COUNT=16 CLOCK_FREQ=170000000 MCU=stm32g431xx PWM_MAX=32768 RESERVE_PINS_USB=PA11,PA12 RESERVE_PINS_crystal=PF0,PF1 STATS_SUMSQ_BASE=256 STEPPER_OPTIMIZED_EDGE=22 STEPPER_STEP_BOTH_EDGE=1
+mcu 'mmu': Starting serial connect
+mcu 'cartographer': got {'clock': 2428704840, 'data': 27263545, 'temp': 55500, '#name': 'cartographer_data', '#sent_time': 657.970263198, '#receive_time': 657.983755115}
+mcu 'cartographer': got {'clock': 2448704840, 'data': 27263545, 'temp': 55501, '#name': 'cartographer_data', '#sent_time': 657.970263198, '#receive_time': 658.101768698}
+mcu 'cartographer': got {'clock': 2468704840, 'data': 27263605, 'temp': 55500, '#name': 'cartographer_data', '#sent_time': 657.970263198, '#receive_time': 658.219751073}
+mcu 'cartographer': got {'clock': 2488704840, 'data': 27263545, 'temp': 55505, '#name': 'cartographer_data', '#sent_time': 657.970263198, '#receive_time': 658.336728656}
+mcu 'cartographer': got {'clock': 2508704840, 'data': 27263545, 'temp': 55504, '#name': 'cartographer_data', '#sent_time': 657.970263198, '#receive_time': 658.454846656}
+mcu 'cartographer': got {'clock': 2528704840, 'data': 27263216, 'temp': 55498, '#name': 'cartographer_data', '#sent_time': 657.970263198, '#receive_time': 658.572753782}
+mcu 'cartographer': got {'clock': 2548704840, 'data': 27263605, 'temp': 55496, '#name': 'cartographer_data', '#sent_time': 657.970263198, '#receive_time': 658.689835198}
+mcu 'mmu': got {'count': 412, 'sum': 311536, 'sumsq': 2115631, '#name': 'stats', '#sent_time': 658.67133799, '#receive_time': 658.716033282}
+Loaded MCU 'mmu' 135 commands (v0.13.0-658-gbd09e017 / gcc: (15:12.2.rel1-1) 12.2.1 20221205 binutils: (2.40-2+18+b1) 2.40)
+MCU 'mmu' config: ADC_MAX=4095 BUS_PINS_i2c1=PB6,PB7 BUS_PINS_i2c1a=PB8,PB9 BUS_PINS_i2c2=PB10,PB11 BUS_PINS_spi1=PA6,PA7,PA5 BUS_PINS_spi1_PA6_PA7_PA5=PA6,PA7,PA5 BUS_PINS_spi1_PB4_PB5_PB3=PB4,PB5,PB3 BUS_PINS_spi1a=PB4,PB5,PB3 BUS_PINS_spi2=PB14,PB15,PB13 BUS_PINS_spi2_PB14_PB15_PB13=PB14,PB15,PB13 BUS_PINS_spi3=PB4,PB5,PB3 BUS_PINS_spi3_PB4_PB5_PB3=PB4,PB5,PB3 CLOCK_FREQ=72000000 INITIAL_PINS=PA7,PB7,PC7,PB5,PC9 MCU=stm32f103xe PWM_MAX=32768 RESERVE_PINS_USB=PA11,PA12 STATS_SUMSQ_BASE=256 STEPPER_STEP_BOTH_EDGE=1
+mcu_temperature 'toolhead' nominal base=-280.119048 slope=1340.625000
+mcu_temperature 'cartographer' nominal base=-274.985337 slope=1320.967742
+mcu_temperature 'mcu' nominal base=-283.414634 slope=1664.634146
+mcu_temperature 'mcu' nominal base=-283.414634 slope=1664.634146
+Sending MCU 'mcu' printer configuration...
+Configured MCU 'mcu' (1024 moves)
+Sending MCU 'toolhead' printer configuration...
+mcu 'cartographer': got {'clock': 2568704840, 'data': 27263216, 'temp': 55506, '#name': 'cartographer_data', '#sent_time': 658.784424448, '#receive_time': 658.807730073}
+Configured MCU 'toolhead' (1024 moves)
+[cartographer] Received constants: {'ADC_MAX': 4095, 'BUS_PINS_spi1': 'PA6,PA7,PA5', 'BUS_PINS_spi1_PA6_PA7_PA5': 'PA6,PA7,PA5', 'BUS_PINS_spi1_PB4_PB5_PB3': 'PB4,PB5,PB3', 'BUS_PINS_spi1a': 'PB4,PB5,PB3', 'BUS_PINS_spi2': 'PB14,PB15,PB13', 'BUS_PINS_spi2_PA10_PA11_PF1': 'PA10,PA11,PF1', 'BUS_PINS_spi2_PB14_PB15_PB13': 'PB14,PB15,PB13', 'BUS_PINS_spi3': 'PB4,PB5,PB3', 'BUS_PINS_spi3_PB4_PB5_PB3': 'PB4,PB5,PB3', 'BUS_PINS_spi3_PC11_PC12_PC10': 'PC11,PC12,PC10', 'BUS_PINS_spi3a': 'PC11,PC12,PC10', 'CARTOGRAPHER_ADC_SMOOTH_COUNT': 16, 'CLOCK_FREQ': 170000000, 'MCU': 'stm32g431xx', 'PWM_MAX': 32768, 'RESERVE_PINS_USB': 'PA11,PA12', 'RESERVE_PINS_crystal': 'PF0,PF1', 'STATS_SUMSQ_BASE': 256, 'STEPPER_OPTIMIZED_EDGE': 22, 'STEPPER_STEP_BOTH_EDGE': 1}
+[cartographer] Initialized CARTOGRAPHER V4 6.1.0 MCU
+Sending MCU 'cartographer' printer configuration...
+Configured MCU 'cartographer' (1024 moves)
+Sending MCU 'mmu' printer configuration...
+Configured MCU 'mmu' (1024 moves)
+[cartographer] Stopping stream
+bed_mesh: generated points
+Index |  Tool Adjusted  |   Probe
+  0   | (16.0, 37.0)    | (15.0, 10.0)
+  1   | (30.2, 37.0)    | (29.2, 10.0)
+  2   | (44.4, 37.0)    | (43.4, 10.0)
+  3   | (58.6, 37.0)    | (57.6, 10.0)
+  4   | (72.8, 37.0)    | (71.8, 10.0)
+  5   | (87.1, 37.0)    | (86.1, 10.0)
+  6   | (101.3, 37.0)   | (100.3, 10.0)
+  7   | (115.5, 37.0)   | (114.5, 10.0)
+  8   | (129.7, 37.0)   | (128.7, 10.0)
+  9   | (143.9, 37.0)   | (142.9, 10.0)
+  10  | (158.1, 37.0)   | (157.1, 10.0)
+  11  | (172.3, 37.0)   | (171.3, 10.0)
+  12  | (186.5, 37.0)   | (185.5, 10.0)
+  13  | (200.7, 37.0)   | (199.7, 10.0)
+  14  | (214.9, 37.0)   | (213.9, 10.0)
+  15  | (229.2, 37.0)   | (228.2, 10.0)
+  16  | (243.4, 37.0)   | (242.4, 10.0)
+  17  | (257.6, 37.0)   | (256.6, 10.0)
+  18  | (271.8, 37.0)   | (270.8, 10.0)
+  19  | (286.0, 37.0)   | (285.0, 10.0)
+  20  | (286.0, 50.1)   | (285.0, 23.1)
+  21  | (271.8, 50.1)   | (270.8, 23.1)
+  22  | (257.6, 50.1)   | (256.6, 23.1)
+  23  | (243.4, 50.1)   | (242.4, 23.1)
+  24  | (229.2, 50.1)   | (228.2, 23.1)
+  25  | (214.9, 50.1)   | (213.9, 23.1)
+  26  | (200.7, 50.1)   | (199.7, 23.1)
+  27  | (186.5, 50.1)   | (185.5, 23.1)
+  28  | (172.3, 50.1)   | (171.3, 23.1)
+  29  | (158.1, 50.1)   | (157.1, 23.1)
+  30  | (143.9, 50.1)   | (142.9, 23.1)
+  31  | (129.7, 50.1)   | (128.7, 23.1)
+  32  | (115.5, 50.1)   | (114.5, 23.1)
+  33  | (101.3, 50.1)   | (100.3, 23.1)
+  34  | (87.1, 50.1)    | (86.1, 23.1)
+  35  | (72.8, 50.1)    | (71.8, 23.1)
+  36  | (58.6, 50.1)    | (57.6, 23.1)
+  37  | (44.4, 50.1)    | (43.4, 23.1)
+  38  | (30.2, 50.1)    | (29.2, 23.1)
+  39  | (16.0, 50.1)    | (15.0, 23.1)
+  40  | (16.0, 63.3)    | (15.0, 36.3)
+  41  | (30.2, 63.3)    | (29.2, 36.3)
+  42  | (44.4, 63.3)    | (43.4, 36.3)
+  43  | (58.6, 63.3)    | (57.6, 36.3)
+  44  | (72.8, 63.3)    | (71.8, 36.3)
+  45  | (87.1, 63.3)    | (86.1, 36.3)
+  46  | (101.3, 63.3)   | (100.3, 36.3)
+  47  | (115.5, 63.3)   | (114.5, 36.3)
+  48  | (129.7, 63.3)   | (128.7, 36.3)
+  49  | (143.9, 63.3)   | (142.9, 36.3)
+...points 50 through 399 truncated
+bed_mesh: zero_reference_position is (150.00, 150.00)
+MMU: Log: /home/riccorbypro/printer_data/logs/mmu.log
+  DEBUG: Found tmc2209 on extruder. Current control enabled. Stallguard 'touch' homing possible.
+  DEBUG: BLDC gear configured; skipping gear TMC current control
+  DEBUG: Loaded saved bowden lengths: [-1, -1, -1, -1]
+  DEBUG: Loaded saved gear rotation distances: [3616.7665, -1, -1, -1]
+Warning: Encoder resolution not found in mmu_vars.cfg. Probably not calibrated
+      STEPPER: BLDC_PROCESS_MOVE: hook installed
+      STEPPER: BLDC_PROCESS_MOVE: hook removed
+      STEPPER: BLDC_SYNC: monitor probed and validated
+Starting heater checks for heater_bed
+Starting heater checks for chamber
+Starting heater checks for extruder
 Starting angle 'mmu_encoder_angle' measurements
-Unhandled exception during connect
+Unhandled exception during ready callback
 Traceback (most recent call last):
-  File "/home/riccorbypro/klipper/klippy/klippy.py", line 130, in _connect
-    self._read_config()
-  File "/home/riccorbypro/klipper/klippy/klippy.py", line 123, in _read_config
-    self.load_object(config, section_config.get_name(), None)
-  File "/home/riccorbypro/klipper/klippy/klippy.py", line 112, in load_object
-    self.objects[section] = init_func(config.getsection(section))
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/riccorbypro/klipper/klippy/extras/mmu/mmu_encoder_mt6826s.py", line 290, in load_config_prefix
-    encoder = MmuEncoderMt6826s(config)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/riccorbypro/klipper/klippy/extras/mmu/mmu_encoder_mt6826s.py", line 65, in __init__
+  File "/home/riccorbypro/klipper/klippy/klippy.py", line 165, in _connect
+    cb()
+  File "/home/riccorbypro/klipper/klippy/extras/mmu/mmu_encoder_mt6826s.py", line 103, in _handle_ready
+    self._register_angle_client()
+  File "/home/riccorbypro/klipper/klippy/extras/mmu/mmu_encoder_mt6826s.py", line 74, in _register_angle_client
     self.angle_sensor.add_client(self._angle_batch_cb)
   File "/home/riccorbypro/klipper/klippy/extras/angle.py", line 661, in add_client
     self.batch_bulk.add_client(client_cb)
@@ -4209,7 +4315,894 @@ Traceback (most recent call last):
              ^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/riccorbypro/klipper/klippy/extras/bus.py", line 115, in spi_transfer
     return self.spi_transfer_cmd.send([self.oid, data],
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'send'
-webhooks client 281473066745168: New connection
-webhooks client 281473066745168: Client info {'program': 'Moonraker', 'version': 'v0.10.0-20-g9008485'}
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/klipper/klippy/mcu.py", line 102, in send
+    return self._do_send([self._cmd.encode(data)], minclock, reqclock,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/klipper/klippy/mcu.py", line 97, in _do_send
+    return xh.get_response(cmds, self._cmd_queue, minclock, reqclock,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/klipper/klippy/serialhdl.py", line 331, in get_response
+    self.serial.raw_send_wait_ack(cmds[-1], minclock, reqclock,
+  File "/home/riccorbypro/klipper/klippy/serialhdl.py", line 261, in raw_send_wait_ack
+    params = completion.wait()
+             ^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/klipper/klippy/reactor.py", line 38, in wait
+    self.reactor.pause(waketime)
+  File "/home/riccorbypro/klipper/klippy/reactor.py", line 240, in pause
+    self.verify_can_pause()
+  File "/home/riccorbypro/klipper/klippy/reactor.py", line 275, in verify_can_pause
+    raise ReactorError("Internal error - reactor pause disabled")
+reactor.ReactorError: Internal error - reactor pause disabled
+Transition to shutdown state: Internal error during ready callback: Internal error - reactor pause disabled
+[cartographer] Stopping stream
+      STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=15.630 unit=mmu_gear_bldc
+      STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=15.746 unit=mmu_gear_bldc
+Dumping gcode input 0 blocks
+Dumping 20 requests for client 281473152852432
+Received 655.694665: b'{"id":281472909983376,"method":"info","params":{}}'
+Received 655.694665: b'{"id":281473040998288,"method":"info","params":{}}'
+Received 655.926908: b'{"id":281472909981008,"method":"list_endpoints","params":{}}'
+Received 655.927936: b'{"id":281473031995984,"method":"objects/subscribe","params":{"objects":{"gcode":null,"webhooks":null,"configfile":null,"mcu":null,"mcu toolhead":null,"mcu cartographer":null,"mcu mmu":null,"gcode_move":null,"print_stats":null,"virtual_sdcard":null,"pause_resume":null,"display_status":null,"gcode_macro CANCEL_PRINT":null,"gcode_macro PAUSE":null,"gcode_macro RESUME":null,"gcode_macro SET_PAUSE_NEXT_LAYER":null,"gcode_macro SET_PAUSE_AT_LAYER":null,"gcode_macro SET_PRINT_STATS_INFO":null,"gcode_macro _TOOLHEAD_PARK_PAUSE_CANCEL":null,"gcode_macro _CLIENT_EXTRUDE":null,"gcode_macro _CLIENT_RETRACT":null,"gcode_macro _CLIENT_LINEAR_MOVE":null,"gcode_macro _CLIENT_VARIABLE":null,"gcode_macro PRINT_START":null,"gcode_macro PRINT_END":null,"gcode_macro _KAMP_Settings":null,"gcode_macro _LINE_PURGE":null,"gcode_macro _SMART_PARK":null,"gcode_macro DEFINE_OBJECT":null,"gcode_macro START_CURRENT_OBJECT":null,"gcode_macro END_CURRENT_OBJECT":null,"gcode_macro LIST_OBJECTS":null,"gcode_macro LIST_EXCLUDED_OBJECTS":null,"gcode_macro REMOVE_ALL_EXCLUDED":null,"gcode_macro LOAD_FILAMENT":null,"gcode_macro UNLOAD_FILAMENT":null,"gcode_macro CUT_FILAMENT":null,"heaters":null,"temperature_sensor toolhead_mcu_temp":null,"stepper_enable":null,"tmc2209 extruder":null,"gcode_macro excitate_axis_at_freq":null,"gcode_macro axes_map_calibration":null,"gcode_macro compare_belts_responses":null,"gcode_macro axes_shaper_calibration":null,"gcode_macro create_vibrations_profile":null,"fan":null,"heater_fan hotend_fan":null,"filament_switch_sensor runout_sensor":null,"gcode_macro G28":null,"gcode_macro _SENSORLESS_HOME_Y":null,"gcode_macro _SENSORLESS_HOME_X":null,"tmc2209 stepper_z":null,"tmc5160 stepper_x":null,"tmc5160 stepper_y":null,"bed_mesh":null,"probe":null,"temperature_sensor cartographer_coil":null,"cartographer":null,"temperature_sensor cartographer":null,"gcode_macro BED_MESH_CALIBRATE":null,"gcode_macro CARTOGRAPHER_TOUCH_HOME":null,"gcode_macro LIGHTS_ON":null,"gcode_macro LIGHTS_OFF":null,"gcode_macro LIGHTS_DIM":null,"gcode_macro M106":null,"gcode_macro PID_BED":null,"gcode_macro PID_HOTEND":null,"gcode_macro SHAPER_CALIBRATE":null,"gcode_macro PID_SHAPER_RECALIBRATE":null,"gcode_macro WARMUP":null,"gcode_macro M141":null,"gcode_macro M191":null,"gcode_macro WAKE_PC":null,"gcode_macro update_git":null,"neopixel _status_bar":null,"gcode_macro SET_PRINTER_STATE":null,"led_effect idle":null,"led_effect homing":null,"led_effect meshing":null,"led_effect preheat":null,"led_effect printing":null,"led_effect complete":null,"led_effect calibrating":null,"led_effect critical_error":null,"virtual_pins":null,"output_pin PROWIPER":null,"gcode_macro NOZZLE_CLEAR":null,"gcode_macro WIPE_NOZZLE":null,"gcode_macro VIEW_NOZZLE":null,"gcode_macro COOL_NOZZLE":null,"gcode_macro PREHEAT":null,"gcode_macro HOME_SAFELY":null,"gcode_macro MEASURE_WIPER":null,"gcode_macro GET_TIMELAPSE_SETUP":null,"gcode_macro _SET_TIMELAPSE_SETUP":null,"gcode_macro TIMELAPSE_TAKE_FRAME":null,"gcode_macro _TIMELAPSE_NEW_FRAME":null,"gcode_macro HYPERLAPSE":null,"gcode_macro TIMELAPSE_RENDER":null,"gcode_macro TEST_STREAM_DELAY":null,"gcode_macro _MMU_CUT_TIP":null,"gcode_macro _CUT_TIP_ADJUST_CURRENT":null,"gcode_macro _CUT_TIP_RESTORE_CURRENT":null,"gcode_macro _CUT_TIP_MOVE_IN_BOUNDS":null,"gcode_macro _CUT_TIP_MOVE_TO_CUTTER_PIN":null,"gcode_macro _CUT_TIP_DO_CUT_MOTION":null,"gcode_macro _CUT_TIP_GANTRY_SERVO_DOWN":null,"gcode_macro _CUT_TIP_GANTRY_SERVO_UP":null,"gcode_macro _MMU_FORM_TIP":null,"gcode_macro _WAIT_FOR_TEMP":null,"mmu_machine":null,"filament_switch_sensor mmu_pre_gate_0":null,"filament_switch_sensor mmu_pre_gate_1":null,"filament_switch_sensor mmu_pre_gate_2":null,"filament_switch_sensor mmu_pre_gate_3":null,"filament_switch_sensor mmu_gear_0":null,"filament_switch_sensor mmu_gear_1":null,"filament_switch_sensor mmu_gear_2":null,"filament_switch_sensor mmu_gear_3":null,"filament_switch_sensor extruder_sensor":null,"filament_switch_sensor filament_tension_sensor":null,"filament_switch_sensor filament_compression_sensor":null,"angle mmu_encoder_angle":null,"mmu_encoder mmu_encoder":null,"mmu_encoder_mt6826s mmu_encoder":null,"mmu_espooler mmu_espooler":null,"gcode_macro _MMU_VENT":null,"save_variables":null,"gcode_macro _MMU_SOFTWARE_VARS":null,"gcode_macro _MMU_STATE_VARS":null,"gcode_macro _MMU_SEQUENCE_VARS":null,"gcode_macro _MMU_CUT_TIP_VARS":null,"gcode_macro _MMU_FORM_TIP_VARS":null,"gcode_macro _MMU_PURGE_VARS":null,"gcode_macro _MMU_CLIENT_VARS":null,"gcode_macro T0":null,"gcode_macro T1":null,"gcode_macro T2":null,"gcode_macro T3":null,"motion_report":null,"mmu":null,"gcode_macro _MMU_LOAD_SEQUENCE":null,"gcode_macro _MMU_UNLOAD_SEQUENCE":null,"gcode_macro _MMU_PURGE":null,"gcode_macro __MMU_PURGE_SEGMENT":null,"gcode_macro _MMU_PARK":null,"gcode_macro _MMU_SAVE_POSITION":null,"gcode_macro _MMU_RESTORE_POSITION":null,"gcode_macro _MMU_RETRACT":null,"gcode_macro _MMU_UNRETRACT":null,"gcode_macro _MMU_CLEAR_POSITION":null,"gcode_macro _MMU_AUTO_HOME":null,"gcode_macro MMU_UPDATE_HEIGHT":null,"gcode_macro _MMU_PRE_UNLOAD":null,"gcode_macro _MMU_POST_FORM_TIP":null,"gcode_macro _MMU_POST_UNLOAD":null,"gcode_macro _MMU_PRE_LOAD":null,"gcode_macro _MMU_POST_LOAD":null,"gcode_macro _MMU_ERROR":null,"gcode_macro MMU_START_SETUP":null,"gcode_macro MMU_START_CHECK":null,"gcode_macro MMU_START_LOAD_INITIAL_TOOL":null,"gcode_macro MMU_END":null,"gcode_macro MMU_COLD_PULL":null,"gcode_macro _MMU_ERROR_DIALOG":null,"gcode_macro _MMU_RUN_MARKERS":null,"gcode_macro MMU__UNLOAD":null,"gcode_macro MMU__EJECT":null,"gcode_macro MMU__HOME":null,"gcode_macro MMU__STATUS":null,"gcode_macro MMU__MOTORS_OFF":null,"gcode_macro MMU__SERVO":null,"gcode_macro MMU__SELECT_TOOL":null,"gcode_macro MMU__SELECT_BYPASS":null,"gcode_macro MMU__LOAD_BYPASS":null,"gcode_macro MMU__RECOVER":null,"gcode_macro MMU__PRELOAD":null,"gcode_macro MMU__CHECK_GATE":null,"gcode_macro MMU_QUERY_PSENSOR":null,"gcode_macro MMU_CHANGE_TOOL_STANDALONE":null,"gcode_macro MMU_CHECK_GATES":null,"gcode_macro MMU_REMAP_TTG":null,"gcode_macro MMU_FORM_TIP":null,"gcode_macro _MMU_PRINT_START":null,"gcode_macro _MMU_PRINT_END":null,"gcode_macro _MMU_UPDATE_HEIGHT":null,"gcode_macro _MMU_ACTION_CHANGED":null,"gcode_macro _MMU_PRINT_STATE_CHANGED":null,"gcode_macro _MMU_EVENT":null,"exclude_object":null,"idle_timeout":null,"temperature_sensor catalyst_mcu_temp":null,"temperature_host BTT_Pi_temp":null,"temperature_sensor BTT_Pi_temp":null,"heater_bed":null,"screws_tilt_adjust":null,"temperature_fan chamber_fan":null,"controller_fan _driver_fan":null,"temperature_fan _board_fan":null,"temperature_host _pi_fan":null,"temperature_fan _pi_fan":null,"fan_generic exhaust_fan":null,"fan_generic ouglesauce":null,"heater_generic chamber":null,"output_pin LED":null,"query_endstops":null,"toolhead":null,"extruder":null,"system_stats":null,"manual_probe":null},"response_template":{"method":"process_status_update"}}}'
+Received 656.184466: b'{"id":281472919644176,"method":"info","params":{}}'
+Received 656.216739: b'{"id":281472909720528,"method":"gcode/help","params":{}}'
+Received 656.253531: b'{"id":281473031995088,"method":"info","params":{}}'
+Received 656.438851: b'{"id":281472909710160,"method":"info","params":{}}'
+Received 656.690688: b'{"id":281472909705424,"method":"info","params":{}}'
+Received 656.942466: b'{"id":281472909706896,"method":"info","params":{}}'
+Received 657.193702: b'{"id":281472909717904,"method":"info","params":{}}'
+Received 657.445417: b'{"id":281473031982736,"method":"info","params":{}}'
+Received 657.697230: b'{"id":281472909716944,"method":"info","params":{}}'
+Received 657.764965: b'{"id":281473031982864,"method":"info","params":{}}'
+Received 657.949214: b'{"id":281472909716944,"method":"info","params":{}}'
+Received 658.201359: b'{"id":281473031991376,"method":"info","params":{}}'
+Received 658.453410: b'{"id":281472909717520,"method":"info","params":{}}'
+Received 658.704748: b'{"id":281472909717520,"method":"info","params":{}}'
+Received 658.955576: b'{"id":281473031983824,"method":"info","params":{}}'
+Received 659.207315: b'{"id":281473031994768,"method":"info","params":{}}'
+MCU 'mcu' shutdown: Command request
+clocksync state: mcu_freq=520000000 last_clock=7723154336 clock_est=(656.311 6578356899 520022855.030) min_half_rtt=0.000119 min_rtt_time=656.544 time_avg=656.311(0.240) clock_avg=6578356899.301(124777111.443) pred_variance=186356582609.135
+Dumping serial stats: bytes_write=3047 bytes_read=7038 bytes_retransmit=9 bytes_invalid=0 send_seq=233 receive_seq=233 retransmit_seq=2 srtt=0.000 rttvar=0.000 rto=0.025 ready_bytes=0 upcoming_bytes=0
+Dumping send queue 100 messages
+Sent 0 658.796815 658.796815 13: seq: 15, config_spi oid=1 pin=PE7 cs_active_high=0, config_spi oid=2 pin=PE15 cs_active_high=0
+Sent 1 658.796903 658.796903 13: seq: 16, config_tmcuart oid=0 rx_pin=PD10 pull_up=0 tx_pin=PD10 bit_time=13000
+Sent 2 658.796977 658.796977 13: seq: 17, spi_set_sw_bus oid=1 miso_pin=PE13 mosi_pin=PE14 sclk_pin=PE12 mode=3 pulse_ticks=130
+Sent 3 658.797043 658.797043 13: seq: 18, spi_set_sw_bus oid=2 miso_pin=PE13 mosi_pin=PE14 sclk_pin=PE12 mode=3 pulse_ticks=130
+Sent 4 658.797159 658.797159 15: seq: 19, config_neopixel oid=3 pin=PD3 data_size=93 bit_max_ticks=15600 reset_min_ticks=26000
+Sent 5 658.797326 658.797326 12: seq: 1a, config_analog_in oid=13 pin=ADC_TEMPERATURE, config_analog_in oid=14 pin=PC0
+Sent 6 658.797372 658.797372 15: seq: 1b, config_digital_out oid=15 pin=PB0 value=1 default_value=1 max_duration=1560000000
+Sent 7 658.797435 658.797435 11: seq: 1c, set_digital_out_pwm_cycle oid=15 cycle_ticks=52000000
+Sent 8 658.797535 658.797535 17: seq: 1d, config_digital_out oid=16 pin=PA1 value=0 default_value=0 max_duration=0, set_digital_out_pwm_cycle oid=16 cycle_ticks=5200000
+Sent 9 658.797598 658.797598 8: seq: 1e, config_analog_in oid=17 pin=PC1
+Sent 10 658.797652 658.797652 11: seq: 1f, config_digital_out oid=18 pin=PB2 value=0 default_value=1 max_duration=0
+Sent 11 658.797705 658.797705 11: seq: 10, set_digital_out_pwm_cycle oid=18 cycle_ticks=5200000
+Sent 12 658.797770 658.797770 11: seq: 11, config_digital_out oid=19 pin=PB2 value=0 default_value=1 max_duration=0
+Sent 13 658.797831 658.797831 11: seq: 12, set_digital_out_pwm_cycle oid=19 cycle_ticks=5200000
+Sent 14 658.797973 658.797973 9: seq: 13, config_analog_in oid=20 pin=ADC_TEMPERATURE
+Sent 15 658.798010 658.798010 11: seq: 14, config_digital_out oid=21 pin=PA0 value=0 default_value=1 max_duration=0
+Sent 16 658.798071 658.798071 11: seq: 15, set_digital_out_pwm_cycle oid=21 cycle_ticks=5200000
+Sent 17 658.802842 658.802842 64: seq: 16, config_counter oid=4 pin=PC2 pull_up=0, config_digital_out oid=22 pin=PA1 value=0 default_value=0 max_duration=0, set_digital_out_pwm_cycle oid=22 cycle_ticks=5200000, config_digital_out oid=23 pin=PB3 value=0 default_value=0 max_duration=0, set_digital_out_pwm_cycle oid=23 cycle_ticks=5200000, config_analog_in oid=24 pin=PC1, config_digital_out oid=25 pin=PC8 value=0 default_value=0 max_duration=1560000000, set_digital_out_pwm_cycle oid=25 cycle_ticks=52000000, config_digital_out oid=26 pin=PA15 value=1 default_value=0 max_duration=0, set_digital_out_pwm_cycle oid=26 cycle_ticks=5200000
+Sent 18 658.802842 658.802842 61: seq: 17, config_endstop oid=5 pin=PE0 pull_up=1, config_trsync oid=6, config_stepper oid=7 step_pin=PE11 dir_pin=PE10 invert_step=4294967295 step_pulse_ticks=52, config_digital_out oid=27 pin=PE9 value=1 default_value=1 max_duration=0, config_endstop oid=8 pin=PB13 pull_up=1, config_trsync oid=9, config_stepper oid=10 step_pin=PD8 dir_pin=PB12 invert_step=4294967295 step_pulse_ticks=52, config_digital_out oid=28 pin=PD9 value=1 default_value=1 max_duration=0, config_stepper oid=11 step_pin=PD14 dir_pin=PD13 invert_step=4294967295 step_pulse_ticks=52, config_digital_out oid=29 pin=PD15 value=1 default_value=1 max_duration=0, config_trsync oid=12, finalize_config crc=668440620
+Sent 19 658.802842 658.802842 60: seq: 18, query_analog_in oid=13 clock=4092632704 sample_ticks=520000 sample_count=8 rest_ticks=156000000 bytes_per_report=2 min_value=5577 max_value=7546 range_check_count=4, query_analog_in oid=14 clock=4097832704 sample_ticks=520000 sample_count=8 rest_ticks=156000000 bytes_per_report=2 min_value=13035 max_value=32303 range_check_count=4, queue_digital_out oid=15 clock=3677933169 on_ticks=52000000
+Sent 20 658.802842 658.802842 52: seq: 19, queue_digital_out oid=16 clock=3677981857 on_ticks=0, query_analog_in oid=17 clock=4113432704 sample_ticks=520000 sample_count=8 rest_ticks=156000000 bytes_per_report=2 min_value=25618 max_value=32303 range_check_count=4, queue_digital_out oid=18 clock=3678067248 on_ticks=0, queue_digital_out oid=19 clock=3678100162 on_ticks=0
+Sent 21 658.802842 658.802842 57: seq: 1a, query_analog_in oid=20 clock=4129032704 sample_ticks=520000 sample_count=8 rest_ticks=156000000 bytes_per_report=2 min_value=5380 max_value=7349 range_check_count=4, queue_digital_out oid=21 clock=3678182823 on_ticks=0, query_counter oid=4 clock=4045832704 poll_ticks=780000 sample_ticks=520000000, queue_digital_out oid=22 clock=3678247133 on_ticks=0
+Sent 22 658.802842 658.802842 56: seq: 1b, queue_digital_out oid=23 clock=3678278378 on_ticks=0, query_analog_in oid=24 clock=4149832704 sample_ticks=520000 sample_count=8 rest_ticks=156000000 bytes_per_report=2 min_value=26560 max_value=32303 range_check_count=4, queue_digital_out oid=25 clock=3678361342 on_ticks=0, queue_digital_out oid=26 clock=3678395166 on_ticks=5200000, get_config
+Sent 23 658.922734 658.922734 14: seq: 1c, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 24 658.927558 658.927558 19: seq: 1d, tmcuart_send oid=0 write=b'\xea\x03\x080\x80\x00\n\x08\xb8\x87' read=0
+Sent 25 658.930815 658.930815 14: seq: 1e, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 26 658.935929 658.935929 19: seq: 1f, tmcuart_send oid=0 write=b'\xea\x03h0\x80\x00\x12\x08 \xda' read=0
+Sent 27 658.942200 658.942200 14: seq: 10, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 28 658.947225 658.947225 19: seq: 11, tmcuart_send oid=0 write=b'\xea\x03\x88=\x99\x06\x02h\xaa\x95' read=0
+Sent 29 658.950504 658.950504 14: seq: 12, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 30 658.955724 658.955724 19: seq: 13, tmcuart_send oid=0 write=b'\xea\x03\x082\x80\x10\xca\xe8!\xce' read=0
+Sent 31 658.958945 658.958945 14: seq: 14, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 32 658.963917 658.963917 19: seq: 15, tmcuart_send oid=0 write=b'\xea\x03h2\x80\x1e\xfa\xef?\xdf' read=0
+Sent 33 658.967161 658.967161 14: seq: 16, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 34 658.972129 658.972129 19: seq: 17, tmcuart_send oid=0 write=b'\xea\x03\x882\x80\x00\x02\x08\xa0\xe6' read=0
+Sent 35 658.975407 658.975407 14: seq: 18, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 36 658.983443 658.983443 19: seq: 19, tmcuart_send oid=0 write=b'\xea\x03H8\x80\x00\x02\x08 \xde' read=0
+Sent 37 658.988478 658.988478 14: seq: 1a, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 38 658.996289 658.996289 19: seq: 1b, tmcuart_send oid=0 write=b'\xea\x03\x08>\xe4\x1ar\x88\xa4\x85' read=0
+Sent 39 659.001696 659.001696 14: seq: 1c, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 40 659.009350 659.009350 19: seq: 1d, tmcuart_send oid=0 write=b'\xea\x03(2\x80\x00\x02\x88"\xf3' read=0
+Sent 41 659.014600 659.014600 14: seq: 1e, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 42 659.022074 659.022074 19: seq: 1f, tmcuart_send oid=0 write=b'\xea\x03\x088\x80\x00\x02\x08 \xba' read=0
+Sent 43 659.027205 659.027205 14: seq: 10, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 44 659.034645 659.034645 21: seq: 11, spi_send oid=1 data=b'\x8b\x00\x00\x00\x93', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 45 659.038004 659.038004 21: seq: 12, spi_send oid=1 data=b'\x90\x00\x06\x1f\x1f', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 46 659.041113 659.041113 21: seq: 13, spi_send oid=1 data=b'\xec2A\x01S', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 47 659.044453 659.044453 21: seq: 14, spi_send oid=1 data=b'\xe0\xaa\xaa\xb5T', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 48 659.048174 659.048174 21: seq: 15, spi_send oid=1 data=b'\xe1J\x95T\xaa', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 49 659.051538 659.051538 21: seq: 16, spi_send oid=1 data=b'\xe2$I))', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 50 659.055112 659.055112 21: seq: 17, spi_send oid=1 data=b'\xe3\x10\x10B"', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 51 659.058245 659.058245 21: seq: 18, spi_send oid=1 data=b'\xe4\xfb\xff\xff\xff', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 52 659.061214 659.061214 21: seq: 19, spi_send oid=1 data=b'\xe5\xb5\xbbw}', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 53 659.063895 659.063895 21: seq: 1a, spi_send oid=1 data=b'\xe6I)UV', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 54 659.066748 659.066748 21: seq: 1b, spi_send oid=1 data=b'\xe7\x00@B"', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 55 659.069644 659.069644 21: seq: 1c, spi_send oid=1 data=b'\xe8\xff\xff\x80V', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 56 659.072547 659.072547 21: seq: 1d, spi_send oid=1 data=b'\xe9\x00\xf7\x00\x00', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 57 659.075375 659.075375 13: seq: 1e, spi_send oid=1 data=b'\x93\x00\x0f\xff\xff'
+Sent 58 659.075518 659.075518 13: seq: 1f, spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 59 659.078487 659.078487 21: seq: 10, spi_send oid=1 data=b'\x80\x00\x00\x00\x0c', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 60 659.081425 659.081425 21: seq: 11, spi_send oid=1 data=b'\x94\x00\x00\x00\x00', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 61 659.084451 659.084451 21: seq: 12, spi_send oid=1 data=b'\x95\x00\x00\x00\x00', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 62 659.087656 659.087656 21: seq: 13, spi_send oid=1 data=b'\xed\x00\x01\x00\x00', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 63 659.091294 659.091294 21: seq: 14, spi_send oid=1 data=b'\x8a\x00\x00\x04\x00', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 64 659.094585 659.094585 21: seq: 15, spi_send oid=1 data=b'\xf0\xc4\x0c\x00\x1e', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 65 659.097228 659.097228 21: seq: 16, spi_send oid=1 data=b'\x91\x00\x00\x00\n', spi_transfer oid=1 data=b'\x00\x00\x00\x00\x00'
+Sent 66 659.100164 659.100164 21: seq: 17, spi_send oid=2 data=b'\x8b\x00\x00\x00\x93', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 67 659.103439 659.103439 21: seq: 18, spi_send oid=2 data=b'\x90\x00\x06\x1f\x1f', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 68 659.106718 659.106718 21: seq: 19, spi_send oid=2 data=b'\xec2A\x01S', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 69 659.109754 659.109754 21: seq: 1a, spi_send oid=2 data=b'\xe0\xaa\xaa\xb5T', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 70 659.113051 659.113051 21: seq: 1b, spi_send oid=2 data=b'\xe1J\x95T\xaa', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 71 659.116376 659.116376 21: seq: 1c, spi_send oid=2 data=b'\xe2$I))', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 72 659.119419 659.119419 21: seq: 1d, spi_send oid=2 data=b'\xe3\x10\x10B"', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 73 659.122674 659.122674 21: seq: 1e, spi_send oid=2 data=b'\xe4\xfb\xff\xff\xff', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 74 659.126111 659.126111 21: seq: 1f, spi_send oid=2 data=b'\xe5\xb5\xbbw}', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 75 659.129425 659.129425 21: seq: 10, spi_send oid=2 data=b'\xe6I)UV', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 76 659.132315 659.132315 21: seq: 11, spi_send oid=2 data=b'\xe7\x00@B"', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 77 659.135367 659.135367 21: seq: 12, spi_send oid=2 data=b'\xe8\xff\xff\x80V', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 78 659.138093 659.138093 21: seq: 13, spi_send oid=2 data=b'\xe9\x00\xf7\x00\x00', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 79 659.141189 659.141189 21: seq: 14, spi_send oid=2 data=b'\x93\x00\x0f\xff\xff', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 80 659.143891 659.143891 21: seq: 15, spi_send oid=2 data=b'\x80\x00\x00\x00\x0c', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 81 659.146969 659.146969 21: seq: 16, spi_send oid=2 data=b'\x94\x00\x00\x00\x00', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 82 659.149911 659.149911 21: seq: 17, spi_send oid=2 data=b'\x95\x00\x00\x00\x00', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 83 659.152821 659.152821 21: seq: 18, spi_send oid=2 data=b'\xed\x00\x01\x00\x00', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 84 659.155856 659.155856 21: seq: 19, spi_send oid=2 data=b'\x8a\x00\x00\x04\x00', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 85 659.159295 659.159295 21: seq: 1a, spi_send oid=2 data=b'\xf0\xc4\x0c\x00\x1e', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 86 659.163275 659.163275 21: seq: 1b, spi_send oid=2 data=b'\x91\x00\x00\x00\n', spi_transfer oid=2 data=b'\x00\x00\x00\x00\x00'
+Sent 87 659.187149 659.187149 22: seq: 1c, neopixel_update oid=3 pos=0 data=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+Sent 88 659.187366 659.187366 45: seq: 1d, neopixel_update oid=3 pos=13 data=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00', neopixel_update oid=3 pos=29 data=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+Sent 89 659.187634 659.187634 45: seq: 1e, neopixel_update oid=3 pos=45 data=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00', neopixel_update oid=3 pos=61 data=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+Sent 90 659.192970 659.192970 27: seq: 1f, neopixel_update oid=3 pos=77 data=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00', neopixel_send oid=3
+Sent 91 659.215433 659.215433 7: seq: 10, stepper_get_position oid=7
+Sent 92 659.217276 659.217276 13: seq: 11, spi_send oid=1 data=b'j\x00\x00\x00\x00'
+Sent 93 659.217338 659.217338 13: seq: 12, spi_transfer oid=1 data=b'j\x00\x00\x00\x00'
+Sent 94 659.218119 659.218119 7: seq: 13, stepper_get_position oid=10
+Sent 95 659.218827 659.218827 13: seq: 14, spi_send oid=2 data=b'j\x00\x00\x00\x00'
+Sent 96 659.218926 659.218926 13: seq: 15, spi_transfer oid=2 data=b'j\x00\x00\x00\x00'
+Sent 97 659.219774 659.219774 7: seq: 16, stepper_get_position oid=11
+Sent 98 659.220695 659.220695 14: seq: 17, tmcuart_send oid=0 write=b'\xea\x03H-\xd5' read=10
+Sent 99 659.288038 659.288038 6: seq: 18, emergency_stop
+Dumping receive queue 100 messages
+Receive: 0 656.097904 656.097727 49: seq: 1a, identify_response offset=3560 data=b'\xfd&\x88\x96F\xae\xa9\x08Z\xabui\x90\xf3H\xef\x10\x16#\x1bC\x1e\xa7\xef|*\n\xb9\xa3o\x95\x00\xd1u\xc9\xde\xfa\t\x11}'
+Receive: 1 656.098577 656.098360 49: seq: 1b, identify_response offset=3600 data=b"!,\x93q\xf5K\x0f\x11'+\xc2M;h\xbb\xe5\x03\xf3I\x02\xdf\xb2\x01\xd9\x94\xb5\xae\x93\xa3\x84\xea\xba\x98\xa2{\xbb\xa2\x89c\xaa"
+Receive: 2 656.099406 656.099152 49: seq: 1c, identify_response offset=3640 data=b'\xa5R\xce\x18\xa4\xfcXv\xaa\xf5\xc31\xa9\x04\xd0\xa5\\\xa2\xb4Sl\x12=\xa3"\x16\xbd\xc2\x9a;v\xbbk\xbag\xd4\x97S\xf9\xfe'
+Receive: 3 656.100138 656.099950 49: seq: 1d, identify_response offset=3680 data=b'6-\xc3Ig\x1b\xe5\xb6!\x0b\x9bpi\x08\\gP\x98a\xeb\x16H&\xb7\x8b\x0e\x9746\xab-\x93\x9d\x7f\x9b\xf9\xb9<\xea\t'
+Receive: 4 656.100826 656.100657 49: seq: 1e, identify_response offset=3720 data=b'\xcf\xd8\xe5\x86\x0e\xab\xcc\xbbi\xcb\x93\x85}\xf8\x11E(UM!\xc3\x10\x1d~<\x974\xe2!\x9b\\\xfd\xc8\xdfX\nf&\x15\xd9'
+Receive: 5 656.101562 656.101335 49: seq: 1f, identify_response offset=3760 data=b'\xcbSr\t\x93\xd2\xc1=\xd5\xd9}\xd13\x1a\x04\x1bd\x7f\xd53\x07&{yz\x05\xcc[\xf2\xf1\xfd\xd3\xbc\xdey\xc1\xe4\x96-\xe6'
+Receive: 6 656.102146 656.101962 49: seq: 10, identify_response offset=3800 data=b'\xe8Y\x9a\xdc\x9cY\x13G:\xb5z>\xdfi\xe1\xf0\xc8\xaePX\xc4\x1f"5\xb6\x1a\x9b\x82\x9aU\xdf\xc3\x82\x9a}\x1e\xbds\xfdw'
+Receive: 7 656.102840 656.102682 49: seq: 11, identify_response offset=3840 data=b'\xa3a\xe0\xf9\xc3}$"w\x1b\xef&\xc3$\xad\xea\xb7\xa17\xf2\x82\xd1\xd8\x1d\x87\x9e?\xf6\xbd\xf9\xf0I<\x83\'\xf0\xf5\x7f\x0b\xcc'
+Receive: 8 656.103405 656.103242 11: seq: 12, identify_response offset=3880 data=b']\xcc'
+Receive: 9 656.104069 656.103839 9: seq: 13, identify_response offset=3882 data=b''
+Receive: 10 656.119388 656.119121 12: seq: 14, uptime high=1 clock=2183780248
+Receive: 11 656.175754 656.175369 11: seq: 15, clock clock=2213059848
+Receive: 12 656.228563 656.228243 11: seq: 16, clock clock=2240528270
+Receive: 13 656.280896 656.280629 11: seq: 17, clock clock=2267764676
+Receive: 14 656.332470 656.332168 11: seq: 18, clock clock=2294565670
+Receive: 15 656.383978 656.383663 11: seq: 19, clock clock=2321343486
+Receive: 16 656.435786 656.435481 11: seq: 1a, clock clock=2348300512
+Receive: 17 656.487294 656.487033 11: seq: 1b, clock clock=2375113510
+Receive: 18 656.538828 656.538548 11: seq: 1c, clock clock=2401886460
+Receive: 19 656.544004 656.543767 11: seq: 1d, clock clock=2404597948
+Receive: 20 657.528277 657.528020 11: seq: 1e, clock clock=2916435442
+Receive: 21 658.512539 658.512099 11: seq: 1f, clock clock=3428187040
+Receive: 22 658.660201 658.512099 14: seq: 1f, stats count=352 sum=287886 sumsq=1510179
+Receive: 23 658.786252 658.785842 8: seq: 10, debug_result val=771
+Receive: 24 658.787112 658.786864 8: seq: 11, debug_result val=1017
+Receive: 25 658.788683 658.788295 8: seq: 12, debug_result val=771
+Receive: 26 658.789735 658.789403 8: seq: 13, debug_result val=1017
+Receive: 27 658.791103 658.790830 10: seq: 14, config is_config=0 crc=0 is_shutdown=0 move_count=0
+Receive: 28 658.803420 658.802842 15: seq: 1c, config is_config=1 crc=668440620 is_shutdown=0 move_count=1024
+Receive: 29 658.926840 658.922734 19: seq: 1d, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\x88"\xca'
+Receive: 30 658.930084 658.927558 9: seq: 1e, tmcuart_response oid=0 read=b''
+Receive: 31 658.934954 658.930815 19: seq: 1f, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\xa8\xa2\x8e'
+Receive: 32 658.938444 658.935929 9: seq: 10, tmcuart_response oid=0 read=b''
+Receive: 33 658.946295 658.942200 19: seq: 11, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\xc8\xa2\xa9'
+Receive: 34 658.949750 658.947225 9: seq: 12, tmcuart_response oid=0 read=b''
+Receive: 35 658.954642 658.950504 19: seq: 13, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\xe8"\xed'
+Receive: 36 658.958228 658.955724 9: seq: 14, tmcuart_response oid=0 read=b''
+Receive: 37 658.963072 658.958945 19: seq: 15, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\x08#\x82'
+Receive: 38 658.966456 658.963917 9: seq: 16, tmcuart_response oid=0 read=b''
+Receive: 39 658.971247 658.967161 19: seq: 17, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02(\xa3\xc6'
+Receive: 40 658.974689 658.972129 9: seq: 18, tmcuart_response oid=0 read=b''
+Receive: 41 658.980083 658.975407 19: seq: 19, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02H\xa3\xe1'
+Receive: 42 658.986491 658.983443 9: seq: 1a, tmcuart_response oid=0 read=b''
+Receive: 43 658.993212 658.988478 19: seq: 1b, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02h#\xa5'
+Receive: 44 658.999338 658.996289 9: seq: 1c, tmcuart_response oid=0 read=b''
+Receive: 45 659.006291 659.001696 19: seq: 1d, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\x88#\xf2'
+Receive: 46 659.012312 659.009350 9: seq: 1e, tmcuart_response oid=0 read=b''
+Receive: 47 659.019188 659.014600 19: seq: 1f, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\xa8\xa3\xb6'
+Receive: 48 659.025108 659.022074 9: seq: 10, tmcuart_response oid=0 read=b''
+Receive: 49 659.031741 659.027205 19: seq: 11, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\xc8\xa3\x91'
+Receive: 50 659.035689 659.034645 14: seq: 12, spi_transfer_response oid=1 response=b'9\x00\x00\x00\x93'
+Receive: 51 659.038792 659.038004 14: seq: 13, spi_transfer_response oid=1 response=b'9\x00\x06\x1f\x1f'
+Receive: 52 659.042138 659.041113 14: seq: 14, spi_transfer_response oid=1 response=b'92A\x01S'
+Receive: 53 659.045086 659.044453 14: seq: 15, spi_transfer_response oid=1 response=b'9\xaa\xaa\xb5T'
+Receive: 54 659.049081 659.048174 14: seq: 16, spi_transfer_response oid=1 response=b'9J\x95T\xaa'
+Receive: 55 659.052697 659.051538 14: seq: 17, spi_transfer_response oid=1 response=b'9$I))'
+Receive: 56 659.055922 659.055112 14: seq: 18, spi_transfer_response oid=1 response=b'9\x10\x10B"'
+Receive: 57 659.058928 659.058245 14: seq: 19, spi_transfer_response oid=1 response=b'9\xfb\xff\xff\xff'
+Receive: 58 659.061906 659.061214 14: seq: 1a, spi_transfer_response oid=1 response=b'9\xb5\xbbw}'
+Receive: 59 659.064583 659.063895 14: seq: 1b, spi_transfer_response oid=1 response=b'9I)UV'
+Receive: 60 659.067621 659.066748 14: seq: 1c, spi_transfer_response oid=1 response=b'9\x00@B"'
+Receive: 61 659.070360 659.069644 14: seq: 1d, spi_transfer_response oid=1 response=b'9\xff\xff\x80V'
+Receive: 62 659.073378 659.072547 14: seq: 1e, spi_transfer_response oid=1 response=b'9\x00\xf7\x00\x00'
+Receive: 63 659.076242 659.075518 14: seq: 10, spi_transfer_response oid=1 response=b'9\x00\x0f\xff\xff'
+Receive: 64 659.079217 659.078487 14: seq: 11, spi_transfer_response oid=1 response=b'9\x00\x00\x00\x0c'
+Receive: 65 659.082151 659.081425 14: seq: 12, spi_transfer_response oid=1 response=b'9\x00\x00\x00\x00'
+Receive: 66 659.085149 659.084451 14: seq: 13, spi_transfer_response oid=1 response=b'9\x00\x00\x00\x00'
+Receive: 67 659.088749 659.087656 14: seq: 14, spi_transfer_response oid=1 response=b'9\x00\x01\x00\x00'
+Receive: 68 659.092146 659.091294 14: seq: 15, spi_transfer_response oid=1 response=b'9\x00\x00\x04\x00'
+Receive: 69 659.095204 659.094585 14: seq: 16, spi_transfer_response oid=1 response=b'9\xc4\x0c\x00\x1e'
+Receive: 70 659.097837 659.097228 14: seq: 17, spi_transfer_response oid=1 response=b'9\x00\x00\x00\n'
+Receive: 71 659.101045 659.100164 14: seq: 18, spi_transfer_response oid=2 response=b'9\x00\x00\x00\x93'
+Receive: 72 659.104269 659.103439 14: seq: 19, spi_transfer_response oid=2 response=b'9\x00\x06\x1f\x1f'
+Receive: 73 659.107588 659.106718 14: seq: 1a, spi_transfer_response oid=2 response=b'92A\x01S'
+Receive: 74 659.110832 659.109754 14: seq: 1b, spi_transfer_response oid=2 response=b'9\xaa\xaa\xb5T'
+Receive: 75 659.113953 659.113051 14: seq: 1c, spi_transfer_response oid=2 response=b'9J\x95T\xaa'
+Receive: 76 659.117222 659.116376 14: seq: 1d, spi_transfer_response oid=2 response=b'9$I))'
+Receive: 77 659.120256 659.119419 14: seq: 1e, spi_transfer_response oid=2 response=b'9\x10\x10B"'
+Receive: 78 659.123688 659.122674 14: seq: 1f, spi_transfer_response oid=2 response=b'9\xfb\xff\xff\xff'
+Receive: 79 659.127073 659.126111 14: seq: 10, spi_transfer_response oid=2 response=b'9\xb5\xbbw}'
+Receive: 80 659.130160 659.129425 14: seq: 11, spi_transfer_response oid=2 response=b'9I)UV'
+Receive: 81 659.133186 659.132315 14: seq: 12, spi_transfer_response oid=2 response=b'9\x00@B"'
+Receive: 82 659.136173 659.135367 14: seq: 13, spi_transfer_response oid=2 response=b'9\xff\xff\x80V'
+Receive: 83 659.138913 659.138093 14: seq: 14, spi_transfer_response oid=2 response=b'9\x00\xf7\x00\x00'
+Receive: 84 659.141903 659.141189 14: seq: 15, spi_transfer_response oid=2 response=b'9\x00\x0f\xff\xff'
+Receive: 85 659.144761 659.143891 14: seq: 16, spi_transfer_response oid=2 response=b'9\x00\x00\x00\x0c'
+Receive: 86 659.147953 659.146969 14: seq: 17, spi_transfer_response oid=2 response=b'9\x00\x00\x00\x00'
+Receive: 87 659.150762 659.149911 14: seq: 18, spi_transfer_response oid=2 response=b'9\x00\x00\x00\x00'
+Receive: 88 659.153702 659.152821 14: seq: 19, spi_transfer_response oid=2 response=b'9\x00\x01\x00\x00'
+Receive: 89 659.156796 659.155856 14: seq: 1a, spi_transfer_response oid=2 response=b'9\x00\x00\x04\x00'
+Receive: 90 659.160220 659.159295 14: seq: 1b, spi_transfer_response oid=2 response=b'9\xc4\x0c\x00\x1e'
+Receive: 91 659.164182 659.163275 14: seq: 1c, spi_transfer_response oid=2 response=b'9\x00\x00\x00\n'
+Receive: 92 659.194169 659.192970 9: seq: 10, neopixel_result oid=3 success=1
+Receive: 93 659.215750 659.215433 8: seq: 11, stepper_position oid=7 pos=0
+Receive: 94 659.217548 659.217338 14: seq: 13, spi_transfer_response oid=1 response=b'9\x00\x00\x00\x02'
+Receive: 95 659.218285 659.218119 8: seq: 14, stepper_position oid=10 pos=0
+Receive: 96 659.219085 659.218926 14: seq: 16, spi_transfer_response oid=2 response=b'9\x00\x00\x00\x02'
+Receive: 97 659.220024 659.219774 8: seq: 17, stepper_position oid=11 pos=0
+Receive: 98 659.224714 659.220695 19: seq: 18, tmcuart_response oid=0 read=b'\n\xfaO-\x80\x00\x02H \xf9'
+Receive: 99 659.288389 659.288038 12: seq: 19, shutdown clock=3831710937 static_string_id=Command request
+Internal error during ready callback: Internal error - reactor pause disabled
+Once the underlying issue is corrected, use the
+"FIRMWARE_RESTART" command to reset the firmware, reload the
+config, and restart the host software.
+Printer is shutdown
+
+Reactor garbage collection: (658.357928156, 0.0, 0.0)
+MCU 'toolhead' shutdown: Command request
+clocksync state: mcu_freq=170000000 last_clock=2643384478 clock_est=(657.024 2269217547 170006738.506) min_half_rtt=0.000086 min_rtt_time=658.241 time_avg=657.024(0.239) clock_avg=2269217547.277(40714577.166) pred_variance=19911629587.924 clock_adj=(0.016 170001605.500)
+Dumping serial stats: bytes_write=1688 bytes_read=5978 bytes_retransmit=9 bytes_invalid=0 send_seq=175 receive_seq=175 retransmit_seq=2 srtt=0.000 rttvar=0.000 rto=0.025 ready_bytes=0 upcoming_bytes=0
+Dumping send queue 100 messages
+Sent 0 656.791108 656.791108 9: seq: 1b, identify offset=2360 count=40
+Sent 1 656.791910 656.791910 9: seq: 1c, identify offset=2400 count=40
+Sent 2 656.792811 656.792811 9: seq: 1d, identify offset=2440 count=40
+Sent 3 656.793647 656.793647 9: seq: 1e, identify offset=2480 count=40
+Sent 4 656.794456 656.794456 9: seq: 1f, identify offset=2520 count=40
+Sent 5 656.795187 656.795187 9: seq: 10, identify offset=2560 count=40
+Sent 6 656.796086 656.796086 9: seq: 11, identify offset=2600 count=40
+Sent 7 656.796982 656.796982 9: seq: 12, identify offset=2640 count=40
+Sent 8 656.797860 656.797860 9: seq: 13, identify offset=2680 count=40
+Sent 9 656.798626 656.798626 9: seq: 14, identify offset=2720 count=40
+Sent 10 656.799576 656.799576 9: seq: 15, identify offset=2760 count=40
+Sent 11 656.800458 656.800458 9: seq: 16, identify offset=2800 count=40
+Sent 12 656.801286 656.801286 9: seq: 17, identify offset=2840 count=40
+Sent 13 656.802061 656.802061 9: seq: 18, identify offset=2880 count=40
+Sent 14 656.802860 656.802860 9: seq: 19, identify offset=2920 count=40
+Sent 15 656.803812 656.803812 9: seq: 1a, identify offset=2960 count=40
+Sent 16 656.804550 656.804550 9: seq: 1b, identify offset=3000 count=40
+Sent 17 656.805259 656.805259 9: seq: 1c, identify offset=3040 count=40
+Sent 18 656.806132 656.806132 9: seq: 1d, identify offset=3080 count=40
+Sent 19 656.806940 656.806940 9: seq: 1e, identify offset=3120 count=40
+Sent 20 656.807761 656.807761 9: seq: 1f, identify offset=3160 count=40
+Sent 21 656.808537 656.808537 9: seq: 10, identify offset=3200 count=40
+Sent 22 656.809364 656.809364 9: seq: 11, identify offset=3240 count=40
+Sent 23 656.810118 656.810118 9: seq: 12, identify offset=3280 count=40
+Sent 24 656.810819 656.810819 9: seq: 13, identify offset=3320 count=40
+Sent 25 656.811528 656.811528 9: seq: 14, identify offset=3360 count=40
+Sent 26 656.812412 656.812412 9: seq: 15, identify offset=3400 count=40
+Sent 27 656.813204 656.813204 9: seq: 16, identify offset=3440 count=40
+Sent 28 656.814029 656.814029 9: seq: 17, identify offset=3480 count=40
+Sent 29 656.814759 656.814759 9: seq: 18, identify offset=3520 count=40
+Sent 30 656.815502 656.815502 9: seq: 19, identify offset=3560 count=40
+Sent 31 656.816307 656.816307 9: seq: 1a, identify offset=3600 count=40
+Sent 32 656.817184 656.817184 9: seq: 1b, identify offset=3640 count=40
+Sent 33 656.818148 656.818148 9: seq: 1c, identify offset=3680 count=40
+Sent 34 656.818986 656.818986 9: seq: 1d, identify offset=3720 count=40
+Sent 35 656.819974 656.819974 9: seq: 1e, identify offset=3760 count=40
+Sent 36 656.820965 656.820965 9: seq: 1f, identify offset=3795 count=40
+Sent 37 656.833645 656.833645 6: seq: 10, get_uptime
+Sent 38 656.886689 656.886689 6: seq: 11, get_clock
+Sent 39 656.939140 656.939140 6: seq: 12, get_clock
+Sent 40 656.991463 656.991463 6: seq: 13, get_clock
+Sent 41 657.042989 657.042989 6: seq: 14, get_clock
+Sent 42 657.094625 657.094625 6: seq: 15, get_clock
+Sent 43 657.146125 657.146125 6: seq: 16, get_clock
+Sent 44 657.197776 657.197776 6: seq: 17, get_clock
+Sent 45 657.249281 657.249281 6: seq: 18, get_clock
+Sent 46 657.256921 657.256921 6: seq: 19, get_clock
+Sent 47 658.240914 658.240914 6: seq: 1a, get_clock
+Sent 48 658.778813 658.778813 12: seq: 1b, debug_read order=1 addr=536835496
+Sent 49 658.780078 658.780078 12: seq: 1c, debug_read order=1 addr=536835530
+Sent 50 658.805490 658.805490 6: seq: 1d, get_config
+Sent 51 658.808589 658.808589 7: seq: 1e, allocate_oids count=14
+Sent 52 658.809461 658.809461 12: seq: 1f, config_spi oid=1 pin=PA0 cs_active_high=0, config_adxl345 oid=2 spi_oid=1
+Sent 53 658.809530 658.809530 9: seq: 10, config_analog_in oid=6 pin=ADC_TEMPERATURE
+Sent 54 658.809715 658.809715 19: seq: 11, config_tmcuart oid=0 rx_pin=PA15 pull_up=0 tx_pin=PA15 bit_time=4250, spi_set_sw_bus oid=1 miso_pin=PA6 mosi_pin=PA7 sclk_pin=PA5 mode=3 pulse_ticks=34
+Sent 55 658.809766 658.809766 11: seq: 12, config_digital_out oid=7 pin=PB10 value=1 default_value=0 max_duration=0
+Sent 56 658.809878 658.809878 17: seq: 13, set_digital_out_pwm_cycle oid=7 cycle_ticks=1700000, config_digital_out oid=8 pin=PB3 value=0 default_value=0 max_duration=0
+Sent 57 658.810387 658.810387 9: seq: 14, config_counter oid=3 pin=PB11 pull_up=1
+Sent 58 658.810530 658.810530 17: seq: 15, config_digital_out oid=9 pin=PA2 value=0 default_value=1 max_duration=0, set_digital_out_pwm_cycle oid=9 cycle_ticks=1700000
+Sent 59 658.810624 658.810624 12: seq: 16, config_counter oid=4 pin=PA8 pull_up=1, config_buttons oid=10 button_count=2
+Sent 60 658.810725 658.810725 17: seq: 17, config_stepper oid=5 step_pin=PB7 dir_pin=PB6 invert_step=4294967295 step_pulse_ticks=17, config_digital_out oid=11 pin=PB9 value=1 default_value=1 max_duration=0
+Sent 61 658.810820 658.810820 18: seq: 18, config_analog_in oid=12 pin=PB2, config_digital_out oid=13 pin=PC15 value=0 default_value=0 max_duration=510000000
+Sent 62 658.810887 658.810887 11: seq: 19, set_digital_out_pwm_cycle oid=13 cycle_ticks=17000000
+Sent 63 658.810916 658.810916 11: seq: 1a, finalize_config crc=1544452788
+Sent 64 658.811044 658.811044 26: seq: 1b, query_analog_in oid=6 clock=2727487535 sample_ticks=170000 sample_count=8 rest_ticks=51000000 bytes_per_report=2 min_value=6845 max_value=9289 range_check_count=4
+Sent 65 658.811078 658.811078 16: seq: 1c, queue_digital_out oid=7 clock=2606257622 on_ticks=1700000
+Sent 66 658.811156 658.811156 19: seq: 1d, query_counter oid=3 clock=2722387535 poll_ticks=136000 sample_ticks=170000000
+Sent 67 658.811220 658.811220 13: seq: 1e, queue_digital_out oid=9 clock=2606294265 on_ticks=0
+Sent 68 658.811245 658.811245 19: seq: 1f, query_counter oid=4 clock=2724087535 poll_ticks=136000 sample_ticks=170000000
+Sent 69 658.811330 658.811330 10: seq: 10, buttons_add oid=10 pos=0 pin=PC14 pull_up=0
+Sent 70 658.811390 658.811390 10: seq: 11, buttons_add oid=10 pos=1 pin=PC14 pull_up=0
+Sent 71 658.811456 658.811456 17: seq: 12, buttons_query oid=10 clock=2734287535 rest_ticks=340000 retransmit_count=50 invert=3
+Sent 72 658.811543 658.811543 27: seq: 13, query_analog_in oid=12 clock=2737687535 sample_ticks=170000 sample_count=8 rest_ticks=51000000 bytes_per_report=2 min_value=669 max_value=32591 range_check_count=4
+Sent 73 658.811595 658.811595 13: seq: 14, queue_digital_out oid=13 clock=2606393336 on_ticks=0
+Sent 74 658.811733 658.811733 6: seq: 15, get_config
+Sent 75 658.831797 658.831797 14: seq: 16, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 76 658.836793 658.836793 19: seq: 17, tmcuart_send oid=0 write=b'\xea\x03\x080\x80\x00\n\x08\xb8\x87' read=0
+Sent 77 658.839935 658.839935 14: seq: 18, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 78 658.845181 658.845181 19: seq: 19, tmcuart_send oid=0 write=b'\xea\x03h0\x80\x00\x12\x08 \xda' read=0
+Sent 79 658.848385 658.848385 14: seq: 1a, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 80 658.853439 658.853439 19: seq: 1b, tmcuart_send oid=0 write=b'\xea\x03\x88=\x91\x06\x02h\xaa\xcd' read=0
+Sent 81 658.856692 658.856692 14: seq: 1c, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 82 658.861719 658.861719 19: seq: 1d, tmcuart_send oid=0 write=b'\xea\x03\x082\x80\x10\xe2\x88#\xf9' read=0
+Sent 83 658.864911 658.864911 14: seq: 1e, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 84 658.869914 658.869914 19: seq: 1f, tmcuart_send oid=0 write=b'\xea\x03h2\x80\x1e\xfa\xef?\xdf' read=0
+Sent 85 658.873208 658.873208 14: seq: 10, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 86 658.878152 658.878152 19: seq: 11, tmcuart_send oid=0 write=b'\xea\x03\x882\x80\x00\x02\x08\xa0\xe6' read=0
+Sent 87 658.881271 658.881271 14: seq: 12, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 88 658.886218 658.886218 19: seq: 13, tmcuart_send oid=0 write=b'\xea\x03H8\x80\x00\x02\x08 \xde' read=0
+Sent 89 658.889452 658.889452 14: seq: 14, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 90 658.894482 658.894482 19: seq: 15, tmcuart_send oid=0 write=b'\xea\x03\x08>\xe4\x1ar\x88\xa4\x85' read=0
+Sent 91 658.897634 658.897634 14: seq: 16, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 92 658.902677 658.902677 19: seq: 17, tmcuart_send oid=0 write=b'\xea\x03(2\x80\x00\x02\x88"\xf3' read=0
+Sent 93 658.905749 658.905749 14: seq: 18, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 94 658.910825 658.910825 19: seq: 19, tmcuart_send oid=0 write=b'\xea\x03\x088\x80\x00\x02\x08 \xba' read=0
+Sent 95 658.914260 658.914260 14: seq: 1a, tmcuart_send oid=0 write=b'\xea\x03H \xe4' read=10
+Sent 96 659.204126 659.204126 7: seq: 1b, stepper_get_position oid=5
+Sent 97 659.206278 659.206278 14: seq: 1c, tmcuart_send oid=0 write=b'\xea\x03H-\xd5' read=10
+Sent 98 659.225148 659.225148 6: seq: 1d, get_clock
+Sent 99 659.288038 659.288038 6: seq: 1e, emergency_stop
+Dumping receive queue 100 messages
+Receive: 0 656.769891 656.769565 49: seq: 16, identify_response offset=1480 data=b'\xd8Gz\xe8\xe8+\x85\xaa-\x11\x90q\x1fn\t+@f\x11\xc6\xa6k\x10\xb5\x02-\xfe\x11\x10;\xbc\x14,yK,Va\xc7>'
+Receive: 1 656.770887 656.770579 49: seq: 17, identify_response offset=1520 data=b'@D\x8bJ\xfe\xaaH\x00?\xd5\xb8\x00YM^\t\x08\x9c\xe5\xe8!<\xb9\xff\x1a\xb0\xb4\x83\x0782\xdfnA\xe5\xc7`\xe1\xb3F'
+Receive: 2 656.772005 656.771693 49: seq: 18, identify_response offset=1560 data=b'\xc7\x13\xe1\x11\x0e2\xaeL$qG\x9f6\xb8\x99#\x87M\xa3\x87\xce\x89\xdb\xa6b\x1aTb\x0f\x8e\xb0\x9f6\x82,K_\x95\xdf:'
+Receive: 3 656.772971 656.772671 49: seq: 19, identify_response offset=1600 data=b'\x91\xc8+\xe1\xaa_O\xfd\xfa\xea7P\xf1\xa7w\x8c\xda\xf2\xd9\x8e\x10\xe3\x1c\xa1\xc6\x96\xab\x90\xe0\xddt\xa1\xcf\xc0\x13\xe9\x8c\xce\xd8\x9b'
+Receive: 4 656.773961 656.773600 49: seq: 1a, identify_response offset=1640 data=b'\x11\xa0e\xb7\xaci?\xd4\xb3=_\n\x87\x94/E&\xd5\xf8T\xb0d\xda-\xe9;RE&*\xed>\x15\x95\xc8NEC\x1a\xdd'
+Receive: 5 656.774950 656.774553 49: seq: 1b, identify_response offset=1680 data=b"0:\x89&\x84\xf5\xf3'\xf1Q\xb0d\xbc\xf5E\x0f4\xecC}\xc6\x01\xc5\xdb\xa5\xc8\x8a\xa1\x97\x0b\xc6:\xb3\xee\x16\xa4x\xde\x01H"
+Receive: 6 656.775861 656.775526 49: seq: 1c, identify_response offset=1720 data=b'\xdf\x1a\x1f)9"\'\x9d\x19X\x01|VqQ\x8f\xd7}\xa7\x90\xbc\x06\xe0\xe0\xc0\x97\xfb\x7f\xbc$\xf0e*\xbbo\x14IQ\x95Y'
+Receive: 7 656.777078 656.776542 49: seq: 1d, identify_response offset=1760 data=b'\x03S\x9d\xbeR\x03\xd2\xf3AO\x06\x8f5\xd8\xf9T\xd00F\xf50\x80\xc3\xeb\xae\xe3\x17&-\xb6Q\xec0P\xe0\xc5f\xd4\xc4}'
+Receive: 8 656.778202 656.777772 49: seq: 1e, identify_response offset=1800 data=b"P:\xdd\xe9\xc9\xf5G\x1c\xecA\xe8$\x87\x1eV\x8aH\xe2C\xe6\x12[$\x1e\xd0\xf6'4)\xe8\x15\x0b\xae\xb1#T\xe9\x8c0K"
+Receive: 9 656.779017 656.778736 49: seq: 1f, identify_response offset=1840 data=b'\xad\xcb\xbea\x14\x7f=d5\xef\xc5Us\x83i@\xb5\r\x04\xc7$\xaf\xef\x94\x82\xb7\x14i\xf0I\x07\xb0\x98\x98\xbe\xb8Z\xb0\x9b\x8b'
+Receive: 10 656.779990 656.779680 49: seq: 10, identify_response offset=1880 data=b'\xdf02@\x7f\xfb\xf2q\xcd\xee\xafo\xd7\x98&s\xd9\xfd\x85\xeb\xe3\x7f\xc1\xe8|\x84\xed3\xd9>\x01\x15ZP\xe1g\xa0.g\xf0'
+Receive: 11 656.780903 656.780638 49: seq: 11, identify_response offset=1920 data=b'7E\x98\xcb\xd9\x19\xb6NC\xcc\r\xc4|\x00\xe1\xc1&s\xf8\x9b\xc9}\xe6g\xd8:\x82X\x04\xec\xfe\xfd\x04!\x16\xc1\x19\xb6\xfa\x10'
+Receive: 12 656.781820 656.781519 49: seq: 12, identify_response offset=1960 data=b'p\x9c\x05\xec\xb2p]\t\x02\xdb`\xf34\xcc\xdc\x80\xf4(\x01\xcd \x17_D@\xc1\x14\xfe\xc2\xe1,\xd0\x18\xc1\xdf\x94\xe1\xdcW '
+Receive: 13 656.782741 656.782380 49: seq: 13, identify_response offset=2000 data=b'/\x81\xdeK`\xdf\xa5/\xcf\r4_\x02\x03\xa17\x80\x8c\xbf8\xed\xc9Y\x17\xa7\x91\xff\x97\xee\x11\x00^\xd0\x04\xff\x83=\xdf\x13\xfd'
+Receive: 14 656.783655 656.783396 49: seq: 14, identify_response offset=2040 data=b'\xee\x04o\xca=\xc3\xfe\x114 \xc3\xff\x902\xd7\xff\x1a\xf6/\xd3\xee\xff\xcf\xa7\xf4\xe5\xcd\xe0\x7fx\x93.]#R\x08\x03gr`'
+Receive: 15 656.784664 656.784258 49: seq: 15, identify_response offset=2080 data=b'\x00\x1f\x9f\x82X|\xbc[\xfc\xc4\xde\xaf\x96?c.{B\xff\xceF7\x8bG\x80\x16M\xe1{\xbb\xc0w__\x01t\xb5\\/W'
+Receive: 16 656.785490 656.785217 49: seq: 16, identify_response offset=2120 data=b'\xbf,\t\xe1\xe3\xfa\x92\xf8\xe2"_\xbc\xe1tR\xbf\xc1;\xce\x11\xe4\xfdD1m\xfdp\xf1\xb0f\xeb\xc7\x9b\xf5\xcf\xec\xf2b\xbd\xc4'
+Receive: 17 656.786484 656.786165 49: seq: 17, identify_response offset=2160 data=b'\x1cH\x84\xc3\xcb\xfb\xfb\xe5\x8a\xdd\xdd?\\\xdf\\\xff{y\xc5\x96W\x1f\x96\xe4\x1b\xe99\xfce\x97w\x0f?\xaa9\xf7\x13&O\xda'
+Receive: 18 656.787472 656.787195 49: seq: 18, identify_response offset=2200 data=b"\x82S&^V\x8d\xec\x94+\xf6A8e\x84\x0eG\x1f\x9dO>Q\xe4\x0f@j\xae\xf7`'g\xa3\xe1\xebt\xf5\x90~\x8a^o"
+Receive: 19 656.788406 656.788090 49: seq: 19, identify_response offset=2240 data=b'`.\xb3G\xfd\x87\x16\xe8\x01\xfd\xaeB9`?\xa3io\x04\x90D\x1da\xca\xe3E\xfa\xf0\xde\x80\x1b\xcb\xbb\xc7\x07\xb9\xf1\xed\xc5\xe2'
+Receive: 20 656.789503 656.789126 49: seq: 1a, identify_response offset=2280 data=b"'I\x12\xf0p\xf5\xc0\xa8\xeb\xeb\xeejyq\xa5\xc6\x80\x84\xf5\xe3b\xb1\\\xaf\xe9\xcc:\x8c\x90\xa6\xe7\x1cQ_{\x0bvu\xf1p"
+Receive: 21 656.790479 656.790214 49: seq: 1b, identify_response offset=2320 data=b'\xc1\x96\xab\xd5\xddJb\xc7!\xbc\x1c\xd8T\r\xc2N\xd7\xb7\xbf\\|\xbc\xbe"\xe4\xb8\x806\\\xde\xae\xefV0x\x7f\xb7z0\xe0'
+Receive: 22 656.791372 656.791108 49: seq: 1c, identify_response offset=2360 data=b"r';\xc3\x8d\x1b}\xbc^{W\xbfJ\xdeB\xd3\xbf\xfa\x91\xae\r\xdc\t\xadJ\x1f\x967p\xb9\xb0\xefJ\xca\x02\xd0~\x7f\x01\\"
+Receive: 23 656.792182 656.791910 49: seq: 1d, identify_response offset=2400 data=b'\xfb}r\xe6F\xff\x81\xce%v\xc0-\xa5\xde\x02{\x10`R\xef\n{\xc1L\xf5\x96\xd8\x83\xa0\x98z\xc8\xfa\xdfg\x1a\xcb\x07\xec\xcd'
+Receive: 24 656.793091 656.792811 49: seq: 1e, identify_response offset=2440 data=b'%\x96O=\xd7K\xd1\x19\xbb\xbe\xefK2c\x11N\x82i*\x8f_4\xd1\xcc\x8d\xe4\x99\xb1\xe9EB2\xb7\xc9y8q\xbd\r\xd0'
+Receive: 25 656.793917 656.793647 49: seq: 1f, identify_response offset=2480 data=b'\xab\x90)\x89"EG\xe26\xd0if\xd0~\xd8\x1e\r\xc6\xba\xe5I\nN)\x1f_\x0f\x0f\xb4\x0c\x81\xfb\x92\xacc\xc5a\x06\x07:'
+Receive: 26 656.794673 656.794456 49: seq: 10, identify_response offset=2520 data=b'\x82\xdcF\xd4\x05!\x1e\x00$.C\x93[g\x10hf\xa9\xba\x19G\x1a\xc3-\x05\xf9d-/rY\x1ettJ2\xa5(c\x11'
+Receive: 27 656.795414 656.795187 49: seq: 11, identify_response offset=2560 data=b'\x97NY5\xe0\xfa\xc2_\xb5\x85X\xe4\xa5\xa0\xc8\xc2\x916\xday\xd9g\xd0&[+\x9c\x03\xf8W\xb0\x13\x851\xb0\xf6o\r\xc6B'
+Receive: 28 656.796304 656.796086 49: seq: 12, identify_response offset=2600 data=b'\x8e\xc8v\x80\xd5i\xf6q\xe3d\xc2\x89\xd5^\x14YP\xaaT\x01\x0b\x04E;M\t]\x1a\x95Q\x93\x8c$a;^::\xf5n'
+Receive: 29 656.797237 656.796982 49: seq: 13, identify_response offset=2640 data=b'\xd6\x03\x8b\x17T_v\x0eq-`J\xbe\x07\xf9\x1c\xf5D\xcd\xc1\xa1\x12\x8d\xac\x12\xbf\xa7\x8a\x88\x8e\x1b\xb22\xe5\xafN\x1e\xd7\xe8L'
+Receive: 30 656.798110 656.797860 49: seq: 14, identify_response offset=2680 data=b'\x00\x91e\xafHB\xd9\x86\x1f\x7f\xc3<\x03\xd6\xd8\xfe\xa5jl=&:\xee8\xa0j/<6G\xbd_zz\x8e|\xc4z\xcc\xb5'
+Receive: 31 656.798930 656.798626 49: seq: 15, identify_response offset=2720 data=b'\xc7\xf0\xed\xe9\x89\tM<\x90\x07E~\xce5\x05\xaeN\x97\x04\x1a\xa6q\xa8\xe6\xa8\xe1t%\xb5\xab"SPJ5Z\r\xa5J\xf1'
+Receive: 32 656.799829 656.799576 49: seq: 16, identify_response offset=2760 data=b'RV\xba1\x00C\xe6\xc5\x05\x07\xd6PQBO\x16\x15\xc4\x7f\x8a\x7f\x0e\x96\xa2\xd0q\xea\xa6M\xe1\xca\x94\xaa\xa8\x14s4\xaf\xf2p'
+Receive: 33 656.800661 656.800458 49: seq: 17, identify_response offset=2800 data=b'f\x7f\x0cX4\x10\\\xb9C/\x163\xfez\x14\xebQ\xf2\x01\x86Q\x7fP\xfbl\xde\xac7\xaeR\x12\xa8\xa7\x146\xac\x85i\x80^'
+Receive: 34 656.801483 656.801286 49: seq: 18, identify_response offset=2840 data=b'B\xc1\x82\xc1<\xf0M\xfc\x8a\x979\xd3<\xa4\x08\xec\x86\x0b\x11\xc3\xed\xf22\x81\xf0HK\x15\xd0r\x93\t\xc1aKL\xdc\xb49\xd6'
+Receive: 35 656.802372 656.802061 49: seq: 19, identify_response offset=2880 data=b'4`1F\xd6\x8e\xf27\xa5t\xf0g\x8e\xcc\xc7\xa0\xfa\x06y(\xf3\x07\x0e\xb4\xeam^\xbdPN\xe1\x16^W\xec\x10\x81\xf84\xa5'
+Receive: 36 656.803264 656.802860 49: seq: 1a, identify_response offset=2920 data=b'\xfe\x0c\x07\x134\x08<_q\xb5%l\x8e\x0f\xa2\x06\xe1\xc5s\xc1\xd5\xa1lc\xf5{m\x00\x8eHq^\xb2<\x07\x9f:\xe10k'
+Receive: 37 656.804064 656.803812 49: seq: 1b, identify_response offset=2960 data=b'\x97\xba)\xaeZ\xc3+\xa3\xe3Kt\x08\x91\x15m\xa1\xc7\xb4(\xa1\r\xd2\x85;\xf91\x02 \x93\xefR*\n\xfb\xbb\x84\xb5z\xa8M'
+Receive: 38 656.804814 656.804550 49: seq: 1c, identify_response offset=3000 data=b'U9\xdbX\xd2Jtb\x10\xff`\xdf\x06*\x04\x00\x94\xd5x\xaa0>\xc8\xd3\xe1J\x08\x0e\x04\x97z\xf2\xb1\x14\xed\x01\xc5\x1ev\xc4'
+Receive: 39 656.805480 656.805259 49: seq: 1d, identify_response offset=3040 data=b'\xd25\x89\xc6T}\x11\x02\xe6\xa9-\x9f\x00\x07h\xa4\x94*\xf7\xd6\xb8\xe8&"\xfcN\x04\xe5\x04\xc2AQ\xd5R\xb4!\xca\x10N"'
+Receive: 40 656.806373 656.806132 49: seq: 1e, identify_response offset=3080 data=b'\x14\xa7A 6q\xea@\xf0\x87W\x8b\xa11\x15\xc86\xed\x8e\xa2D4\xe7(<\x92\x8c\xb6#K\x7f"\xa2gI\xf2\xa8\xb8nF'
+Receive: 41 656.807222 656.806940 49: seq: 1f, identify_response offset=3120 data=b'Q\x80\xfbk\xba\xd2&\xe9\xba\xaa\xccA=>\x03\xc1\xf1&\xd7Z\xcfp\xb6WV8\x07TO%\xde\x85*\x86S\xf2\xdb\x06x\xa9'
+Receive: 42 656.808023 656.807761 49: seq: 10, identify_response offset=3160 data=b'+8\x85\xa8\x84\xd1x9/w\xcd\x9e>\xad\xc0\xd3\xe5\xce\x80\\\x90X\xf9q\x8dQ\xd5\xea\x93\x9b\x94Jv\x02\x8b&\xa8\x03I\x06'
+Receive: 43 656.808814 656.808537 49: seq: 11, identify_response offset=3200 data=b'\x13\x98\x96\xe70\x91\xb6\xd4\x05\xf2\xf6\xa4Z\xa5$\xc1\x89\x88\x0cE\x86D\x1c\xeb\xb9J\xa3\xd3;\xc1\xc8\x1dL\xd8Q\xcd\x13m\x18\x04'
+Receive: 44 656.809597 656.809364 49: seq: 12, identify_response offset=3240 data=b"i\xbe;\x0bCi%U'\x92\x96\x98:Q(\xe5\x0f:Q4\x85\xb6\xff\xe9(\xec\xed<\xa6\x9b\xbb\xdb\xeb\x07\xe5*\xdd\xfd\xb2\\"
+Receive: 45 656.810307 656.810118 49: seq: 13, identify_response offset=3280 data=b'\xbd\xffx\xf7\xab\xc4\xb5\xba\xf8\x95\xad.n\xd1!\x9d\x18\xd7h}\xbf\\\\\xbf\xbf^\x9cDj|\x8e\x8d`xj\xacnf\xdb-'
+Receive: 46 656.811021 656.810819 49: seq: 14, identify_response offset=3320 data=b'(\xec\xf8\x89\xed\x1a\xb9\x05\xfe\xb8\x9f\xa4G\x95\x80\xfc\x01\xd4\xe8\xc3\xed\xa3\xf3\xe1\xfe\xe33\x86\x00 \x00\x07\xd0?\x9c\xbe\x942\x9f3'
+Receive: 47 656.811794 656.811528 49: seq: 15, identify_response offset=3360 data=b'\xf5\x12Q2\x85gbf\xbb\xd23\xf6\xba\xef\x8dzKb+\x8fO\xf9*U\x80\x95\x1f]\xc8\\d\x17\xad\x8fM\x85\xdfA\xafO'
+Receive: 48 656.812633 656.812412 49: seq: 16, identify_response offset=3400 data=b'\xb6d</\xeb\x938\xa6\x85Qf\x97@\xa11\x93\xfc\x84\xd5\xb2\x92,\xf3\xfa_"[\xadP\r\xd6\xed\xee\xfa^W\x14\x16\xa0\x10'
+Receive: 49 656.813503 656.813204 49: seq: 17, identify_response offset=3440 data=b'L\x8dw\x1cu5\xd5\x1efz\xa8\xc7{\xd8%[XN\x0e<\xd3,\x1e\x14(\x95\x7f\xae\xf2\xe2\x12B\xf3h\xd6\x15\n\xad\xd5\xa6'
+Receive: 50 656.814322 656.814029 49: seq: 18, identify_response offset=3480 data=b'bH\xf9\xabw\x08\x8b\x91F\xc7\x1eg\xe8\x80)\x0e\xb9\xfe\xe7*\x83h\xd7\xf3\xb7a"\xc6\x1c\x08\xebgT\x173CR\x90\x15\xe3'
+Receive: 51 656.814970 656.814759 49: seq: 19, identify_response offset=3520 data=b'\xfa\x05\xb4~a\xa1\xfbR\x81N\xd9\xc2\xd3\x14\x8d)\x9f\xa3\xb93\x153\xc5w\xbd\xa2M\x12Yb\x95\xa9gx\x18\x87\xaaW\xc4\x1f'
+Receive: 52 656.815774 656.815502 49: seq: 1a, identify_response offset=3560 data=b"O\xa5F\x00UJ\xa5K;\xb5'\xd0m(\x13>(\xb9\xb9\xe8 \xd8k\xfa4\x9a\xc3\xa9J\x80N\x07Q\xee\xdaF\xb9i\xb7["
+Receive: 53 656.816657 656.816307 49: seq: 1b, identify_response offset=3600 data=b'\x0e\x16\x88\x8aF\xe0>\x82\xbed\xda\xc2\nb\xb7+3\xa3\x9d\xc9\xd2\x05\xb4\xcf\xdc\x8dw*\x81{$4v%\xc2\x96\x15\x99\r\xb5'
+Receive: 54 656.817517 656.817184 49: seq: 1c, identify_response offset=3640 data=b'\xf2\xa5G\x0b\xfb\xf0cWz\xe9u#\xdd\xe6\xb1\x1b\x90\xd3.\xba\xe7!\xdaB\xfd\x88?T\xb2\xd0\xedr\xa0\x83\x04)U713'
+Receive: 55 656.818365 656.818148 49: seq: 1d, identify_response offset=3680 data=b'\x17\x0eTg\xffJOh\x10lH\xfb\xab\xee\xd9\xef\xd2\xa6\xc7G\xc0\x84)\x1d\xf7DB\xf2\xf4\xcb\xa4V\xef\x9d\xcf\xed\xa4`\xb7&'
+Receive: 56 656.819351 656.818986 49: seq: 1e, identify_response offset=3720 data=b'\x89MN\xf7t\xa2\xd5\xd2T>\x9a\x15\x19\x1a\xd0\xf7I\xad=\xe9b\xe0\xaa>e\x055\xfb<y\xe7\xfa\xef&\xe3p\x1e\x8ew\x9b'
+Receive: 57 656.820252 656.819974 44: seq: 1f, identify_response offset=3760 data=b'\t\x8f\x928\x08\xc7iV7oco\xe2E\x93`2e\x137\xf4\x83`\xfc\xc4\x9f\xc1\x13\xf8\xf4_\xc2\x13)\x15'
+Receive: 58 656.821177 656.820965 9: seq: 10, identify_response offset=3795 data=b''
+Receive: 59 656.833994 656.833645 12: seq: 11, uptime high=0 clock=2236811576
+Receive: 60 656.887037 656.886689 11: seq: 12, clock clock=2245826666
+Receive: 61 656.939431 656.939140 11: seq: 13, clock clock=2254745444
+Receive: 62 656.991794 656.991463 11: seq: 14, clock clock=2263639790
+Receive: 63 657.043459 657.042989 11: seq: 15, clock clock=2272411608
+Receive: 64 657.094893 657.094625 11: seq: 16, clock clock=2281179810
+Receive: 65 657.146469 657.146125 11: seq: 17, clock clock=2289935254
+Receive: 66 657.198083 657.197776 11: seq: 18, clock clock=2298714912
+Receive: 67 657.249611 657.249281 11: seq: 19, clock clock=2307471758
+Receive: 68 657.257204 657.256921 11: seq: 1a, clock clock=2308768076
+Receive: 69 658.241086 658.240914 11: seq: 1b, clock clock=2476054712
+Receive: 70 658.676211 658.240914 15: seq: 1b, stats count=460 sum=672992 sumsq=7434703
+Receive: 71 658.779172 658.778813 8: seq: 1c, debug_result val=1042
+Receive: 72 658.780351 658.780078 8: seq: 1d, debug_result val=1378
+Receive: 73 658.805790 658.805490 10: seq: 1e, config is_config=0 crc=0 is_shutdown=0 move_count=0
+Receive: 74 658.811875 658.811733 15: seq: 16, config is_config=1 crc=1544452788 is_shutdown=0 move_count=1024
+Receive: 75 658.835902 658.831797 19: seq: 17, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\x88"\xca'
+Receive: 76 658.839237 658.836793 9: seq: 18, tmcuart_response oid=0 read=b''
+Receive: 77 658.844128 658.839935 19: seq: 19, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\xa8\xa2\x8e'
+Receive: 78 658.847666 658.845181 9: seq: 1a, tmcuart_response oid=0 read=b''
+Receive: 79 658.852473 658.848385 19: seq: 1b, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\xc8\xa2\xa9'
+Receive: 80 658.855947 658.853439 9: seq: 1c, tmcuart_response oid=0 read=b''
+Receive: 81 658.860728 658.856692 19: seq: 1d, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\xe8"\xed'
+Receive: 82 658.864261 658.861719 9: seq: 1e, tmcuart_response oid=0 read=b''
+Receive: 83 658.868972 658.864911 19: seq: 1f, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\x08#\x82'
+Receive: 84 658.872449 658.869914 9: seq: 10, tmcuart_response oid=0 read=b''
+Receive: 85 658.877272 658.873208 19: seq: 11, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02(\xa3\xc6'
+Receive: 86 658.880627 658.878152 9: seq: 12, tmcuart_response oid=0 read=b''
+Receive: 87 658.885336 658.881271 19: seq: 13, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02H\xa3\xe1'
+Receive: 88 658.888698 658.886218 9: seq: 14, tmcuart_response oid=0 read=b''
+Receive: 89 658.893557 658.889452 19: seq: 15, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02h#\xa5'
+Receive: 90 658.896927 658.894482 9: seq: 16, tmcuart_response oid=0 read=b''
+Receive: 91 658.901769 658.897634 19: seq: 17, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\x88#\xf2'
+Receive: 92 658.905113 658.902677 9: seq: 18, tmcuart_response oid=0 read=b''
+Receive: 93 658.909862 658.905749 19: seq: 19, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\xa8\xa3\xb6'
+Receive: 94 658.913430 658.910825 9: seq: 1a, tmcuart_response oid=0 read=b''
+Receive: 95 658.918307 658.914260 19: seq: 1b, tmcuart_response oid=0 read=b'\n\xfaO \x80\x00\x02\xc8\xa3\x91'
+Receive: 96 659.204446 659.204126 8: seq: 1c, stepper_position oid=5 pos=0
+Receive: 97 659.210343 659.206278 19: seq: 1d, tmcuart_response oid=0 read=b'\n\xfaO-\x80\x00\x02H&\xeb'
+Receive: 98 659.225549 659.225148 11: seq: 1e, clock clock=2643384478
+Receive: 99 659.288331 659.288038 12: seq: 1f, shutdown clock=2654079212 static_string_id=Command request
+MCU 'cartographer' shutdown: Command request
+clocksync state: mcu_freq=170000000 last_clock=2594014883 clock_est=(657.656 2373171762 170059046.103) min_half_rtt=0.000245 min_rtt_time=657.970 time_avg=657.656(0.076) clock_avg=2373171762.926(12854225.090) pred_variance=21327037127.455 clock_adj=(0.039 170027651.000)
+Dumping serial stats: bytes_write=868 bytes_read=4646 bytes_retransmit=9 bytes_invalid=0 send_seq=114 receive_seq=114 retransmit_seq=2 srtt=0.001 rttvar=0.001 rto=0.025 ready_bytes=0 upcoming_bytes=0
+Dumping send queue 99 messages
+Sent 0 657.411480 657.411480 8: seq: 11, identify offset=0 count=40
+Sent 1 657.449304 657.449304 8: seq: 10, identify offset=0 count=40
+Sent 2 657.450544 657.450544 8: seq: 11, identify offset=40 count=40
+Sent 3 657.452478 657.452478 8: seq: 12, identify offset=80 count=40
+Sent 4 657.453320 657.453320 9: seq: 13, identify offset=120 count=40
+Sent 5 657.454456 657.454456 9: seq: 14, identify offset=160 count=40
+Sent 6 657.455373 657.455373 9: seq: 15, identify offset=200 count=40
+Sent 7 657.456498 657.456498 9: seq: 16, identify offset=240 count=40
+Sent 8 657.457481 657.457481 9: seq: 17, identify offset=280 count=40
+Sent 9 657.458349 657.458349 9: seq: 18, identify offset=320 count=40
+Sent 10 657.459453 657.459453 9: seq: 19, identify offset=360 count=40
+Sent 11 657.461313 657.461313 9: seq: 1a, identify offset=400 count=40
+Sent 12 657.462413 657.462413 9: seq: 1b, identify offset=440 count=40
+Sent 13 657.463399 657.463399 9: seq: 1c, identify offset=480 count=40
+Sent 14 657.464438 657.464438 9: seq: 1d, identify offset=520 count=40
+Sent 15 657.465236 657.465236 9: seq: 1e, identify offset=560 count=40
+Sent 16 657.466401 657.466401 9: seq: 1f, identify offset=600 count=40
+Sent 17 657.467338 657.467338 9: seq: 10, identify offset=640 count=40
+Sent 18 657.468442 657.468442 9: seq: 11, identify offset=680 count=40
+Sent 19 657.469373 657.469373 9: seq: 12, identify offset=720 count=40
+Sent 20 657.470320 657.470320 9: seq: 13, identify offset=760 count=40
+Sent 21 657.471257 657.471257 9: seq: 14, identify offset=800 count=40
+Sent 22 657.472415 657.472415 9: seq: 15, identify offset=840 count=40
+Sent 23 657.473401 657.473401 9: seq: 16, identify offset=880 count=40
+Sent 24 657.474366 657.474366 9: seq: 17, identify offset=920 count=40
+Sent 25 657.475191 657.475191 9: seq: 18, identify offset=960 count=40
+Sent 26 657.476263 657.476263 9: seq: 19, identify offset=1000 count=40
+Sent 27 657.477116 657.477116 9: seq: 1a, identify offset=1040 count=40
+Sent 28 657.478235 657.478235 9: seq: 1b, identify offset=1080 count=40
+Sent 29 657.479418 657.479418 9: seq: 1c, identify offset=1120 count=40
+Sent 30 657.480245 657.480245 9: seq: 1d, identify offset=1160 count=40
+Sent 31 657.481393 657.481393 9: seq: 1e, identify offset=1200 count=40
+Sent 32 657.482372 657.482372 9: seq: 1f, identify offset=1240 count=40
+Sent 33 657.483440 657.483440 9: seq: 10, identify offset=1280 count=40
+Sent 34 657.484315 657.484315 9: seq: 11, identify offset=1320 count=40
+Sent 35 657.485157 657.485157 9: seq: 12, identify offset=1360 count=40
+Sent 36 657.486503 657.486503 9: seq: 13, identify offset=1400 count=40
+Sent 37 657.488347 657.488347 9: seq: 14, identify offset=1440 count=40
+Sent 38 657.489510 657.489510 9: seq: 15, identify offset=1480 count=40
+Sent 39 657.491305 657.491305 9: seq: 16, identify offset=1520 count=40
+Sent 40 657.492260 657.492260 9: seq: 17, identify offset=1560 count=40
+Sent 41 657.493387 657.493387 9: seq: 18, identify offset=1600 count=40
+Sent 42 657.494381 657.494381 9: seq: 19, identify offset=1640 count=40
+Sent 43 657.495141 657.495141 9: seq: 1a, identify offset=1680 count=40
+Sent 44 657.496545 657.496545 9: seq: 1b, identify offset=1720 count=40
+Sent 45 657.498361 657.498361 9: seq: 1c, identify offset=1760 count=40
+Sent 46 657.499537 657.499537 9: seq: 1d, identify offset=1800 count=40
+Sent 47 657.501445 657.501445 9: seq: 1e, identify offset=1840 count=40
+Sent 48 657.502364 657.502364 9: seq: 1f, identify offset=1880 count=40
+Sent 49 657.503573 657.503573 9: seq: 10, identify offset=1920 count=40
+Sent 50 657.505430 657.505430 9: seq: 11, identify offset=1960 count=40
+Sent 51 657.506417 657.506417 9: seq: 12, identify offset=2000 count=40
+Sent 52 657.507419 657.507419 9: seq: 13, identify offset=2040 count=40
+Sent 53 657.508286 657.508286 9: seq: 14, identify offset=2080 count=40
+Sent 54 657.509502 657.509502 9: seq: 15, identify offset=2120 count=40
+Sent 55 657.511331 657.511331 9: seq: 16, identify offset=2160 count=40
+Sent 56 657.512295 657.512295 9: seq: 17, identify offset=2200 count=40
+Sent 57 657.513450 657.513450 9: seq: 18, identify offset=2240 count=40
+Sent 58 657.514420 657.514420 9: seq: 19, identify offset=2280 count=40
+Sent 59 657.515334 657.515334 9: seq: 1a, identify offset=2320 count=40
+Sent 60 657.516388 657.516388 9: seq: 1b, identify offset=2360 count=40
+Sent 61 657.517333 657.517333 9: seq: 1c, identify offset=2400 count=40
+Sent 62 657.518294 657.518294 9: seq: 1d, identify offset=2440 count=40
+Sent 63 657.519428 657.519428 9: seq: 1e, identify offset=2480 count=40
+Sent 64 657.520290 657.520290 9: seq: 1f, identify offset=2520 count=40
+Sent 65 657.521140 657.521140 9: seq: 10, identify offset=2560 count=40
+Sent 66 657.522133 657.522133 9: seq: 11, identify offset=2600 count=40
+Sent 67 657.523200 657.523200 9: seq: 12, identify offset=2640 count=40
+Sent 68 657.524186 657.524186 9: seq: 13, identify offset=2680 count=40
+Sent 69 657.525203 657.525203 9: seq: 14, identify offset=2720 count=40
+Sent 70 657.526375 657.526375 9: seq: 15, identify offset=2760 count=40
+Sent 71 657.527255 657.527255 9: seq: 16, identify offset=2800 count=40
+Sent 72 657.528193 657.528193 9: seq: 17, identify offset=2840 count=40
+Sent 73 657.529383 657.529383 9: seq: 18, identify offset=2880 count=40
+Sent 74 657.530322 657.530322 9: seq: 19, identify offset=2920 count=40
+Sent 75 657.531326 657.531326 9: seq: 1a, identify offset=2960 count=40
+Sent 76 657.532495 657.532495 9: seq: 1b, identify offset=2974 count=40
+Sent 77 657.541125 657.541125 6: seq: 1c, get_uptime
+Sent 78 657.592828 657.592828 6: seq: 1d, get_clock
+Sent 79 657.644931 657.644931 6: seq: 1e, get_clock
+Sent 80 657.696880 657.696880 6: seq: 1f, get_clock
+Sent 81 657.749086 657.749086 6: seq: 10, get_clock
+Sent 82 657.801060 657.801060 6: seq: 11, get_clock
+Sent 83 657.853027 657.853027 6: seq: 12, get_clock
+Sent 84 657.904930 657.904930 6: seq: 13, get_clock
+Sent 85 657.957260 657.957260 6: seq: 14, get_clock
+Sent 86 657.970263 657.970263 6: seq: 15, get_clock
+Sent 87 658.782608 658.782608 12: seq: 16, debug_read order=1 addr=536835496
+Sent 88 658.784424 658.784424 12: seq: 17, debug_read order=1 addr=536835530
+Sent 89 658.813279 658.813279 6: seq: 18, get_config
+Sent 90 658.815094 658.815094 8: seq: 19, cartographer_base_read len=6 offset=0
+Sent 91 658.817472 658.817472 7: seq: 1a, allocate_oids count=2
+Sent 92 658.817771 658.817771 17: seq: 1b, config_trsync oid=0, config_analog_in oid=1 pin=ADC_TEMPERATURE, finalize_config crc=3539357898
+Sent 93 658.817882 658.817882 25: seq: 1c, query_analog_in oid=1 clock=2715566274 sample_ticks=170000 sample_count=8 rest_ticks=51000000 min_value=6943 max_value=9424 range_check_count=4
+Sent 94 658.818019 658.818019 6: seq: 1d, get_config
+Sent 95 658.954543 658.954543 6: seq: 1e, get_clock
+Sent 96 659.167528 659.167528 7: seq: 1f, cartographer_stream en=0
+Sent 97 659.288122 659.288122 6: seq: 10, emergency_stop
+Sent 98 659.289713 659.289713 7: seq: 11, cartographer_stream en=0
+Dumping receive queue 100 messages
+Receive: 0 657.462741 657.462413 49: seq: 1c, identify_response offset=440 data=b'42\xf5\x17\x96JZ\xd4\xe7\xdet|\xf24\x13\x8b%r\x11\xec\xe3\xa4\xe2\xa5AL\xd9\x0bt6\xac\xc8\x1b\xa8S54\xa1\x17\xdd'
+Receive: 1 657.463738 657.463399 49: seq: 1d, identify_response offset=480 data=b'\xabwB\x110\xe0>\xf1\xe0\x18\x1f\x8e\xca.;\xf8P\x9aC\xc2O(\xa4\x855\xdc\xcf\xfc\xceJq\xac\xab(\x7f\xceN-\xd6\xa0'
+Receive: 2 657.464730 657.464438 49: seq: 1e, identify_response offset=520 data=b" \x15\x87_~\xfa'\x1c\x95\xd7]Kr'U\x08\x85\xbdj\xaf\xb9\xc3\xd3~\xa6\x91\x85\x95\xd4\xdco\xad!Wa\xa9\xb9\xb8\xaf\x88"
+Receive: 3 657.465731 657.465236 49: seq: 1f, identify_response offset=560 data=b'?\xd4\x87 \xcb\xe1U\x17f\x04\xb9\x1c\xa4\xb1)\xb6,\x96\xf4Ky\x19\x91\xb9\x87\x0e\x8b"e\xf6\xaek\x10\x9e\xcb\xb8\xe2\x03\x0c\xe7'
+Receive: 4 657.466733 657.466401 49: seq: 10, identify_response offset=600 data=b'\x89%\n\x11\xba\xc5S^\x1ex\x16\xbeJ\xe7\x80\x13aJY\x8e\xf2f\xfa\x1c!\x1c\xee\xa34\x00\x96\x16$\xdf8|\x14\xad\xb1\xf1'
+Receive: 5 657.467761 657.467338 49: seq: 11, identify_response offset=640 data=b'\xc1\x0e\x9cR\xd5@\xc1y\x80\xddj\xae\x1c\xdf7\x1d#\xf8\x994\x9b\xffQ\xf3\x92xb\x15o\xe4\x03\xc9\xedc\xc87\xfe\x93v$'
+Receive: 6 657.468716 657.468442 49: seq: 12, identify_response offset=680 data=b'\x11:a\x19*[<\x1b\x1d\xe0\x15%\x9f\xd0F=\x928P\x025\xac\x8b*&\xdf\x072\xd2\xe0\x7f,\xfe@h\xa4\xf8\xe4\x83a'
+Receive: 7 657.469730 657.469373 49: seq: 13, identify_response offset=720 data=b'<m[\xc0\x90\x0e]\x82gz\x92\xb8\xb9\x10\x92=\xbf\xb5J<\xb7\x17\xc2\xa3X\xe7\x121\xf3\n?%ZR\xee\x90\xf2\x14\xa9\xaa'
+Receive: 8 657.470677 657.470320 49: seq: 14, identify_response offset=760 data=b'd\x99\xd87F&/\x9b4\xc4!\xbd\x08\x12\xed\xc9=\xa8K\x1c\xf1\xac\x8a\xf7\xaf6z\xd5\xad\xa0\tm1\x9e\xe5\x87\xe4\x015U'
+Receive: 9 657.471680 657.471257 49: seq: 15, identify_response offset=800 data=b"\x97\xd5\x0b\x14\x1dM\x00\x9e\xdf\xc3\x93\x97[7\xb64\xf5\x1a\x84N\xe4\xe8\x11\xf2'=\xbc>!\xbf\xd9\xa9\x1f\\~P\x8d\xd3F\x8d"
+Receive: 10 657.472741 657.472415 49: seq: 16, identify_response offset=840 data=b'\x8f\xb5\xf4f\xcd\x08\xb7p\xc0\xc2#\x0f\x1f\x83F\xa8\x9ekx\xe8\x06\xaf\xdeY&\xe3.\xda\xe0(\xe7\x06\xde\x89P}*]\xac>'
+Receive: 11 657.473733 657.473401 49: seq: 17, identify_response offset=880 data=b'\x91\x89\xbd\xa1~8\xea\xd3\x99\xf5\x11\x07\xa4\xa6\x06\xa3\x17\xb2\xfa\x97=\xb7x\x9d\xc0\xd3\xbf\xca\x1e\xda\xe0\xf8\x96\xa1^\xe4\xe93\xee\xf7'
+Receive: 12 657.474684 657.474366 49: seq: 18, identify_response offset=920 data=b"\xf0\x06|[\xdd\x1a\x84\x0f\xab\x12\xdd+'O\x81h\x11\xef\xd5}\xce\x1a\x02\x92r\xef\xfc81X\x05\x05^\xc1\xc1CA[~\x9f"
+Receive: 13 657.475720 657.475191 49: seq: 19, identify_response offset=960 data=b'L^\xc53\xb3e\xd6\x0e\x86\xb0D\xbe\xdf\x07\xfb\x92\xc1\x81\xc4\x95\x8e\x8fC\x12\xcat\x03\x11\xb2\x86wc\xce\xb1#\xa7\xedK\x87\x9a'
+Receive: 14 657.476682 657.476263 49: seq: 1a, identify_response offset=1000 data=b"\xc3\xea*\x0f\x0c*\x11\x9f\x0e\x88k~\xacOR\xc3 \x8e^t\x10\x1bK\xda\xb9p\xf5\xd3\xd3O_?'x\x82\xf2|H\xb9\xe5"
+Receive: 15 657.477684 657.477116 49: seq: 1b, identify_response offset=1040 data=b'\xc1\x07t\t\xa6(\xd3\x9b\xabh@\x90\xad8\xdesrM\x14\x9c\xb9\nO b\x0c\xa1\xde\xc4@;^\x9a\xa6\xb4\x97N\xf3\x88\xb7'
+Receive: 16 657.478778 657.478235 49: seq: 1c, identify_response offset=1080 data=b'\xbc5\x96\xe8\x8d\xff~K\x8f\x04W\xf1\xa20\xa94\x8e\xa2\xbdb\xe3$[1\x0e\xbe\x15j\xd3\xf3\x9b\xed\xa8\xfa\xbdR\x81\x97e\xde'
+Receive: 17 657.479686 657.479418 49: seq: 1d, identify_response offset=1120 data=b'\x1e[]M\xf3,\xae\x00j<\x94\x9e\x80oR\xf9\xfbx\xb0\xf1\xa9\x88:;\x1f\xa0\x91\xc4J\xf6\x1cH\xbff\xed\r\x13)E\xa6'
+Receive: 18 657.480732 657.480245 49: seq: 1e, identify_response offset=1160 data=b'X\xbd\xd2.\xb8\xab\xb9wr\xf9@&\x1d\x0c\x93i\x9ai\xedJ\x89\x9cK\xe4\xa4H$\x19\x98 \xf2\xad\xbe\xa1B\xaa\xf3\x06\xafB'
+Receive: 19 657.481722 657.481393 49: seq: 1f, identify_response offset=1200 data=b'\r\xd3x\x85"/u\x0e\xa0,Z\x8e\xad\x90\xf8K\x11\x97\xbc\x93q,,\xa5\x1e\xd3m\xa4\xd9\x9b\xc9\xd8\xa8x]^\xac\x82\xeb\xe5'
+Receive: 20 657.482763 657.482372 49: seq: 10, identify_response offset=1240 data=b'\xef\xe4\xbc\xcf\xa1\x10\x1f\xee\xb7\xc1\xdd\xd5\xcd\x96<\x8b\x8bR\xf7n9;\xbb[\xce\xf1\x9b\x8ez\xd0\x000\xfc\xe6\x01\xc1\xbe\x83\xf9a'
+Receive: 21 657.483724 657.483440 49: seq: 11, identify_response offset=1280 data=b'\x82\xdf\x14?\x9f0?L\xce0:\xa3Q\x0f\x93}\x13\xecI\xa8K`\x97\xe0\xee\x00\x01\xbc\xb8c\xfa\x87=/\x15\xffH\x0bi|'
+Receive: 22 657.484683 657.484315 49: seq: 12, identify_response offset=1320 data=b'F\xe3\x016\x88\xd1?\xe2\xcc\xf5\xbfG\xfd\xdb\xbc\xfb\xff\xf7)\x81\xb9"\x06W\xc8Q\xf0oL\xc8+\xe2\x10\x13gr\xa2\x87\xcfN'
+Receive: 23 657.485770 657.485157 49: seq: 13, identify_response offset=1360 data=b'a\xac\x96\x9b\xdd\xed\xc7\xcd\xf2\xee\xd3z\x13\xd0-n\xafoow\x9f\x82\xd5\xed\xfd\xcd\x8e\xae\x19(\x9foW\xbf\x06\x97\x9b\xf5o\xa4'
+Receive: 24 657.487715 657.486503 49: seq: 14, identify_response offset=1400 data=b'ec\xf5w6\xba^\xdd\x83\xa0\xa8R\xdf;L|\xf7\xe5\x05\xd4\xee\xbe^+5\xf0\xbd9\x953\x9b\xf5v\xbd\xf9\xb2V<\xdco'
+Receive: 25 657.488791 657.488347 49: seq: 15, identify_response offset=1440 data=b'?(Q\xba$Jo\xd4\x03\x87\xe5+\x147!\x94\xcb\xb1\x96\xf3v\xb7\xdcm\x83\xed\xfd\xf5\xf6\xb7\xe0\xc3r\xbb&w3\xa3\xe9\xf5'
+Receive: 26 657.490682 657.489510 49: seq: 16, identify_response offset=1480 data=b'\xdd\x1d\xf8\xbd\xbd\xdb]]_\xfd{}\x11\xac/>\xaeUyl`\xf4\x0c>\xd0Q\x14\xcc}\xa3<\xbaFf\xcf*\xd5\x80\xf9k'
+Receive: 27 657.491687 657.491305 49: seq: 17, identify_response offset=1520 data=b'\xd4\xae\xf3h\x8c\x0cR\xa6~\x90\xd6\xe8\xfd\xf8M\xa5\x94@\xd20\xd2\x8bs\xfc\x16\x1d\xa0\x0e~\x84C\xe2\x06G\xeb\xdb\xfb\x9d,\x1a'
+Receive: 28 657.492762 657.492260 49: seq: 18, identify_response offset=1560 data=b'n\x96\xab_%A\x9cc\xb3\x0b\xd4\xd07\xc3\xcdzy\xa1\xe7\xe0\x98\xb7\xf7\xab\xd5z\xbbU\xa4M\xee)}\xdd{"}\xe5\xad\x82'
+Receive: 29 657.493763 657.493387 49: seq: 19, identify_response offset=1600 data=b"\x8b\xe5n\x19\xac7\x9b\xdb\x8d\xa4NS$ l\xaa'\xb1\xd3\xd5\xcd\x97\xe5\xe7\xab\x0bE\x9c\x16\xa8\r\xd77\xdb\xdb\r&\xefn7"
+Receive: 30 657.494684 657.494381 49: seq: 1a, identify_response offset=1640 data=b';\x8b.wj\x97\xb6\xb4\xd1\xe7\xab\xadw\xf1\x15\xc03z\xf5/>)\xd1!\x057v\xbe[_C\xc0\xd8w#\xef\x03\xbc\xdf-'
+Receive: 31 657.495782 657.495141 49: seq: 1b, identify_response offset=1680 data=b'\xa1}\xff\x19\x9f\xb9\xb3\xffbpA\x03\xe4Wj\xb4\xa6\x11B\xb7\x1a]\xd2ha0?\xd2\xe8|F\xa3\xb7N\x80\xd3\xbc0\xd7\xf7'
+Receive: 32 657.497773 657.496545 49: seq: 1c, identify_response offset=1720 data=b"}\xc9\n\x13\xd3\xf1d\x1e\xc9#\xa6\xd5l\xe1\xce\xe4\xb9\xe8\xd5\x9b\t)\xc0*\xe1\xd3\xb1\xeb=\x80'ML\xdf\x9c\xf2A\xeaZ{"
+Receive: 33 657.498801 657.498361 49: seq: 1d, identify_response offset=1760 data=b'\xee\xc6N\xb6m\xceS\x93\xcc\xbcy\x92\x83S~\xc17\xd3=\x07\xa0\xd0}\xc9\xd6\xd0\xa6\xedd\xcf|\xa7j\x1e\xfbN\xe9\x00\xd0\xaa'
+Receive: 34 657.500770 657.499537 49: seq: 1e, identify_response offset=1800 data=b"\x98|y\x89B\x17\xc9\x81\x96\xbe#\x9d\xff^e\xd8*>/\x13\xd9nrL\x15\x18\xa9\xa2p\xc52'\xcb+\xe4\x17\xf8\xe5\xfb\xca"
+Receive: 35 657.501720 657.501445 49: seq: 1f, identify_response offset=1840 data=b")\x9eS'|\r\x91)I\xe7\xef<\x1fc\xbc\xd7\x05b9\x17N\x81\x94\x01;\xa9v\x1f\xd6\xfe\xa3\xa2\x02\xcb\x11\xf1\x01T\x9d\xea"
+Receive: 36 657.502790 657.502364 49: seq: 10, identify_response offset=1880 data=b'\xc8*\'\x16\x0e\xd3{\xa9\xdcME\x7f\x8d,\x08\x95"\x85*\xb6\xd5\xac\xcc\xfed\xde\x88\xedx\xe6\xe8L\xa1Y\x0f\x11\xafT\x13\xd4'
+Receive: 37 657.504767 657.503573 49: seq: 11, identify_response offset=1920 data=b')X)\x00\x92:/\xdb\x96\x06Pr\x84iQ\xc9\xe2\xffR\xf5PLn\x16g\x11\x7fq\x12VR\x94\x02\x93Y\xa7\xad\xa2\xb2\xf7'
+Receive: 38 657.505769 657.505430 49: seq: 12, identify_response offset=1960 data=b'O\xbfS\x95@\r\xac\x7f\xe9\x06VG\x88\x8e\xfbn\xa2\xb2e\x18\x94\xa3m\xd4U#i\xa8fn\xdc\x9e#\xfb\xd2\x00*&\t\xb0'
+Receive: 39 657.506766 657.506417 49: seq: 13, identify_response offset=2000 data=b'S\xa1Y5f\xae2\x84\xf08r\xe0\x11\x1d\xbd\xab\xaa\xe6\x0c\xe0\xa1\xae*\xb0\x88\xc3\xc9\xdc*\x8d+U~\xaaZ\xce`\xe9\x06\xb1'
+Receive: 40 657.507764 657.507419 49: seq: 14, identify_response offset=2040 data=b'T\x8ef\x0eh$-\x96r\xc8B\xb5d\x0c0\xcd\x91Rk\x81\xe1\xf2\xfe\xe4\xaa\x83`\xc0\x19\xcf\x8b\xf8\x05\x12\x90mJ\x05\xa7\x82'
+Receive: 41 657.508784 657.508286 49: seq: 15, identify_response offset=2080 data=b'\xc3\xc0q}\x8e\xb2>\xb7\xc5+\xb5\xa3\xa41Q\x9d\xdf\x9e4\t\x807\xef\xcc\xebb\x82\xfc\x8a\xa66i\xf1_\x1dy\x99\xe68E'
+Receive: 42 657.510719 657.509502 49: seq: 16, identify_response offset=2120 data=b'\xd1\xc5\xa1\x9e\xda5{\xa1\x8bY\x18\xf1\xa8r\xe7\x1ae>\xc3M\xf1,D\x82j4\x84\x00\xb1\x10\x1c[\xa2\xd2\x8c\xea\x84:BX'
+Receive: 43 657.511728 657.511331 49: seq: 17, identify_response offset=2160 data=b'\x9c\xf1\x97\xca\x89\xe2C\x8ch"o\x9a?q\x92+\x95\x9f\x7f\xbf\xe0\xc8\xcaH\x9a\x88\xc6\xa6\x82\xf9\x9a\x84\tQ\xd6\xc8\xf9\x9ex\xb9'
+Receive: 44 657.512756 657.512295 49: seq: 18, identify_response offset=2200 data=b'O\xf2g\xd5!\xbd\x81]1G\x1d\x87\x8cRzG\xaa8\xdb\x00\xbaz\t\x98\xf6V(\xec\x85\x0c\x97\xd6\xa2\x8a\x92\xba\xcei\n\xee'
+Receive: 45 657.513690 657.512295 18: seq: 18, cartographer_data clock=2348704826 data=27263605 temp=55497
+Receive: 46 657.513699 657.513450 49: seq: 19, identify_response offset=2240 data=b'\x18\xb1\xbfG\xb6\rF NN\x16-\xdd\xecitj\xc1\xb5\x16\xc8.\x89\x13\xd5*\xce\xa9\x1e\xc3\x86\xeb\x13\x03\x9d\x8c\xb1\x84\xe1\xd0'
+Receive: 47 657.514703 657.514420 49: seq: 1a, identify_response offset=2280 data=b'=@\x8b\xc8\xae\xa8\xeb\xba\xb5\x08\x03\xd1a\x87$A\xa2\x18\x82\x13i_\rq\xea\xce5+\xad\xf8\xbe\xb1\x82:5[\xf8\x04u\xc1'
+Receive: 48 657.515742 657.515334 49: seq: 1b, identify_response offset=2320 data=b'\x92\x01\xc2\x88\xd3:5s\xc6\x0e \xb6\xadiM\xc2m\xb1\x92\x0eK^D\xba5\r\x91^z\xab\xddJ\x95\xe7\xce\x9e\xc9\xd3\xa9\x93'
+Receive: 49 657.516774 657.516388 49: seq: 1c, identify_response offset=2360 data=b'Q\xc9\xb3\x93\x07&\x10\x92`\xa1Z]\xf7\x99\xa8\x0bJ\x84A\x92\xda\xd4J\xbb]\xfd\x15\x05\x11\xb1\xce\x1eA\t\x0e2R\xa9uk'
+Receive: 50 657.517728 657.517333 49: seq: 1d, identify_response offset=2400 data=b'^4\x80\x19}[!UG\xc1%\xf2R\x1a\x1e\xb2i\xe1\x84B\xdf\xf2\xe4Lf\x19\xa4\xe1r\xa3\xba\xd9Xu\xe6\x1b\xa82\x0f\xd5'
+Receive: 51 657.518721 657.518294 49: seq: 1e, identify_response offset=2440 data=b"\xff\xb0\xb3de\xdd5\xcd'\x00\xe5\\\xf3,\x81?~\x02K\xec!1n\xd6\n\x07\xf7CE]\xe2t\xf7\xa0\x1e\x8a\xfcNd\x1d"
+Receive: 52 657.519721 657.519428 49: seq: 1f, identify_response offset=2480 data=b'\xba\xfez\x14\xa9\x0e\xa8\xa0\xde\x18yJ\xa5-\xa8\x9f\xe5\x81q\x1a\x15/\x02\xad$\x01)\t]\x87\xd2l\xa9\x8a\xba\xae\x97vC\xd5'
+Receive: 53 657.520685 657.520290 49: seq: 10, identify_response offset=2520 data=b'\x04\x82Y\xdb\xe4mtG\xa2\xe8\xbb\x8b\xe9T\xc6K=\x98\xc9\x98\xac\x06\xb3\xa9\xbc[\x0cf\xb39\xde\xfd\xb7Aa\xd5\xe4G\xd7\xb7'
+Receive: 54 657.521677 657.521140 49: seq: 11, identify_response offset=2560 data=b'7W;\x9d\x18\xdd~Yo.?\xdf~\x95\xb46\xcb\xaf\xc1fyC)\xe0\xd8&B\xdb\xbb\xf5\xea\xea\xf2ju\x92\xa8\xcd>\x1e'
+Receive: 55 657.522700 657.522133 49: seq: 12, identify_response offset=2600 data=b'D@1\x16\xcb\xc8\xba\x82\x82\xb3\xc7\xe0P\xc9-\xe8\xe1\xbe\xc9\xfc)\xc4\xd5\x03k\xf4\xf1\xe6\xde\xf9x\xf7\xf9\x89\xf2t\xdcL\x01\xef'
+Receive: 56 657.523680 657.523200 49: seq: 13, identify_response offset=2640 data=b'\xc5\xd5\x87=\xfb\xf5\xadS\xf7\x93\xd7i\xca2\xdb;\xc3\x95\xb9\xa7\xbe\xb7\x91\xc3v\x1e^\x11\xaae;\xb3\xfd\xc9\xed\x1dE\xa0\xce\n'
+Receive: 57 657.524730 657.524186 49: seq: 14, identify_response offset=2680 data=b"\x89li\xabb\xbdv*\x9e\x16\xb2V|G\xb1L\x82[\x05\xe4\xc2~\xf9q('\x94o\xb2\xc4\x94\xcdd\x9a3Z%\xbf^\xc0"
+Receive: 58 657.525740 657.525203 49: seq: 15, identify_response offset=2720 data=b"!\x9a\xd6\x1e\xf1\xb0\x985\rxQ'\x95\xed\xa7/\x16M\xff\xbas~\xd4\xfc\xf0\xbfCI\xb4\xdb\xe3X~\xae\x12m#\xd1^k"
+Receive: 59 657.526727 657.526375 49: seq: 16, identify_response offset=2760 data=b"Y'\xdf\xba\xfd%1\xf4\xf7\x00\xbf\xe9\xf0\xb6\x16\xdbV\xaf\x92\xc9\xcf\x84J]\xe8\xe6pN?\xf1\xd2\xe7\xc3\xa5\x80F\xfb\x93\xc3b"
+Receive: 60 657.527682 657.527255 49: seq: 17, identify_response offset=2800 data=b'.\xed\x04v\x0fN\x92G%t\xdb\xd4\x81\xfag\xa1\xea\x866K\xde\x91\xf7k\xaf\xe9\xb4\xe4\x9a\x1bSm\t[\xa3K\x01uH>'
+Receive: 61 657.528710 657.528193 49: seq: 18, identify_response offset=2840 data=b'\xd4\xd2\xdd\xcb\x8f\xa3E\x8e\xd4\x0b\xa6\x1f\x98\x18%\xb4\x1eQB\xd9\xf8O\xd3\xe4=}<\xefT\x83i \xf5v_\xb0-\xecI\xb7'
+Receive: 62 657.529734 657.529383 49: seq: 19, identify_response offset=2880 data=b'K4X\xd7C\xf7dz[V2\xdf\\\x8cU\xb2k\xbfY\x83\xc7:\xd5\x0f\xf1\x87R"\x7f\xd8S9\xadK\xea-h\xd4\xfa\x9d'
+Receive: 63 657.530729 657.530322 49: seq: 1a, identify_response offset=2920 data=b'\xef\xb6\x1b#\xcd\x9a\x90\xd9F\xd5\xe9FSC\xe3|L~Of\xb1\xea\xeb[\xdd\xb6\x9b\t\xdc\x80\xfe\xacO_\xfd[\x05\xb5\xf3e'
+Receive: 64 657.531743 657.531326 23: seq: 1b, identify_response offset=2960 data=b'\xe2\xcc~v\x7f\x1e\x8f\xde\xfe\x07\xbe\x00\x945'
+Receive: 65 657.532718 657.532495 9: seq: 1c, identify_response offset=2974 data=b''
+Receive: 66 657.541726 657.541125 12: seq: 1d, uptime high=0 clock=2353629815
+Receive: 67 657.593751 657.592828 11: seq: 1e, clock clock=2362469999
+Receive: 68 657.630760 657.592828 18: seq: 1e, cartographer_data clock=2368704840 data=27263216 temp=55500
+Receive: 69 657.645748 657.644931 11: seq: 1f, clock clock=2371310213
+Receive: 70 657.697851 657.696880 11: seq: 10, clock clock=2380150411
+Receive: 71 657.748743 657.696880 18: seq: 10, cartographer_data clock=2388704966 data=27263216 temp=55500
+Receive: 72 657.749822 657.749086 11: seq: 11, clock clock=2388990635
+Receive: 73 657.801760 657.801060 11: seq: 12, clock clock=2397830735
+Receive: 74 657.853759 657.853027 11: seq: 13, clock clock=2406670921
+Receive: 75 657.866768 657.853027 18: seq: 13, cartographer_data clock=2408704840 data=27263605 temp=55495
+Receive: 76 657.905773 657.904930 11: seq: 14, clock clock=2415511133
+Receive: 77 657.957770 657.957260 11: seq: 15, clock clock=2424351305
+Receive: 78 657.970754 657.970263 11: seq: 16, clock clock=2426561337
+Receive: 79 657.983755 657.970263 18: seq: 16, cartographer_data clock=2428704840 data=27263545 temp=55500
+Receive: 80 658.101769 657.970263 18: seq: 16, cartographer_data clock=2448704840 data=27263545 temp=55501
+Receive: 81 658.219751 657.970263 18: seq: 16, cartographer_data clock=2468704840 data=27263605 temp=55500
+Receive: 82 658.336729 657.970263 18: seq: 16, cartographer_data clock=2488704840 data=27263545 temp=55505
+Receive: 83 658.454847 657.970263 18: seq: 16, cartographer_data clock=2508704840 data=27263545 temp=55504
+Receive: 84 658.572754 657.970263 18: seq: 16, cartographer_data clock=2528704840 data=27263216 temp=55498
+Receive: 85 658.689835 657.970263 18: seq: 16, cartographer_data clock=2548704840 data=27263605 temp=55496
+Receive: 86 658.698777 657.970263 17: seq: 16, stats count=2988 sum=4292370 sumsq=502134766
+Receive: 87 658.783713 658.782608 8: seq: 17, debug_result val=1040
+Receive: 88 658.784703 658.784424 8: seq: 18, debug_result val=1381
+Receive: 89 658.807730 658.784424 18: seq: 18, cartographer_data clock=2568704840 data=27263216 temp=55506
+Receive: 90 658.813757 658.813279 10: seq: 19, config is_config=0 crc=0 is_shutdown=0 move_count=0
+Receive: 91 658.815732 658.815094 14: seq: 1a, cartographer_base_data bytes=b'\xa00\xe2\x01w\xda' offset=0
+Receive: 92 658.819717 658.818019 15: seq: 1e, config is_config=1 crc=3539357898 is_shutdown=0 move_count=1024
+Receive: 93 658.925753 658.818019 18: seq: 1e, cartographer_data clock=2588704840 data=27263605 temp=55502
+Receive: 94 658.955839 658.954543 11: seq: 1f, clock clock=2594014883
+Receive: 95 659.043102 658.954543 18: seq: 1f, cartographer_data clock=2608704840 data=27263605 temp=55502
+Receive: 96 659.160996 658.954543 18: seq: 1f, cartographer_data clock=2628704840 data=27263605 temp=55503
+Receive: 97 659.277729 659.167528 18: seq: 10, cartographer_data clock=2648704840 data=27263216 temp=55494
+Receive: 98 659.289742 659.288122 12: seq: 11, shutdown clock=2650626117 static_string_id=Command request
+Receive: 99 659.290810 659.289713 7: seq: 12, is_shutdown static_string_id=Command request
+MCU 'mmu' shutdown: Command request
+clocksync state: mcu_freq=72000000 last_clock=1084612006 clock_est=(658.428 1059344232 71999353.907) min_half_rtt=0.000225 min_rtt_time=658.516 time_avg=658.428(0.018) clock_avg=1059344232.731(1296354.569) pred_variance=3820939584.555 clock_adj=(0.055 71996391.750)
+Dumping serial stats: bytes_write=1228 bytes_read=5169 bytes_retransmit=9 bytes_invalid=0 send_seq=143 receive_seq=143 retransmit_seq=2 srtt=0.001 rttvar=0.000 rto=0.025 ready_bytes=0 upcoming_bytes=0
+Dumping send queue 100 messages
+Sent 0 658.219645 658.219645 9: seq: 1b, identify offset=1080 count=40
+Sent 1 658.221688 658.221688 9: seq: 1c, identify offset=1120 count=40
+Sent 2 658.223821 658.223821 9: seq: 1d, identify offset=1160 count=40
+Sent 3 658.225733 658.225733 9: seq: 1e, identify offset=1200 count=40
+Sent 4 658.227691 658.227691 9: seq: 1f, identify offset=1240 count=40
+Sent 5 658.229753 658.229753 9: seq: 10, identify offset=1280 count=40
+Sent 6 658.231486 658.231486 9: seq: 11, identify offset=1320 count=40
+Sent 7 658.233836 658.233836 9: seq: 12, identify offset=1360 count=40
+Sent 8 658.235869 658.235869 9: seq: 13, identify offset=1400 count=40
+Sent 9 658.237701 658.237701 9: seq: 14, identify offset=1440 count=40
+Sent 10 658.239691 658.239691 9: seq: 15, identify offset=1480 count=40
+Sent 11 658.241689 658.241689 9: seq: 16, identify offset=1520 count=40
+Sent 12 658.243784 658.243784 9: seq: 17, identify offset=1560 count=40
+Sent 13 658.245818 658.245818 9: seq: 18, identify offset=1600 count=40
+Sent 14 658.247650 658.247650 9: seq: 19, identify offset=1640 count=40
+Sent 15 658.249678 658.249678 9: seq: 1a, identify offset=1680 count=40
+Sent 16 658.251557 658.251557 9: seq: 1b, identify offset=1720 count=40
+Sent 17 658.253600 658.253600 9: seq: 1c, identify offset=1760 count=40
+Sent 18 658.255721 658.255721 9: seq: 1d, identify offset=1800 count=40
+Sent 19 658.257697 658.257697 9: seq: 1e, identify offset=1840 count=40
+Sent 20 658.259745 658.259745 9: seq: 1f, identify offset=1880 count=40
+Sent 21 658.261574 658.261574 9: seq: 10, identify offset=1920 count=40
+Sent 22 658.263713 658.263713 9: seq: 11, identify offset=1960 count=40
+Sent 23 658.265725 658.265725 9: seq: 12, identify offset=2000 count=40
+Sent 24 658.267673 658.267673 9: seq: 13, identify offset=2040 count=40
+Sent 25 658.269732 658.269732 9: seq: 14, identify offset=2080 count=40
+Sent 26 658.271620 658.271620 9: seq: 15, identify offset=2120 count=40
+Sent 27 658.273667 658.273667 9: seq: 16, identify offset=2160 count=40
+Sent 28 658.275735 658.275735 9: seq: 17, identify offset=2200 count=40
+Sent 29 658.277606 658.277606 9: seq: 18, identify offset=2240 count=40
+Sent 30 658.279573 658.279573 9: seq: 19, identify offset=2280 count=40
+Sent 31 658.281696 658.281696 9: seq: 1a, identify offset=2320 count=40
+Sent 32 658.283677 658.283677 9: seq: 1b, identify offset=2360 count=40
+Sent 33 658.285706 658.285706 9: seq: 1c, identify offset=2400 count=40
+Sent 34 658.287833 658.287833 9: seq: 1d, identify offset=2440 count=40
+Sent 35 658.289791 658.289791 9: seq: 1e, identify offset=2480 count=40
+Sent 36 658.291625 658.291625 9: seq: 1f, identify offset=2520 count=40
+Sent 37 658.293858 658.293858 9: seq: 10, identify offset=2560 count=40
+Sent 38 658.295765 658.295765 9: seq: 11, identify offset=2600 count=40
+Sent 39 658.297643 658.297643 9: seq: 12, identify offset=2640 count=40
+Sent 40 658.299844 658.299844 9: seq: 13, identify offset=2680 count=40
+Sent 41 658.301694 658.301694 9: seq: 14, identify offset=2720 count=40
+Sent 42 658.303846 658.303846 9: seq: 15, identify offset=2760 count=40
+Sent 43 658.305777 658.305777 9: seq: 16, identify offset=2800 count=40
+Sent 44 658.307755 658.307755 9: seq: 17, identify offset=2840 count=40
+Sent 45 658.310117 658.310117 9: seq: 18, identify offset=2880 count=40
+Sent 46 658.311853 658.311853 9: seq: 19, identify offset=2920 count=40
+Sent 47 658.314035 658.314035 9: seq: 1a, identify offset=2960 count=40
+Sent 48 658.315839 658.315839 9: seq: 1b, identify offset=3000 count=40
+Sent 49 658.317770 658.317770 9: seq: 1c, identify offset=3040 count=40
+Sent 50 658.319720 658.319720 9: seq: 1d, identify offset=3080 count=40
+Sent 51 658.321709 658.321709 9: seq: 1e, identify offset=3120 count=40
+Sent 52 658.323743 658.323743 9: seq: 1f, identify offset=3160 count=40
+Sent 53 658.325596 658.325596 9: seq: 10, identify offset=3200 count=40
+Sent 54 658.327715 658.327715 9: seq: 11, identify offset=3240 count=40
+Sent 55 658.329506 658.329506 9: seq: 12, identify offset=3280 count=40
+Sent 56 658.331470 658.331470 9: seq: 13, identify offset=3320 count=40
+Sent 57 658.333760 658.333760 9: seq: 14, identify offset=3360 count=40
+Sent 58 658.335713 658.335713 9: seq: 15, identify offset=3400 count=40
+Sent 59 658.338214 658.338214 9: seq: 16, identify offset=3440 count=40
+Sent 60 658.339738 658.339738 9: seq: 17, identify offset=3480 count=40
+Sent 61 658.341637 658.341637 9: seq: 18, identify offset=3520 count=40
+Sent 62 658.343678 658.343678 9: seq: 19, identify offset=3546 count=40
+Sent 63 658.357914 658.357914 6: seq: 1a, get_uptime
+Sent 64 658.411218 658.411218 6: seq: 1b, get_clock
+Sent 65 658.463411 658.463411 6: seq: 1c, get_clock
+Sent 66 658.515573 658.515573 6: seq: 1d, get_clock
+Sent 67 658.567344 658.567344 6: seq: 1e, get_clock
+Sent 68 658.619409 658.619409 6: seq: 1f, get_clock
+Sent 69 658.671338 658.671338 6: seq: 10, get_clock
+Sent 70 658.723713 658.723713 6: seq: 11, get_clock
+Sent 71 658.776208 658.776208 6: seq: 12, get_clock
+Sent 72 658.779132 658.779132 6: seq: 13, get_clock
+Sent 73 658.821106 658.821106 6: seq: 14, get_config
+Sent 74 658.824602 658.824602 7: seq: 15, allocate_oids count=16
+Sent 75 658.824863 658.824863 9: seq: 16, config_spi oid=0 pin=PB12 cs_active_high=0
+Sent 76 658.825140 658.825140 9: seq: 17, config_spi_angle oid=1 spi_oid=0 spi_angle_type=mt6826s
+Sent 77 658.825196 658.825196 8: seq: 18, config_buttons oid=4 button_count=8
+Sent 78 658.825219 658.825219 8: seq: 19, config_buttons oid=5 button_count=2
+Sent 79 658.825400 658.825400 18: seq: 1a, spi_set_sw_bus oid=0 miso_pin=PB14 mosi_pin=PB15 sclk_pin=PB13 mode=3 pulse_ticks=7, config_digital_out oid=6 pin=PD3 value=0 default_value=0 max_duration=0
+Sent 80 658.825483 658.825483 11: seq: 1b, config_digital_out oid=7 pin=PD2 value=0 default_value=0 max_duration=0
+Sent 81 658.825513 658.825513 11: seq: 1c, config_digital_out oid=8 pin=PD1 value=0 default_value=0 max_duration=0
+Sent 82 658.825624 658.825624 17: seq: 1d, config_digital_out oid=9 pin=PD0 value=0 default_value=0 max_duration=0, config_digital_out oid=10 pin=PD15 value=0 default_value=0 max_duration=0
+Sent 83 658.825698 658.825698 11: seq: 1e, config_digital_out oid=11 pin=PD14 value=0 default_value=0 max_duration=0
+Sent 84 658.825766 658.825766 11: seq: 1f, config_digital_out oid=12 pin=PD13 value=0 default_value=0 max_duration=0
+Sent 85 658.825790 658.825790 11: seq: 10, config_digital_out oid=13 pin=PD12 value=0 default_value=0 max_duration=0
+Sent 86 658.825892 658.825892 17: seq: 11, config_digital_out oid=14 pin=PE3 value=0 default_value=0 max_duration=0, config_digital_out oid=15 pin=PE4 value=1 default_value=1 max_duration=0
+Sent 87 658.826125 658.826125 30: seq: 12, config_digital_out oid=2 pin=PE13 value=1 default_value=1 max_duration=0, set_digital_out_pwm_cycle oid=2 cycle_ticks=3600, config_counter oid=3 pin=PE11 pull_up=1, finalize_config crc=4192379201, buttons_add oid=4 pos=0 pin=PD7 pull_up=0
+Sent 88 658.826164 658.826164 10: seq: 13, buttons_add oid=4 pos=1 pin=PD6 pull_up=0
+Sent 89 658.826217 658.826217 10: seq: 14, buttons_add oid=4 pos=2 pin=PD5 pull_up=0
+Sent 90 658.826248 658.826248 10: seq: 15, buttons_add oid=4 pos=3 pin=PD4 pull_up=0
+Sent 91 658.826318 658.826318 10: seq: 16, buttons_add oid=4 pos=4 pin=PE10 pull_up=0
+Sent 92 658.826375 658.826375 10: seq: 17, buttons_add oid=4 pos=5 pin=PE9 pull_up=0
+Sent 93 658.826433 658.826433 10: seq: 18, buttons_add oid=4 pos=6 pin=PE8 pull_up=0
+Sent 94 658.826490 658.826490 10: seq: 19, buttons_add oid=4 pos=7 pin=PE7 pull_up=0
+Sent 95 658.826559 658.826559 18: seq: 1a, buttons_query oid=4 clock=1150894882 rest_ticks=144000 retransmit_count=50 invert=255
+Sent 96 658.827057 658.827057 51: seq: 1b, buttons_add oid=5 pos=0 pin=PD9 pull_up=0, buttons_add oid=5 pos=1 pin=PD8 pull_up=0, buttons_query oid=5 clock=1151614882 rest_ticks=144000 retransmit_count=50 invert=3, queue_digital_out oid=2 clock=1102182705 on_ticks=3600, query_counter oid=3 clock=1150174882 poll_ticks=72000 sample_ticks=7200000, get_config
+Sent 97 659.275014 659.275014 11: seq: 1c, spi_transfer oid=0 data=b'0\r\x00'
+Sent 98 659.288360 659.288360 6: seq: 1d, emergency_stop
+Sent 99 659.310254 659.310254 13: seq: 1e, queue_digital_out oid=15 clock=1129722826 on_ticks=1
+Dumping receive queue 100 messages
+Receive: 0 658.176045 658.174579 49: seq: 17, identify_response offset=240 data=b"\xf9\xcbO\xadwh\xf3<j\x0f<an'\xfc\xd9\x8a\xfa\xcd\xf0\x84#<!u-d\x135Y\xf2$\xb9\xd5\xd4q)\x8b\xac\x89"
+Receive: 1 658.177995 658.176773 49: seq: 18, identify_response offset=280 data=b"\xf4\xaa^V\xc2m\xa8\xf5g \xc9\\\xc4u$\xf7m\x93V/\xe5\xe0<@\xe1\x96\xdbl\x17)\xb9\xea%\xe4!S'\xf3\xd2\xb8"
+Receive: 2 658.179986 658.178553 49: seq: 19, identify_response offset=320 data=b'\x89\xa3Z\xc4\xe9[\xc4\x9b\x04a-\x9cy\xafy8\x9e\x1c\xcf\x1b\x9cO\x1d*-Zsj\xc5)\x0c\r\xcdc\x91\xf9S\xb3\x81\xc7'
+Receive: 3 658.182032 658.180697 49: seq: 1a, identify_response offset=360 data=b'VF\xdd\xcf\xa8y;\x08b<\x9b\xd8I,\x1f;\x0b\x9b\x91#t\xbb\x07\xea\x14uw\x07\x1d\x81O\xa6\x868\xcdvY\x13\xe7Q'
+Receive: 4 658.184020 658.182754 49: seq: 1b, identify_response offset=400 data=b'\xd56\xbd\t\xcfq\xde\n\x92\x8b\xd8\xc6m\xdeD\xa6\xa3\x88_\xa3\xb4\xad\xe3\x06\x94\x9f\x0e\xe7\xcf\x0c?\x01\xea\xdbT\x87\x0e\xaf\xa4\xb3'
+Receive: 5 658.186008 658.184586 49: seq: 1c, identify_response offset=440 data=b'x`\x17\xdf\xa7\xe3\xf1lnDQK%xO\xe8\x8ftl\xbe&\xe6kj\xbef\xe6K\xe4\xf1\x9b\xd1\x10\xb8\x12{\xe1\xfb\xd7\x99'
+Receive: 6 658.191014 658.189961 49: seq: 1d, identify_response offset=480 data=b"\xff\xaa\x97\xd8\xc5\xa0\xf5\xc9>.K\x91\xd3\xd9\xe0\xdc\x9a\x87L\xf2'{\xf3V\xf4Y\x90x\xfa\xaa\xc7\x96o\x96\x14\xc1h1\x9ek"
+Receive: 7 658.192999 658.191791 49: seq: 1e, identify_response offset=520 data=b'\xd6@f\r\xd07dy\x9a\xf8S?8E\xb5\x18\xf7\xa9\xa2\x97\xac\xd9\x83\xf64\x8f\xc7\xf4\x1ev\xf3\xfep\xae\xd5\xa7<\x93A\xfa'
+Receive: 8 658.195003 658.193791 49: seq: 1f, identify_response offset=560 data=b'\xf2}}\xf2\x80\x10\xce\x9e\x1d\x1c\x05\xb3\xc7)\x0e\xed"\x98\x8cN\xeds67T\xa5\xa8\x0e\xd9\xab\xc8{\xbaB\xa6#\xb3\xff\x01\xd7'
+Receive: 9 658.197019 658.195775 49: seq: 10, identify_response offset=600 data=b'}\x0bn\xae\x89PG\x1c\x83\x95\x02\xba@\xf4\xf6\x86&\xf6\xf0\x87\x97\xe2\x84\xfe%o`\xc4\x96\x87\xd2\xbe}\xdb\xd7G\xe89R\xc8'
+Receive: 10 658.198991 658.197614 49: seq: 11, identify_response offset=640 data=b'\xb1\xbd=Y\xc9h\x9b\xe5\x8eA \xb5\x14\t\x12K:\xdf\xd0QI\xb0\xeb\xfe>\xd0\xcd5\xd9\xb3\x88\xf6\xd9n\xcf.p\xe1\xd2\x83'
+Receive: 11 658.201052 658.199709 49: seq: 12, identify_response offset=680 data=b'\xd1\xefrq\xc2\xa1\x981+\xf0a\xe8w\xa6j\x0fuj\xb6\x1a\x8a\n\xb9\xfb\xe5\xa7\x7fBP\x08\xc7\x9d\xb9\xa8+\xa8\xbe\x894\xea'
+Receive: 12 658.203026 658.202240 49: seq: 13, identify_response offset=720 data=b'\x19\xda\x9b\x92\xcdla\xdd\\"Oh\xb9\'A9\xf4\xe7[\x99D]+\xf2\x92"\x8d\xfa\x865q\x8e\xde\x08\x0c\x87f\xeb\xd0T'
+Receive: 13 658.205059 658.203781 49: seq: 14, identify_response offset=760 data=b'\xea\xe9\xa5Y\xad?\xd91\x13\xb1\xa5js)\x1c\xa6\x81U\xe6f/\xea\xa2\x02\x17v8)Rw\xd8Juj\xef\xaf)\x926\xae'
+Receive: 14 658.207011 658.205757 49: seq: 15, identify_response offset=800 data=b'\x8d.\xd5\xaf\xd1\x91\xff\xf3\x1a\xd3\x89\x9a\xdad\x85\xe0\xa3\xd9\xab9\x1d\x10\xad*\x19\xd3\x18\x06\xee$\x14\xa2\xbd\x8b\xd1\xd9 \x15\x8f-'
+Receive: 15 658.209001 658.207610 49: seq: 16, identify_response offset=840 data=b'\x18M\x05\xe8a\xa1[\xb0\xf4\x8e\x0c\x86/\xd57d\x18z\xbc\xaaNE\x8d\x8bA\xe4\xac\xd9\xb9\x06\x9a\xe0\xa5\xce\x1aqD\x81\x96\xc1'
+Receive: 16 658.211003 658.209652 49: seq: 17, identify_response offset=880 data=b"\x84\xb0\x15Q\x88z'\xca\xe4-B/\x0c\x9b\x80.\xf6\xc8\xd1\xbe*\xc4Q`\x95qqp\xadL\xb5MX\xed\x06^\xd8\xba\x8d\x02"
+Receive: 17 658.213012 658.211679 49: seq: 18, identify_response offset=920 data=b'|\xdc\xa8\x07\x16\xe0\x10\xb2b\x17\x15L\xec\xe2\x14\xd6aOq#\x8c\x80\x02P\xe7m\x06\x12\x06\xbf\x11\xb1\x0c\xbd\xa4N\xd8\x7f\x9f\r'
+Receive: 18 658.214992 658.213693 49: seq: 19, identify_response offset=960 data=b'v\xe02h\x9fp3\xaaE4\xe0\x8f\xb8\xd9\x1e\xf0\xea\xc0\xd8\xcf\x06*\x90\x80Y\x97i\x04jk\xe2$~\xb3\x9c\xa7~\x8f\x0c\xaf'
+Receive: 19 658.216993 658.215657 49: seq: 1a, identify_response offset=1000 data=b'\xc0sB\xbf"\x83\xeb\xa0\x88\xf1c\xc0\x0b\xf6\x82\x9e\x13\xdd\x1dx_\xd7\x99B\x93\\!H\x00\x7f\xf1\xf2\x84d\xf5\x1f\xfbv\x96|'
+Receive: 20 658.218997 658.217662 49: seq: 1b, identify_response offset=1040 data=b"q'\x82\xb1\x1a\x03McG\x95\x1d\xf3\xe9\xb0\x9a\xaa\r\x10@\xdaZ\xe3$\xd5\xc1\x13z\xa8eQ.\x94\x9f\x84\xd3f\xa9(\x9bl"
+Receive: 21 658.221059 658.219645 49: seq: 1c, identify_response offset=1080 data=b'\x0b\xa0k\xbb\x85\x1d\x90\xe1\x1bX\x01;\xd3\xa1\xe9G\xe4\xb1\x00\xdd\xd5!\x83\xa4n.\x7f\xe2\x8e\xb4\x87\xd4*\x06\x03\xc5}\xeb\\\xca'
+Receive: 22 658.223041 658.221688 49: seq: 1d, identify_response offset=1120 data=b'\x04\xd4\x985\xa8\x87\xde:\xea\t\xe2\x9f\xf5\xe8H\xe3Z\xeb\x1f\xe7SK\xd0\x81s=F\xd3y\x8f\xae\xcfhjW\xea#\xbe\x1f\xb4'
+Receive: 23 658.225027 658.223821 49: seq: 1e, identify_response offset=1160 data=b'\xad\xc7\xb7F\x80\x93&\x13:T\x04e\xbd\xc2\xda\x9b\x8ar\xb6\x05\x17\xbc\x03f{\x91<900\x0c\xf4\xbe\xba(\xb3w\xbe\xd9\xb8'
+Receive: 24 658.227022 658.225733 49: seq: 1f, identify_response offset=1200 data=b'K\xd6?\xde\xcc\x08\xbc\x07&\xcd\xe1\x0e\x15\xb8\xd3\xfe\xd1\x9c01\xd1\x0c:\xf0\xab\x7f_a\x87\xea\xe8\xb6\xcca\xfaX\xab\xcfg\xd4'
+Receive: 25 658.229035 658.227691 49: seq: 10, identify_response offset=1240 data=b"'<:\xd0BS\xf4\xf0X\x8f\xd3\xc27t\x1dT\xd5\x97_\x8f\xech9\xb3\xa1\x1e\xac\xea\xf3\x99\xf5\xe8\x8e\x18\x19\x85=\x02\x1a_"
+Receive: 26 658.230948 658.229753 49: seq: 11, identify_response offset=1280 data=b"I\x8e\xd0'\x02\xac\xc8\xb6\x8d\x02\x1cF\x88\xcc\xba'\x008\xb2\xd9\xeb\xa9\xd8\xfb\x95U\x1c\xcd\xec(&7 \xe6\x83WO\x1d\xbd\x9c"
+Receive: 27 658.233060 658.231486 49: seq: 12, identify_response offset=1320 data=b'\xb2>\xb4\xe2T\xc2a\xd6\xa8\\\x80\xe8\x9b)=|h\xc8\x8d1\x80#\x1bkb\x04\x18\x9eE\xcc\xa2\xe6\xf0\xa8}\xda\x9e\xfc%\xfc'
+Receive: 28 658.235070 658.233836 49: seq: 13, identify_response offset=1360 data=b'f\x10\x80@4\x04M1\x8e\x8f\xd471\xe0\xc0\xd3_\x10f\x00\x15\xd2\xb8\x87\xe8\xa5K\xb0\xf1\xf0\x88\x88\x8e@\x80\xd6\xf0\xec\xa0['
+Receive: 29 658.237034 658.235869 49: seq: 14, identify_response offset=1400 data=b'\x984\xe5I\xa5xU[\x00\x0ce\xc2SVs\xc4\xf4\x99H\x0b\xe4;H\x19\xc4\x82[\xb1\xa8\x05\xe72\x96\xd5\x9cK\x17\t\x83\x8c'
+Receive: 30 658.239022 658.237701 49: seq: 15, identify_response offset=1440 data=b'\xc4v\x1bm\xeb\x18\xc2U\xd6(p\x8c8\xa6\xc7\x83#E$\x93\xd8\x1eHG\x8f\xcc\xa3n\xf3\xd1a\xe7\xc5mSE\x9a\x94\xf0\xd3'
+Receive: 31 658.241041 658.239691 49: seq: 16, identify_response offset=1480 data=b'\xe2\x88\xbb\xda\x91\x89\x81\xdc\x8c\xb2\xf4U\x81\xb0\x111\xaf\xa4\xaf~\x03\xf5\x1b\xaa\xdf1\xfc"\xeb\xd91k\x07\x80\x1c1\xc61f\x8d'
+Receive: 32 658.243047 658.241689 49: seq: 17, identify_response offset=1520 data=b'_\xbeb\x02\x91\xc0\xc1\xf1\xbd\xb0jC\xd4b\xc2tN\x90sFC3\xda\xc1\x05\xd8\xa5pAQ\xa5\xc2\xc1\x070ef\xa7tA'
+Receive: 33 658.245049 658.243784 49: seq: 18, identify_response offset=1560 data=b'A\x91\xc9JC\x81\xa2\x92\xd9)d\xaf\xd9\xf5\x91\xf64d\xae_?H\x88\x8aH\xb9\xc3\xb7\xd0\xd4d\xde\xa5:\r\xa6&x\x06\xce'
+Receive: 34 658.247026 658.245818 49: seq: 19, identify_response offset=1600 data=b'\x12"Dl\x10\xd93\xe7jA\xeb\x17\x96\x80p"z\x00\x86\x12\x16Y80\x13f\xc0\xc2\n\xe3wd\xdd\x058\x0c1@q{'
+Receive: 35 658.249001 658.247650 49: seq: 1a, identify_response offset=1640 data=b'\xb8\xc4\xc5\xc0\xdf\xc1\xaf\x9e\xa8\xeb\xcam\x1b\xb7STe\xd6\xc0\x90u\x86\xaa\x03\\\x1f\ty\x88\xc8\xb6\xb7\xf2)\x00<D\x84\xdc\xa3'
+Receive: 36 658.250989 658.249678 49: seq: 1b, identify_response offset=1680 data=b'\xc3\xeb\xae\xe3\x97\x88\xc2\xbb\x89\x1a\xd0Q\xe0\xc5f\xfc\x89\xeb\x90r\x06\'\xe7\x1fI\xb0C\xa1\xab\x01\xba[\xb9\x0b\xe2\x17"?\x12\x0b'
+Receive: 37 658.252998 658.251557 49: seq: 1c, identify_response offset=1720 data=b'\xf1\x81Pr\xc2\xef\x82\x1f\x9a[\xba\xc6\xcd\xb6\x08\xb9DN\xcc\xa0\xb6\x11\x94x=d\xb5\xe8\xe4\x08\x0b\xc3\xa9\xb7k\x97\x08\xd4\x88!'
+Receive: 38 658.255040 658.253600 49: seq: 1d, identify_response offset=1760 data=b'\xe2\xa9\xe8\xe18\xde\xf1\x17\x9d\x8ca\x05uyu\x19\xdd,\xff\x8d(\x17\xad\xf3\xe2a\x13\xdd]\x7f\xda`=\xc7\x1f\x9c\x0f\xee.\xa6'
+Receive: 39 658.257029 658.255721 49: seq: 1e, identify_response offset=1800 data=b'gw\x17\xb3Ao$\xa6\xa19\x0c-zC\x01\x8d@\xbe\x06\xff\xf3\xdd10(b\xb8\x04\x86\xcb\x19\xfc\x9b\xf4G#\x18\x83\x7f\xb3'
+Receive: 40 658.259072 658.257697 49: seq: 1f, identify_response offset=1840 data=b'\x08\xc7\xbeCy1\x86\x7f\x13\xf8\x17\xd2zcXnr\x86\xad\x1ee\xfc\xcda\xb5Y\x1c\xf6q\xdc?"\x88p\x18\xff\x87k\xf9\xe1'
+Receive: 41 658.261017 658.259745 49: seq: 10, identify_response offset=1880 data=b'\xf7\xe8\xbf\xbd\x9b\xf0\x9b\xfb\xbe\xfcx{\xf9[\xf4~\xbd\xfa\x1dKN#\xfa\xeflp\xfd\xe9\xfa\xfez\xf9\x91x\x90Pfx\x1fg'
+Receive: 42 658.263045 658.261574 49: seq: 11, identify_response offset=1920 data=b'w\x973\x9ez\x89\x17ps\xf9\x00c\xb2)\xc2`\xeb\x8f\xc2W\x01}w\x9fo\xf8b\xc3`\x86H}\xbd\xda\xac\xd6\x7f\xacx3'
+Receive: 43 658.265059 658.263713 49: seq: 12, identify_response offset=1960 data=b'\x0f\x9b\x0bb\x06\xd90\xfc/\x00\xf2\xcd\xfd\xf2~\x13m\x1en6\xbfG\x17\xcb\xcd\n3\xd3)v\xaf\xee\xeeV\xeb\x08\x7f\xa3\x8b\xdb'
+Receive: 44 658.267045 658.265725 49: seq: 13, identify_response offset=2000 data=b'\xfb_\xa3\xd5\xd5\x07\x18\xf4\xbf`\xda\xdaB"M\xf5$*\xc6\xbb\x954l\x836Pn\x04\'\x1f\x9c\x8f\xbep\xce\x05Dj\x0c\xb4'
+Receive: 45 658.269040 658.267673 49: seq: 14, identify_response offset=2040 data=b'aD}xI\x9c\xdc\xc1}\x04\x96Na1$G)\xde_\xdf\xacn\x1f\xee\xa9L\xfdiy\xf9\x1bM\x82m\xaf\xef#n\x86\xba'
+Receive: 46 658.271024 658.269732 49: seq: 15, identify_response offset=2080 data=b'\xb9^-\xafT\x1f\xf8\x98\xcd\xc3\xe5\xe5j\xb3\xe1-\xe8<\x8d\xfc\xd69\xb2\xbe\x0e.\xa3\xab\xe5\xfd2Z\xad\xd7\xb7k\xe2\x8e]('
+Receive: 47 658.273025 658.271620 49: seq: 16, identify_response offset=2120 data=b'\x0fXTu\xfax\x11\x7f,?^_1s\x9c\xc0\x0b\xae>mn\xd7\xd0yw\xbb\xbe7\xe4\xb4\x92[G\xc4\x85>^o\x82\xab'
+Receive: 48 658.274992 658.273667 49: seq: 17, identify_response offset=2160 data=b'\xcfth\xf8\x0c\xaf~e)B,\xd2vx\xbf\xba\x01Y\xc3\xbak\x12?\xec\xfdn9\x1a\x9c\xffgt\xe6O\xff\x0b\x8d\x0bl\x00'
+Receive: 49 658.277037 658.275735 49: seq: 18, identify_response offset=2200 data=b'\x06\xe2\xd6%\xb6\x00\xb8r\xeb\n[\xe3\xb9j\xad\xb0\x05i.\xb7\xdeck\xae\xb9|\xc0\xd6\x82\xb8|\xe9\x84m\xb5\xcf\xd8\x0f\xc3\x90'
+Receive: 50 658.278997 658.277606 49: seq: 19, identify_response offset=2240 data=b'\xb6\x19\xcb\xc9h<K\xe9\xf8E3\x9d\xfbS:3~\x06SI\xc2mr1\x19\xf9\xc1#_\x9c\n\xd5\xc8\x85\xcd\x9do\xbfg\xd9'
+Receive: 51 658.281049 658.279573 49: seq: 1a, identify_response offset=2280 data=b'\xa6\xd35\x86\x80;c\xfd\x15\xd0\x0eN\x9a \xf7\x87\xb4\x97c\xab\nq\x1f\xa08\x19\xba\xdd:+!\xebL\x95\x80=r\x88[\xce'
+Receive: 52 658.283038 658.281696 49: seq: 1b, identify_response offset=2320 data=b'\n\xd9c.sz\xcb\xf0t\x89%edz\x19\x97^Y5\x80~\xe0_\xb5\x05\x10\xf9R0\x82\xf4\xc8O{/\xfb\x0c\xbe\xd9\xdf'
+Receive: 53 658.285032 658.283677 49: seq: 1c, identify_response offset=2360 data=b'J\xef\x001\x16Vb\xe8\x0bs\xff\xd6 ~\xf6d\xb6\x03\xae^\xb3\x8f\x1b/\x93^\xac\xd6bp\xc9\xa5\x1fE,\x91\x14}5\x17'
+Receive: 54 658.287075 658.285706 49: seq: 1d, identify_response offset=2400 data=b'\xa8\xb8\x97\x906\xa5*\xb0\x9c(=]J4\xf3AR\x97\xfc\x18\xe6\x1d\xe2Z\xc2\x10\xa95\xd5~\xf4@- \xa8\xca\x86\x9e\xb4\xde'
+Receive: 55 658.289062 658.287833 49: seq: 1e, identify_response offset=2440 data=b"\xc7\xb0\xe9\xd4k*\x8f@\x01\x96\xec\xb1,\xc2\x89\xe8{.\xffj\\\x99\x95\xa9x\xf5\xf2\xb8\xc6h\x03'(;\x15a\xc6\r\xbf\xfe"
+Receive: 56 658.291064 658.289791 49: seq: 1f, identify_response offset=2480 data=b'\x1b\xb3V|-\xf8\x97z-\xe8H\xd8\xf3\x87c~h\x02\x83\xf2\x94\x8d\xb2yyd\xa8\xba\xcfw\xfb\xd0\xbe\xf4\xc0\x88\x07\xee9\xc4'
+Receive: 57 658.293066 658.291625 49: seq: 10, identify_response offset=2520 data=b'r \xbc\xe6\xb4\xc9\x03\xff\xe6\xa9U\x19C\xe9\x01[k\xe8W\x0b\xf8YE\xd3\xe9\xc7"\xfbP\xc6\xe9\x0f\x03QM\xa5^\x1b\xa9\xbc'
+Receive: 58 658.295065 658.293858 49: seq: 11, identify_response offset=2560 data=b'f\xfb\x80\x0cE\x1e\x17\x02d\xc6\xa5Y=XT\x908(\xa9{X\xed\xc7\x90k\x87\xcd\xdb\x80y\r\xe0\x02\xd3\xd1\xb8*\xf7\x98\xf5'
+Receive: 59 658.297021 658.295765 49: seq: 12, identify_response offset=2600 data=b'C\xe7\xec\xa0(\x1e\x9b+\xd6=u/V\xe5\xc9\xfa&\xe3n\xa7\x8e\xf6\x88H\x9c~\x95)\xa3\x93R\xdc\xc6\xce\x1a\x9d<\xd7\xa5\x81'
+Receive: 60 658.299073 658.297643 49: seq: 13, identify_response offset=2640 data=b'\x15o\xe2W\xbc\xe5\xb9\x96!\x03\xf1\x1b!e\x0c\xd7.\xca\x04\x80\xb5\xd6E\x90\xf8M&%\xe8\x9dL\xf6"ms\xac\xec\xc2d\xcc'
+Receive: 61 658.301064 658.299844 49: seq: 14, identify_response offset=2680 data=b'\xe1<\x85THm\xc4\xb3@\xe1c\xfa\xf6\xf5\t\xfb\xb8N\xc9\x18\x155V\xfboP\xe2\x94\xd7z\xf0Uo\xf3\xea\x85\x13\xe3O`'
+Receive: 62 658.303068 658.301694 49: seq: 15, identify_response offset=2720 data=b"\xc1\xb1\xc7\xc7A\xf3'W\x8be2w\x00\xf5\x88\x06\xb0\xa8\xe9\x0e0u@\x91\xd4\xd8\xee\xa1\xaevp\xed\x05\xec.\xc6\xedo!="
+Receive: 63 658.305024 658.303846 49: seq: 16, identify_response offset=2760 data=b'\x80\x8d\x808\x05\xfa\x0e,\xfc\x7f\x85\x1c\x1f"\x9c\t\x94sx\xfa=\x86s\x85\xb5P\'F#\x05\x9d\xaf\xc1\n\xf1\x1e@\xd5\xd0\x82'
+Receive: 64 658.307061 658.305777 49: seq: 17, identify_response offset=2800 data=b'\xb1\xf4\xbe1\x04G\xa2\x83\x15\xf2\x1c\xd0c\x02;\xe9<\xf6p\x06ag\x1a\xf1}c\x06\xbe\xc4n\xc0\xfb\xf0\x05\xd3\x06\x90"+\xda'
+Receive: 65 658.309125 658.307755 49: seq: 18, identify_response offset=2840 data=b'B\xf7icA\x94\xa0\x1fh\xe8E\x19\x0f\x8b\xfe\x8a\x1c\xa8\xfb\xb8\xbcQ\x0e\xac\xa9*o\x1b\xd3\xe9\xf8d\x98\n\xdc\xbb\xfa\x86\xd2\x03'
+Receive: 66 658.311093 658.310117 49: seq: 19, identify_response offset=2880 data=b'Bz\xc2\xe2\xd2\xef=\xc9\x03g\x02p\x96\x82\x9c\xffC)\xdb\x03\x1a\xb6`g\xc6\xca?U\xcf\xfa\x10}\xdb\xf2\tx\xa0\xd3\xe3\xe7'
+Receive: 67 658.313076 658.311853 49: seq: 1a, identify_response offset=2920 data=b'W\xa7_\xda\x01\x9c@\x96\x00^QV5\x19/ p\xe9%\x92\x95\x80\x9f\xde%EHZ\xa8\xb5\x0b\xf33\x9a\x1de\xeb\xe1Z\x8b'
+Receive: 68 658.315022 658.314035 49: seq: 1b, identify_response offset=2960 data=b'\xe9E#\xec\xce\xb1o1\xec\xe5\xab2\x87\xc0\xf0\x0c[\x8a\x1fs\xed\xef\x8d\xec\xe0\xfa0W\xcd\xbd\xde\x1a \x03\xfa\xc3\x05\x13Y\xd4'
+Receive: 69 658.317027 658.315839 49: seq: 1c, identify_response offset=3000 data=b'\x9f3\xa4\xfcb"\xb1f\x8d^\x99\x95)\x81aZ\xdc$\x87\xe4\x84H\xa8\xe4\xe8\xf9i\xecD\x12\x817\xc9FAZ\xac\xaa#d'
+Receive: 70 658.319024 658.317770 49: seq: 1d, identify_response offset=3040 data=b'r\x98lB\xc4=zr\xc2\x90\x0b\xf03\xf4\xe7\x93\t\x85l\xd5\x98R\xfc\xe7\xc6tBj\x01\x8d\xe9t6\xe1\xd0\xdd\xcb\xc3,N'
+Receive: 71 658.321055 658.319720 49: seq: 1e, identify_response offset=3080 data=b'\xbb\xb9\x05$\xac\x00\xda\xed\x1f\xab\xf5\xfb\x8f\xb7\x9f\x89\xd7z\xf99Z/?!*\x1d\x19@\xb6\xb9[]^\xbf\xbf\xbe<\xc9\xd4 '
+Receive: 72 658.323083 658.321709 49: seq: 1f, identify_response offset=3120 data=b'\x9dG\x19\xe1\xa9\xf1q\t\x0c\x13"E\xfc\x14\xed\x1aZ\x02\x7f\xfc/\x84\xe3\x12P\x0b\xa0\x1a|\xf8\xf4\xe0}\xb8\xfb\xf8\x8c`\x1dn'
+Receive: 73 658.324992 658.323743 49: seq: 10, identify_response offset=3160 data=b'\xed\x00\x8eO\xf0_\xa1\x98?\x15\xe9\x94N\xa8J\xd5\xad\xc3\xa9\xc2\xc0pf\xff\x96\xa33%v\xea\xd4\\aQ\x13\xf0Q\x93\xaam'
+Receive: 74 658.327032 658.325596 49: seq: 11, identify_response offset=3200 data=b"6\xbf\x1c\xfa\xe6\xa5\xd3C\xacI_\x94\x82\xd2\xf3\x10\xf6i\r\xa2\x82\x08\xf8\xc6\xc8\xd4\xf7p:\xbd'R\xe1\xfa[\xfbVS\xd4G"
+Receive: 75 658.328995 658.327715 49: seq: 12, identify_response offset=3240 data=b'\xe4\xaeo\xdf\xe4$\xd8\xa9yb\x1b\xd2\x1b\x9bz\xd3\xeap\xdeW\x90\xa0\xef\x8e\xd7p\x9f\xcc`\xfe\x82S\x00-\xe3\xde\x03\x91J\x0b'
+Receive: 76 658.330975 658.329506 49: seq: 13, identify_response offset=3280 data=b'T\xa1\x98(\x94\x90&\xf6\x9d\xc6\x99l\x1el\xb8\xe4\xf2\x0eI1\xf1\xb0\xe2\xf1\xfaxQKh\xee<\xbf\xa8C\xea\xa2T\x9b$\xf4'
+Receive: 77 658.333006 658.331470 49: seq: 14, identify_response offset=3320 data=b'\x9cD\x15\n@\xf1U\xe7\xbdr\x88q\x99\xdd\tl9\x7f\xea\x94~$\x82\x832\x11\xbd\xf7\x1b?\xf4\xbbs:Un[YQe'
+Receive: 78 658.334990 658.333760 49: seq: 15, identify_response offset=3360 data=b'h].\xe0Z\xa8\xcb\xf2\xb1\xa5 \x93\xf2\x0b\x04@K\xf0(\x91\x8e\x8c\x92\xcf\xe6S\xc1\xd2\xbam\xfd\x1a\xf3\x15A\xccN\xd5\xf7\x8e'
+Receive: 79 658.337026 658.335713 49: seq: 16, identify_response offset=3400 data=b'.\xc8-\x83;\xf7\xe2S\xf9\xd2\xa9\xa7\x1dM\xec\xdd#\x15\xd7\xc0=\x11\xa4\x1er\xf9+n\xa4UE\xd9\x16\xeaG\xfe\xa9Tnj'
+Receive: 80 658.339040 658.338214 49: seq: 17, identify_response offset=3440 data=b'kd\xbd\x02\x1a?\x95a\xe5\x06}b\xc7Qu\xef\xf4\x84\xbd\xe2\x07\x05!.\x9d\x04N]\xed\xf8\x0cXQ\xa3\xfd\x87\xc7\x05\xa7\xd3'
+Receive: 81 658.341034 658.339738 49: seq: 18, identify_response offset=3480 data=b'V\xc0_\x8eM\xf9a\xe0\x16\x8d\xec\x9c$65\xbf\xd3\x858\xc7.\xc9\x87S\xda\xc0\x7f\x8b\xd1v\x9c\xc6\x04|\x9a\xfa\x9b<\xf0i'
+Receive: 82 658.343034 658.341637 35: seq: 19, identify_response offset=3520 data=b'\xcf\xa3w~\xf8n4\x9cN\xe6\xc3\xddc:Z\x88\x91?\x1b|\xf9?\xfa\t0\x04'
+Receive: 83 658.345036 658.343678 9: seq: 1a, identify_response offset=3546 data=b''
+Receive: 84 658.359082 658.357914 12: seq: 1b, uptime high=0 clock=1054284835
+Receive: 85 658.412005 658.411218 11: seq: 1c, clock clock=1058122060
+Receive: 86 658.464038 658.463411 11: seq: 1d, clock clock=1061881284
+Receive: 87 658.516023 658.515573 11: seq: 1e, clock clock=1065636010
+Receive: 88 658.568048 658.567344 11: seq: 1f, clock clock=1069363558
+Receive: 89 658.620071 658.619409 11: seq: 10, clock clock=1073112288
+Receive: 90 658.672073 658.671338 11: seq: 11, clock clock=1076851072
+Receive: 91 658.716033 658.671338 15: seq: 11, stats count=412 sum=311536 sumsq=2115631
+Receive: 92 658.725026 658.723713 11: seq: 12, clock clock=1080622138
+Receive: 93 658.777043 658.776208 11: seq: 13, clock clock=1084401922
+Receive: 94 658.780105 658.779132 11: seq: 14, clock clock=1084612006
+Receive: 95 658.822032 658.821106 10: seq: 15, config is_config=0 crc=0 is_shutdown=0 move_count=0
+Receive: 96 658.828993 658.827057 15: seq: 1c, config is_config=1 crc=4192379201 is_shutdown=0 move_count=1024
+Receive: 97 659.276101 659.275014 11: seq: 1d, spi_transfer_response oid=0 response=b'\xff\xff\x01'
+Receive: 98 659.289033 659.288360 12: seq: 1e, shutdown clock=1121276032 static_string_id=Command request
+Receive: 99 659.311137 659.310254 7: seq: 1f, is_shutdown static_string_id=Command request
+gcode state: absolute_coord=True absolute_extrude=True base_position=[0.0, 0.0, 0.0, 0.0] last_position=[0.0, 0.0, 0.0, 0.0] homing_position=[0.0, 0.0, 0.0, 0.0] speed_factor=0.016666666666666666 extrude_factor=1.0 speed=25.0
+Unhandled exception during run
+Traceback (most recent call last):
+  File "/home/riccorbypro/klipper/klippy/klippy.py", line 177, in run
+    self.reactor.run()
+  File "/home/riccorbypro/klipper/klippy/reactor.py", line 340, in run
+    g_next.switch()
+  File "/home/riccorbypro/klipper/klippy/reactor.py", line 393, in _dispatch_loop
+    eventtime = self._check_fds(eventtime, res)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/klipper/klippy/reactor.py", line 305, in _check_fds
+    hdl.read_callback(eventtime)
+  File "/home/riccorbypro/klipper/klippy/reactor.py", line 222, in _got_pipe_signal
+    func(*args)
+  File "/home/riccorbypro/klipper/klippy/reactor.py", line 33, in complete
+    self.reactor.update_timer(wait.timer, self.reactor.NOW)
+  File "/home/riccorbypro/klipper/klippy/reactor.py", line 153, in update_timer
+    if timer_handler.timer_is_running:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'timer_is_running'
