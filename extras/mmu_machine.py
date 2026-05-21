@@ -1475,6 +1475,9 @@ class DummyRail:
         def add_stepper(self, *args, **kwargs):
             pass
 
+        def get_steppers(self):
+            return []
+
         def query_endstop(self, print_time):
             # For BLDC setups with real sensors, check actual sensor state via printer's sensor manager
             # This must be called on every poll to detect state changes during homing moves

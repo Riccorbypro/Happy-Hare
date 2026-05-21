@@ -431,22 +431,15 @@ class MmuCalibrationManager:
         if self._sync_feedback_state_is_tension():
             return 0., True
 
-        if has_tension:
-            actual, homed, _, _ = self.mmu.trace_filament_move(
-                "Homing to sync-feedback tension",
-                max_move,
-                speed=speed,
-                motor="extruder",
-                homing_move=1,
-                endstop_name=self.mmu.SENSOR_TENSION,
-            )
-            return abs(actual), homed
-
         moved = 0.
-        step = min(2., max_move)
+        step = min(max(sf.sync_feedback_extrude_threshold / 2., 1.), 2., max_move)
+        trace_msg = (
+            "Seeking sync-feedback tension switch" if has_tension
+            else "Seeking proportional sync-feedback tension"
+        )
         while moved < max_move:
             actual, _, _, _ = self.mmu.trace_filament_move(
-                "Seeking proportional sync-feedback tension",
+                trace_msg,
                 min(step, max_move - moved),
                 speed=speed,
                 motor="extruder",

@@ -16981,3 +16981,281 @@ Armbian 26.2.1 bookworm
 [05/21/26 19:01:28] crowsnest: V4L2 Control: No parameters set for [cam 1]. Skipped.
 [05/21/26 19:01:32] crowsnest: Starting ustreamer with Device /dev/v4l/by-id/usb-UnionImage_Co._Ltd_CCX2F3299_1234567890-video-index0 ...
 [05/21/26 19:01:33] crowsnest:  ... Done!
+[05/21/26 21:31:36] crowsnest: crowsnest - A webcam Service for multiple Cams and Stream Services.
+[05/21/26 21:31:36] crowsnest: Version: v4.2.0-1-gcf936da
+[05/21/26 21:31:36] crowsnest: Prepare Startup ...
+[05/21/26 21:31:36] crowsnest: INFO: Host information:
+[05/21/26 21:31:36] crowsnest: Host Info: Distribution: Armbian 26.2.1 bookworm
+Armbian 26.2.1 bookworm
+[05/21/26 21:31:37] crowsnest: Host Info: Kernel: Linux 6.1.115-btt-rk35xx aarch64
+[05/21/26 21:31:37] crowsnest: Host Info: Available CPU Cores: 4
+[05/21/26 21:31:37] crowsnest: Host Info: Available Memory: 2014168 kB
+[05/21/26 21:31:37] crowsnest: Host Info: Diskspace (avail. / total): 19G / 29G
+[05/21/26 21:31:37] crowsnest: INFO: Checking Dependencies
+[05/21/26 21:31:37] crowsnest: Dependency: 'crudini' found in /usr/bin/crudini.
+[05/21/26 21:31:37] crowsnest: Dependency: 'find' found in /usr/bin/find.
+[05/21/26 21:31:37] crowsnest: Dependency: 'xargs' found in /usr/bin/xargs.
+[05/21/26 21:31:37] crowsnest: Dependency: 'ustreamer' found in bin/ustreamer/src/ustreamer.bin.
+[05/21/26 21:31:37] crowsnest: Version Control: ustreamer is up to date. (v6.36)
+[05/21/26 21:31:37] crowsnest: INFO: Print Configfile: '/home/riccorbypro/printer_data/config/crowsnest.conf'
+[05/21/26 21:31:37] crowsnest:		[crowsnest]
+[05/21/26 21:31:37] crowsnest:		log_path: /home/riccorbypro/printer_data/logs/crowsnest.log
+[05/21/26 21:31:37] crowsnest:		log_level: verbose
+[05/21/26 21:31:37] crowsnest:		delete_log: false
+[05/21/26 21:31:37] crowsnest:		no_proxy: false
+[05/21/26 21:31:37] crowsnest:		
+[05/21/26 21:31:37] crowsnest:		[cam 1]
+[05/21/26 21:31:37] crowsnest:		mode: ustreamer
+[05/21/26 21:31:37] crowsnest:		
+[05/21/26 21:31:37] crowsnest:		port: 8080
+[05/21/26 21:31:37] crowsnest:		device: /dev/v4l/by-id/usb-UnionImage_Co._Ltd_CCX2F3299_1234567890-video-index0
+[05/21/26 21:31:37] crowsnest:		resolution: 1280x720
+[05/21/26 21:31:37] crowsnest:		max_fps: 15
+[05/21/26 21:31:37] crowsnest: INFO: Detect available Devices
+[05/21/26 21:31:37] crowsnest: INFO: Found 11 total available Device(s)
+[05/21/26 21:31:37] crowsnest: INFO: Found 11 available v4l2 (UVC) camera(s)
+[05/21/26 21:31:37] crowsnest: /dev/v4l/by-id/usb-UnionImage_Co._Ltd_CCX2F3299_1234567890-video-index0 -> /dev/video10
+[05/21/26 21:31:37] crowsnest: Supported Formats:
+[05/21/26 21:31:37] crowsnest:		[0]: 'MJPG' (Motion-JPEG, compressed)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 1920x1080
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 1280x960
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 1280x720
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 640x480
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 640x360
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		[1]: 'YUYV' (YUYV 4:2:2)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 1920x1080
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 1280x960
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 1280x720
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 640x480
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 640x360
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		[2]: 'NV12' (Y/UV 4:2:0)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 1920x1080
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 1280x960
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 1280x720
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 640x480
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:37] crowsnest:		Size: Discrete 640x360
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.033s (30.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.040s (25.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.050s (20.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.067s (15.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.100s (10.000 fps)
+[05/21/26 21:31:37] crowsnest:		Interval: Discrete 0.200s (5.000 fps)
+[05/21/26 21:31:38] crowsnest: Supported Controls:
+[05/21/26 21:31:38] crowsnest: /dev/v4l/by-id/csi-platform-rkisp-vir0-rkisp-statistics-video-index0 -> /dev/video8
+[05/21/26 21:31:38] crowsnest: Supported Formats:
+[05/21/26 21:31:38] crowsnest: Supported Controls:
+[05/21/26 21:31:38] crowsnest: /dev/v4l/by-id/csi-platform-rkisp-vir0-rkisp-input-params-video-index0 -> /dev/video9
+[05/21/26 21:31:38] crowsnest: Supported Formats:
+[05/21/26 21:31:38] crowsnest: Supported Controls:
+[05/21/26 21:31:38] crowsnest: /dev/v4l/by-id/csi-platform-rkisp-vir0-rkisp_rawrd2_s-video-index0 -> /dev/video7
+[05/21/26 21:31:38] crowsnest: Supported Formats:
+[05/21/26 21:31:38] crowsnest: Supported Controls:
+[05/21/26 21:31:38] crowsnest: /dev/v4l/by-id/csi-platform-rkisp-vir0-rkisp_rawwr3-video-index0 -> /dev/video4
+[05/21/26 21:31:38] crowsnest: Supported Formats:
+[05/21/26 21:31:38] crowsnest:		[0]: 'RGGB' (8-bit Bayer RGRG/GBGB)
+[05/21/26 21:31:38] crowsnest:		Size: Stepwise 32x32 - 0x600 with step 8/8
+[05/21/26 21:31:38] crowsnest: Supported Controls:
+[05/21/26 21:31:38] crowsnest: /dev/v4l/by-id/csi-platform-rkisp-vir0-rkisp_iqtool-video-index0 -> /dev/video5
+[05/21/26 21:31:38] crowsnest: Supported Formats:
+[05/21/26 21:31:38] crowsnest:		[0]: 'UYVY' (UYVY 4:2:2)
+[05/21/26 21:31:38] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:38] crowsnest:		[1]: '422P' (Planar YUV 4:2:2)
+[05/21/26 21:31:38] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:38] crowsnest:		[2]: 'NV16' (Y/UV 4:2:2)
+[05/21/26 21:31:38] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:38] crowsnest:		[3]: 'NV61' (Y/VU 4:2:2)
+[05/21/26 21:31:38] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:38] crowsnest:		[4]: 'YM16' (Planar YUV 4:2:2 (N-C))
+[05/21/26 21:31:38] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:38] crowsnest:		[5]: 'NV21' (Y/VU 4:2:0)
+[05/21/26 21:31:38] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:38] crowsnest:		[6]: 'NV12' (Y/UV 4:2:0)
+[05/21/26 21:31:38] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:38] crowsnest:		[7]: 'NM21' (Y/VU 4:2:0 (N-C))
+[05/21/26 21:31:38] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:38] crowsnest:		[8]: 'NM12' (Y/UV 4:2:0 (N-C))
+[05/21/26 21:31:38] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:38] crowsnest:		[9]: 'YU12' (Planar YUV 4:2:0)
+[05/21/26 21:31:38] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:38] crowsnest:		[10]: 'YM24' (Planar YUV 4:4:4 (N-C))
+[05/21/26 21:31:38] crowsnest:		Size: Discrete 800x600
+[05/21/26 21:31:39] crowsnest: Supported Controls:
+[05/21/26 21:31:39] crowsnest: /dev/v4l/by-id/csi-platform-rkisp-vir0-rkisp_mainpath-video-index0 -> /dev/video0
+[05/21/26 21:31:39] crowsnest: Supported Formats:
+[05/21/26 21:31:39] crowsnest:		[0]: 'UYVY' (UYVY 4:2:2)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[1]: '422P' (Planar YUV 4:2:2)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[2]: 'NV16' (Y/UV 4:2:2)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[3]: 'NV61' (Y/VU 4:2:2)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[4]: 'YM16' (Planar YUV 4:2:2 (N-C))
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[5]: 'NV21' (Y/VU 4:2:0)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[6]: 'NV12' (Y/UV 4:2:0)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[7]: 'NM21' (Y/VU 4:2:0 (N-C))
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[8]: 'NM12' (Y/UV 4:2:0 (N-C))
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[9]: 'YU12' (Planar YUV 4:2:0)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[10]: 'YM24' (Planar YUV 4:4:4 (N-C))
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest: Supported Controls:
+[05/21/26 21:31:39] crowsnest: /dev/v4l/by-id/csi-platform-rkisp-vir0-rkisp_rawrd0_m-video-index0 -> /dev/video6
+[05/21/26 21:31:39] crowsnest: Supported Formats:
+[05/21/26 21:31:39] crowsnest: Supported Controls:
+[05/21/26 21:31:39] crowsnest: /dev/v4l/by-id/csi-platform-rkisp-vir0-rkisp_selfpath-video-index0 -> /dev/video1
+[05/21/26 21:31:39] crowsnest: Supported Formats:
+[05/21/26 21:31:39] crowsnest:		[0]: 'UYVY' (UYVY 4:2:2)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[1]: '422P' (Planar YUV 4:2:2)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[2]: 'NV16' (Y/UV 4:2:2)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[3]: 'NV61' (Y/VU 4:2:2)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[4]: 'YM16' (Planar YUV 4:2:2 (N-C))
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[5]: 'NV21' (Y/VU 4:2:0)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[6]: 'NV12' (Y/UV 4:2:0)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[7]: 'NM21' (Y/VU 4:2:0 (N-C))
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[8]: 'NM12' (Y/UV 4:2:0 (N-C))
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[9]: 'YU12' (Planar YUV 4:2:0)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[10]: 'YM24' (Planar YUV 4:4:4 (N-C))
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[11]: 'GREY' (8-bit Greyscale)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[12]: 'XR24' (32-bit BGRX 8-8-8-8)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest:		[13]: 'RGBP' (16-bit RGB 5-6-5)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 800x600 with step 8/8
+[05/21/26 21:31:39] crowsnest: Supported Controls:
+[05/21/26 21:31:39] crowsnest: /dev/v4l/by-id/csi-platform-rkisp-vir0-rkisp_rawwr2-video-index0 -> /dev/video3
+[05/21/26 21:31:39] crowsnest: Supported Formats:
+[05/21/26 21:31:39] crowsnest:		[0]: 'RGGB' (8-bit Bayer RGRG/GBGB)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 0x600 with step 8/8
+[05/21/26 21:31:39] crowsnest: Supported Controls:
+[05/21/26 21:31:39] crowsnest: /dev/v4l/by-id/csi-platform-rkisp-vir0-rkisp_rawwr0-video-index0 -> /dev/video2
+[05/21/26 21:31:39] crowsnest: Supported Formats:
+[05/21/26 21:31:39] crowsnest:		[0]: 'RGGB' (8-bit Bayer RGRG/GBGB)
+[05/21/26 21:31:39] crowsnest:		Size: Stepwise 32x32 - 0x600 with step 8/8
+[05/21/26 21:31:39] crowsnest: Supported Controls:
+[05/21/26 21:31:39] crowsnest: Try to start configured Cams / Services...
+[05/21/26 21:31:44] crowsnest: INFO: Configuration of Section [cam 1] looks good. Continue ...
+[05/21/26 21:31:45] crowsnest: V4L2 Control: No parameters set for [cam 1]. Skipped.
+[05/21/26 21:31:49] crowsnest: Starting ustreamer with Device /dev/v4l/by-id/usb-UnionImage_Co._Ltd_CCX2F3299_1234567890-video-index0 ...
+[05/21/26 21:31:50] crowsnest:  ... Done!
