@@ -475,6 +475,7 @@ class Mmu:
         self.bldc_encoder_predict_time = config.getfloat('bldc_encoder_predict_time', 0.04, minval=0., maxval=0.5)
         self.bldc_encoder_brake = config.getboolean('bldc_encoder_brake', True)
         self.bldc_encoder_settle_time = config.getfloat('bldc_encoder_settle_time', 0.05, minval=0., maxval=0.5)
+        self.bldc_encoder_espooler_stop_time = config.getfloat('bldc_encoder_espooler_stop_time', 0.25, minval=0., maxval=1.)
         self.spoolman_support = config.getchoice('spoolman_support', {o: o for o in self.SPOOLMAN_OPTIONS}, self.SPOOLMAN_OFF)
         self.t_macro_color = config.getchoice('t_macro_color', {o: o for o in self.T_MACRO_COLOR_OPTIONS}, self.T_MACRO_COLOR_SLICER)
         self.default_endless_spool_enabled = config.getint('endless_spool_enabled', 0, minval=0, maxval=1)
@@ -6055,6 +6056,7 @@ class Mmu:
                         velocity = 0.
                         lead = self.encoder_min
                         brake_used = False
+                        espooler_stopped = False
                         try:
                             while True:
                                 now = self.reactor.monotonic()
@@ -6065,7 +6067,10 @@ class Mmu:
                                 last_sample_time = now
                                 last_sample_measured = measured
                                 lead = self.bldc_encoder_stop_margin + max(0., velocity) * self.bldc_encoder_predict_time
-                                lead = min(lead, max(self.encoder_min, target * 0.20))
+                                espooler_active = self._wrapped_espooler_active()
+                                if espooler_active:
+                                    lead += max(0., velocity) * self.bldc_encoder_espooler_stop_time
+                                lead = min(lead, max(self.encoder_min, target * (0.50 if espooler_active else 0.20)))
                                 if measured + self.encoder_min >= target or target - measured <= lead:
                                     stop_measured = measured
                                     break
@@ -6078,6 +6083,7 @@ class Mmu:
                                     raise MmuError("BLDC encoder-bounded move stalled: requested %.1fmm, encoder measured %.1fmm" % (target, measured))
                                 self.reactor.pause(now + poll_time)
                         finally:
+                            espooler_stopped = self._stop_wrapped_espooler()
                             brake_used = (
                                 self.bldc_encoder_brake and hasattr(bldc, 'brake_to_stop') and
                                 abs(getattr(bldc, 'last_pwm', 0.)) >= getattr(bldc, 'BRAKE_MIN_ACTIVE_PWM', 0.) and
@@ -6091,14 +6097,16 @@ class Mmu:
                             settle_time = self.bldc_encoder_settle_time
                             if brake_used:
                                 settle_time += getattr(bldc, 'brake_max_time', 0.)
+                            if espooler_stopped:
+                                settle_time += self.bldc_encoder_espooler_stop_time
                             if settle_time > 0.:
                                 self.reactor.pause(self.reactor.monotonic() + settle_time)
                             measured = abs(self._get_encoder_distance_unvalidated(dwell=None) - encoder_start)
                         actual = direction * measured
                         pos[1] += actual
                         self.mmu_toolhead.set_position(pos)
-                        self.log_stepper("BLDC_ENCODER_POSITION: target=%.3f measured=%.3f actual=%.3f stop_measured=%.3f lead=%.3f velocity=%.3f poll_time=%.3f brake=%d validation=%d" % (
-                            dist, measured, actual, stop_measured, lead, velocity, poll_time, brake_used, self.encoder_move_validation
+                        self.log_stepper("BLDC_ENCODER_POSITION: target=%.3f measured=%.3f actual=%.3f stop_measured=%.3f lead=%.3f velocity=%.3f poll_time=%.3f brake=%d espooler_stop=%d validation=%d" % (
+                            dist, measured, actual, stop_measured, lead, velocity, poll_time, brake_used, espooler_stopped, self.encoder_move_validation
                         ))
                     elif bldc_active_move and motor == "gear":
                         pause_time = abs(dist) / max(speed, 1e-6)
@@ -6291,6 +6299,8 @@ class Mmu:
     def _wrap_espooler(self, motor, dist, speed, accel, homing_move):
         self._wait_for_espooler = False
         espooler_operation = self.ESPOOLER_OFF
+        self._wrapped_espooler_gate = None
+        self._wrapped_espooler_operation = self.ESPOOLER_OFF
 
         if self.has_espooler():
             pwm_value = 0
@@ -6315,14 +6325,28 @@ class Mmu:
             if espooler_operation != self.ESPOOLER_OFF:
                 self._wait_for_espooler = not homing_move
                 self.espooler.set_operation(self.gate_selected, pwm_value, espooler_operation)
+                self._wrapped_espooler_gate = self.gate_selected
+                self._wrapped_espooler_operation = espooler_operation
         try:
             # Note gate_selected doesn't change in this use case, it's just filament movement
             yield self
 
         finally:
             self._wait_for_espooler = False
-            if espooler_operation != self.ESPOOLER_OFF:
-                self.espooler.set_operation(self.gate_selected, 0, self.ESPOOLER_OFF)
+            self._stop_wrapped_espooler()
+            self._wrapped_espooler_gate = None
+            self._wrapped_espooler_operation = self.ESPOOLER_OFF
+
+    def _wrapped_espooler_active(self):
+        return self.has_espooler() and getattr(self, '_wrapped_espooler_operation', self.ESPOOLER_OFF) != self.ESPOOLER_OFF
+
+    def _stop_wrapped_espooler(self):
+        if not self._wrapped_espooler_active():
+            return False
+        gate = getattr(self, '_wrapped_espooler_gate', self.gate_selected)
+        self.espooler.set_operation(gate, 0, self.ESPOOLER_OFF)
+        self._wrapped_espooler_operation = self.ESPOOLER_OFF
+        return True
 
 
 ##############################################
@@ -8109,6 +8133,12 @@ class Mmu:
         self.filament_recovery_on_pause = gcmd.get_int('FILAMENT_RECOVERY_ON_PAUSE', self.filament_recovery_on_pause, minval=0, maxval=1)
         self.preload_attempts = gcmd.get_int('PRELOAD_ATTEMPTS', self.preload_attempts, minval=1, maxval=20)
         self.encoder_move_validation = gcmd.get_int('ENCODER_MOVE_VALIDATION', self.encoder_move_validation, minval=0, maxval=1)
+        self.encoder_bounded_bldc = bool(gcmd.get_int('ENCODER_BOUNDED_BLDC', int(self.encoder_bounded_bldc), minval=0, maxval=1))
+        self.bldc_encoder_stop_margin = gcmd.get_float('BLDC_ENCODER_STOP_MARGIN', self.bldc_encoder_stop_margin, minval=0.)
+        self.bldc_encoder_predict_time = gcmd.get_float('BLDC_ENCODER_PREDICT_TIME', self.bldc_encoder_predict_time, minval=0., maxval=0.5)
+        self.bldc_encoder_brake = bool(gcmd.get_int('BLDC_ENCODER_BRAKE', int(self.bldc_encoder_brake), minval=0, maxval=1))
+        self.bldc_encoder_settle_time = gcmd.get_float('BLDC_ENCODER_SETTLE_TIME', self.bldc_encoder_settle_time, minval=0., maxval=0.5)
+        self.bldc_encoder_espooler_stop_time = gcmd.get_float('BLDC_ENCODER_ESPOOLER_STOP_TIME', self.bldc_encoder_espooler_stop_time, minval=0., maxval=1.)
         self.autotune_rotation_distance = gcmd.get_int('AUTOTUNE_ROTATION_DISTANCE', self.autotune_rotation_distance, minval=0, maxval=1)
         self.autotune_bowden_length = gcmd.get_int('AUTOTUNE_BOWDEN_LENGTH', self.autotune_bowden_length, minval=0, maxval=1)
         self.retry_tool_change_on_error = gcmd.get_int('RETRY_TOOL_CHANGE_ON_ERROR', self.retry_tool_change_on_error, minval=0, maxval=1)
@@ -8209,6 +8239,12 @@ class Mmu:
                 msg += "\nbowden_apply_correction = %d" % self.bowden_apply_correction
                 msg += "\nbowden_allowable_load_delta = %d" % self.bowden_allowable_load_delta
                 msg += "\nbowden_pre_unload_test = %d" % self.bowden_pre_unload_test
+                msg += "\nencoder_bounded_bldc = %d" % self.encoder_bounded_bldc
+                msg += "\nbldc_encoder_stop_margin = %.2f" % self.bldc_encoder_stop_margin
+                msg += "\nbldc_encoder_predict_time = %.3f" % self.bldc_encoder_predict_time
+                msg += "\nbldc_encoder_brake = %d" % self.bldc_encoder_brake
+                msg += "\nbldc_encoder_settle_time = %.3f" % self.bldc_encoder_settle_time
+                msg += "\nbldc_encoder_espooler_stop_time = %.3f" % self.bldc_encoder_espooler_stop_time
             msg += "\nextruder_force_homing = %d" % self.extruder_force_homing
             msg += "\nextruder_homing_endstop = %s" % self.extruder_homing_endstop
             msg += "\nextruder_homing_max = %.1f" % self.extruder_homing_max

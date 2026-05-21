@@ -1,4 +1,4 @@
--------------------- Log Start | Thu May 21 17:55:19 2026 --------------------
+-------------------- Log Start | Thu May 21 18:11:24 2026 --------------------
 platform: Linux-6.1.115-btt-rk35xx-aarch64-with-glibc2.36
 data_path: /home/riccorbypro/printer_data
 is_default_data_path: False
@@ -267,39 +267,144 @@ Git Repo cartographer_firmware: Warnings detected:
   Repo not on official remote/branch, expected: origin/master, detected: origin/main
 Git Repo katapult: No warnings detected
 Klipper Version: v0.13.0-658-gbd09e017-dirty
-2026-05-21 19:55:19,960 [klippy_connection.py:close()] - Error closing Klippy Unix Socket
+2026-05-21 20:11:24,561 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-05-21 20:11:24,574 [websockets.py:on_close()] - Websocket Closed: ID: 281473004359056 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 5.66
+2026-05-21 20:11:25,584 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-05-21 20:11:26,593 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 3.53ms
+2026-05-21 20:11:26,594 [websockets.py:open()] - Websocket Opened: ID: 281473004279248, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2026-05-21 20:11:26,605 [websockets.py:_handle_identify()] - Websocket 281473004279248 Client Identified - Name: OctoApp, Version: 3.1.0, Type: agent
+2026-05-21 20:11:53,831 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.subscribe, Code: 500, Message: Klippy request timed out
+2026-05-21 20:12:13,833 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.subscribe, Code: 500, Message: Klippy request timed out
+2026-05-21 20:12:33,813 [klippy_connection.py:wait()] - Request 'list_endpoints' pending: 60.00 seconds
+2026-05-21 20:12:33,835 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.subscribe, Code: 500, Message: Klippy request timed out
+2026-05-21 20:12:34,162 [klippy_connection.py:wait()] - Request 'info' pending: 60.00 seconds
+2026-05-21 20:12:35,171 [klippy_connection.py:wait()] - Request 'info' pending: 60.00 seconds
+2026-05-21 20:12:36,153 [klippy_connection.py:wait()] - Request 'info' pending: 60.00 seconds
+2026-05-21 20:12:36,682 [klippy_connection.py:wait()] - Request 'info' pending: 60.00 seconds
+2026-05-21 20:12:38,149 [klippy_connection.py:wait()] - Request 'info' pending: 60.00 seconds
+2026-05-21 20:12:38,198 [klippy_connection.py:wait()] - Request 'info' pending: 60.00 seconds
+2026-05-21 20:12:39,698 [klippy_connection.py:wait()] - Request 'info' pending: 60.00 seconds
+2026-05-21 20:12:40,162 [klippy_connection.py:wait()] - Request 'info' pending: 60.00 seconds
+2026-05-21 20:12:41,207 [klippy_connection.py:wait()] - Request 'info' pending: 60.00 seconds
+2026-05-21 20:12:41,500 [klippy_connection.py:close()] - Error closing Klippy Unix Socket
 Traceback (most recent call last):
   File "/home/riccorbypro/moonraker/moonraker/components/klippy_connection.py", line 805, in close
     await self.writer.wait_closed()
   File "/usr/lib/python3.11/asyncio/streams.py", line 350, in wait_closed
     await self._protocol._get_close_waiter(self)
 ConnectionResetError: [Errno 104] Connection reset by peer
-2026-05-21 19:55:19,960 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
-2026-05-21 19:55:19,971 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
-2026-05-21 19:55:19,972 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.list, Code: 503, Message: Klippy Disconnected
-2026-05-21 19:55:19,977 [websockets.py:on_close()] - Websocket Closed: ID: 281472964335056 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 0.16
-2026-05-21 19:55:20,985 [klippy_connection.py:_do_connect()] - Klippy Connection Established
-2026-05-21 19:55:21,999 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 3.33ms
-2026-05-21 19:55:21,999 [websockets.py:open()] - Websocket Opened: ID: 281473004017104, Proxied: False, User Agent: , Host Name: 0.0.0.0
-2026-05-21 19:55:22,011 [websockets.py:_handle_identify()] - Websocket 281473004017104 Client Identified - Name: OctoApp, Version: 3.1.0, Type: agent
-2026-05-21 19:55:32,784 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
-2026-05-21 19:55:32,791 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
-2026-05-21 19:55:33,013 [job_state.py:_handle_started()] - Job state initialized: standby
-2026-05-21 19:55:33,273 [klippy_connection.py:_check_ready()] - Klippy ready
-2026-05-21 19:55:33,326 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: machine.device_power.devices, Code: -32601, Message: Method not found
-2026-05-21 19:55:33,326 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.sensors.list, Code: -32601, Message: Method not found
-2026-05-21 19:55:33,360 [application.py:log_request()] - 404 GET /machine/wled/strips (127.0.0.1) [_TRUSTED_USER_] 5.77ms
-2026-05-21 19:55:33,762 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor toolhead_mcu_temp', 'temperature_sensor cartographer_coil', 'temperature_sensor cartographer', 'temperature_sensor catalyst_mcu_temp', 'temperature_sensor BTT_Pi_temp', 'heater_bed', 'temperature_fan chamber_fan', 'temperature_fan _board_fan', 'temperature_fan _pi_fan', 'heater_generic chamber', 'extruder']
-2026-05-21 19:55:34,282 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
-2026-05-21 19:55:34,586 [file_manager.py:get_file_list()] - Updating File List <config>...
-2026-05-21 19:55:34,796 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.helix.status, Code: -32601, Message: Method not found
-2026-05-21 19:55:34,796 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.spoolman.status, Code: -32601, Message: Method not found
-2026-05-21 19:55:34,873 [mmu_server.py:cleanup_lane_data()] - Removed old lane data: []
-2026-05-21 19:55:35,534 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
-2026-05-21 19:55:35,571 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
-2026-05-21 19:55:54,901 [klippy_connection.py:_read_stream()] - Error processing Klippy Host Response: ynced/gear --> unsynced)"}}
-Traceback (most recent call last):
-  File "/home/riccorbypro/moonraker/moonraker/components/klippy_connection.py", line 205, in _read_stream
-    decoded_cmd = jsonw.loads(data[:-1])
-                  ^^^^^^^^^^^^^^^^^^^^^^
-msgspec.DecodeError: JSON is malformed: invalid character (byte 0)
+2026-05-21 20:12:41,504 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-05-21 20:12:41,531 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,533 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,534 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,535 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,536 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,536 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,537 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,538 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,539 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,540 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,541 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,581 [application.py:log_request()] - 503 GET /printer/objects/query?print_stats (127.0.0.1) [_TRUSTED_USER_] 57831.13ms
+2026-05-21 20:12:41,582 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,583 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,583 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,584 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,585 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,585 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,586 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,596 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,597 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,598 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,598 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,599 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,599 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,600 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,601 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,601 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,608 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,609 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,610 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,610 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,611 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,611 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,612 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,612 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,613 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,620 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,621 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,621 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,622 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,623 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,624 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,624 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,625 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,631 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,632 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,633 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,634 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,634 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,635 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,635 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,636 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,637 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,647 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,647 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,648 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,649 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,650 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,650 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,651 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,657 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,658 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,661 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,662 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,666 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,667 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,668 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,668 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,669 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,670 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,671 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,675 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,677 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,678 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,678 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,678 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,679 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,679 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
+2026-05-21 20:12:41,696 [websockets.py:on_close()] - Websocket Closed: ID: 281473004279248 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 5.09
+2026-05-21 20:12:42,710 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-05-21 20:12:43,719 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 3.74ms
+2026-05-21 20:12:43,719 [websockets.py:open()] - Websocket Opened: ID: 281472964903120, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2026-05-21 20:12:43,731 [websockets.py:_handle_identify()] - Websocket 281472964903120 Client Identified - Name: OctoApp, Version: 3.1.0, Type: agent
+2026-05-21 20:12:55,064 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-05-21 20:12:55,068 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-05-21 20:12:55,071 [klippy_connection.py:_check_ready()] - 
+Can not update MCU 'mcu' config as it is shutdown
+Once the underlying issue is corrected, use the
+"FIRMWARE_RESTART" command to reset the firmware, reload the
+config, and restart the host software.
+Error configuring printer
+
+2026-05-21 20:12:57,578 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-05-21 20:12:57,599 [websockets.py:on_close()] - Websocket Closed: ID: 281472964903120 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 3.88
+2026-05-21 20:12:58,863 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-05-21 20:12:59,614 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 3.71ms
+2026-05-21 20:12:59,616 [websockets.py:open()] - Websocket Opened: ID: 281472965446160, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2026-05-21 20:12:59,625 [websockets.py:_handle_identify()] - Websocket 281472965446160 Client Identified - Name: OctoApp, Version: 3.1.0, Type: agent
+2026-05-21 20:13:07,243 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-05-21 20:13:07,250 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-05-21 20:13:07,496 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-05-21 20:13:07,768 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-05-21 20:13:07,823 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: machine.device_power.devices, Code: -32601, Message: Method not found
+2026-05-21 20:13:07,824 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.sensors.list, Code: -32601, Message: Method not found
+2026-05-21 20:13:07,868 [application.py:log_request()] - 404 GET /machine/wled/strips (127.0.0.1) [_TRUSTED_USER_] 4.02ms
+2026-05-21 20:13:07,990 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
+2026-05-21 20:13:08,016 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
+2026-05-21 20:13:08,250 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor toolhead_mcu_temp', 'temperature_sensor cartographer_coil', 'temperature_sensor cartographer', 'temperature_sensor catalyst_mcu_temp', 'temperature_sensor BTT_Pi_temp', 'heater_bed', 'temperature_fan chamber_fan', 'temperature_fan _board_fan', 'temperature_fan _pi_fan', 'heater_generic chamber', 'extruder']
+2026-05-21 20:13:09,276 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-05-21 20:13:09,573 [file_manager.py:get_file_list()] - Updating File List <config>...
+2026-05-21 20:13:09,797 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.helix.status, Code: -32601, Message: Method not found
+2026-05-21 20:13:09,797 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.spoolman.status, Code: -32601, Message: Method not found
+2026-05-21 20:13:09,817 [mmu_server.py:cleanup_lane_data()] - Removed old lane data: []
