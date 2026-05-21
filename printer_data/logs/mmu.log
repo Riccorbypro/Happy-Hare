@@ -3277,3 +3277,525 @@
 19:50:20   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=11648 raw=19464.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291597.0 movement_counts=2131939.0 distance=238.150mm status=0x00 crc_errors=0
 19:50:21   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=11783 raw=19463.0 signed_delta=1.0 movement_delta=1.0 net_counts=291598.0 movement_counts=2131998.0 distance=238.151mm status=0x00 crc_errors=0
 19:50:22   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=11959 raw=19464.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291597.0 movement_counts=2132003.0 distance=238.150mm status=0x00 crc_errors=0
+19:50:34   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=13551 raw=19462.0 signed_delta=1.0 movement_delta=1.0 net_counts=291599.0 movement_counts=2132005.0 distance=238.152mm status=0x00 crc_errors=0
+19:50:35   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=13712 raw=19462.0 signed_delta=1.0 movement_delta=1.0 net_counts=291599.0 movement_counts=2132013.0 distance=238.152mm status=0x00 crc_errors=0
+19:50:36   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=13858 raw=19462.0 signed_delta=1.0 movement_delta=1.0 net_counts=291599.0 movement_counts=2132053.0 distance=238.152mm status=0x00 crc_errors=0
+19:50:37   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=13992 raw=19463.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291598.0 movement_counts=2132100.0 distance=238.151mm status=0x00 crc_errors=0
+19:50:38   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=14131 raw=19462.0 signed_delta=1.0 movement_delta=1.0 net_counts=291599.0 movement_counts=2132115.0 distance=238.152mm status=0x00 crc_errors=0
+19:50:59   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=16927 raw=19461.0 signed_delta=1.0 movement_delta=1.0 net_counts=291600.0 movement_counts=2132118.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:00   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=17065 raw=19462.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291599.0 movement_counts=2132135.0 distance=238.152mm status=0x00 crc_errors=0
+19:51:01   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=17197 raw=19461.0 signed_delta=1.0 movement_delta=1.0 net_counts=291600.0 movement_counts=2132172.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:02   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=17340 raw=19462.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291599.0 movement_counts=2132237.0 distance=238.152mm status=0x00 crc_errors=0
+19:51:03   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=17473 raw=19462.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291599.0 movement_counts=2132293.0 distance=238.152mm status=0x00 crc_errors=0
+19:51:04   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=17611 raw=19462.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291599.0 movement_counts=2132355.0 distance=238.152mm status=0x00 crc_errors=0
+19:51:05   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=17752 raw=19462.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291599.0 movement_counts=2132399.0 distance=238.152mm status=0x00 crc_errors=0
+19:51:07   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=17940 raw=19462.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291599.0 movement_counts=2132407.0 distance=238.152mm status=0x00 crc_errors=0
+19:51:37   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=22065 raw=19460.0 signed_delta=1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2132411.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:40   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=22376 raw=19460.0 signed_delta=1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2132413.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:41   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=22617 raw=19460.0 signed_delta=1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2132427.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:42   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=22758 raw=19460.0 signed_delta=1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2132461.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:43   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=22890 raw=19461.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291600.0 movement_counts=2132528.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:44   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=23033 raw=19460.0 signed_delta=1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2132593.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:45   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=23171 raw=19461.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291600.0 movement_counts=2132638.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:46   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=23308 raw=19461.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291600.0 movement_counts=2132694.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:48   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=23449 raw=19461.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291600.0 movement_counts=2132734.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:49   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=23600 raw=19461.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291600.0 movement_counts=2132784.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:50   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=23853 raw=19461.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291600.0 movement_counts=2132796.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:52   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=24054 raw=19461.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291600.0 movement_counts=2132812.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:53   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=24221 raw=19461.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291600.0 movement_counts=2132818.0 distance=238.153mm status=0x00 crc_errors=0
+19:51:58   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=24830 raw=19461.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291600.0 movement_counts=2132826.0 distance=238.153mm status=0x00 crc_errors=0
+19:52:55   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=32506 raw=19459.0 signed_delta=1.0 movement_delta=1.0 net_counts=291602.0 movement_counts=2132828.0 distance=238.154mm status=0x00 crc_errors=0
+19:52:56   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=32715 raw=19459.0 signed_delta=1.0 movement_delta=1.0 net_counts=291602.0 movement_counts=2132832.0 distance=238.154mm status=0x00 crc_errors=0
+19:52:57   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=32873 raw=19459.0 signed_delta=1.0 movement_delta=1.0 net_counts=291602.0 movement_counts=2132838.0 distance=238.154mm status=0x00 crc_errors=0
+19:52:59   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=33012 raw=19459.0 signed_delta=1.0 movement_delta=1.0 net_counts=291602.0 movement_counts=2132846.0 distance=238.154mm status=0x00 crc_errors=0
+19:53:00   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=33163 raw=19459.0 signed_delta=1.0 movement_delta=1.0 net_counts=291602.0 movement_counts=2132850.0 distance=238.154mm status=0x00 crc_errors=0
+19:53:01   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=33289 raw=19459.0 signed_delta=1.0 movement_delta=1.0 net_counts=291602.0 movement_counts=2132884.0 distance=238.154mm status=0x00 crc_errors=0
+19:53:02   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=33431 raw=19459.0 signed_delta=1.0 movement_delta=1.0 net_counts=291602.0 movement_counts=2132932.0 distance=238.154mm status=0x00 crc_errors=0
+19:53:03   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=33563 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2132981.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:04   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=33699 raw=19459.0 signed_delta=1.0 movement_delta=1.0 net_counts=291602.0 movement_counts=2133030.0 distance=238.154mm status=0x00 crc_errors=0
+19:53:05   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=33838 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133089.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:06   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=33974 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133153.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:07   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=34110 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133209.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:08   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=34243 raw=19459.0 signed_delta=1.0 movement_delta=1.0 net_counts=291602.0 movement_counts=2133254.0 distance=238.154mm status=0x00 crc_errors=0
+19:53:09   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=34388 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133301.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:10   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=34533 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133345.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:11   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=34683 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133365.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:12   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=34820 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133393.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:13   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=34991 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133409.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:14   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=35136 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133437.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:15   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=35276 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133443.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:17   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=35441 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133463.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:18   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=35614 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133471.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:19   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=35755 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133487.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:20   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=35900 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133489.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:21   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=36035 raw=19459.0 signed_delta=1.0 movement_delta=1.0 net_counts=291602.0 movement_counts=2133502.0 distance=238.154mm status=0x00 crc_errors=0
+19:53:27   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=36802 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133507.0 distance=238.153mm status=0x00 crc_errors=0
+19:53:29   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=37164 raw=19460.0 signed_delta=-1.0 movement_delta=1.0 net_counts=291601.0 movement_counts=2133509.0 distance=238.153mm status=0x00 crc_errors=0
+19:55:09   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=50654 raw=19458.0 signed_delta=1.0 movement_delta=1.0 net_counts=291603.0 movement_counts=2133511.0 distance=238.155mm status=0x00 crc_errors=0
+19:55:11   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=50860 raw=19458.0 signed_delta=1.0 movement_delta=1.0 net_counts=291603.0 movement_counts=2133513.0 distance=238.155mm status=0x00 crc_errors=0
+19:55:12   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=51006 raw=19458.0 signed_delta=1.0 movement_delta=1.0 net_counts=291603.0 movement_counts=2133517.0 distance=238.155mm status=0x00 crc_errors=0
+19:55:13   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=51162 raw=19458.0 signed_delta=1.0 movement_delta=1.0 net_counts=291603.0 movement_counts=2133529.0 distance=238.155mm status=0x00 crc_errors=0
+19:55:14   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=51326 raw=19458.0 signed_delta=1.0 movement_delta=1.0 net_counts=291603.0 movement_counts=2133547.0 distance=238.155mm status=0x00 crc_errors=0
+19:55:16   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=51523 raw=19458.0 signed_delta=1.0 movement_delta=1.0 net_counts=291603.0 movement_counts=2133559.0 distance=238.155mm status=0x00 crc_errors=0
+19:55:16     TRACE: Processing idle_timeout 'printing' event
+19:55:17   DEBUG: Klipper disconnected!
+19:55:31 
+         
+         
+         MMU Startup -----------------------------------------------
+         
+19:55:31   DEBUG: Found tmc2209 on extruder. Current control enabled. Stallguard 'touch' homing possible.
+19:55:31   DEBUG: BLDC gear configured; skipping gear TMC current control
+19:55:31   DEBUG: Loaded saved bowden lengths: [-1, -1, -1, -1]
+19:55:31   DEBUG: Loaded saved gear rotation distances: [3616.7665, -1, -1, -1]
+19:55:31   DEBUG: Loaded saved encoder resolution: 0.0008
+19:55:31       STEPPER: BLDC_PROCESS_MOVE: hook installed
+19:55:31       STEPPER: BLDC_PROCESS_MOVE: hook removed
+19:55:31       STEPPER: BLDC_SYNC: monitor probed and validated
+19:55:31   DEBUG: MT6826S encoder 'mmu_encoder' using direct SPI polling at 0.0050s intervals with reversed direction
+19:55:31   DEBUG: Loading persisted MMU state
+19:55:31   DEBUG: MmuSyncFeedbackManager: Setting default rotation distance for gate 0 to 3616.7665
+19:55:31     TRACE: Setting gear motor rotation distance: 3616.7665
+19:55:32   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=1 raw=19459.0 signed_delta=0.0 movement_delta=0.0 net_counts=0.0 movement_counts=0.0 distance=0.000mm status=0x00 crc_errors=0
+19:55:32   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=2 raw=19459.0 signed_delta=0.0 movement_delta=0.0 net_counts=0.0 movement_counts=0.0 distance=0.000mm status=0x00 crc_errors=0
+19:55:32   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=3 raw=19459.0 signed_delta=0.0 movement_delta=0.0 net_counts=0.0 movement_counts=0.0 distance=0.000mm status=0x00 crc_errors=0
+19:55:32   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=4 raw=19459.0 signed_delta=0.0 movement_delta=0.0 net_counts=0.0 movement_counts=0.0 distance=0.000mm status=0x00 crc_errors=0
+19:55:32   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=5 raw=19459.0 signed_delta=0.0 movement_delta=0.0 net_counts=0.0 movement_counts=0.0 distance=0.000mm status=0x00 crc_errors=0
+19:55:32       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=15.135 unit=mmu_gear_bldc
+19:55:33   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=128 raw=19459.0 signed_delta=-1.0 movement_delta=1.0 net_counts=0.0 movement_counts=48.0 distance=0.000mm status=0x00 crc_errors=0
+19:55:34 > __MMU_BOOTUP
+19:55:34 (\_/)
+         ( *,*)
+         (")_(") Happy Hare v3.4.2 Ready...
+19:55:34 Warning: filament_switch_sensor 'runout_sensor' found in printer configuration. This may interfere with MMU functionality and/or pause during prints unintentionally.
+19:55:34   DEBUG: Job State: READY -> INITIALIZED (MMU State: Encoder: Enabled, Synced: False, Paused temp: None, Resume to state: ready, Position saved for: , pause_resume: False, Idle timeout: 172800.00s)
+19:55:34     TRACE: Running macro: _MMU_PRINT_STATE_CHANGED STATE='initialized' OLD_STATE='ready'
+19:55:34     TRACE: Disabled FlowGuard and runout detection
+19:55:34       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+19:55:34       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=16.910 unit=mmu_gear_bldc
+19:55:34       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=17.027 unit=mmu_gear_bldc
+19:55:34     TRACE: Processing idle_timeout 'printing' event
+19:55:34       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=16.951 unit=mmu_gear_bldc
+19:55:34   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=261 raw=19458.0 signed_delta=1.0 movement_delta=1.0 net_counts=1.0 movement_counts=93.0 distance=0.001mm status=0x00 crc_errors=0
+19:55:34       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.306563
+19:55:34     TRACE: Running macro: _MMU_EVENT EVENT=restart 
+19:55:34 > MMU_STATS COUNTER=mmu_restarts INCR=1
+19:55:35     TRACE: Processing idle_timeout 'ready' event
+19:55:35   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=418 raw=19458.0 signed_delta=1.0 movement_delta=1.0 net_counts=1.0 movement_counts=113.0 distance=0.001mm status=0x00 crc_errors=0
+19:55:36   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=557 raw=19458.0 signed_delta=1.0 movement_delta=1.0 net_counts=1.0 movement_counts=145.0 distance=0.001mm status=0x00 crc_errors=0
+19:55:37   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=692 raw=19458.0 signed_delta=1.0 movement_delta=1.0 net_counts=1.0 movement_counts=173.0 distance=0.001mm status=0x00 crc_errors=0
+19:55:39   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=824 raw=19458.0 signed_delta=1.0 movement_delta=1.0 net_counts=1.0 movement_counts=197.0 distance=0.001mm status=0x00 crc_errors=0
+19:55:39 > MMU_TEST_MOVE MOVE=250
+19:55:39   DEBUG: Moving 'gear' motor 250.0mm...
+19:55:39     TRACE: ESPOOLER: set_operation(gate=0, value=0.3651483716701107, operation=assist)
+19:55:39       STEPPER: ESPOOLER: _update_pwm(0, 0.3651483716701107, assist)
+19:55:39       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 22.34286259
+19:55:39       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=1) @ print_time: 22.34510555
+19:55:39       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=1) @ print_time: 22.54494063
+19:55:39   DEBUG: Espooler for gate 0 set to assist (pwm: 0.37)
+19:55:39       STEPPER: BLDC_ROUTE: gate=0 motor=gear homing=0 active=True unit=mmu_gear_bldc
+19:55:39       STEPPER: resync(unsynced --> unsynced/gear)
+19:55:39     TRACE: Processing idle_timeout 'printing' event
+19:55:40   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=963 raw=19458.0 signed_delta=1.0 movement_delta=1.0 net_counts=1.0 movement_counts=235.0 distance=0.001mm status=0x00 crc_errors=0
+19:55:40       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.309156
+19:55:40       STEPPER: GEAR MOVE: dist=250.0, speed=80.0, accel=100.0, wait=True
+19:55:40       STEPPER: BLDC_POSITION: tachometer position disabled by caller unit=mmu_gear_bldc
+19:55:40       STEPPER: BLDC_SYNC_SAMPLE: source=move dt=0.0000 de=0.0000 raw_speed=80.000 selected_speed=80.000 scale=1.000 moving=1 unit=mmu_gear_bldc
+19:55:40       STEPPER: BLDC_MAP: mode=linear reason=map_missing points=0 unit=mmu_gear_bldc
+19:55:40       STEPPER: BLDC_SPEED: source=move speed=80.000 requested_rpm=1.3 clamped_rpm=1.3 pwm=0.5001 dir=forward unit=mmu_gear_bldc
+19:55:40       STEPPER: BLDC_SET_PIN: pin=PE4 applied=1.0000 time=22.795 unit=mmu_gear_bldc
+19:55:40       STEPPER: BLDC_SET_PIN: pin=PE3 applied=1.0000 time=22.798 unit=mmu_gear_bldc
+19:55:40       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.5001 time=22.791 unit=mmu_gear_bldc
+19:55:40       STEPPER: BLDC_MOTION: source=move time=22.787 unit=mmu_gear_bldc
+19:55:40       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=1.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=22.708 unit=mmu_gear_bldc
+19:55:40       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=23.213 unit=mmu_gear_bldc
+19:55:41   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=1093 raw=29856.0 signed_delta=927.0 movement_delta=927.0 net_counts=87907.0 movement_counts=88153.0 distance=71.795mm status=0x00 crc_errors=0
+19:55:41       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-0.9 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=23.718 unit=mmu_gear_bldc
+19:55:41       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-0.9 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=24.223 unit=mmu_gear_bldc
+19:55:42   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=1228 raw=29546.0 signed_delta=925.0 movement_delta=925.0 net_counts=219289.0 movement_counts=219535.0 distance=179.096mm status=0x00 crc_errors=0
+19:55:42       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-0.9 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=24.728 unit=mmu_gear_bldc
+19:55:42       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=25.204 unit=mmu_gear_bldc
+19:55:42       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.0000 time=25.321 unit=mmu_gear_bldc
+19:55:42       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=25.323 unit=mmu_gear_bldc
+19:55:42       STEPPER: BLDC_ENCODER_POSITION: target=250.000 measured=256.471 actual=256.471
+19:55:42     TRACE: ESPOOLER: set_operation(gate=0, value=0, operation=off)
+19:55:42       STEPPER: ESPOOLER: _update_pwm(0, 0, off)
+19:55:42       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 25.22014562
+19:55:42       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 25.22386304
+19:55:42       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=0) @ print_time: 25.42368738
+19:55:42   DEBUG: Espooler for gate 0 turned off
+19:55:42     TRACE: Test move. Stepper: 'gear' moved 250.0mm, encoder measured 256.5mm (delta 0.0mm). Pos: @256.5, (256.5mm)
+19:55:42 Moved 256.5mm (measured 256.5mm)
+19:55:42       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=-2.2 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=25.234 unit=mmu_gear_bldc
+19:55:42       STEPPER: resync(unsynced/gear --> unsynced)
+19:55:43   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=1350 raw=12828.0 signed_delta=188.0 movement_delta=188.0 net_counts=334311.0 movement_counts=334633.0 distance=273.035mm status=0x00 crc_errors=0
+19:55:43       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.304962
+19:55:43       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+19:55:43       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=25.549 unit=mmu_gear_bldc
+19:55:43       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=25.637 unit=mmu_gear_bldc
+19:55:43     TRACE: Processing idle_timeout 'ready' event
+19:55:44   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=1479 raw=11903.0 signed_delta=1.0 movement_delta=1.0 net_counts=335236.0 movement_counts=335558.0 distance=273.791mm status=0x00 crc_errors=0
+19:55:45   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=1618 raw=11892.0 signed_delta=1.0 movement_delta=1.0 net_counts=335247.0 movement_counts=335569.0 distance=273.800mm status=0x00 crc_errors=0
+19:55:46   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=1775 raw=11886.0 signed_delta=1.0 movement_delta=1.0 net_counts=335253.0 movement_counts=335577.0 distance=273.804mm status=0x00 crc_errors=0
+19:55:47 > MMU_TEST_MOVE MOVE=-250
+19:55:47   DEBUG: Moving 'gear' motor -250.0mm...
+19:55:47     TRACE: ESPOOLER: set_operation(gate=0, value=0.7302967433402214, operation=rewind)
+19:55:47       STEPPER: ESPOOLER: _update_pwm(0, 0.7302967433402214, rewind)
+19:55:47       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 29.55807212
+19:55:47       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=1) @ print_time: 29.56075728
+19:55:47       STEPPER: ESPOOLER: -----> _set_pin(name=respool_0, value=1) @ print_time: 29.76061229
+19:55:47   DEBUG: Espooler for gate 0 set to rewind (pwm: 0.73)
+19:55:47       STEPPER: BLDC_ROUTE: gate=0 motor=gear homing=0 active=True unit=mmu_gear_bldc
+19:55:47       STEPPER: resync(unsynced --> unsynced/gear)
+19:55:47     TRACE: Processing idle_timeout 'printing' event
+19:55:47   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=1921 raw=11885.0 signed_delta=-2.0 movement_delta=2.0 net_counts=335254.0 movement_counts=335588.0 distance=273.805mm status=0x00 crc_errors=0
+19:55:47       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.307634
+19:55:47       STEPPER: GEAR MOVE: dist=-250.0, speed=80.0, accel=100.0, wait=True
+19:55:47       STEPPER: BLDC_POSITION: tachometer position disabled by caller unit=mmu_gear_bldc
+19:55:47       STEPPER: BLDC_SYNC_SAMPLE: source=move dt=0.0000 de=0.0000 raw_speed=-80.000 selected_speed=-80.000 scale=1.000 moving=1 unit=mmu_gear_bldc
+19:55:47       STEPPER: BLDC_SPEED: source=move speed=80.000 requested_rpm=1.3 clamped_rpm=1.3 pwm=0.5001 dir=reverse unit=mmu_gear_bldc
+19:55:47       STEPPER: BLDC_SET_PIN: pin=PE4 applied=1.0000 time=30.002 unit=mmu_gear_bldc
+19:55:47       STEPPER: BLDC_SET_PIN: pin=PE3 applied=0.0000 time=30.005 unit=mmu_gear_bldc
+19:55:47       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.5001 time=30.000 unit=mmu_gear_bldc
+19:55:47       STEPPER: BLDC_MOTION: source=move time=29.997 unit=mmu_gear_bldc
+19:55:47       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=1.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=29.980 unit=mmu_gear_bldc
+19:55:48       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=30.485 unit=mmu_gear_bldc
+19:55:48   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=2047 raw=20796.0 signed_delta=-904.0 movement_delta=904.0 net_counts=228039.0 movement_counts=442803.0 distance=186.242mm status=0x00 crc_errors=0
+19:55:48       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=30.991 unit=mmu_gear_bldc
+19:55:49       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=31.495 unit=mmu_gear_bldc
+19:55:49   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=2179 raw=24189.0 signed_delta=-907.0 movement_delta=907.0 net_counts=93574.0 movement_counts=577268.0 distance=76.423mm status=0x00 crc_errors=0
+19:55:49       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=32.000 unit=mmu_gear_bldc
+19:55:49       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=32.322 unit=mmu_gear_bldc
+19:55:49       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.0000 time=32.439 unit=mmu_gear_bldc
+19:55:49       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=32.441 unit=mmu_gear_bldc
+19:55:49       STEPPER: BLDC_ENCODER_POSITION: target=-250.000 measured=254.090 actual=-254.090
+19:55:49     TRACE: ESPOOLER: set_operation(gate=0, value=0, operation=off)
+19:55:49       STEPPER: ESPOOLER: _update_pwm(0, 0, off)
+19:55:49       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 32.33556023
+19:55:49       STEPPER: ESPOOLER: -----> _set_pin(name=respool_0, value=0) @ print_time: 32.43749312
+19:55:49       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 32.33903619
+19:55:49   DEBUG: Espooler for gate 0 turned off
+19:55:49     TRACE: Test move. Stepper: 'gear' moved -250.0mm, encoder measured -254.1mm (delta 0.0mm). Pos: @2.4, (19.7mm)
+19:55:49 Moved -254.1mm (measured -254.1mm)
+19:55:49       STEPPER: resync(unsynced/gear --> unsynced)
+19:55:50       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=-2.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=32.410 unit=mmu_gear_bldc
+19:55:50       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.309435
+19:55:50       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+19:55:50       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=32.662 unit=mmu_gear_bldc
+19:55:50       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=32.709 unit=mmu_gear_bldc
+19:55:50   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=2311 raw=11298.0 signed_delta=1.0 movement_delta=1.0 net_counts=8161.0 movement_counts=663219.0 distance=6.665mm status=0x00 crc_errors=0
+19:55:50     TRACE: Processing idle_timeout 'ready' event
+19:55:51   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=2450 raw=11294.0 signed_delta=1.0 movement_delta=1.0 net_counts=8165.0 movement_counts=663231.0 distance=6.668mm status=0x00 crc_errors=0
+19:55:52 > MMU_TEST_MOVE MOVE=250
+19:55:52   DEBUG: Moving 'gear' motor 250.0mm...
+19:55:52     TRACE: ESPOOLER: set_operation(gate=0, value=0.3651483716701107, operation=assist)
+19:55:52       STEPPER: ESPOOLER: _update_pwm(0, 0.3651483716701107, assist)
+19:55:52       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 34.49033443
+19:55:52       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=1) @ print_time: 34.49112167
+19:55:52       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=1) @ print_time: 34.69101881
+19:55:52   DEBUG: Espooler for gate 0 set to assist (pwm: 0.37)
+19:55:52       STEPPER: BLDC_ROUTE: gate=0 motor=gear homing=0 active=True unit=mmu_gear_bldc
+19:55:52       STEPPER: resync(unsynced --> unsynced/gear)
+19:55:52     TRACE: Processing idle_timeout 'printing' event
+19:55:52       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.311723
+19:55:52       STEPPER: GEAR MOVE: dist=250.0, speed=80.0, accel=100.0, wait=True
+19:55:52       STEPPER: BLDC_POSITION: tachometer position disabled by caller unit=mmu_gear_bldc
+19:55:52       STEPPER: BLDC_SYNC_SAMPLE: source=move dt=0.0000 de=0.0000 raw_speed=80.000 selected_speed=80.000 scale=1.000 moving=1 unit=mmu_gear_bldc
+19:55:52       STEPPER: BLDC_SPEED: source=move speed=80.000 requested_rpm=1.3 clamped_rpm=1.3 pwm=0.5001 dir=forward unit=mmu_gear_bldc
+19:55:52       STEPPER: BLDC_SET_PIN: pin=PE4 applied=1.0000 time=34.928 unit=mmu_gear_bldc
+19:55:52       STEPPER: BLDC_SET_PIN: pin=PE3 applied=1.0000 time=34.931 unit=mmu_gear_bldc
+19:55:52       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.5001 time=34.927 unit=mmu_gear_bldc
+19:55:52       STEPPER: BLDC_MOTION: source=move time=34.924 unit=mmu_gear_bldc
+19:55:52       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=1.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=34.828 unit=mmu_gear_bldc
+19:55:52   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=2579 raw=9779.0 signed_delta=1249.0 movement_delta=1249.0 net_counts=9680.0 movement_counts=664746.0 distance=7.906mm status=0x00 crc_errors=0
+19:55:52       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=35.333 unit=mmu_gear_bldc
+19:55:53       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=35.839 unit=mmu_gear_bldc
+19:55:53   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=2712 raw=12146.0 signed_delta=901.0 movement_delta=901.0 net_counts=138385.0 movement_counts=793451.0 distance=113.020mm status=0x00 crc_errors=0
+19:55:53       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-0.9 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=36.345 unit=mmu_gear_bldc
+19:55:54   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=2844 raw=10559.0 signed_delta=927.0 movement_delta=927.0 net_counts=271044.0 movement_counts=926110.0 distance=221.364mm status=0x00 crc_errors=0
+19:55:54       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=36.848 unit=mmu_gear_bldc
+19:55:54       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=37.240 unit=mmu_gear_bldc
+19:55:54       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.0000 time=37.356 unit=mmu_gear_bldc
+19:55:54       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=37.362 unit=mmu_gear_bldc
+19:55:54       STEPPER: BLDC_ENCODER_POSITION: target=250.000 measured=256.974 actual=256.974
+19:55:54     TRACE: ESPOOLER: set_operation(gate=0, value=0, operation=off)
+19:55:54       STEPPER: ESPOOLER: _update_pwm(0, 0, off)
+19:55:54       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 37.25308214
+19:55:54       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 37.25385714
+19:55:54       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=0) @ print_time: 37.45373657
+19:55:54   DEBUG: Espooler for gate 0 turned off
+19:55:54     TRACE: Test move. Stepper: 'gear' moved 250.0mm, encoder measured 257.0mm (delta 0.0mm). Pos: @259.4, (263.6mm)
+19:55:54       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=-2.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=37.258 unit=mmu_gear_bldc
+19:55:54 Moved 257.0mm (measured 257.0mm)
+19:55:54       STEPPER: resync(unsynced/gear --> unsynced)
+19:55:55       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.309732
+19:55:55       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+19:55:55       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=37.574 unit=mmu_gear_bldc
+19:55:55       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=37.657 unit=mmu_gear_bldc
+19:55:55   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=2976 raw=4148.0 signed_delta=1.0 movement_delta=1.0 net_counts=342991.0 movement_counts=998171.0 distance=280.124mm status=0x00 crc_errors=0
+19:55:55     TRACE: Processing idle_timeout 'ready' event
+19:55:56   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=3114 raw=4124.0 signed_delta=1.0 movement_delta=1.0 net_counts=343015.0 movement_counts=998195.0 distance=280.144mm status=0x00 crc_errors=0
+19:55:56 > MMU_TEST_MOVE MOVE=-250
+19:55:56   DEBUG: Moving 'gear' motor -250.0mm...
+19:55:56     TRACE: ESPOOLER: set_operation(gate=0, value=0.7302967433402214, operation=rewind)
+19:55:56       STEPPER: ESPOOLER: _update_pwm(0, 0.7302967433402214, rewind)
+19:55:56       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 39.02014086
+19:55:56       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=1) @ print_time: 39.02267237
+19:55:56       STEPPER: ESPOOLER: -----> _set_pin(name=respool_0, value=1) @ print_time: 39.22251123
+19:55:56   DEBUG: Espooler for gate 0 set to rewind (pwm: 0.73)
+19:55:56       STEPPER: BLDC_ROUTE: gate=0 motor=gear homing=0 active=True unit=mmu_gear_bldc
+19:55:56       STEPPER: resync(unsynced --> unsynced/gear)
+19:55:56     TRACE: Processing idle_timeout 'printing' event
+19:55:56       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.307372
+19:55:56       STEPPER: GEAR MOVE: dist=-250.0, speed=80.0, accel=100.0, wait=True
+19:55:56       STEPPER: BLDC_POSITION: tachometer position disabled by caller unit=mmu_gear_bldc
+19:55:56       STEPPER: BLDC_SYNC_SAMPLE: source=move dt=0.0000 de=0.0000 raw_speed=-80.000 selected_speed=-80.000 scale=1.000 moving=1 unit=mmu_gear_bldc
+19:55:56       STEPPER: BLDC_SPEED: source=move speed=80.000 requested_rpm=1.3 clamped_rpm=1.3 pwm=0.5001 dir=reverse unit=mmu_gear_bldc
+19:55:56       STEPPER: BLDC_SET_PIN: pin=PE4 applied=1.0000 time=39.462 unit=mmu_gear_bldc
+19:55:56       STEPPER: BLDC_SET_PIN: pin=PE3 applied=0.0000 time=39.466 unit=mmu_gear_bldc
+19:55:56       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.5001 time=39.462 unit=mmu_gear_bldc
+19:55:56       STEPPER: BLDC_MOTION: source=move time=39.459 unit=mmu_gear_bldc
+19:55:57       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=1.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=39.373 unit=mmu_gear_bldc
+19:55:57   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=3239 raw=30129.0 signed_delta=-1396.0 movement_delta=1396.0 net_counts=284242.0 movement_counts=1056972.0 distance=232.143mm status=0x00 crc_errors=0
+19:55:57       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=39.880 unit=mmu_gear_bldc
+19:55:58       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-0.9 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=40.384 unit=mmu_gear_bldc
+19:55:58   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=3369 raw=4347.0 signed_delta=-926.0 movement_delta=926.0 net_counts=146184.0 movement_counts=1195030.0 distance=119.390mm status=0x00 crc_errors=0
+19:55:58       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=40.889 unit=mmu_gear_bldc
+19:55:59       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=41.394 unit=mmu_gear_bldc
+19:55:59       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=41.777 unit=mmu_gear_bldc
+19:55:59       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.0000 time=41.893 unit=mmu_gear_bldc
+19:55:59       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=41.894 unit=mmu_gear_bldc
+19:55:59       STEPPER: BLDC_ENCODER_POSITION: target=-250.000 measured=260.233 actual=-260.233
+19:55:59     TRACE: ESPOOLER: set_operation(gate=0, value=0, operation=off)
+19:55:59       STEPPER: ESPOOLER: _update_pwm(0, 0, off)
+19:55:59       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 41.78795283
+19:55:59       STEPPER: ESPOOLER: -----> _set_pin(name=respool_0, value=0) @ print_time: 41.88884384
+19:55:59       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 41.79133344
+19:55:59   DEBUG: Espooler for gate 0 turned off
+19:55:59     TRACE: Test move. Stepper: 'gear' moved -250.0mm, encoder measured -260.2mm (delta 0.0mm). Pos: @-0.9, (19.9mm)
+19:55:59 Moved -260.2mm (measured -260.2mm)
+19:55:59       STEPPER: resync(unsynced/gear --> unsynced)
+19:55:59       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=-2.5 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=41.799 unit=mmu_gear_bldc
+19:55:59   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=3499 raw=10734.0 signed_delta=-950.0 movement_delta=950.0 net_counts=8725.0 movement_counts=1332489.0 distance=7.126mm status=0x00 crc_errors=0
+19:55:59       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.304105
+19:55:59       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+19:55:59       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=42.107 unit=mmu_gear_bldc
+19:55:59       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=42.201 unit=mmu_gear_bldc
+19:56:00     TRACE: Processing idle_timeout 'ready' event
+19:56:00   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=3635 raw=11630.0 signed_delta=1.0 movement_delta=1.0 net_counts=7829.0 movement_counts=1334251.0 distance=6.394mm status=0x00 crc_errors=0
+19:56:01 > MMU_TEST_MOVE MOVE=250
+19:56:01   DEBUG: Moving 'gear' motor 250.0mm...
+19:56:01     TRACE: ESPOOLER: set_operation(gate=0, value=0.3651483716701107, operation=assist)
+19:56:01       STEPPER: ESPOOLER: _update_pwm(0, 0.3651483716701107, assist)
+19:56:01       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 43.83773778
+19:56:01       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=1) @ print_time: 43.83875635
+19:56:01       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=1) @ print_time: 44.03861939
+19:56:01   DEBUG: Espooler for gate 0 set to assist (pwm: 0.37)
+19:56:01       STEPPER: BLDC_ROUTE: gate=0 motor=gear homing=0 active=True unit=mmu_gear_bldc
+19:56:01       STEPPER: resync(unsynced --> unsynced/gear)
+19:56:01     TRACE: Processing idle_timeout 'printing' event
+19:56:01   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=3798 raw=11616.0 signed_delta=12.0 movement_delta=12.0 net_counts=7843.0 movement_counts=1334271.0 distance=6.405mm status=0x00 crc_errors=0
+19:56:01       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.308727
+19:56:01       STEPPER: GEAR MOVE: dist=250.0, speed=80.0, accel=100.0, wait=True
+19:56:01       STEPPER: BLDC_POSITION: tachometer position disabled by caller unit=mmu_gear_bldc
+19:56:01       STEPPER: BLDC_SYNC_SAMPLE: source=move dt=0.0000 de=0.0000 raw_speed=80.000 selected_speed=80.000 scale=1.000 moving=1 unit=mmu_gear_bldc
+19:56:01       STEPPER: BLDC_SPEED: source=move speed=80.000 requested_rpm=1.3 clamped_rpm=1.3 pwm=0.5001 dir=forward unit=mmu_gear_bldc
+19:56:01       STEPPER: BLDC_SET_PIN: pin=PE4 applied=1.0000 time=44.278 unit=mmu_gear_bldc
+19:56:01       STEPPER: BLDC_SET_PIN: pin=PE3 applied=1.0000 time=44.280 unit=mmu_gear_bldc
+19:56:01       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.5001 time=44.276 unit=mmu_gear_bldc
+19:56:01       STEPPER: BLDC_MOTION: source=move time=44.273 unit=mmu_gear_bldc
+19:56:01       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=1.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=44.222 unit=mmu_gear_bldc
+19:56:02       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=44.727 unit=mmu_gear_bldc
+19:56:02   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=3931 raw=18360.0 signed_delta=1222.0 movement_delta=1222.0 net_counts=132171.0 movement_counts=1458599.0 distance=107.945mm status=0x00 crc_errors=0
+19:56:02       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=45.232 unit=mmu_gear_bldc
+19:56:03       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-0.9 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=45.739 unit=mmu_gear_bldc
+19:56:03   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=4057 raw=16141.0 signed_delta=913.0 movement_delta=913.0 net_counts=265462.0 movement_counts=1591890.0 distance=216.805mm status=0x00 crc_errors=0
+19:56:03       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=46.243 unit=mmu_gear_bldc
+19:56:04       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=46.586 unit=mmu_gear_bldc
+19:56:04       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.0000 time=46.701 unit=mmu_gear_bldc
+19:56:04       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=46.703 unit=mmu_gear_bldc
+19:56:04       STEPPER: BLDC_ENCODER_POSITION: target=250.000 measured=258.530 actual=258.530
+19:56:04     TRACE: ESPOOLER: set_operation(gate=0, value=0, operation=off)
+19:56:04       STEPPER: ESPOOLER: _update_pwm(0, 0, off)
+19:56:04       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 46.59603388
+19:56:04       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 46.59737882
+19:56:04       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=0) @ print_time: 46.79725857
+19:56:04   DEBUG: Espooler for gate 0 turned off
+19:56:04     TRACE: Test move. Stepper: 'gear' moved 250.0mm, encoder measured 258.5mm (delta 0.0mm). Pos: @257.7, (264.9mm)
+19:56:04 Moved 258.5mm (measured 258.5mm)
+19:56:04       STEPPER: resync(unsynced/gear --> unsynced)
+19:56:04       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=-2.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=46.646 unit=mmu_gear_bldc
+19:56:04       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.306462
+19:56:04       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+19:56:04       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=46.914 unit=mmu_gear_bldc
+19:56:04       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=46.949 unit=mmu_gear_bldc
+19:56:04   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=4189 raw=2054.0 signed_delta=1.0 movement_delta=1.0 net_counts=345085.0 movement_counts=1671763.0 distance=281.834mm status=0x00 crc_errors=0
+19:56:04     TRACE: Processing idle_timeout 'ready' event
+19:56:05   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=4336 raw=2031.0 signed_delta=1.0 movement_delta=1.0 net_counts=345108.0 movement_counts=1671786.0 distance=281.853mm status=0x00 crc_errors=0
+19:56:06 > MMU_TEST_MOVE MOVE=-250
+19:56:06   DEBUG: Moving 'gear' motor -250.0mm...
+19:56:06     TRACE: ESPOOLER: set_operation(gate=0, value=0.7302967433402214, operation=rewind)
+19:56:06       STEPPER: ESPOOLER: _update_pwm(0, 0.7302967433402214, rewind)
+19:56:06       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 48.63665556
+19:56:06       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=1) @ print_time: 48.63809734
+19:56:06       STEPPER: ESPOOLER: -----> _set_pin(name=respool_0, value=1) @ print_time: 48.83798183
+19:56:06   DEBUG: Espooler for gate 0 set to rewind (pwm: 0.73)
+19:56:06       STEPPER: BLDC_ROUTE: gate=0 motor=gear homing=0 active=True unit=mmu_gear_bldc
+19:56:06       STEPPER: resync(unsynced --> unsynced/gear)
+19:56:06     TRACE: Processing idle_timeout 'printing' event
+19:56:06       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.306522
+19:56:06       STEPPER: GEAR MOVE: dist=-250.0, speed=80.0, accel=100.0, wait=True
+19:56:06       STEPPER: BLDC_POSITION: tachometer position disabled by caller unit=mmu_gear_bldc
+19:56:06       STEPPER: BLDC_SYNC_SAMPLE: source=move dt=0.0000 de=0.0000 raw_speed=-80.000 selected_speed=-80.000 scale=1.000 moving=1 unit=mmu_gear_bldc
+19:56:06       STEPPER: BLDC_SPEED: source=move speed=80.000 requested_rpm=1.3 clamped_rpm=1.3 pwm=0.5001 dir=reverse unit=mmu_gear_bldc
+19:56:06       STEPPER: BLDC_SET_PIN: pin=PE4 applied=1.0000 time=49.080 unit=mmu_gear_bldc
+19:56:06       STEPPER: BLDC_SET_PIN: pin=PE3 applied=0.0000 time=49.081 unit=mmu_gear_bldc
+19:56:06       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.5001 time=49.078 unit=mmu_gear_bldc
+19:56:06       STEPPER: BLDC_MOTION: source=move time=49.071 unit=mmu_gear_bldc
+19:56:06       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=1.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=49.070 unit=mmu_gear_bldc
+19:56:06   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=4467 raw=27039.0 signed_delta=-976.0 movement_delta=976.0 net_counts=320100.0 movement_counts=1696802.0 distance=261.429mm status=0x00 crc_errors=0
+19:56:07       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.1 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=49.575 unit=mmu_gear_bldc
+19:56:07       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=50.080 unit=mmu_gear_bldc
+19:56:07   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=4599 raw=3687.0 signed_delta=-959.0 movement_delta=959.0 net_counts=179612.0 movement_counts=1837290.0 distance=146.691mm status=0x00 crc_errors=0
+19:56:08       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.1 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=50.585 unit=mmu_gear_bldc
+19:56:08       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=51.090 unit=mmu_gear_bldc
+19:56:08   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=4729 raw=11147.0 signed_delta=-892.0 movement_delta=892.0 net_counts=41080.0 movement_counts=1975822.0 distance=33.550mm status=0x00 crc_errors=0
+19:56:08       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=51.295 unit=mmu_gear_bldc
+19:56:08       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.0000 time=51.411 unit=mmu_gear_bldc
+19:56:08       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=51.413 unit=mmu_gear_bldc
+19:56:08       STEPPER: BLDC_ENCODER_POSITION: target=-250.000 measured=253.624 actual=-253.624
+19:56:08     TRACE: ESPOOLER: set_operation(gate=0, value=0, operation=off)
+19:56:08       STEPPER: ESPOOLER: _update_pwm(0, 0, off)
+19:56:08       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 51.30709695
+19:56:08       STEPPER: ESPOOLER: -----> _set_pin(name=respool_0, value=0) @ print_time: 51.40844769
+19:56:08       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 51.30998781
+19:56:08   DEBUG: Espooler for gate 0 turned off
+19:56:08     TRACE: Test move. Stepper: 'gear' moved -250.0mm, encoder measured -253.6mm (delta 0.0mm). Pos: @4.0, (28.2mm)
+19:56:08 Moved -253.6mm (measured -253.6mm)
+19:56:08       STEPPER: resync(unsynced/gear --> unsynced)
+19:56:09       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=-2.5 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=51.393 unit=mmu_gear_bldc
+19:56:09       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.306143
+19:56:09       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+19:56:09       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=51.625 unit=mmu_gear_bldc
+19:56:09       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=51.696 unit=mmu_gear_bldc
+19:56:09     TRACE: Processing idle_timeout 'ready' event
+19:56:11 > MMU_TEST_MOVE MOVE=250
+19:56:11   DEBUG: Moving 'gear' motor 250.0mm...
+19:56:11     TRACE: ESPOOLER: set_operation(gate=0, value=0.3651483716701107, operation=assist)
+19:56:11       STEPPER: ESPOOLER: _update_pwm(0, 0.3651483716701107, assist)
+19:56:11       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 53.77770420
+19:56:11       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=1) @ print_time: 53.77862620
+19:56:11       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=1) @ print_time: 53.97844101
+19:56:11   DEBUG: Espooler for gate 0 set to assist (pwm: 0.37)
+19:56:11       STEPPER: BLDC_ROUTE: gate=0 motor=gear homing=0 active=True unit=mmu_gear_bldc
+19:56:11       STEPPER: resync(unsynced --> unsynced/gear)
+19:56:11     TRACE: Processing idle_timeout 'printing' event
+19:56:11   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=5095 raw=1836.0 signed_delta=1.0 movement_delta=1.0 net_counts=17623.0 movement_counts=1999933.0 distance=14.393mm status=0x00 crc_errors=0
+19:56:11       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.308491
+19:56:11       STEPPER: GEAR MOVE: dist=250.0, speed=80.0, accel=100.0, wait=True
+19:56:11       STEPPER: BLDC_POSITION: tachometer position disabled by caller unit=mmu_gear_bldc
+19:56:11       STEPPER: BLDC_SYNC_SAMPLE: source=move dt=0.0000 de=0.0000 raw_speed=80.000 selected_speed=80.000 scale=1.000 moving=1 unit=mmu_gear_bldc
+19:56:11       STEPPER: BLDC_SPEED: source=move speed=80.000 requested_rpm=1.3 clamped_rpm=1.3 pwm=0.5001 dir=forward unit=mmu_gear_bldc
+19:56:11       STEPPER: BLDC_SET_PIN: pin=PE4 applied=1.0000 time=54.218 unit=mmu_gear_bldc
+19:56:11       STEPPER: BLDC_SET_PIN: pin=PE3 applied=1.0000 time=54.220 unit=mmu_gear_bldc
+19:56:11       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.5001 time=54.217 unit=mmu_gear_bldc
+19:56:11       STEPPER: BLDC_MOTION: source=move time=54.214 unit=mmu_gear_bldc
+19:56:11       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=1.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=54.120 unit=mmu_gear_bldc
+19:56:12       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=54.625 unit=mmu_gear_bldc
+19:56:12   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=5227 raw=16650.0 signed_delta=870.0 movement_delta=870.0 net_counts=133881.0 movement_counts=2116191.0 distance=109.342mm status=0x00 crc_errors=0
+19:56:12       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=55.130 unit=mmu_gear_bldc
+19:56:13       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-0.9 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=55.635 unit=mmu_gear_bldc
+19:56:13   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=5360 raw=13872.0 signed_delta=875.0 movement_delta=875.0 net_counts=267731.0 movement_counts=2250041.0 distance=218.659mm status=0x00 crc_errors=0
+19:56:13       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=56.140 unit=mmu_gear_bldc
+19:56:14       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=56.526 unit=mmu_gear_bldc
+19:56:14       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.0000 time=56.642 unit=mmu_gear_bldc
+19:56:14       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=56.644 unit=mmu_gear_bldc
+19:56:14       STEPPER: BLDC_ENCODER_POSITION: target=250.000 measured=253.076 actual=253.076
+19:56:14     TRACE: ESPOOLER: set_operation(gate=0, value=0, operation=off)
+19:56:14       STEPPER: ESPOOLER: _update_pwm(0, 0, off)
+19:56:14       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 56.53744662
+19:56:14       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 56.53971708
+19:56:14       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=0) @ print_time: 56.73959970
+19:56:14   DEBUG: Espooler for gate 0 turned off
+19:56:14     TRACE: Test move. Stepper: 'gear' moved 250.0mm, encoder measured 253.1mm (delta 0.0mm). Pos: @257.1, (267.5mm)
+19:56:14 Moved 253.1mm (measured 253.1mm)
+19:56:14       STEPPER: resync(unsynced/gear --> unsynced)
+19:56:14       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=-2.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=56.546 unit=mmu_gear_bldc
+19:56:14       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.309133
+19:56:14       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+19:56:14       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=56.860 unit=mmu_gear_bldc
+19:56:14       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=56.949 unit=mmu_gear_bldc
+19:56:14   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=5490 raw=31221.0 signed_delta=1.0 movement_delta=1.0 net_counts=348686.0 movement_counts=2331070.0 distance=284.775mm status=0x00 crc_errors=0
+19:56:14     TRACE: Processing idle_timeout 'ready' event
+19:56:15   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=5630 raw=31164.0 signed_delta=1.0 movement_delta=1.0 net_counts=348743.0 movement_counts=2331127.0 distance=284.822mm status=0x00 crc_errors=0
+19:56:16 > MMU_TEST_MOVE MOVE=-250
+19:56:16   DEBUG: Moving 'gear' motor -250.0mm...
+19:56:16     TRACE: ESPOOLER: set_operation(gate=0, value=0.7302967433402214, operation=rewind)
+19:56:16       STEPPER: ESPOOLER: _update_pwm(0, 0.7302967433402214, rewind)
+19:56:16       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 58.89783970
+19:56:16       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=1) @ print_time: 58.89934595
+19:56:16       STEPPER: ESPOOLER: -----> _set_pin(name=respool_0, value=1) @ print_time: 59.09920926
+19:56:16   DEBUG: Espooler for gate 0 set to rewind (pwm: 0.73)
+19:56:16       STEPPER: BLDC_ROUTE: gate=0 motor=gear homing=0 active=True unit=mmu_gear_bldc
+19:56:16       STEPPER: resync(unsynced --> unsynced/gear)
+19:56:16     TRACE: Processing idle_timeout 'printing' event
+19:56:16   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=5769 raw=31138.0 signed_delta=-7.0 movement_delta=7.0 net_counts=348769.0 movement_counts=2331167.0 distance=284.843mm status=0x00 crc_errors=0
+19:56:16       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.311139
+19:56:16       STEPPER: GEAR MOVE: dist=-250.0, speed=80.0, accel=100.0, wait=True
+19:56:16       STEPPER: BLDC_POSITION: tachometer position disabled by caller unit=mmu_gear_bldc
+19:56:16       STEPPER: BLDC_SYNC_SAMPLE: source=move dt=0.0000 de=0.0000 raw_speed=-80.000 selected_speed=-80.000 scale=1.000 moving=1 unit=mmu_gear_bldc
+19:56:16       STEPPER: BLDC_SPEED: source=move speed=80.000 requested_rpm=1.3 clamped_rpm=1.3 pwm=0.5001 dir=reverse unit=mmu_gear_bldc
+19:56:16       STEPPER: BLDC_SET_PIN: pin=PE4 applied=1.0000 time=59.340 unit=mmu_gear_bldc
+19:56:16       STEPPER: BLDC_SET_PIN: pin=PE3 applied=0.0000 time=59.342 unit=mmu_gear_bldc
+19:56:16       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.5001 time=59.338 unit=mmu_gear_bldc
+19:56:16       STEPPER: BLDC_MOTION: source=move time=59.334 unit=mmu_gear_bldc
+19:56:16       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=1.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=59.272 unit=mmu_gear_bldc
+19:56:17       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.1 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=59.776 unit=mmu_gear_bldc
+19:56:17   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=5902 raw=14701.0 signed_delta=-973.0 movement_delta=973.0 net_counts=234134.0 movement_counts=2445802.0 distance=191.220mm status=0x00 crc_errors=0
+19:56:17       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=60.281 unit=mmu_gear_bldc
+19:56:18       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.1 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=60.787 unit=mmu_gear_bldc
+19:56:18   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=6036 raw=24183.0 signed_delta=-905.0 movement_delta=905.0 net_counts=93580.0 movement_counts=2586356.0 distance=76.428mm status=0x00 crc_errors=0
+19:56:18       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=-1.1 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=61.292 unit=mmu_gear_bldc
+19:56:19       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=61.552 unit=mmu_gear_bldc
+19:56:19       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.0000 time=61.669 unit=mmu_gear_bldc
+19:56:19       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=61.671 unit=mmu_gear_bldc
+19:56:19       STEPPER: BLDC_ENCODER_POSITION: target=-250.000 measured=254.831 actual=-254.831
+19:56:19     TRACE: ESPOOLER: set_operation(gate=0, value=0, operation=off)
+19:56:19       STEPPER: ESPOOLER: _update_pwm(0, 0, off)
+19:56:19       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 61.56428507
+19:56:19       STEPPER: ESPOOLER: -----> _set_pin(name=respool_0, value=0) @ print_time: 61.66585445
+19:56:19       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 61.56790280
+19:56:19   DEBUG: Espooler for gate 0 turned off
+19:56:19     TRACE: Test move. Stepper: 'gear' moved -250.0mm, encoder measured -254.8mm (delta 0.0mm). Pos: @2.3, (30.0mm)
+19:56:19 Moved -254.8mm (measured -254.8mm)
+19:56:19       STEPPER: resync(unsynced/gear --> unsynced)
+19:56:19       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=-2.5 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=61.594 unit=mmu_gear_bldc
+19:56:19       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.304587
+19:56:19       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+19:56:19       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=61.884 unit=mmu_gear_bldc
+19:56:19       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=61.898 unit=mmu_gear_bldc
+19:56:19   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=6168 raw=32363.0 signed_delta=1.0 movement_delta=1.0 net_counts=19864.0 movement_counts=2660854.0 distance=16.223mm status=0x00 crc_errors=0
+19:56:19     TRACE: Processing idle_timeout 'ready' event
+19:56:20   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=6310 raw=32336.0 signed_delta=1.0 movement_delta=1.0 net_counts=19891.0 movement_counts=2660881.0 distance=16.245mm status=0x00 crc_errors=0
+19:56:21   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=6442 raw=32329.0 signed_delta=1.0 movement_delta=1.0 net_counts=19898.0 movement_counts=2660888.0 distance=16.251mm status=0x00 crc_errors=0
+19:56:23   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=6606 raw=32324.0 signed_delta=1.0 movement_delta=1.0 net_counts=19903.0 movement_counts=2660903.0 distance=16.255mm status=0x00 crc_errors=0
+19:56:24   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=6752 raw=32321.0 signed_delta=1.0 movement_delta=1.0 net_counts=19906.0 movement_counts=2660908.0 distance=16.257mm status=0x00 crc_errors=0
+19:56:25   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=6945 raw=32318.0 signed_delta=1.0 movement_delta=1.0 net_counts=19909.0 movement_counts=2660919.0 distance=16.260mm status=0x00 crc_errors=0
+19:56:26   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=7113 raw=32316.0 signed_delta=1.0 movement_delta=1.0 net_counts=19911.0 movement_counts=2660927.0 distance=16.262mm status=0x00 crc_errors=0
+19:56:28   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=7296 raw=32314.0 signed_delta=1.0 movement_delta=1.0 net_counts=19913.0 movement_counts=2660939.0 distance=16.263mm status=0x00 crc_errors=0
+19:56:30   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=7537 raw=32312.0 signed_delta=1.0 movement_delta=1.0 net_counts=19915.0 movement_counts=2660951.0 distance=16.265mm status=0x00 crc_errors=0
+19:56:31   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=7680 raw=32311.0 signed_delta=1.0 movement_delta=1.0 net_counts=19916.0 movement_counts=2660960.0 distance=16.266mm status=0x00 crc_errors=0
+19:56:32   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=7832 raw=32310.0 signed_delta=1.0 movement_delta=1.0 net_counts=19917.0 movement_counts=2660965.0 distance=16.266mm status=0x00 crc_errors=0
+19:56:33   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=7991 raw=32309.0 signed_delta=1.0 movement_delta=1.0 net_counts=19918.0 movement_counts=2660968.0 distance=16.267mm status=0x00 crc_errors=0
+19:56:34   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=8178 raw=32308.0 signed_delta=1.0 movement_delta=1.0 net_counts=19919.0 movement_counts=2660979.0 distance=16.268mm status=0x00 crc_errors=0
+19:56:36   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=8367 raw=32307.0 signed_delta=1.0 movement_delta=1.0 net_counts=19920.0 movement_counts=2660988.0 distance=16.269mm status=0x00 crc_errors=0
+19:56:37   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=8591 raw=32306.0 signed_delta=1.0 movement_delta=1.0 net_counts=19921.0 movement_counts=2660997.0 distance=16.270mm status=0x00 crc_errors=0
+19:56:39   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=8831 raw=32305.0 signed_delta=1.0 movement_delta=1.0 net_counts=19922.0 movement_counts=2661012.0 distance=16.270mm status=0x00 crc_errors=0
+19:56:41   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=9107 raw=32304.0 signed_delta=1.0 movement_delta=1.0 net_counts=19923.0 movement_counts=2661021.0 distance=16.271mm status=0x00 crc_errors=0
+19:56:43   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=9390 raw=32303.0 signed_delta=1.0 movement_delta=1.0 net_counts=19924.0 movement_counts=2661030.0 distance=16.272mm status=0x00 crc_errors=0
+19:56:46   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=9718 raw=32302.0 signed_delta=1.0 movement_delta=1.0 net_counts=19925.0 movement_counts=2661041.0 distance=16.273mm status=0x00 crc_errors=0
+19:56:48   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=10058 raw=32301.0 signed_delta=1.0 movement_delta=1.0 net_counts=19926.0 movement_counts=2661050.0 distance=16.274mm status=0x00 crc_errors=0
+19:56:51   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=10405 raw=32300.0 signed_delta=1.0 movement_delta=1.0 net_counts=19927.0 movement_counts=2661065.0 distance=16.275mm status=0x00 crc_errors=0
+19:56:54   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=10879 raw=32299.0 signed_delta=1.0 movement_delta=1.0 net_counts=19928.0 movement_counts=2661080.0 distance=16.275mm status=0x00 crc_errors=0
+19:56:58   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=11302 raw=32298.0 signed_delta=1.0 movement_delta=1.0 net_counts=19929.0 movement_counts=2661089.0 distance=16.276mm status=0x00 crc_errors=0
+19:57:01   DEBUG: MT6826S encoder 'mmu_encoder' poll_reads=11805 raw=32297.0 signed_delta=1.0 movement_delta=1.0 net_counts=19930.0 movement_counts=2661116.0 distance=16.277mm status=0x00 crc_errors=0

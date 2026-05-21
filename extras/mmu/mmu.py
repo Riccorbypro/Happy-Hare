@@ -470,6 +470,11 @@ class Mmu:
         self.has_filament_buffer = bool(config.getint('has_filament_buffer', 1, minval=0, maxval=1))
         self.preload_attempts = config.getint('preload_attempts', 1, minval=1, maxval=20) # How many times to try to grab the filament
         self.encoder_move_validation = config.getint('encoder_move_validation', 1, minval=0, maxval=1) # Use encoder to check load/unload movement
+        self.encoder_bounded_bldc = config.getboolean('encoder_bounded_bldc', True)
+        self.bldc_encoder_stop_margin = config.getfloat('bldc_encoder_stop_margin', 4., minval=0.)
+        self.bldc_encoder_predict_time = config.getfloat('bldc_encoder_predict_time', 0.04, minval=0., maxval=0.5)
+        self.bldc_encoder_brake = config.getboolean('bldc_encoder_brake', True)
+        self.bldc_encoder_settle_time = config.getfloat('bldc_encoder_settle_time', 0.05, minval=0., maxval=0.5)
         self.spoolman_support = config.getchoice('spoolman_support', {o: o for o in self.SPOOLMAN_OPTIONS}, self.SPOOLMAN_OFF)
         self.t_macro_color = config.getchoice('t_macro_color', {o: o for o in self.T_MACRO_COLOR_OPTIONS}, self.T_MACRO_COLOR_SLICER)
         self.default_endless_spool_enabled = config.getint('endless_spool_enabled', 0, minval=0, maxval=1)
@@ -3785,6 +3790,16 @@ class Mmu:
         else:
             return 0.
 
+    def _get_encoder_distance_unvalidated(self, dwell=False):
+        if not self.has_encoder():
+            return 0.
+        if dwell:
+            self.movequeues_dwell(self.encoder_dwell)
+            self.movequeues_wait()
+        elif dwell is False:
+            self.movequeues_wait()
+        return self.encoder_sensor.get_distance()
+
     def _get_encoder_counts(self, dwell=False):
         if self._encoder_dwell(dwell):
             return self.encoder_sensor.get_counts()
@@ -5865,7 +5880,9 @@ class Mmu:
     # All moves return: actual (relative), homed, measured, delta; mmu_toolhead.get_position[1] holds absolute position
     #
     def trace_filament_move(self, trace_str, dist, speed=None, accel=None, motor="gear", homing_move=0, endstop_name="default", track=False, wait=False, encoder_dwell=False, speed_override=True):
-        encoder_start = self.get_encoder_distance(dwell=encoder_dwell)
+        bldc_encoder_control = self.encoder_bounded_bldc and self.has_bldc_gear(self.gate_selected) and motor == "gear" and homing_move == 0 and self.has_encoder()
+        encoder_start = (self._get_encoder_distance_unvalidated(dwell=encoder_dwell)
+                         if bldc_encoder_control else self.get_encoder_distance(dwell=encoder_dwell))
         pos = self.mmu_toolhead.get_position()
         ext_pos = self.toolhead.get_position()
         homed = False
@@ -6020,22 +6037,37 @@ class Mmu:
                 else:
                     if self.log_enabled(self.LOG_STEPPER):
                         self.log_stepper("%s MOVE: dist=%.1f, speed=%.1f, accel=%.1f, wait=%s" % (motor.upper(), dist, speed, accel, wait))
-                    encoder_bounded_bldc = bldc_active_move and motor == "gear" and self._can_use_encoder()
+                    encoder_bounded_bldc = bldc_active_move and motor == "gear" and self.encoder_bounded_bldc and self.has_encoder()
                     if bldc_active_move:
                         bldc.start_move(dist, speed, use_tach_position=not encoder_bounded_bldc)
                     if encoder_bounded_bldc:
                         target = abs(dist)
                         direction = 1. if dist >= 0. else -1.
                         timeout = max((target / max(speed, 1e-6)) * 4., (target / max(speed, 1e-6)) + 2.)
-                        poll_time = min(max(bldc.motion_sample_time, 0.02), 0.10)
+                        encoder_poll_interval = getattr(self.encoder_sensor, 'poll_interval', 0.005)
+                        poll_time = min(max(encoder_poll_interval * 2., 0.005), 0.02)
                         start_time = last_progress_time = self.reactor.monotonic()
+                        last_sample_time = start_time
+                        last_sample_measured = 0.
                         last_measured = 0.
                         measured = 0.
+                        stop_measured = 0.
+                        velocity = 0.
+                        lead = self.encoder_min
+                        brake_used = False
                         try:
                             while True:
                                 now = self.reactor.monotonic()
-                                measured = abs(self.get_encoder_distance(dwell=None) - encoder_start)
-                                if measured + self.encoder_min >= target:
+                                measured = abs(self._get_encoder_distance_unvalidated(dwell=None) - encoder_start)
+                                dt = max(now - last_sample_time, 1e-6)
+                                if measured >= last_sample_measured:
+                                    velocity = (measured - last_sample_measured) / dt
+                                last_sample_time = now
+                                last_sample_measured = measured
+                                lead = self.bldc_encoder_stop_margin + max(0., velocity) * self.bldc_encoder_predict_time
+                                lead = min(lead, max(self.encoder_min, target * 0.20))
+                                if measured + self.encoder_min >= target or target - measured <= lead:
+                                    stop_measured = measured
                                     break
                                 if measured > last_measured + self.encoder_min:
                                     last_measured = measured
@@ -6046,12 +6078,28 @@ class Mmu:
                                     raise MmuError("BLDC encoder-bounded move stalled: requested %.1fmm, encoder measured %.1fmm" % (target, measured))
                                 self.reactor.pause(now + poll_time)
                         finally:
-                            bldc.stop()
+                            brake_used = (
+                                self.bldc_encoder_brake and hasattr(bldc, 'brake_to_stop') and
+                                abs(getattr(bldc, 'last_pwm', 0.)) >= getattr(bldc, 'BRAKE_MIN_ACTIVE_PWM', 0.) and
+                                getattr(bldc, 'last_dir', None) is not None
+                            )
+                            if brake_used:
+                                bldc.brake_to_stop()
+                            else:
+                                bldc.stop()
                             bldc_stopped = True
+                            settle_time = self.bldc_encoder_settle_time
+                            if brake_used:
+                                settle_time += getattr(bldc, 'brake_max_time', 0.)
+                            if settle_time > 0.:
+                                self.reactor.pause(self.reactor.monotonic() + settle_time)
+                            measured = abs(self._get_encoder_distance_unvalidated(dwell=None) - encoder_start)
                         actual = direction * measured
                         pos[1] += actual
                         self.mmu_toolhead.set_position(pos)
-                        self.log_stepper("BLDC_ENCODER_POSITION: target=%.3f measured=%.3f actual=%.3f" % (dist, measured, actual))
+                        self.log_stepper("BLDC_ENCODER_POSITION: target=%.3f measured=%.3f actual=%.3f stop_measured=%.3f lead=%.3f velocity=%.3f poll_time=%.3f brake=%d validation=%d" % (
+                            dist, measured, actual, stop_measured, lead, velocity, poll_time, brake_used, self.encoder_move_validation
+                        ))
                     elif bldc_active_move and motor == "gear":
                         pause_time = abs(dist) / max(speed, 1e-6)
                         if wait:
@@ -6086,7 +6134,8 @@ class Mmu:
             if bldc_active_move and not bldc_stopped and not (motor == "gear" and not wait):
                 bldc.stop()
 
-        encoder_end = self.get_encoder_distance(dwell=encoder_dwell)
+        encoder_end = (self._get_encoder_distance_unvalidated(dwell=encoder_dwell)
+                       if bldc_encoder_control else self.get_encoder_distance(dwell=encoder_dwell))
         measured = encoder_end - encoder_start
         delta = abs(actual) - abs(measured) # +ve means measured less than moved, -ve means measured more than moved
         if trace_str:
