@@ -33,6 +33,8 @@ class MmuEncoderMt6826s:
 
         rotation_distance = config.getfloat('rotation_distance', 4.0, above=0.)
         self.set_resolution(config.getfloat('encoder_resolution', rotation_distance / RAW_ANGLE_TICKS, above=0.))
+        self.poll_interval = config.getfloat('poll_interval', 0.005, above=0.)
+        self.use_bulk_angle_stream = bool(config.getint('use_bulk_angle_stream', 0, minval=0, maxval=1))
 
         self._logger = None
         self._counts = 0.
@@ -51,6 +53,13 @@ class MmuEncoderMt6826s:
         self._angle_last_position_offset = None
         self._angle_logged_batches = 0
         self._angle_last_log_systime = 0.
+        self._poll_timer = None
+        self._poll_reads = 0
+        self._poll_errors = 0
+        self._poll_crc_errors = 0
+        self._poll_last_status = None
+        self._poll_logged_reads = 0
+        self._poll_last_log_systime = 0.
 
         self.extruder_name = config.get('extruder', 'extruder')
         self.desired_headroom = config.getfloat('desired_headroom', 6., above=0.)
@@ -115,29 +124,78 @@ class MmuEncoderMt6826s:
         first_raw_angle = first_angle % RAW_ANGLE_TICKS
         for sample_time, angle in samples:
             raw_angle = angle % RAW_ANGLE_TICKS
-            if self._last_raw_angle is None:
-                self._last_angle = angle
-                self._last_raw_angle = raw_angle
-                self._last_time = sample_time
-                continue
-            delta = raw_angle - self._last_raw_angle
-            if delta > RAW_ANGLE_HALF_TURN:
-                delta -= RAW_ANGLE_TICKS
-            elif delta < -RAW_ANGLE_HALF_TURN:
-                delta += RAW_ANGLE_TICKS
-            if delta:
-                abs_delta = abs(delta)
-                self._counts += abs_delta
-                batch_delta += abs_delta
-                self._movement = True
-            self._last_angle = angle
-            self._last_raw_angle = raw_angle
-            self._last_time = sample_time
+            batch_delta += self._record_raw_angle(raw_angle, sample_time, angle)
         self._angle_samples += len(samples)
         self._angle_last_batch_delta = batch_delta
         self._angle_last_batch_time = samples[-1][0]
         self._log_angle_batch(samples, first_angle, first_raw_angle, batch_delta, msg.get('errors', 0))
         return True
+
+    def _record_raw_angle(self, raw_angle, sample_time, angle=None):
+        if self._last_raw_angle is None:
+            self._last_angle = raw_angle if angle is None else angle
+            self._last_raw_angle = raw_angle
+            self._last_time = sample_time
+            return 0.
+        delta = raw_angle - self._last_raw_angle
+        if delta > RAW_ANGLE_HALF_TURN:
+            delta -= RAW_ANGLE_TICKS
+        elif delta < -RAW_ANGLE_HALF_TURN:
+            delta += RAW_ANGLE_TICKS
+        abs_delta = abs(delta)
+        if abs_delta:
+            self._counts += abs_delta
+            self._movement = True
+        self._last_angle = raw_angle if angle is None else angle
+        self._last_raw_angle = raw_angle
+        self._last_time = sample_time
+        return abs_delta
+
+    def _read_raw_angle(self):
+        sensor_helper = getattr(self.angle_sensor, 'sensor_helper', None)
+        if sensor_helper is None or not hasattr(sensor_helper, '_read_angle'):
+            raise Exception("MT6826S angle helper does not support direct angle reads")
+        angle, status, crc, crc_computed = sensor_helper._read_angle(0x003)
+        self._poll_last_status = status
+        if crc != crc_computed:
+            self._poll_crc_errors += 1
+            if self._poll_crc_errors <= 5:
+                self._log_encoder("MT6826S encoder '%s' CRC mismatch while polling: got=0x%02x expected=0x%02x angle=%d status=0x%02x"
+                                  % (self.name, crc, crc_computed, angle, status))
+        return float(angle)
+
+    def _poll_angle_once(self, eventtime):
+        raw_angle = self._read_raw_angle()
+        delta = self._record_raw_angle(raw_angle, eventtime, raw_angle)
+        self._poll_reads += 1
+        self._angle_samples += 1
+        self._log_poll_sample(raw_angle, delta)
+        return delta
+
+    def _poll_angle_event(self, eventtime):
+        try:
+            self._poll_angle_once(eventtime)
+        except Exception as e:
+            self._poll_errors += 1
+            if self._poll_errors <= 5:
+                self._log_encoder("MT6826S encoder '%s' polling read failed: %s" % (self.name, str(e)))
+        return self.reactor.monotonic() + self.poll_interval
+
+    def _log_poll_sample(self, raw_angle, delta):
+        should_log = False
+        if self._poll_logged_reads < 5:
+            should_log = True
+            self._poll_logged_reads += 1
+        elif delta:
+            now = self.reactor.monotonic()
+            should_log = now - self._poll_last_log_systime > 1.
+        if not should_log:
+            return
+        self._poll_last_log_systime = self.reactor.monotonic()
+        self._log_encoder(
+            "MT6826S encoder '%s' poll_reads=%d raw=%.1f delta=%.1f total_counts=%.1f distance=%.3fmm status=0x%02x crc_errors=%d"
+            % (self.name, self._poll_reads, raw_angle, delta, self._counts, self.get_distance(),
+               self._poll_last_status if self._poll_last_status is not None else 0, self._poll_crc_errors))
 
     def _log_angle_batch(self, samples, first_angle, first_raw_angle, batch_delta, errors):
         should_log = False
@@ -168,7 +226,12 @@ class MmuEncoderMt6826s:
         self.min_event_systime = self.reactor.monotonic() + 2.
         self._reset_filament_runout_params()
         self._extruder_pos_update_timer = self.reactor.register_timer(self._extruder_pos_update_event)
-        self.reactor.register_callback(self._register_angle_client_event, self.reactor.monotonic() + 0.1)
+        if self.use_bulk_angle_stream:
+            self.reactor.register_callback(self._register_angle_client_event, self.reactor.monotonic() + 0.1)
+        self._poll_timer = self.reactor.register_timer(self._poll_angle_event, self.reactor.monotonic() + 0.1)
+        self._log_encoder("MT6826S encoder '%s' using direct SPI polling at %.4fs intervals%s"
+                          % (self.name, self.poll_interval,
+                             " with bulk angle stream enabled" if self.use_bulk_angle_stream else ""))
 
     def _handle_printing(self, print_time):
         self.reactor.update_timer(self._extruder_pos_update_timer, self.reactor.NOW)
@@ -337,12 +400,16 @@ class MmuEncoderMt6826s:
         self._counts = max(0., new_distance / self.resolution)
 
     def reset_counts(self):
+        try:
+            self._poll_angle_once(self.reactor.monotonic())
+        except Exception as e:
+            self._log_encoder("MT6826S encoder '%s' could not seed angle during reset: %s" % (self.name, str(e)))
         self._counts = 0.
         self._movement = False
         self._angle_last_batch_delta = 0.
-        self._log_encoder("MT6826S encoder '%s' counts reset (last_raw=%s, batches=%d, samples=%d)"
+        self._log_encoder("MT6826S encoder '%s' counts reset (last_raw=%s, batches=%d, samples=%d, poll_reads=%d)"
                           % (self.name, "unknown" if self._last_raw_angle is None else "%.1f" % self._last_raw_angle,
-                             self._angle_batches, self._angle_samples))
+                             self._angle_batches, self._angle_samples, self._poll_reads))
 
     def get_status(self, eventtime):
         angle_status = self.angle_sensor.get_status(eventtime)
@@ -362,6 +429,11 @@ class MmuEncoderMt6826s:
             'angle_last_batch_samples': self._angle_last_batch_samples,
             'angle_last_batch_delta': round(self._angle_last_batch_delta, 3),
             'angle_last_position_offset': self._angle_last_position_offset,
+            'angle_poll_interval': self.poll_interval,
+            'angle_poll_reads': self._poll_reads,
+            'angle_poll_errors': self._poll_errors,
+            'angle_poll_crc_errors': self._poll_crc_errors,
+            'angle_poll_status': self._poll_last_status,
             'detection_length': round(self.detection_length, 1),
             'min_headroom': round(self.min_headroom, 1),
             'headroom': round(self.filament_runout_pos - self.last_extruder_pos, 1),

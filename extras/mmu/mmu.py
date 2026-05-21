@@ -2666,13 +2666,16 @@ class Mmu:
                         self._initialize_encoder(dwell=True)
                         status = self.encoder_sensor.get_status(self.reactor.monotonic()) if self.encoder_sensor else {}
                         self.log_always("Manual encoder calibration counts reset. Pull a known length through the encoder, then run 'MMU_CALIBRATE_ENCODER MOTOR=manual LENGTH=<measured_mm>'"
-                                        "\nEncoder diagnostics: angle_client=%s batches=%s empty_batches=%s samples=%s errors=%s last_raw=%s" % (
+                                        "\nEncoder diagnostics: angle_client=%s batches=%s empty_batches=%s samples=%s errors=%s last_raw=%s poll_reads=%s poll_errors=%s poll_crc_errors=%s" % (
                                             status.get('angle_client_registered', 'n/a'),
                                             status.get('angle_batches', 'n/a'),
                                             status.get('angle_empty_batches', 'n/a'),
                                             status.get('angle_samples', 'n/a'),
                                             status.get('angle_errors', 'n/a'),
-                                            status.get('angle_last_raw', 'n/a')))
+                                            status.get('angle_last_raw', 'n/a'),
+                                            status.get('angle_poll_reads', 'n/a'),
+                                            status.get('angle_poll_errors', 'n/a'),
+                                            status.get('angle_poll_crc_errors', 'n/a')))
                     else:
                         self.calibration_manager.calibrate_encoder_manual(length, save)
                 else:
