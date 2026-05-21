@@ -28,3 +28,334 @@
 08:10:04       STEPPER: BLDC_SYNC: monitor probed and validated
 08:10:04       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=15.630 unit=mmu_gear_bldc
 08:10:04       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=15.746 unit=mmu_gear_bldc
+08:12:52   DEBUG: Klipper disconnected!
+08:13:23 
+         
+         
+         MMU Startup -----------------------------------------------
+         
+08:13:23   DEBUG: Found tmc2209 on extruder. Current control enabled. Stallguard 'touch' homing possible.
+08:13:23   DEBUG: BLDC gear configured; skipping gear TMC current control
+08:13:23   DEBUG: Loaded saved bowden lengths: [-1, -1, -1, -1]
+08:13:23   DEBUG: Loaded saved gear rotation distances: [3616.7665, -1, -1, -1]
+08:13:23 Warning: Encoder resolution not found in mmu_vars.cfg. Probably not calibrated
+08:13:23       STEPPER: BLDC_PROCESS_MOVE: hook installed
+08:13:23       STEPPER: BLDC_PROCESS_MOVE: hook removed
+08:13:23       STEPPER: BLDC_SYNC: monitor probed and validated
+08:13:23   DEBUG: Loading persisted MMU state
+08:13:23   DEBUG: MmuSyncFeedbackManager: Setting default rotation distance for gate 0 to 3616.7665
+08:13:23     TRACE: Setting gear motor rotation distance: 3616.7665
+08:13:25       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=10.134 unit=mmu_gear_bldc
+08:13:26 > __MMU_BOOTUP
+08:13:26 (\_/)
+         ( *,*)
+         (")_(") Happy Hare v3.4.2 Ready...
+08:13:26 Warning: filament_switch_sensor 'runout_sensor' found in printer configuration. This may interfere with MMU functionality and/or pause during prints unintentionally.
+08:13:26   DEBUG: Job State: READY -> INITIALIZED (MMU State: Encoder: Enabled, Synced: False, Paused temp: None, Resume to state: ready, Position saved for: , pause_resume: False, Idle timeout: 172800.00s)
+08:13:26     TRACE: Running macro: _MMU_PRINT_STATE_CHANGED STATE='initialized' OLD_STATE='ready'
+08:13:26 Warning: Calibration steps are not complete:
+         Required:
+         - Use MMU_CALIBRATE_ENCODER (with gate 0 selected)
+08:13:26     TRACE: Disabled FlowGuard and runout detection
+08:13:26       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+08:13:26       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=11.425 unit=mmu_gear_bldc
+08:13:26       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=11.541 unit=mmu_gear_bldc
+08:13:26     TRACE: Processing idle_timeout 'printing' event
+08:13:26       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=11.446 unit=mmu_gear_bldc
+08:13:26       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.311577
+08:13:26     TRACE: Running macro: _MMU_EVENT EVENT=restart 
+08:13:26 > MMU_STATS COUNTER=mmu_restarts INCR=1
+08:13:27     TRACE: Processing idle_timeout 'ready' event
+08:17:56     TRACE: Processing idle_timeout 'printing' event
+08:17:56     TRACE: Processing idle_timeout 'ready' event
+08:19:36 > MMU_GATE_MAP MAP="{0: {'status':1,'spool_id':-1,'material':'PETG','color':'000000FF','name':'SAFilament PETG Speed','temp':'245','speed_override':100},1: {'status':0,'spool_id':-1,'material':'Unknown','color':'','name':'Unknown','temp':200,'speed_override':100},2: {'status':0,'spool_id':-1,'material':'Unknown','color':'','name':'Unknown','temp':200,'speed_override':100},3: {'status':0,'spool_id':-1,'material':'Unknown','color':'','name':'Unknown','temp':200,'speed_override':100}}" QUIET=1
+08:19:36   DEBUG: Received gate map update (replace: False)
+08:19:36     TRACE: Running macro: _MMU_EVENT EVENT=gate_map_changed GATE=-1
+13:06:33     TRACE: Processing idle_timeout 'printing' event
+13:06:55     TRACE: Processing idle_timeout 'ready' event
+13:07:00     TRACE: Processing idle_timeout 'printing' event
+13:07:06     TRACE: Processing idle_timeout 'ready' event
+13:07:10     TRACE: Processing idle_timeout 'printing' event
+13:07:11     TRACE: Processing idle_timeout 'ready' event
+13:07:12     TRACE: Processing idle_timeout 'printing' event
+13:07:13     TRACE: Processing idle_timeout 'ready' event
+13:15:31     TRACE: Processing idle_timeout 'printing' event
+13:16:49     TRACE: Processing idle_timeout 'ready' event
+17:43:31 > MMU_GATE_MAP GATE=0 MATERIAL=PETG ; from helixscreen
+17:43:31     TRACE: Running macro: _MMU_EVENT EVENT=gate_map_changed GATE=-1
+17:43:31 Gates / Filaments:
+         0: Spool;   PETG | 200°C | #000000 | SAFilament PETG Speed
+         1: Empty;   Unknown | 200°C | n/a | Unknown
+         2: Empty;   Unknown | 200°C | n/a | Unknown
+         3: Empty;   Unknown | 200°C | n/a | Unknown
+17:43:56 > MMU_GATE_MAP GATE=0 COLOR=1A1A1A MATERIAL=PETG ; from helixscreen
+17:43:56     TRACE: Running macro: _MMU_EVENT EVENT=gate_map_changed GATE=-1
+17:43:56 Gates / Filaments:
+         0: Spool;   PETG | 200°C | #1A1A1A | SAFilament PETG Speed
+         1: Empty;   Unknown | 200°C | n/a | Unknown
+         2: Empty;   Unknown | 200°C | n/a | Unknown
+         3: Empty;   Unknown | 200°C | n/a | Unknown
+17:44:13 > MMU_GATE_MAP GATE=0 COLOR=1A1A1A MATERIAL=PETG ; from helixscreen
+17:44:13     TRACE: Running macro: _MMU_EVENT EVENT=gate_map_changed GATE=-1
+17:44:13 Gates / Filaments:
+         0: Spool;   PETG | 200°C | #1A1A1A | SAFilament PETG Speed
+         1: Empty;   Unknown | 200°C | n/a | Unknown
+         2: Empty;   Unknown | 200°C | n/a | Unknown
+         3: Empty;   Unknown | 200°C | n/a | Unknown
+18:47:03 > MMU_TEST_MOVE MOVE=55
+18:47:03   DEBUG: Moving 'gear' motor 55.0mm...
+18:47:03     TRACE: ESPOOLER: set_operation(gate=0, value=0.3651483716701107, operation=assist)
+18:47:03       STEPPER: ESPOOLER: _update_pwm(0, 0.3651483716701107, assist)
+18:47:03       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 38029.39179288
+18:47:03       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=1) @ print_time: 38029.39476452
+18:47:03       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=1) @ print_time: 38029.59461006
+18:47:03   DEBUG: Espooler for gate 0 set to assist (pwm: 0.37)
+18:47:03       STEPPER: BLDC_ROUTE: gate=0 motor=gear homing=0 active=True unit=mmu_gear_bldc
+18:47:03       STEPPER: resync(unsynced --> unsynced/gear)
+18:47:03     TRACE: Processing idle_timeout 'printing' event
+18:47:03       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.310129
+18:47:03       STEPPER: GEAR MOVE: dist=55.0, speed=80.0, accel=600.0, wait=True
+18:47:03       STEPPER: BLDC_POSITION: target_dist=55.000 rotation_distance=3616.7665 target_revs=0.0152 target_counts=125.3 timeout=38031.208 unit=mmu_gear_bldc
+18:47:03       STEPPER: BLDC_SYNC_SAMPLE: source=move dt=0.0000 de=0.0000 raw_speed=80.000 selected_speed=80.000 scale=1.000 moving=1 unit=mmu_gear_bldc
+18:47:03       STEPPER: BLDC_MAP: mode=linear reason=map_missing points=0 unit=mmu_gear_bldc
+18:47:03       STEPPER: BLDC_SPEED: source=move speed=80.000 requested_rpm=1.3 clamped_rpm=1.3 pwm=0.8500 dir=forward unit=mmu_gear_bldc
+18:47:03       STEPPER: BLDC_SET_PIN: pin=PE4 applied=1.0000 time=38029.840 unit=mmu_gear_bldc
+18:47:03       STEPPER: BLDC_SET_PIN: pin=PE3 applied=1.0000 time=38029.843 unit=mmu_gear_bldc
+18:47:03       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.8500 time=38029.838 unit=mmu_gear_bldc
+18:47:03       STEPPER: BLDC_MOTION: source=move time=38029.833 unit=mmu_gear_bldc
+18:47:03       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=1.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38029.797 unit=mmu_gear_bldc
+18:47:03       STEPPER: BLDC_POSITION: reached target_counts=125.3 actual_counts=142.0 actual_revs=0.0172 unit=mmu_gear_bldc
+18:47:03       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38030.138 unit=mmu_gear_bldc
+18:47:03       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.0000 time=38030.254 unit=mmu_gear_bldc
+18:47:03       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=38030.256 unit=mmu_gear_bldc
+18:47:04       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=-4.1 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38030.201 unit=mmu_gear_bldc
+18:47:04     TRACE: ESPOOLER: set_operation(gate=0, value=0, operation=off)
+18:47:04       STEPPER: ESPOOLER: _update_pwm(0, 0, off)
+18:47:04       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 38030.52461566
+18:47:04       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 38030.52631383
+18:47:04       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=0) @ print_time: 38030.72617071
+18:47:04   DEBUG: Espooler for gate 0 turned off
+18:47:04     TRACE: Test move. Stepper: 'gear' moved 55.0mm, encoder measured 0.0mm (delta 55.0mm). Pos: @55.0, (0.0mm)
+18:47:04 Moved 55.0mm
+18:47:04       STEPPER: resync(unsynced/gear --> unsynced)
+18:47:04       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.304377
+18:47:04       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+18:47:04       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38030.842 unit=mmu_gear_bldc
+18:47:04       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38030.908 unit=mmu_gear_bldc
+18:47:05     TRACE: Processing idle_timeout 'ready' event
+18:47:05 > MMU_TEST_MOVE MOVE=55
+18:47:05   DEBUG: Moving 'gear' motor 55.0mm...
+18:47:05     TRACE: ESPOOLER: set_operation(gate=0, value=0.3651483716701107, operation=assist)
+18:47:05       STEPPER: ESPOOLER: _update_pwm(0, 0.3651483716701107, assist)
+18:47:05       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 38031.63128583
+18:47:05       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=1) @ print_time: 38031.63385088
+18:47:05       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=1) @ print_time: 38031.83371457
+18:47:05   DEBUG: Espooler for gate 0 set to assist (pwm: 0.37)
+18:47:05       STEPPER: BLDC_ROUTE: gate=0 motor=gear homing=0 active=True unit=mmu_gear_bldc
+18:47:05       STEPPER: resync(unsynced --> unsynced/gear)
+18:47:05     TRACE: Processing idle_timeout 'printing' event
+18:47:05       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.306636
+18:47:05       STEPPER: GEAR MOVE: dist=55.0, speed=80.0, accel=600.0, wait=True
+18:47:05       STEPPER: BLDC_POSITION: target_dist=55.000 rotation_distance=3616.7665 target_revs=0.0152 target_counts=125.3 timeout=38033.443 unit=mmu_gear_bldc
+18:47:05       STEPPER: BLDC_SYNC_SAMPLE: source=move dt=0.0000 de=0.0000 raw_speed=80.000 selected_speed=80.000 scale=1.000 moving=1 unit=mmu_gear_bldc
+18:47:05       STEPPER: BLDC_SPEED: source=move speed=80.000 requested_rpm=1.3 clamped_rpm=1.3 pwm=0.8500 dir=forward unit=mmu_gear_bldc
+18:47:05       STEPPER: BLDC_SET_PIN: pin=PE4 applied=1.0000 time=38032.074 unit=mmu_gear_bldc
+18:47:05       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.8500 time=38032.072 unit=mmu_gear_bldc
+18:47:05       STEPPER: BLDC_MOTION: source=move time=38032.068 unit=mmu_gear_bldc
+18:47:05       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=1.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38032.019 unit=mmu_gear_bldc
+18:47:06       STEPPER: BLDC_POSITION: reached target_counts=125.3 actual_counts=139.0 actual_revs=0.0169 unit=mmu_gear_bldc
+18:47:06       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38032.369 unit=mmu_gear_bldc
+18:47:06       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.0000 time=38032.485 unit=mmu_gear_bldc
+18:47:06       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=38032.487 unit=mmu_gear_bldc
+18:47:06       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=-4.1 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38032.423 unit=mmu_gear_bldc
+18:47:06     TRACE: ESPOOLER: set_operation(gate=0, value=0, operation=off)
+18:47:06       STEPPER: ESPOOLER: _update_pwm(0, 0, off)
+18:47:06       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 38032.75667282
+18:47:06       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 38032.75872363
+18:47:06       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=0) @ print_time: 38032.95860234
+18:47:06   DEBUG: Espooler for gate 0 turned off
+18:47:06     TRACE: Test move. Stepper: 'gear' moved 55.0mm, encoder measured 0.0mm (delta 55.0mm). Pos: @110.0, (0.0mm)
+18:47:06 Moved 55.0mm
+18:47:06       STEPPER: resync(unsynced/gear --> unsynced)
+18:47:06       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.304403
+18:47:06       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+18:47:06       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38033.078 unit=mmu_gear_bldc
+18:47:06       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38033.130 unit=mmu_gear_bldc
+18:47:07     TRACE: Processing idle_timeout 'ready' event
+18:47:57 > MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1
+18:47:57     TRACE: Processing idle_timeout 'printing' event
+18:47:58 Manual encoder calibration counts reset. Pull a known length through the encoder, then run 'MMU_CALIBRATE_ENCODER MOTOR=manual LENGTH=<measured_mm>'
+18:47:58     TRACE: Processing idle_timeout 'ready' event
+18:48:41 > MMU_CALIBRATE_ENCODER MOTOR=manual LENGTH=100
+18:48:41     TRACE: Processing idle_timeout 'printing' event
+18:48:42 No counts measured. Run 'MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1', manually pull a measured length through the encoder, then run this command again with LENGTH=<measured_mm>
+18:48:42     TRACE: Processing idle_timeout 'ready' event
+18:49:23 > MMU_TEST_MOVE MOVE=-55
+18:49:23   DEBUG: Moving 'gear' motor -55.0mm...
+18:49:23     TRACE: ESPOOLER: set_operation(gate=0, value=0.7302967433402214, operation=rewind)
+18:49:23       STEPPER: ESPOOLER: _update_pwm(0, 0.7302967433402214, rewind)
+18:49:23       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 38169.74136627
+18:49:23       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=1) @ print_time: 38169.74426850
+18:49:23       STEPPER: ESPOOLER: -----> _set_pin(name=respool_0, value=1) @ print_time: 38169.94407940
+18:49:23   DEBUG: Espooler for gate 0 set to rewind (pwm: 0.73)
+18:49:23       STEPPER: BLDC_ROUTE: gate=0 motor=gear homing=0 active=True unit=mmu_gear_bldc
+18:49:23       STEPPER: resync(unsynced --> unsynced/gear)
+18:49:23     TRACE: Processing idle_timeout 'printing' event
+18:49:23       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.311905
+18:49:23       STEPPER: GEAR MOVE: dist=-55.0, speed=80.0, accel=600.0, wait=True
+18:49:23       STEPPER: BLDC_POSITION: target_dist=-55.000 rotation_distance=3616.7665 target_revs=0.0152 target_counts=125.3 timeout=38171.561 unit=mmu_gear_bldc
+18:49:23       STEPPER: BLDC_SYNC_SAMPLE: source=move dt=0.0000 de=0.0000 raw_speed=-80.000 selected_speed=-80.000 scale=1.000 moving=1 unit=mmu_gear_bldc
+18:49:23       STEPPER: BLDC_SPEED: source=move speed=80.000 requested_rpm=1.3 clamped_rpm=1.3 pwm=0.8500 dir=reverse unit=mmu_gear_bldc
+18:49:23       STEPPER: BLDC_SET_PIN: pin=PE4 applied=1.0000 time=38170.191 unit=mmu_gear_bldc
+18:49:23       STEPPER: BLDC_SET_PIN: pin=PE3 applied=0.0000 time=38170.193 unit=mmu_gear_bldc
+18:49:23       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.8500 time=38170.189 unit=mmu_gear_bldc
+18:49:23       STEPPER: BLDC_MOTION: source=move time=38170.186 unit=mmu_gear_bldc
+18:49:23       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=1.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38170.090 unit=mmu_gear_bldc
+18:49:24       STEPPER: BLDC_POSITION: reached target_counts=125.3 actual_counts=186.0 actual_revs=0.0226 unit=mmu_gear_bldc
+18:49:24       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38170.586 unit=mmu_gear_bldc
+18:49:24       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.0000 time=38170.703 unit=mmu_gear_bldc
+18:49:24       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=38170.705 unit=mmu_gear_bldc
+18:49:24       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=-4.5 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38170.595 unit=mmu_gear_bldc
+18:49:24     TRACE: ESPOOLER: set_operation(gate=0, value=0, operation=off)
+18:49:24       STEPPER: ESPOOLER: _update_pwm(0, 0, off)
+18:49:24       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 38170.87405694
+18:49:24       STEPPER: ESPOOLER: -----> _set_pin(name=respool_0, value=0) @ print_time: 38170.97485986
+18:49:24       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 38170.87573177
+18:49:24   DEBUG: Espooler for gate 0 turned off
+18:49:24     TRACE: Test move. Stepper: 'gear' moved -55.0mm, encoder measured 0.0mm (delta 55.0mm). Pos: @55.0, (0.0mm)
+18:49:24 Moved -55.0mm
+18:49:24       STEPPER: resync(unsynced/gear --> unsynced)
+18:49:25       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.307756
+18:49:25       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+18:49:25       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38171.193 unit=mmu_gear_bldc
+18:49:25       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38171.201 unit=mmu_gear_bldc
+18:49:25     TRACE: Processing idle_timeout 'ready' event
+18:49:58 
+         
+         
+         MMU Startup -----------------------------------------------
+         
+18:49:58   DEBUG: Found tmc2209 on extruder. Current control enabled. Stallguard 'touch' homing possible.
+18:49:58   DEBUG: BLDC gear configured; skipping gear TMC current control
+18:49:58   DEBUG: Loaded saved bowden lengths: [-1, -1, -1, -1]
+18:49:58   DEBUG: Loaded saved gear rotation distances: [3616.7665, -1, -1, -1]
+18:49:58 Warning: Encoder resolution not found in mmu_vars.cfg. Probably not calibrated
+18:49:58       STEPPER: BLDC_PROCESS_MOVE: hook installed
+18:49:58       STEPPER: BLDC_PROCESS_MOVE: hook removed
+18:49:58       STEPPER: BLDC_SYNC: monitor probed and validated
+18:49:58   DEBUG: Loading persisted MMU state
+18:49:58   DEBUG: MmuSyncFeedbackManager: Setting default rotation distance for gate 0 to 3616.7665
+18:49:58     TRACE: Setting gear motor rotation distance: 3616.7665
+18:49:58       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38205.133 unit=mmu_gear_bldc
+18:50:00 > __MMU_BOOTUP
+18:50:00 (\_/)
+         ( *,*)
+         (")_(") Happy Hare v3.4.2 Ready...
+18:50:00 Warning: filament_switch_sensor 'runout_sensor' found in printer configuration. This may interfere with MMU functionality and/or pause during prints unintentionally.
+18:50:00   DEBUG: Job State: READY -> INITIALIZED (MMU State: Encoder: Enabled, Synced: False, Paused temp: None, Resume to state: ready, Position saved for: , pause_resume: False, Idle timeout: 172800.00s)
+18:50:00     TRACE: Running macro: _MMU_PRINT_STATE_CHANGED STATE='initialized' OLD_STATE='ready'
+18:50:00 Warning: Calibration steps are not complete:
+         Required:
+         - Use MMU_CALIBRATE_ENCODER (with gate 0 selected)
+18:50:00     TRACE: Disabled FlowGuard and runout detection
+18:50:00       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+18:50:00       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38207.013 unit=mmu_gear_bldc
+18:50:00       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=38207.129 unit=mmu_gear_bldc
+18:50:00     TRACE: Processing idle_timeout 'printing' event
+18:50:00       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38207.051 unit=mmu_gear_bldc
+18:50:01       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.308213
+18:50:01     TRACE: Running macro: _MMU_EVENT EVENT=restart 
+18:50:01 > MMU_STATS COUNTER=mmu_restarts INCR=1
+18:50:01     TRACE: Processing idle_timeout 'ready' event
+18:50:34 > MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1
+18:50:34     TRACE: Processing idle_timeout 'printing' event
+18:50:34 Manual encoder calibration counts reset. Pull a known length through the encoder, then run 'MMU_CALIBRATE_ENCODER MOTOR=manual LENGTH=<measured_mm>'
+18:50:35     TRACE: Processing idle_timeout 'ready' event
+18:51:55 > MMU_TEST_MOVE MOVE=55
+18:51:55   DEBUG: Moving 'gear' motor 55.0mm...
+18:51:55     TRACE: ESPOOLER: set_operation(gate=0, value=0.3651483716701107, operation=assist)
+18:51:55       STEPPER: ESPOOLER: _update_pwm(0, 0.3651483716701107, assist)
+18:51:55       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 38321.73412039
+18:51:55       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=1) @ print_time: 38321.73605775
+18:51:55       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=1) @ print_time: 38321.93585268
+18:51:55   DEBUG: Espooler for gate 0 set to assist (pwm: 0.37)
+18:51:55       STEPPER: BLDC_ROUTE: gate=0 motor=gear homing=0 active=True unit=mmu_gear_bldc
+18:51:55       STEPPER: resync(unsynced --> unsynced/gear)
+18:51:55     TRACE: Processing idle_timeout 'printing' event
+18:51:55       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.307709
+18:51:55       STEPPER: GEAR MOVE: dist=55.0, speed=80.0, accel=600.0, wait=True
+18:51:55       STEPPER: BLDC_POSITION: target_dist=55.000 rotation_distance=3616.7665 target_revs=0.0152 target_counts=125.3 timeout=38323.548 unit=mmu_gear_bldc
+18:51:55       STEPPER: BLDC_SYNC_SAMPLE: source=move dt=0.0000 de=0.0000 raw_speed=80.000 selected_speed=80.000 scale=1.000 moving=1 unit=mmu_gear_bldc
+18:51:55       STEPPER: BLDC_MAP: mode=linear reason=map_missing points=0 unit=mmu_gear_bldc
+18:51:55       STEPPER: BLDC_SPEED: source=move speed=80.000 requested_rpm=1.3 clamped_rpm=1.3 pwm=0.8500 dir=forward unit=mmu_gear_bldc
+18:51:55       STEPPER: BLDC_SET_PIN: pin=PE4 applied=1.0000 time=38322.181 unit=mmu_gear_bldc
+18:51:55       STEPPER: BLDC_SET_PIN: pin=PE3 applied=1.0000 time=38322.182 unit=mmu_gear_bldc
+18:51:55       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.8500 time=38322.176 unit=mmu_gear_bldc
+18:51:55       STEPPER: BLDC_MOTION: source=move time=38322.173 unit=mmu_gear_bldc
+18:51:55       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=1.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38322.094 unit=mmu_gear_bldc
+18:51:56       STEPPER: BLDC_POSITION: reached target_counts=125.3 actual_counts=169.0 actual_revs=0.0205 unit=mmu_gear_bldc
+18:51:56       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38322.578 unit=mmu_gear_bldc
+18:51:56       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.0000 time=38322.694 unit=mmu_gear_bldc
+18:51:56       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=38322.697 unit=mmu_gear_bldc
+18:51:56       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=-4.1 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38322.599 unit=mmu_gear_bldc
+18:51:56     TRACE: ESPOOLER: set_operation(gate=0, value=0, operation=off)
+18:51:56       STEPPER: ESPOOLER: _update_pwm(0, 0, off)
+18:51:56       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 38322.86466291
+18:51:56       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 38322.86698208
+18:51:56       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=0) @ print_time: 38323.06680924
+18:51:56   DEBUG: Espooler for gate 0 turned off
+18:51:56     TRACE: Test move. Stepper: 'gear' moved 55.0mm, encoder measured 0.0mm (delta 55.0mm). Pos: @55.0, (0.0mm)
+18:51:56 Moved 55.0mm
+18:51:56       STEPPER: resync(unsynced/gear --> unsynced)
+18:51:57       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.306509
+18:51:57       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+18:51:57       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38323.187 unit=mmu_gear_bldc
+18:51:57       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38323.206 unit=mmu_gear_bldc
+18:51:57     TRACE: Processing idle_timeout 'ready' event
+18:51:57 > MMU_TEST_MOVE MOVE=55
+18:51:57   DEBUG: Moving 'gear' motor 55.0mm...
+18:51:57     TRACE: ESPOOLER: set_operation(gate=0, value=0.3651483716701107, operation=assist)
+18:51:57       STEPPER: ESPOOLER: _update_pwm(0, 0.3651483716701107, assist)
+18:51:57       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 38323.74815922
+18:51:57       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=1) @ print_time: 38323.75074731
+18:51:57       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=1) @ print_time: 38323.95058989
+18:51:57   DEBUG: Espooler for gate 0 set to assist (pwm: 0.37)
+18:51:57       STEPPER: BLDC_ROUTE: gate=0 motor=gear homing=0 active=True unit=mmu_gear_bldc
+18:51:57       STEPPER: resync(unsynced --> unsynced/gear)
+18:51:57     TRACE: Processing idle_timeout 'printing' event
+18:51:57       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.307030
+18:51:57       STEPPER: GEAR MOVE: dist=55.0, speed=80.0, accel=600.0, wait=True
+18:51:57       STEPPER: BLDC_POSITION: target_dist=55.000 rotation_distance=3616.7665 target_revs=0.0152 target_counts=125.3 timeout=38325.560 unit=mmu_gear_bldc
+18:51:57       STEPPER: BLDC_SYNC_SAMPLE: source=move dt=0.0000 de=0.0000 raw_speed=80.000 selected_speed=80.000 scale=1.000 moving=1 unit=mmu_gear_bldc
+18:51:57       STEPPER: BLDC_SPEED: source=move speed=80.000 requested_rpm=1.3 clamped_rpm=1.3 pwm=0.8500 dir=forward unit=mmu_gear_bldc
+18:51:57       STEPPER: BLDC_SET_PIN: pin=PE4 applied=1.0000 time=38324.190 unit=mmu_gear_bldc
+18:51:57       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.8500 time=38324.188 unit=mmu_gear_bldc
+18:51:57       STEPPER: BLDC_MOTION: source=move time=38324.185 unit=mmu_gear_bldc
+18:51:57       STEPPER: BLDC_CONTROL: source=below_min_rpm reason=below_min_rpm error_rpm=1.3 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38324.114 unit=mmu_gear_bldc
+18:51:58       STEPPER: BLDC_POSITION: reached target_counts=125.3 actual_counts=175.0 actual_revs=0.0212 unit=mmu_gear_bldc
+18:51:58       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38324.587 unit=mmu_gear_bldc
+18:51:58       STEPPER: BLDC_SET_PIN: pin=PE13 applied=0.0000 time=38324.703 unit=mmu_gear_bldc
+18:51:58       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=38324.705 unit=mmu_gear_bldc
+18:51:58       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=-4.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38324.619 unit=mmu_gear_bldc
+18:51:58     TRACE: ESPOOLER: set_operation(gate=0, value=0, operation=off)
+18:51:58       STEPPER: ESPOOLER: _update_pwm(0, 0, off)
+18:51:58       STEPPER: ESPOOLER: --> _schedule_set_pin(name=respool_0, value=0) @ print_time: 38324.87331506
+18:51:58       STEPPER: ESPOOLER: --> _schedule_set_pin(name=assist_0, value=0) @ print_time: 38324.87554729
+18:51:58       STEPPER: ESPOOLER: -----> _set_pin(name=assist_0, value=0) @ print_time: 38325.07542037
+18:51:58   DEBUG: Espooler for gate 0 turned off
+18:51:58     TRACE: Test move. Stepper: 'gear' moved 55.0mm, encoder measured 0.0mm (delta 55.0mm). Pos: @110.0, (0.0mm)
+18:51:58 Moved 55.0mm
+18:51:58       STEPPER: resync(unsynced/gear --> unsynced)
+18:51:59       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.304861
+18:51:59       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+18:51:59       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38325.195 unit=mmu_gear_bldc
+18:51:59       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=38325.226 unit=mmu_gear_bldc
+18:51:59     TRACE: Processing idle_timeout 'ready' event
+18:52:02 > MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1
+18:52:02     TRACE: Processing idle_timeout 'printing' event
+18:52:02 Manual encoder calibration counts reset. Pull a known length through the encoder, then run 'MMU_CALIBRATE_ENCODER MOTOR=manual LENGTH=<measured_mm>'
+18:52:03     TRACE: Processing idle_timeout 'ready' event
+18:53:04 > MMU_CALIBRATE_ENCODER MOTOR=manual LENGTH=100
+18:53:04     TRACE: Processing idle_timeout 'printing' event
+18:53:05 No counts measured. Run 'MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1', manually pull a measured length through the encoder, then run this command again with LENGTH=<measured_mm>
+18:53:05     TRACE: Processing idle_timeout 'ready' event

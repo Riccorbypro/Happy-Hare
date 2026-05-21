@@ -7940,3 +7940,391 @@ INFO     | 2026-05-21 08:09:54,497 | CLIENT                   | Moonraker client
 INFO     | 2026-05-21 08:09:54,499 | CLIENT                   | Authenticating with moonraker...
 INFO     | 2026-05-21 08:09:54,505 | CLIENT                   | Moonraker client waiting for klippy ready...
 INFO     | 2026-05-21 08:09:54,510 | CLIENT                   | Moonraker client got klippy state 'startup', waiting for ready...
+INFO     | 2026-05-21 08:10:36,351 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:12:52,202 | CLIENT                   | Moonraker client received notify_klippy_disconnected notification, so we will restart our client connection.
+INFO     | 2026-05-21 08:12:52,203 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 08:12:52,206 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 08:12:52,208 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 08:12:52,209 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 08:12:52,953 | CLIENT                   | Moonraker client - tired to send a websocket message when the socket wasn't open.
+INFO     | 2026-05-21 08:12:52,954 | CLIENT                   | Moonraker client failed to send JsonRPC request server.info
+ERROR    | 2026-05-21 08:12:52,956 | Moonraker client exception in klippy waiting logic.; NoSentryReportException Exception: No Sentry Exception - Message: `Moonraker client failed to send klippy ready query message, there was no websocket.`; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 648, in _AfterOpenReadyWaiter
+    raise NoSentryReportException("Moonraker client failed to send klippy ready query message, there was no websocket.")
+octoapp.exceptions.NoSentryReportException: No Sentry Exception - Message: `Moonraker client failed to send klippy ready query message, there was no websocket.`
+
+INFO     | 2026-05-21 08:12:52,957 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 08:12:52,958 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 08:12:54,216 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 08:12:54,229 | Websocket connected
+INFO     | 2026-05-21 08:12:54,231 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 08:12:54,233 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 08:12:54,234 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 08:12:54,241 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 08:12:54,245 | CLIENT                   | Moonraker client got klippy state 'disconnected', waiting for ready...
+INFO     | 2026-05-21 08:12:59,885 | CLIENT                   | Moonraker client received notify_klippy_disconnected notification, so we will restart our client connection.
+INFO     | 2026-05-21 08:12:59,886 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 08:12:59,894 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 08:12:59,896 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 08:12:59,897 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 08:13:00,256 | CLIENT                   | Moonraker client - tired to send a websocket message when the socket wasn't open.
+INFO     | 2026-05-21 08:13:00,257 | CLIENT                   | Moonraker client failed to send JsonRPC request server.info
+ERROR    | 2026-05-21 08:13:00,259 | Moonraker client exception in klippy waiting logic.; NoSentryReportException Exception: No Sentry Exception - Message: `Moonraker client failed to send klippy ready query message, there was no websocket.`; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 648, in _AfterOpenReadyWaiter
+    raise NoSentryReportException("Moonraker client failed to send klippy ready query message, there was no websocket.")
+octoapp.exceptions.NoSentryReportException: No Sentry Exception - Message: `Moonraker client failed to send klippy ready query message, there was no websocket.`
+
+INFO     | 2026-05-21 08:13:00,260 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 08:13:00,261 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 08:13:01,902 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 08:13:01,913 | Websocket connected
+INFO     | 2026-05-21 08:13:01,915 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 08:13:01,918 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 08:13:01,919 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 08:13:01,925 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 08:13:01,929 | CLIENT                   | Moonraker client got klippy state 'startup', waiting for ready...
+INFO     | 2026-05-21 08:13:15,201 | CLIENT                   | Moonraker client received notify_klippy_disconnected notification, so we will restart our client connection.
+INFO     | 2026-05-21 08:13:15,202 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 08:13:15,208 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 08:13:15,209 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 08:13:15,210 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 08:13:15,963 | CLIENT                   | Moonraker client - tired to send a websocket message when the socket wasn't open.
+INFO     | 2026-05-21 08:13:15,964 | CLIENT                   | Moonraker client failed to send JsonRPC request server.info
+ERROR    | 2026-05-21 08:13:15,966 | Moonraker client exception in klippy waiting logic.; NoSentryReportException Exception: No Sentry Exception - Message: `Moonraker client failed to send klippy ready query message, there was no websocket.`; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 648, in _AfterOpenReadyWaiter
+    raise NoSentryReportException("Moonraker client failed to send klippy ready query message, there was no websocket.")
+octoapp.exceptions.NoSentryReportException: No Sentry Exception - Message: `Moonraker client failed to send klippy ready query message, there was no websocket.`
+
+INFO     | 2026-05-21 08:13:15,967 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 08:13:15,968 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 08:13:17,216 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 08:13:17,228 | Websocket connected
+INFO     | 2026-05-21 08:13:17,229 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 08:13:17,231 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 08:13:17,232 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 08:13:17,238 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 08:13:17,242 | CLIENT                   | Moonraker client got klippy state 'startup', waiting for ready...
+INFO     | 2026-05-21 08:13:25,260 | CLIENT                   | Moonraker client klippy state is ready. Moonraker connection is ready and stable.
+INFO     | 2026-05-21 08:13:25,261 | CLIENT                   | Moonraker client setting up default notification hooks
+INFO     | 2026-05-21 08:13:25,655 | CLIENT                   | Printer state at socket connect is: standby
+INFO     | 2026-05-21 08:13:25,656 | CLIENT                   | Restore client sync state: There's no print and none of the timers are running.
+INFO     | 2026-05-21 08:13:25,658 | PRINT                    | Removing all print infos
+ERROR    | 2026-05-21 08:13:25,669 | Exception no send: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+ERROR    | 2026-05-21 08:13:25,671 | Failed to update printer name; Exception Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 984, in _updatePrinterName
+    name = MoonrakerClient.Get().PrinterNameProvider.GetPrinterName()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerdatabase.py", line 59, in GetPrinterName
+    if fluiddResult.HasError() is False and mainsailResult.GetResult() is not None:
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/jsonrpcresponse.py", line 73, in GetResult
+    raise Exception("JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.")
+Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+
+INFO     | 2026-05-21 08:13:25,682 | CLIENT                   | Progress settings from Fluidd: progress=['file_relative'], average=True, eta=['file']
+INFO     | 2026-05-21 08:14:41,617 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:15:36,392 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:19:41,640 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:20:36,419 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:24:41,685 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:25:36,439 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:29:41,709 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:30:36,461 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:34:41,738 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:35:36,481 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:39:41,767 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:40:36,503 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:44:41,790 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:45:36,524 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:49:41,812 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:50:36,546 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:54:41,835 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:55:36,583 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 08:59:33,262 | CLIENT/SENDER            | OctoApp loaded config: {'updatePercentModulus': 5, 'highPrecisionRangeStart': 5, 'highPrecisionRangeEnd': 5, 'sendNotificationUrl': 'https://europe-west1-octoapp-4e438.cloudfunctions.net/sendNotificationV2', 'minIntervalSecs': 300}
+INFO     | 2026-05-21 08:59:41,863 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:00:36,606 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:04:41,886 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:05:36,627 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:09:41,909 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:10:36,648 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:14:41,931 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:15:36,669 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:19:41,953 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:20:36,699 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:24:41,975 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:25:36,722 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:29:42,018 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:30:36,750 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:34:42,040 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:35:36,778 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:39:42,066 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:40:36,799 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:44:42,088 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:45:36,827 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:49:42,110 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:50:36,849 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:54:42,145 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:55:36,876 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 09:59:33,264 | CLIENT/SENDER            | Config still valid
+INFO     | 2026-05-21 09:59:34,911 | CLIENT/SENDER            | OctoApp loaded config: {'updatePercentModulus': 5, 'highPrecisionRangeStart': 5, 'highPrecisionRangeEnd': 5, 'sendNotificationUrl': 'https://europe-west1-octoapp-4e438.cloudfunctions.net/sendNotificationV2', 'minIntervalSecs': 300}
+INFO     | 2026-05-21 09:59:42,169 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:00:36,897 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:04:42,193 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:05:36,918 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:09:42,216 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:10:36,940 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:14:42,238 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:15:36,967 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:19:42,260 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:20:36,988 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:24:42,281 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:25:37,016 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:29:42,304 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:30:37,040 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:34:42,333 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:35:37,061 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:39:42,355 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:40:37,082 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:44:42,377 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:45:37,103 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:49:42,399 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:50:37,125 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:54:42,420 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:55:37,145 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 10:59:34,912 | CLIENT/SENDER            | Config still valid
+INFO     | 2026-05-21 10:59:36,189 | CLIENT/SENDER            | OctoApp loaded config: {'updatePercentModulus': 5, 'highPrecisionRangeStart': 5, 'highPrecisionRangeEnd': 5, 'sendNotificationUrl': 'https://europe-west1-octoapp-4e438.cloudfunctions.net/sendNotificationV2', 'minIntervalSecs': 300}
+INFO     | 2026-05-21 10:59:42,442 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:00:37,167 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:04:42,464 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:05:37,191 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:09:42,486 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:10:37,229 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:14:42,509 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:15:37,250 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:19:42,529 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:20:37,272 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:24:42,551 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:25:37,293 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:29:42,579 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:30:37,315 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:34:42,602 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:35:37,335 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:39:42,627 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:40:37,357 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:44:42,666 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:45:37,385 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:49:42,691 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:50:37,408 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:54:42,714 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:55:37,429 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 11:59:36,190 | CLIENT/SENDER            | Config still valid
+INFO     | 2026-05-21 11:59:38,851 | CLIENT/SENDER            | OctoApp loaded config: {'updatePercentModulus': 5, 'highPrecisionRangeStart': 5, 'highPrecisionRangeEnd': 5, 'sendNotificationUrl': 'https://europe-west1-octoapp-4e438.cloudfunctions.net/sendNotificationV2', 'minIntervalSecs': 300}
+INFO     | 2026-05-21 11:59:42,736 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:00:37,455 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:04:42,759 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:05:37,476 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:09:42,789 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:10:37,503 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:14:42,810 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:15:37,524 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:19:42,833 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:20:37,552 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:24:42,861 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:25:37,588 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:29:42,884 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:30:37,618 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:34:42,907 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:35:37,639 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:39:42,931 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:40:37,661 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:44:42,959 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:45:37,682 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:49:42,980 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:50:37,722 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:54:43,002 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:55:37,743 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 12:59:38,852 | CLIENT/SENDER            | Config still valid
+INFO     | 2026-05-21 12:59:40,433 | CLIENT/SENDER            | OctoApp loaded config: {'updatePercentModulus': 5, 'highPrecisionRangeStart': 5, 'highPrecisionRangeEnd': 5, 'sendNotificationUrl': 'https://europe-west1-octoapp-4e438.cloudfunctions.net/sendNotificationV2', 'minIntervalSecs': 300}
+INFO     | 2026-05-21 12:59:43,028 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:00:37,765 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:04:43,050 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:05:37,789 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:09:43,079 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:10:37,809 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:14:43,102 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:15:37,831 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:19:43,124 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:20:37,854 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:24:43,147 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:25:37,875 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:29:43,169 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:30:37,896 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:34:43,193 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:35:37,925 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:39:43,220 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:40:37,948 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:44:43,243 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:45:37,988 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:49:43,265 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:50:38,009 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:54:43,288 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:55:38,029 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 13:59:40,434 | CLIENT/SENDER            | Config still valid
+INFO     | 2026-05-21 13:59:41,947 | CLIENT/SENDER            | OctoApp loaded config: {'updatePercentModulus': 5, 'highPrecisionRangeStart': 5, 'highPrecisionRangeEnd': 5, 'sendNotificationUrl': 'https://europe-west1-octoapp-4e438.cloudfunctions.net/sendNotificationV2', 'minIntervalSecs': 300}
+INFO     | 2026-05-21 13:59:43,315 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:00:38,051 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:04:43,337 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:05:38,073 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:09:43,360 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:10:38,094 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:14:43,382 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:15:38,115 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:19:43,408 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:20:38,144 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:24:43,429 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:25:38,166 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:29:43,458 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:30:38,188 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:34:43,481 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:35:38,226 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:39:43,503 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:40:38,247 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:44:43,527 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:45:38,269 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:49:43,548 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:50:38,290 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:54:43,571 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:55:38,312 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 14:59:41,948 | CLIENT/SENDER            | Config still valid
+INFO     | 2026-05-21 14:59:43,237 | CLIENT/SENDER            | OctoApp loaded config: {'updatePercentModulus': 5, 'highPrecisionRangeStart': 5, 'highPrecisionRangeEnd': 5, 'sendNotificationUrl': 'https://europe-west1-octoapp-4e438.cloudfunctions.net/sendNotificationV2', 'minIntervalSecs': 300}
+INFO     | 2026-05-21 14:59:43,596 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:00:38,332 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:04:43,618 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:05:38,353 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:09:43,661 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:10:38,375 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:14:43,685 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:15:38,396 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:19:43,707 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:20:38,423 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:24:43,736 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:25:38,452 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:29:43,757 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:30:38,473 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:34:43,780 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:35:38,494 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:39:43,802 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:40:38,515 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:44:43,825 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:45:38,535 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:49:43,857 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:50:38,556 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:54:43,882 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:55:38,577 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:59:43,238 | CLIENT/SENDER            | Config still valid
+INFO     | 2026-05-21 15:59:43,909 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 15:59:45,120 | CLIENT/SENDER            | OctoApp loaded config: {'updatePercentModulus': 5, 'highPrecisionRangeStart': 5, 'highPrecisionRangeEnd': 5, 'sendNotificationUrl': 'https://europe-west1-octoapp-4e438.cloudfunctions.net/sendNotificationV2', 'minIntervalSecs': 300}
+INFO     | 2026-05-21 16:00:38,600 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:04:43,931 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:05:38,620 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:09:43,953 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:10:38,649 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:14:43,977 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:15:38,677 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:19:44,000 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:20:38,699 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:24:44,021 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:25:38,719 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:29:44,046 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:30:38,742 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:34:44,069 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:35:38,763 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:39:44,098 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:40:38,784 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:44:44,120 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:45:38,806 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:49:44,142 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:50:38,828 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:54:44,164 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:55:38,849 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:59:44,186 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 16:59:45,121 | CLIENT/SENDER            | Config still valid
+INFO     | 2026-05-21 16:59:46,585 | CLIENT/SENDER            | OctoApp loaded config: {'updatePercentModulus': 5, 'highPrecisionRangeStart': 5, 'highPrecisionRangeEnd': 5, 'sendNotificationUrl': 'https://europe-west1-octoapp-4e438.cloudfunctions.net/sendNotificationV2', 'minIntervalSecs': 300}
+INFO     | 2026-05-21 17:00:38,870 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:04:44,210 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:05:38,892 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:09:44,232 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:10:38,915 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:14:44,266 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:15:38,941 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:19:44,288 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:20:38,963 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:24:44,311 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:25:38,988 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:29:44,333 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:30:39,010 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:34:44,356 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:35:39,038 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:39:44,378 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:40:39,060 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:44:44,399 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:45:39,083 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:49:44,422 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:50:39,105 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:54:44,446 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:55:39,134 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:59:44,475 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 17:59:46,586 | CLIENT/SENDER            | Config still valid
+INFO     | 2026-05-21 17:59:48,217 | CLIENT/SENDER            | OctoApp loaded config: {'updatePercentModulus': 5, 'highPrecisionRangeStart': 5, 'highPrecisionRangeEnd': 5, 'sendNotificationUrl': 'https://europe-west1-octoapp-4e438.cloudfunctions.net/sendNotificationV2', 'minIntervalSecs': 300}
+INFO     | 2026-05-21 18:00:39,162 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:04:44,497 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:05:39,183 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:09:44,519 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:10:39,204 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:14:44,542 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:15:39,225 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:19:44,571 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:20:39,248 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:24:44,593 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:25:39,274 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:29:44,617 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:30:39,302 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:34:44,639 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:35:39,323 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:39:44,661 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:40:39,346 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:44:44,682 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:45:39,368 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:49:44,705 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 18:49:45,484 | CLIENT                   | Moonraker client received notify_klippy_disconnected notification, so we will restart our client connection.
+INFO     | 2026-05-21 18:49:45,485 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 18:49:45,492 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 18:49:45,494 | CLIENT                   | Ignoring KlippyDisconnectedOrShutdown notification because we aren't tracking a print.
+INFO     | 2026-05-21 18:49:45,496 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 18:49:45,497 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 18:49:47,503 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 18:49:47,523 | Websocket connected
+INFO     | 2026-05-21 18:49:47,528 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 18:49:47,531 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 18:49:47,532 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 18:49:47,540 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 18:49:47,545 | CLIENT                   | Moonraker client got klippy state 'startup', waiting for ready...
+INFO     | 2026-05-21 18:49:59,572 | CLIENT                   | Moonraker client klippy state is ready. Moonraker connection is ready and stable.
+INFO     | 2026-05-21 18:49:59,573 | CLIENT                   | Moonraker client setting up default notification hooks
+INFO     | 2026-05-21 18:50:00,043 | CLIENT                   | Printer state at socket connect is: standby
+INFO     | 2026-05-21 18:50:00,044 | CLIENT                   | Restore client sync state: There's no print and none of the timers are running.
+INFO     | 2026-05-21 18:50:00,045 | PRINT                    | Removing all print infos
+ERROR    | 2026-05-21 18:50:00,055 | Exception no send: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+ERROR    | 2026-05-21 18:50:00,058 | Failed to update printer name; Exception Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 984, in _updatePrinterName
+    name = MoonrakerClient.Get().PrinterNameProvider.GetPrinterName()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerdatabase.py", line 59, in GetPrinterName
+    if fluiddResult.HasError() is False and mainsailResult.GetResult() is not None:
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/jsonrpcresponse.py", line 73, in GetResult
+    raise Exception("JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.")
+Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+
+INFO     | 2026-05-21 18:50:00,068 | CLIENT                   | Progress settings from Fluidd: progress=['file_relative'], average=True, eta=['file']
+INFO     | 2026-05-21 18:50:39,389 | DATABASE                 | Updating presence
