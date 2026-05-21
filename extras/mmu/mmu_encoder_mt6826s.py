@@ -35,6 +35,7 @@ class MmuEncoderMt6826s:
         self.set_resolution(config.getfloat('encoder_resolution', rotation_distance / RAW_ANGLE_TICKS, above=0.))
         self.poll_interval = config.getfloat('poll_interval', 0.005, above=0.)
         self.use_bulk_angle_stream = bool(config.getint('use_bulk_angle_stream', 0, minval=0, maxval=1))
+        self.encoder_reversed = config.getboolean('encoder_reversed', False)
 
         self._logger = None
         self._counts = 0.
@@ -144,6 +145,8 @@ class MmuEncoderMt6826s:
             delta -= RAW_ANGLE_TICKS
         elif delta < -RAW_ANGLE_HALF_TURN:
             delta += RAW_ANGLE_TICKS
+        if self.encoder_reversed:
+            delta = -delta
         abs_delta = abs(delta)
         if abs_delta:
             self._counts += delta
@@ -236,7 +239,9 @@ class MmuEncoderMt6826s:
         self._poll_timer = self.reactor.register_timer(self._poll_angle_event, self.reactor.monotonic() + 0.1)
         self._log_encoder("MT6826S encoder '%s' using direct SPI polling at %.4fs intervals%s"
                           % (self.name, self.poll_interval,
-                             " with bulk angle stream enabled" if self.use_bulk_angle_stream else ""))
+                             "%s%s" % (
+                                 " with bulk angle stream enabled" if self.use_bulk_angle_stream else "",
+                                 " with reversed direction" if self.encoder_reversed else "")))
 
     def _handle_printing(self, print_time):
         self.reactor.update_timer(self._extruder_pos_update_timer, self.reactor.NOW)
@@ -433,6 +438,7 @@ class MmuEncoderMt6826s:
             'encoder_movement_pos': round(self.get_movement_distance(), 1),
             'encoder_movement_counts': self.get_movement_counts(),
             'encoder_resolution': self.get_resolution(),
+            'encoder_reversed': self.encoder_reversed,
             'angle_temperature': angle_status.get('temperature', None),
             'angle_client_registered': self._angle_client_registered,
             'angle_batches': self._angle_batches,
