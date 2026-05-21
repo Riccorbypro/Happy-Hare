@@ -359,3 +359,103 @@
 18:53:04     TRACE: Processing idle_timeout 'printing' event
 18:53:05 No counts measured. Run 'MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1', manually pull a measured length through the encoder, then run this command again with LENGTH=<measured_mm>
 18:53:05     TRACE: Processing idle_timeout 'ready' event
+19:01:38 
+         
+         
+         MMU Startup -----------------------------------------------
+         
+19:01:38   DEBUG: Found tmc2209 on extruder. Current control enabled. Stallguard 'touch' homing possible.
+19:01:38   DEBUG: BLDC gear configured; skipping gear TMC current control
+19:01:38   DEBUG: Loaded saved bowden lengths: [-1, -1, -1, -1]
+19:01:38   DEBUG: Loaded saved gear rotation distances: [3616.7665, -1, -1, -1]
+19:01:38 Warning: Encoder resolution not found in mmu_vars.cfg. Probably not calibrated
+19:01:38       STEPPER: BLDC_PROCESS_MOVE: hook installed
+19:01:38       STEPPER: BLDC_PROCESS_MOVE: hook removed
+19:01:38       STEPPER: BLDC_SYNC: monitor probed and validated
+19:01:38   DEBUG: Loading persisted MMU state
+19:01:38   DEBUG: MmuSyncFeedbackManager: Setting default rotation distance for gate 0 to 3616.7665
+19:01:38     TRACE: Setting gear motor rotation distance: 3616.7665
+19:01:39   DEBUG: MT6826S encoder 'mmu_encoder' registered angle client 'mmu_encoder_angle' (15-bit angle scale, 32768 ticks/rev)
+19:01:39       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=49.133 unit=mmu_gear_bldc
+19:01:41 > __MMU_BOOTUP
+19:01:41 (\_/)
+         ( *,*)
+         (")_(") Happy Hare v3.4.2 Ready...
+19:01:41 Warning: filament_switch_sensor 'runout_sensor' found in printer configuration. This may interfere with MMU functionality and/or pause during prints unintentionally.
+19:01:41   DEBUG: Job State: READY -> INITIALIZED (MMU State: Encoder: Enabled, Synced: False, Paused temp: None, Resume to state: ready, Position saved for: , pause_resume: False, Idle timeout: 172800.00s)
+19:01:41     TRACE: Running macro: _MMU_PRINT_STATE_CHANGED STATE='initialized' OLD_STATE='ready'
+19:01:41 Warning: Calibration steps are not complete:
+         Required:
+         - Use MMU_CALIBRATE_ENCODER (with gate 0 selected)
+19:01:41     TRACE: Disabled FlowGuard and runout detection
+19:01:41       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+19:01:41       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=50.705 unit=mmu_gear_bldc
+19:01:41       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=50.822 unit=mmu_gear_bldc
+19:01:41     TRACE: Processing idle_timeout 'printing' event
+19:01:41       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=50.750 unit=mmu_gear_bldc
+19:01:41       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.309104
+19:01:41     TRACE: Running macro: _MMU_EVENT EVENT=restart 
+19:01:41 > MMU_STATS COUNTER=mmu_restarts INCR=1
+19:01:42     TRACE: Processing idle_timeout 'ready' event
+19:02:07 > MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1
+19:02:07     TRACE: Processing idle_timeout 'printing' event
+19:02:07   DEBUG: MT6826S encoder 'mmu_encoder' counts reset (last_raw=unknown, batches=0, samples=0)
+19:02:07 Manual encoder calibration counts reset. Pull a known length through the encoder, then run 'MMU_CALIBRATE_ENCODER MOTOR=manual LENGTH=<measured_mm>'
+         Encoder diagnostics: angle_client=True batches=0 empty_batches=0 samples=0 errors=0 last_raw=None
+19:02:38     TRACE: Processing idle_timeout 'ready' event
+19:03:06 > MMU_CALIBRATE_ENCODER MOTOR=manual LENGTH=100
+19:03:06     TRACE: Processing idle_timeout 'printing' event
+19:03:07 No counts measured. Run 'MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1', manually pull a measured length through the encoder, then run this command again with LENGTH=<measured_mm>
+         Encoder diagnostics: counts=0 distance=0.0mm angle_client=True batches=0 empty_batches=0 samples=0 errors=0 last_raw=None last_batch_samples=0 last_batch_delta=0.0
+19:03:07     TRACE: Processing idle_timeout 'ready' event
+19:03:33 
+         
+         
+         MMU Startup -----------------------------------------------
+         
+19:03:33   DEBUG: Found tmc2209 on extruder. Current control enabled. Stallguard 'touch' homing possible.
+19:03:33   DEBUG: BLDC gear configured; skipping gear TMC current control
+19:03:33   DEBUG: Loaded saved bowden lengths: [-1, -1, -1, -1]
+19:03:33   DEBUG: Loaded saved gear rotation distances: [3616.7665, -1, -1, -1]
+19:03:33 Warning: Encoder resolution not found in mmu_vars.cfg. Probably not calibrated
+19:03:33       STEPPER: BLDC_PROCESS_MOVE: hook installed
+19:03:33       STEPPER: BLDC_PROCESS_MOVE: hook removed
+19:03:33       STEPPER: BLDC_SYNC: monitor probed and validated
+19:03:33   DEBUG: Loading persisted MMU state
+19:03:33   DEBUG: MmuSyncFeedbackManager: Setting default rotation distance for gate 0 to 3616.7665
+19:03:33     TRACE: Setting gear motor rotation distance: 3616.7665
+19:03:33   DEBUG: MT6826S encoder 'mmu_encoder' registered angle client 'mmu_encoder_angle' (15-bit angle scale, 32768 ticks/rev)
+19:03:34       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=133.133 unit=mmu_gear_bldc
+19:03:35 > __MMU_BOOTUP
+19:03:35 (\_/)
+         ( *,*)
+         (")_(") Happy Hare v3.4.2 Ready...
+19:03:35 Warning: filament_switch_sensor 'runout_sensor' found in printer configuration. This may interfere with MMU functionality and/or pause during prints unintentionally.
+19:03:35   DEBUG: Job State: READY -> INITIALIZED (MMU State: Encoder: Enabled, Synced: False, Paused temp: None, Resume to state: ready, Position saved for: , pause_resume: False, Idle timeout: 172800.00s)
+19:03:35     TRACE: Running macro: _MMU_PRINT_STATE_CHANGED STATE='initialized' OLD_STATE='ready'
+19:03:35 Warning: Calibration steps are not complete:
+         Required:
+         - Use MMU_CALIBRATE_ENCODER (with gate 0 selected)
+19:03:35     TRACE: Disabled FlowGuard and runout detection
+19:03:35       STEPPER: BLDC_SYNC: unsynced, stopping BLDC and clearing sync state (unit=mmu_gear_bldc)
+19:03:35       STEPPER: BLDC_CONTROL: source=stop reason=stopped error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=134.739 unit=mmu_gear_bldc
+19:03:35       STEPPER: BLDC_SET_PIN: pin=PE4 applied=0.0000 time=134.856 unit=mmu_gear_bldc
+19:03:35     TRACE: Processing idle_timeout 'printing' event
+19:03:35       STEPPER: BLDC_CONTROL: source=pid_disabled reason=pid_disabled error_rpm=0.0 base_pwm=0.0000 correction_pwm=0.0000 integral_pwm=0.0000 applied_pwm=0.0000 time=134.750 unit=mmu_gear_bldc
+19:03:36       STEPPER: _quiesce_align_get_tcut(full=True, wait=True) Elapsed:0.311917
+19:03:36     TRACE: Running macro: _MMU_EVENT EVENT=restart 
+19:03:36 > MMU_STATS COUNTER=mmu_restarts INCR=1
+19:03:36     TRACE: Processing idle_timeout 'ready' event
+19:03:36     TRACE: Processing idle_timeout 'printing' event
+19:03:37     TRACE: Processing idle_timeout 'ready' event
+19:03:56 > MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1
+19:03:56     TRACE: Processing idle_timeout 'printing' event
+19:03:57   DEBUG: MT6826S encoder 'mmu_encoder' counts reset (last_raw=unknown, batches=0, samples=0)
+19:03:57 Manual encoder calibration counts reset. Pull a known length through the encoder, then run 'MMU_CALIBRATE_ENCODER MOTOR=manual LENGTH=<measured_mm>'
+         Encoder diagnostics: angle_client=True batches=0 empty_batches=0 samples=0 errors=0 last_raw=None
+19:03:57     TRACE: Processing idle_timeout 'ready' event
+19:04:09 > MMU_CALIBRATE_ENCODER MOTOR=manual LENGTH=100
+19:04:09     TRACE: Processing idle_timeout 'printing' event
+19:04:09 No counts measured. Run 'MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1', manually pull a measured length through the encoder, then run this command again with LENGTH=<measured_mm>
+         Encoder diagnostics: counts=0 distance=0.0mm angle_client=True batches=0 empty_batches=0 samples=0 errors=0 last_raw=None last_batch_samples=0 last_batch_delta=0.0
+19:04:10     TRACE: Processing idle_timeout 'ready' event
