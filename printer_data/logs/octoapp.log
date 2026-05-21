@@ -10255,3 +10255,417 @@ INFO     | 2026-05-21 21:38:01,967 | CLIENT                   | Moonraker client
 INFO     | 2026-05-21 21:38:01,968 | CLIENT                   | Authenticating with moonraker...
 INFO     | 2026-05-21 21:38:01,976 | CLIENT                   | Moonraker client waiting for klippy ready...
 INFO     | 2026-05-21 21:38:01,980 | CLIENT                   | Moonraker client got klippy state 'startup', waiting for ready...
+INFO     | 2026-05-21 21:38:12,099 | CLIENT                   | Moonraker client klippy state is ready. Moonraker connection is ready and stable.
+INFO     | 2026-05-21 21:38:12,100 | CLIENT                   | Moonraker client setting up default notification hooks
+INFO     | 2026-05-21 21:38:12,596 | CLIENT                   | Printer state at socket connect is: standby
+INFO     | 2026-05-21 21:38:12,597 | CLIENT                   | Restore client sync state: There's no print and none of the timers are running.
+INFO     | 2026-05-21 21:38:12,598 | PRINT                    | Removing all print infos
+ERROR    | 2026-05-21 21:38:12,626 | Exception no send: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+ERROR    | 2026-05-21 21:38:12,630 | Failed to update printer name; Exception Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 984, in _updatePrinterName
+    name = MoonrakerClient.Get().PrinterNameProvider.GetPrinterName()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerdatabase.py", line 59, in GetPrinterName
+    if fluiddResult.HasError() is False and mainsailResult.GetResult() is not None:
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/jsonrpcresponse.py", line 73, in GetResult
+    raise Exception("JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.")
+Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+
+INFO     | 2026-05-21 21:38:12,656 | CLIENT                   | Progress settings from Fluidd: progress=['file_relative'], average=True, eta=['file']
+INFO     | 2026-05-21 21:38:37,953 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 21:41:52,256 | CLIENT                   | Moonraker client received notify_klippy_disconnected notification, so we will restart our client connection.
+INFO     | 2026-05-21 21:41:52,257 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 21:41:52,264 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 21:41:52,266 | CLIENT                   | Ignoring KlippyDisconnectedOrShutdown notification because we aren't tracking a print.
+INFO     | 2026-05-21 21:41:52,267 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:41:52,269 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:41:54,275 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 21:41:54,286 | Websocket connected
+INFO     | 2026-05-21 21:41:54,288 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 21:41:54,290 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:41:54,291 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 21:41:54,299 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:41:54,304 | CLIENT                   | Moonraker client got klippy state 'startup', waiting for ready...
+INFO     | 2026-05-21 21:42:06,325 | CLIENT                   | Moonraker client klippy state is ready. Moonraker connection is ready and stable.
+INFO     | 2026-05-21 21:42:06,326 | CLIENT                   | Moonraker client setting up default notification hooks
+INFO     | 2026-05-21 21:42:06,904 | CLIENT                   | Printer state at socket connect is: standby
+INFO     | 2026-05-21 21:42:06,905 | CLIENT                   | Restore client sync state: There's no print and none of the timers are running.
+INFO     | 2026-05-21 21:42:06,910 | PRINT                    | Removing all print infos
+ERROR    | 2026-05-21 21:42:06,925 | Exception no send: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+ERROR    | 2026-05-21 21:42:06,928 | Failed to update printer name; Exception Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 984, in _updatePrinterName
+    name = MoonrakerClient.Get().PrinterNameProvider.GetPrinterName()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerdatabase.py", line 59, in GetPrinterName
+    if fluiddResult.HasError() is False and mainsailResult.GetResult() is not None:
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/jsonrpcresponse.py", line 73, in GetResult
+    raise Exception("JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.")
+Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+
+INFO     | 2026-05-21 21:42:06,942 | CLIENT                   | Progress settings from Fluidd: progress=['file_relative'], average=True, eta=['file']
+INFO     | 2026-05-21 21:42:08,042 | CLIENT                   | Moonraker client received notify_klippy_disconnected notification, so we will restart our client connection.
+INFO     | 2026-05-21 21:42:08,043 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 21:42:08,056 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 21:42:08,060 | CLIENT                   | Ignoring KlippyDisconnectedOrShutdown notification because we aren't tracking a print.
+INFO     | 2026-05-21 21:42:08,064 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:42:08,066 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:42:10,087 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 21:42:10,100 | Websocket connected
+INFO     | 2026-05-21 21:42:10,102 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 21:42:10,104 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:42:10,105 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 21:42:10,113 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:42:10,117 | CLIENT                   | Moonraker client got klippy state 'startup', waiting for ready...
+INFO     | 2026-05-21 21:42:22,260 | CLIENT                   | Moonraker client klippy state is ready. Moonraker connection is ready and stable.
+INFO     | 2026-05-21 21:42:22,261 | CLIENT                   | Moonraker client setting up default notification hooks
+INFO     | 2026-05-21 21:42:23,440 | CLIENT                   | Printer state at socket connect is: standby
+INFO     | 2026-05-21 21:42:23,442 | CLIENT                   | Restore client sync state: There's no print and none of the timers are running.
+INFO     | 2026-05-21 21:42:23,444 | PRINT                    | Removing all print infos
+ERROR    | 2026-05-21 21:42:23,700 | Exception no send: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+ERROR    | 2026-05-21 21:42:23,704 | Failed to update printer name; Exception Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 984, in _updatePrinterName
+    name = MoonrakerClient.Get().PrinterNameProvider.GetPrinterName()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerdatabase.py", line 59, in GetPrinterName
+    if fluiddResult.HasError() is False and mainsailResult.GetResult() is not None:
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/jsonrpcresponse.py", line 73, in GetResult
+    raise Exception("JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.")
+Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+
+INFO     | 2026-05-21 21:42:23,731 | CLIENT                   | Progress settings from Fluidd: progress=['file_relative'], average=True, eta=['file']
+INFO     | 2026-05-21 21:42:43,225 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 21:43:37,973 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 21:46:08,527 | MAIN                     | ################################################
+INFO     | 2026-05-21 21:46:08,537 | MAIN                     | ##### OctoApp For Klipper Starting ######
+INFO     | 2026-05-21 21:46:08,539 | MAIN                     | ################################################
+INFO     | 2026-05-21 21:46:08,543 | MAIN                     | Plugin Version: 3.1.0
+INFO     | 2026-05-21 21:46:08,545 | CONFIG                   | Our existing update config file include was found in the moonraker config.
+INFO     | 2026-05-21 21:46:08,547 | CONFIG                   | Existing update config file found with the correct file contents.
+INFO     | 2026-05-21 21:46:08,556 | MDNS                     | mDns Cache file loaded. Cached Entries Found: 0
+INFO     | 2026-05-21 21:46:08,561 | DATABASE                 | Starting continuous update
+INFO     | 2026-05-21 21:46:08,563 | DATABASE                 | Connection not ready...
+INFO     | 2026-05-21 21:46:08,564 | MAIN                     | Setting up relay with frontend port 80
+INFO     | 2026-05-21 21:46:08,574 | CLIENT/SENDER            | Updating config
+INFO     | 2026-05-21 21:46:08,620 | CLIENT                   | Moonraker client starting websocket connection thread.
+INFO     | 2026-05-21 21:46:08,660 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+ERROR    | 2026-05-21 21:46:08,687 | [Errno 111] Connection refused - goodbye
+INFO     | 2026-05-21 21:46:08,697 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:46:08,704 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:46:10,716 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+ERROR    | 2026-05-21 21:46:10,731 | [Errno 111] Connection refused - goodbye
+INFO     | 2026-05-21 21:46:10,733 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:46:10,734 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:46:12,740 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+ERROR    | 2026-05-21 21:46:12,760 | [Errno 111] Connection refused - goodbye
+INFO     | 2026-05-21 21:46:12,764 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:46:12,775 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:46:13,577 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 21:46:13,578 | CLIENT                   | Moonraker client - tired to send a websocket message when the socket wasn't open.
+INFO     | 2026-05-21 21:46:13,580 | CLIENT                   | Moonraker client failed to send JsonRPC request server.database.get_item
+WARNING  | 2026-05-21 21:46:13,581 | DATABASE                 | Encryption key not yet created
+INFO     | 2026-05-21 21:46:13,582 | DATABASE                 | Created new encryption key
+INFO     | 2026-05-21 21:46:13,590 | CLIENT                   | Moonraker client - tired to send a websocket message when the socket wasn't open.
+INFO     | 2026-05-21 21:46:13,593 | CLIENT                   | Moonraker client failed to send JsonRPC request server.database.post_item
+ERROR    | 2026-05-21 21:46:13,599 | DATABASE                 | Failed to set encryption key No active websocket connected.
+INFO     | 2026-05-21 21:46:13,602 | CLIENT                   | Moonraker client - tired to send a websocket message when the socket wasn't open.
+INFO     | 2026-05-21 21:46:13,614 | CLIENT                   | Moonraker client failed to send JsonRPC request server.database.post_item
+ERROR    | 2026-05-21 21:46:13,617 | DATABASE                 | Ensure database entry item plugin version failed. 99990001 - No active websocket connected.
+INFO     | 2026-05-21 21:46:14,784 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+ERROR    | 2026-05-21 21:46:14,800 | [Errno 111] Connection refused - goodbye
+INFO     | 2026-05-21 21:46:14,801 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:46:14,802 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:46:16,812 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 21:46:16,850 | Websocket connected
+INFO     | 2026-05-21 21:46:16,854 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 21:46:16,857 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:46:16,861 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 21:46:16,876 | DATABASE                 | Starting continuous update
+INFO     | 2026-05-21 21:46:16,877 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:46:16,880 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 21:46:16,888 | CLIENT                   | Moonraker client got klippy state 'disconnected', waiting for ready...
+INFO     | 2026-05-21 21:46:27,453 | CLIENT                   | Moonraker client klippy state is ready. Moonraker connection is ready and stable.
+INFO     | 2026-05-21 21:46:27,454 | CLIENT                   | Moonraker client setting up default notification hooks
+INFO     | 2026-05-21 21:46:28,251 | CLIENT                   | Printer state at socket connect is: standby
+INFO     | 2026-05-21 21:46:28,252 | CLIENT                   | Restore client sync state: There's no print and none of the timers are running.
+INFO     | 2026-05-21 21:46:28,253 | PRINT                    | Removing all print infos
+ERROR    | 2026-05-21 21:46:29,269 | Exception no send: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+ERROR    | 2026-05-21 21:46:29,283 | Failed to update printer name; Exception Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 984, in _updatePrinterName
+    name = MoonrakerClient.Get().PrinterNameProvider.GetPrinterName()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerdatabase.py", line 59, in GetPrinterName
+    if fluiddResult.HasError() is False and mainsailResult.GetResult() is not None:
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/jsonrpcresponse.py", line 73, in GetResult
+    raise Exception("JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.")
+Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+
+INFO     | 2026-05-21 21:46:29,327 | CLIENT                   | Progress settings from Fluidd: progress=['file_relative'], average=True, eta=['file']
+INFO     | 2026-05-21 21:47:49,407 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 21:48:16,890 | MAIN                     | ################################################
+INFO     | 2026-05-21 21:48:16,920 | MAIN                     | ##### OctoApp For Klipper Starting ######
+INFO     | 2026-05-21 21:48:16,923 | MAIN                     | ################################################
+INFO     | 2026-05-21 21:48:16,932 | MAIN                     | Plugin Version: 3.1.0
+INFO     | 2026-05-21 21:48:16,936 | CONFIG                   | Our existing update config file include was found in the moonraker config.
+INFO     | 2026-05-21 21:48:16,939 | CONFIG                   | Existing update config file found with the correct file contents.
+INFO     | 2026-05-21 21:48:16,954 | MDNS                     | mDns Cache file loaded. Cached Entries Found: 0
+INFO     | 2026-05-21 21:48:16,974 | DATABASE                 | Starting continuous update
+INFO     | 2026-05-21 21:48:16,975 | MAIN                     | Setting up relay with frontend port 80
+INFO     | 2026-05-21 21:48:16,987 | DATABASE                 | Connection not ready...
+INFO     | 2026-05-21 21:48:17,001 | CLIENT/SENDER            | Updating config
+INFO     | 2026-05-21 21:48:17,026 | CLIENT                   | Moonraker client starting websocket connection thread.
+INFO     | 2026-05-21 21:48:17,033 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+ERROR    | 2026-05-21 21:48:17,061 | [Errno 111] Connection refused - goodbye
+INFO     | 2026-05-21 21:48:17,063 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:48:17,066 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:48:19,078 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+ERROR    | 2026-05-21 21:48:19,125 | [Errno 111] Connection refused - goodbye
+INFO     | 2026-05-21 21:48:19,126 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:48:19,128 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:48:21,134 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+ERROR    | 2026-05-21 21:48:21,148 | [Errno 111] Connection refused - goodbye
+INFO     | 2026-05-21 21:48:21,151 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:48:21,152 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:48:21,990 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 21:48:21,992 | CLIENT                   | Moonraker client - tired to send a websocket message when the socket wasn't open.
+INFO     | 2026-05-21 21:48:21,993 | CLIENT                   | Moonraker client failed to send JsonRPC request server.database.get_item
+WARNING  | 2026-05-21 21:48:21,994 | DATABASE                 | Encryption key not yet created
+INFO     | 2026-05-21 21:48:21,995 | DATABASE                 | Created new encryption key
+INFO     | 2026-05-21 21:48:21,997 | CLIENT                   | Moonraker client - tired to send a websocket message when the socket wasn't open.
+INFO     | 2026-05-21 21:48:21,999 | CLIENT                   | Moonraker client failed to send JsonRPC request server.database.post_item
+ERROR    | 2026-05-21 21:48:22,000 | DATABASE                 | Failed to set encryption key No active websocket connected.
+INFO     | 2026-05-21 21:48:22,001 | CLIENT                   | Moonraker client - tired to send a websocket message when the socket wasn't open.
+INFO     | 2026-05-21 21:48:22,002 | CLIENT                   | Moonraker client failed to send JsonRPC request server.database.post_item
+ERROR    | 2026-05-21 21:48:22,004 | DATABASE                 | Ensure database entry item plugin version failed. 99990001 - No active websocket connected.
+INFO     | 2026-05-21 21:48:23,159 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+ERROR    | 2026-05-21 21:48:23,169 | [Errno 111] Connection refused - goodbye
+INFO     | 2026-05-21 21:48:23,171 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:48:23,172 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:48:25,178 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+ERROR    | 2026-05-21 21:48:25,195 | [Errno 111] Connection refused - goodbye
+INFO     | 2026-05-21 21:48:25,197 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:48:25,200 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:48:27,210 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 21:48:27,242 | Websocket connected
+INFO     | 2026-05-21 21:48:27,246 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 21:48:27,250 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:48:27,254 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 21:48:27,268 | DATABASE                 | Starting continuous update
+INFO     | 2026-05-21 21:48:27,268 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:48:27,279 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 21:48:27,288 | CLIENT                   | Moonraker client got klippy state 'startup', waiting for ready...
+INFO     | 2026-05-21 21:48:33,553 | CLIENT                   | Moonraker client klippy state is ready. Moonraker connection is ready and stable.
+INFO     | 2026-05-21 21:48:33,554 | CLIENT                   | Moonraker client setting up default notification hooks
+INFO     | 2026-05-21 21:48:34,534 | CLIENT                   | Printer state at socket connect is: standby
+INFO     | 2026-05-21 21:48:34,535 | CLIENT                   | Restore client sync state: There's no print and none of the timers are running.
+INFO     | 2026-05-21 21:48:34,536 | PRINT                    | Removing all print infos
+ERROR    | 2026-05-21 21:48:35,179 | Exception no send: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+ERROR    | 2026-05-21 21:48:35,192 | Failed to update printer name; Exception Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 984, in _updatePrinterName
+    name = MoonrakerClient.Get().PrinterNameProvider.GetPrinterName()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerdatabase.py", line 59, in GetPrinterName
+    if fluiddResult.HasError() is False and mainsailResult.GetResult() is not None:
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/jsonrpcresponse.py", line 73, in GetResult
+    raise Exception("JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.")
+Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+
+INFO     | 2026-05-21 21:48:35,436 | CLIENT                   | Progress settings from Fluidd: progress=['file_relative'], average=True, eta=['file']
+INFO     | 2026-05-21 21:48:43,053 | CLIENT                   | Moonraker client received notify_klippy_shutdown notification, so we will restart our client connection.
+INFO     | 2026-05-21 21:48:43,054 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 21:48:43,059 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 21:48:43,062 | CLIENT                   | Ignoring KlippyDisconnectedOrShutdown notification because we aren't tracking a print.
+INFO     | 2026-05-21 21:48:43,065 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:48:43,066 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:48:45,072 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 21:48:45,086 | Websocket connected
+INFO     | 2026-05-21 21:48:45,088 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 21:48:45,089 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:48:45,091 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 21:48:45,098 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:48:45,104 | CLIENT                   | Moonraker client got klippy state 'shutdown', waiting for ready...
+INFO     | 2026-05-21 21:49:56,019 | CLIENT                   | Moonraker client received notify_klippy_disconnected notification, so we will restart our client connection.
+INFO     | 2026-05-21 21:49:56,022 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 21:49:56,036 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 21:49:56,047 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:49:56,050 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:49:56,062 | CLIENT                   | Moonraker client - tired to send a websocket message when the socket wasn't open.
+INFO     | 2026-05-21 21:49:56,063 | CLIENT                   | Moonraker client failed to send JsonRPC request server.info
+ERROR    | 2026-05-21 21:49:56,065 | Moonraker client exception in klippy waiting logic.; NoSentryReportException Exception: No Sentry Exception - Message: `Moonraker client failed to send klippy ready query message, there was no websocket.`; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 648, in _AfterOpenReadyWaiter
+    raise NoSentryReportException("Moonraker client failed to send klippy ready query message, there was no websocket.")
+octoapp.exceptions.NoSentryReportException: No Sentry Exception - Message: `Moonraker client failed to send klippy ready query message, there was no websocket.`
+
+INFO     | 2026-05-21 21:49:56,066 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 21:49:56,067 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 21:49:56,889 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 21:49:56,890 | CLIENT                   | Moonraker client - tired to send a websocket message when the socket wasn't open.
+INFO     | 2026-05-21 21:49:56,891 | CLIENT                   | Moonraker client failed to send JsonRPC request server.database.post_item
+ERROR    | 2026-05-21 21:49:56,892 | DATABASE                 | Ensure database entry item plugin version failed. 99990001 - No active websocket connected.
+INFO     | 2026-05-21 21:49:58,059 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 21:49:58,071 | Websocket connected
+INFO     | 2026-05-21 21:49:58,073 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 21:49:58,075 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:49:58,076 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 21:49:58,083 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:49:58,087 | CLIENT                   | Moonraker client got klippy state 'startup', waiting for ready...
+INFO     | 2026-05-21 21:50:11,088 | CLIENT                   | Moonraker client received notify_klippy_disconnected notification, so we will restart our client connection.
+INFO     | 2026-05-21 21:50:11,090 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 21:50:11,092 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 21:50:11,095 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:50:11,096 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:50:12,124 | CLIENT                   | Moonraker client - tired to send a websocket message when the socket wasn't open.
+INFO     | 2026-05-21 21:50:12,125 | CLIENT                   | Moonraker client failed to send JsonRPC request server.info
+ERROR    | 2026-05-21 21:50:12,127 | Moonraker client exception in klippy waiting logic.; NoSentryReportException Exception: No Sentry Exception - Message: `Moonraker client failed to send klippy ready query message, there was no websocket.`; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 648, in _AfterOpenReadyWaiter
+    raise NoSentryReportException("Moonraker client failed to send klippy ready query message, there was no websocket.")
+octoapp.exceptions.NoSentryReportException: No Sentry Exception - Message: `Moonraker client failed to send klippy ready query message, there was no websocket.`
+
+INFO     | 2026-05-21 21:50:12,128 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 21:50:12,129 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 21:50:13,101 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 21:50:13,113 | Websocket connected
+INFO     | 2026-05-21 21:50:13,115 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 21:50:13,116 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:50:13,118 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 21:50:13,127 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:50:13,132 | CLIENT                   | Moonraker client got klippy state 'startup', waiting for ready...
+INFO     | 2026-05-21 21:50:21,151 | CLIENT                   | Moonraker client klippy state is ready. Moonraker connection is ready and stable.
+INFO     | 2026-05-21 21:50:21,153 | CLIENT                   | Moonraker client setting up default notification hooks
+INFO     | 2026-05-21 21:50:21,576 | CLIENT                   | Printer state at socket connect is: standby
+INFO     | 2026-05-21 21:50:21,579 | CLIENT                   | Restore client sync state: There's no print and none of the timers are running.
+INFO     | 2026-05-21 21:50:21,581 | PRINT                    | Removing all print infos
+ERROR    | 2026-05-21 21:50:21,593 | Exception no send: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+ERROR    | 2026-05-21 21:50:21,596 | Failed to update printer name; Exception Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 984, in _updatePrinterName
+    name = MoonrakerClient.Get().PrinterNameProvider.GetPrinterName()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerdatabase.py", line 59, in GetPrinterName
+    if fluiddResult.HasError() is False and mainsailResult.GetResult() is not None:
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/jsonrpcresponse.py", line 73, in GetResult
+    raise Exception("JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.")
+Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+
+INFO     | 2026-05-21 21:50:21,609 | CLIENT                   | Progress settings from Fluidd: progress=['file_relative'], average=True, eta=['file']
+INFO     | 2026-05-21 21:50:40,569 | CLIENT                   | Moonraker client received notify_klippy_shutdown notification, so we will restart our client connection.
+INFO     | 2026-05-21 21:50:40,571 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 21:50:40,577 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 21:50:40,579 | CLIENT                   | Ignoring KlippyDisconnectedOrShutdown notification because we aren't tracking a print.
+INFO     | 2026-05-21 21:50:40,582 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:50:40,583 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:50:42,590 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 21:50:42,603 | Websocket connected
+INFO     | 2026-05-21 21:50:42,605 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 21:50:42,607 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:50:42,609 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 21:50:42,616 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:50:42,620 | CLIENT                   | Moonraker client got klippy state 'shutdown', waiting for ready...
+INFO     | 2026-05-21 21:50:47,435 | CLIENT                   | Moonraker client received notify_klippy_disconnected notification, so we will restart our client connection.
+INFO     | 2026-05-21 21:50:47,437 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 21:50:47,445 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 21:50:47,452 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:50:47,454 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:50:48,631 | CLIENT                   | Moonraker client - tired to send a websocket message when the socket wasn't open.
+INFO     | 2026-05-21 21:50:48,634 | CLIENT                   | Moonraker client failed to send JsonRPC request server.info
+ERROR    | 2026-05-21 21:50:48,638 | Moonraker client exception in klippy waiting logic.; NoSentryReportException Exception: No Sentry Exception - Message: `Moonraker client failed to send klippy ready query message, there was no websocket.`; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 648, in _AfterOpenReadyWaiter
+    raise NoSentryReportException("Moonraker client failed to send klippy ready query message, there was no websocket.")
+octoapp.exceptions.NoSentryReportException: No Sentry Exception - Message: `Moonraker client failed to send klippy ready query message, there was no websocket.`
+
+INFO     | 2026-05-21 21:50:48,642 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 21:50:48,645 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 21:50:49,479 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 21:50:49,493 | Websocket connected
+INFO     | 2026-05-21 21:50:49,505 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 21:50:49,507 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:50:49,509 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 21:50:49,518 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:50:49,525 | CLIENT                   | Moonraker client got klippy state 'startup', waiting for ready...
+INFO     | 2026-05-21 21:50:56,893 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 21:50:57,541 | CLIENT                   | Moonraker client klippy state is ready. Moonraker connection is ready and stable.
+INFO     | 2026-05-21 21:50:57,542 | CLIENT                   | Moonraker client setting up default notification hooks
+INFO     | 2026-05-21 21:50:57,984 | CLIENT                   | Printer state at socket connect is: standby
+INFO     | 2026-05-21 21:50:57,987 | CLIENT                   | Restore client sync state: There's no print and none of the timers are running.
+INFO     | 2026-05-21 21:50:57,989 | PRINT                    | Removing all print infos
+ERROR    | 2026-05-21 21:50:58,011 | Exception no send: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+ERROR    | 2026-05-21 21:50:58,013 | Failed to update printer name; Exception Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 984, in _updatePrinterName
+    name = MoonrakerClient.Get().PrinterNameProvider.GetPrinterName()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerdatabase.py", line 59, in GetPrinterName
+    if fluiddResult.HasError() is False and mainsailResult.GetResult() is not None:
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/jsonrpcresponse.py", line 73, in GetResult
+    raise Exception("JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.")
+Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+
+INFO     | 2026-05-21 21:50:58,027 | CLIENT                   | Progress settings from Fluidd: progress=['file_relative'], average=True, eta=['file']
+INFO     | 2026-05-21 21:51:46,822 | CLIENT                   | Moonraker client received notify_klippy_disconnected notification, so we will restart our client connection.
+INFO     | 2026-05-21 21:51:46,824 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 21:51:46,828 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 21:51:46,829 | CLIENT                   | Ignoring KlippyDisconnectedOrShutdown notification because we aren't tracking a print.
+INFO     | 2026-05-21 21:51:46,832 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:51:46,833 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:51:48,840 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 21:51:48,857 | Websocket connected
+INFO     | 2026-05-21 21:51:48,859 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 21:51:48,861 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:51:48,863 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 21:51:48,873 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:51:48,878 | CLIENT                   | Moonraker client got klippy state 'startup', waiting for ready...
+INFO     | 2026-05-21 21:52:00,905 | CLIENT                   | Moonraker client klippy state is ready. Moonraker connection is ready and stable.
+INFO     | 2026-05-21 21:52:00,906 | CLIENT                   | Moonraker client setting up default notification hooks
+INFO     | 2026-05-21 21:52:01,858 | CLIENT                   | Printer state at socket connect is: standby
+INFO     | 2026-05-21 21:52:01,859 | CLIENT                   | Restore client sync state: There's no print and none of the timers are running.
+INFO     | 2026-05-21 21:52:01,860 | PRINT                    | Removing all print infos
+ERROR    | 2026-05-21 21:52:02,548 | Exception no send: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+ERROR    | 2026-05-21 21:52:02,552 | Failed to update printer name; Exception Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 984, in _updatePrinterName
+    name = MoonrakerClient.Get().PrinterNameProvider.GetPrinterName()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerdatabase.py", line 59, in GetPrinterName
+    if fluiddResult.HasError() is False and mainsailResult.GetResult() is not None:
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/jsonrpcresponse.py", line 73, in GetResult
+    raise Exception("JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.")
+Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+
+INFO     | 2026-05-21 21:52:02,784 | CLIENT                   | Progress settings from Fluidd: progress=['file_relative'], average=True, eta=['file']
+INFO     | 2026-05-21 21:54:02,192 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 21:55:57,060 | DATABASE                 | Updating presence
+INFO     | 2026-05-21 21:56:17,169 | CLIENT                   | Moonraker client received notify_klippy_disconnected notification, so we will restart our client connection.
+INFO     | 2026-05-21 21:56:17,171 | CLIENT                   | Moonraker client websocket shutdown called.
+INFO     | 2026-05-21 21:56:17,179 | CLIENT                   | Moonraker client websocket shutdown complete.
+INFO     | 2026-05-21 21:56:17,183 | CLIENT                   | Ignoring KlippyDisconnectedOrShutdown notification because we aren't tracking a print.
+INFO     | 2026-05-21 21:56:17,186 | CLIENT                   | Moonraker websocket connection closed.
+INFO     | 2026-05-21 21:56:17,188 | CLIENT                   | Moonraker client websocket connection lost. We will try to restart it soon.
+INFO     | 2026-05-21 21:56:19,195 | CLIENT                   | Connecting to moonraker: ws://0.0.0.0:7125/websocket
+INFO     | 2026-05-21 21:56:19,264 | Websocket connected
+INFO     | 2026-05-21 21:56:19,265 | CLIENT                   | Moonraker client websocket opened.
+INFO     | 2026-05-21 21:56:19,267 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:56:19,268 | CLIENT                   | Authenticating with moonraker...
+INFO     | 2026-05-21 21:56:19,276 | CLIENT                   | Moonraker client waiting for klippy ready...
+INFO     | 2026-05-21 21:56:19,281 | CLIENT                   | Moonraker client got klippy state 'startup', waiting for ready...
+INFO     | 2026-05-21 21:56:31,530 | CLIENT                   | Moonraker client klippy state is ready. Moonraker connection is ready and stable.
+INFO     | 2026-05-21 21:56:31,531 | CLIENT                   | Moonraker client setting up default notification hooks
+INFO     | 2026-05-21 21:56:32,275 | CLIENT                   | Printer state at socket connect is: standby
+INFO     | 2026-05-21 21:56:32,276 | CLIENT                   | Restore client sync state: There's no print and none of the timers are running.
+INFO     | 2026-05-21 21:56:32,277 | PRINT                    | Removing all print infos
+ERROR    | 2026-05-21 21:56:32,305 | Exception no send: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+ERROR    | 2026-05-21 21:56:32,308 | Failed to update printer name; Exception Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.; Traceback (most recent call last):
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerclient.py", line 984, in _updatePrinterName
+    name = MoonrakerClient.Get().PrinterNameProvider.GetPrinterName()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/moonrakerdatabase.py", line 59, in GetPrinterName
+    if fluiddResult.HasError() is False and mainsailResult.GetResult() is not None:
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/riccorbypro/octoapp/moonraker_octoapp/jsonrpcresponse.py", line 73, in GetResult
+    raise Exception("JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.")
+Exception: JsonRpcResponse GetResult was called when the result was None. HasError needs to be called first.
+
+INFO     | 2026-05-21 21:56:32,334 | CLIENT                   | Progress settings from Fluidd: progress=['file_relative'], average=True, eta=['file']

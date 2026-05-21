@@ -465,6 +465,8 @@ class Mmu:
         self.espooler_rewind_burst_power = config.getint("espooler_rewind_burst_power", 50, minval=0, maxval=100)
         self.espooler_rewind_burst_duration = config.getfloat("espooler_rewind_burst_duration", .4, above=0., maxval=10.)
         self.espooler_operations = list(config.getlist('espooler_operations', self.ESPOOLER_OPERATIONS))
+        self.espooler_preload_assist_power = config.getint("espooler_preload_assist_power", 100, minval=0, maxval=100)
+        self.espooler_preload_assist_speed = config.getfloat("espooler_preload_assist_speed", self.gear_homing_speed, above=0.)
 
         # Optional features
         self.has_filament_buffer = bool(config.getint('has_filament_buffer', 1, minval=0, maxval=1))
@@ -4690,6 +4692,16 @@ class Mmu:
                 self.log_always("Preloading...")
                 msg = "Homing to %s sensor" % endstop_name
                 with self._wrap_suspend_filament_monitoring():
+                    if self._can_espooler_preload():
+                        homed = self._espooler_preload_to_gate_sensor(endstop_name)
+                        if homed:
+                            self._espooler_preload_park()
+                            self._set_gate_status(self.gate_selected, self.GATE_AVAILABLE)
+                            self._check_pending_spool_id(self.gate_selected) # Have spool_id ready?
+                            self.log_always("Filament detected and loaded in gate %d" % self.gate_selected)
+                            return
+                        raise MmuError("Espooler preload did not reach %s sensor" % endstop_name)
+
                     actual,homed,measured,_ = self.trace_filament_move(msg, self.gate_preload_homing_max, motor="gear", homing_move=1, endstop_name=endstop_name)
                     if homed:
                         self.trace_filament_move("Final parking", -self.gate_preload_parking_distance)
@@ -4718,6 +4730,62 @@ class Mmu:
         else:
             self._set_gate_status(self.gate_selected, self.GATE_EMPTY)
             raise MmuError("Filament not detected")
+
+    def _can_espooler_preload(self):
+        if not self.has_espooler():
+            return False
+        if self.ESPOOLER_ASSIST not in self.espooler_operations:
+            return False
+        if self.espooler_preload_assist_power <= 0:
+            return False
+        if not self.sensor_manager.check_gate_sensor(self.SENSOR_PRE_GATE_PREFIX, self.gate_selected):
+            return False
+        return True
+
+    def _espooler_preload_to_gate_sensor(self, endstop_name):
+        gate = self.gate_selected
+        sensor_name = self.sensor_manager.get_mapped_endstop_name(endstop_name)
+        power = self.espooler_preload_assist_power / 100.
+        timeout = self.gate_preload_homing_max / max(self.espooler_preload_assist_speed, 1e-6) + 0.5
+        start_time = self.reactor.monotonic()
+        homed = False
+        self.log_debug("Preloading gate %d with espooler assist toward %s for up to %.1fs" % (gate, sensor_name, timeout))
+        self.espooler.set_operation(gate, power, self.ESPOOLER_ASSIST)
+        try:
+            while self.reactor.monotonic() - start_time < timeout:
+                if self.sensor_manager.check_sensor(sensor_name):
+                    homed = True
+                    break
+                self.reactor.pause(self.reactor.monotonic() + 0.02)
+        finally:
+            self.espooler.set_operation(gate, 0, self.ESPOOLER_OFF)
+
+        elapsed = self.reactor.monotonic() - start_time
+        if self.log_enabled(self.LOG_STEPPER):
+            self.log_stepper("ESPOOLER PRELOAD: gate=%d sensor=%s power=%.2f speed=%.1f timeout=%.1f elapsed=%.2f homed=%s" % (
+                gate, sensor_name, power, self.espooler_preload_assist_speed, timeout, elapsed, homed
+            ))
+        return homed
+
+    def _espooler_preload_park(self):
+        park_distance = self.gate_preload_parking_distance
+        if park_distance == 0:
+            return
+        operation = self.ESPOOLER_REWIND if park_distance > 0 else self.ESPOOLER_ASSIST
+        if operation not in self.espooler_operations:
+            self.log_debug("Skipping espooler preload park because %s operation is disabled" % operation)
+            return
+        gate = self.gate_selected
+        duration = abs(park_distance) / max(self.espooler_preload_assist_speed, 1e-6)
+        power = self.espooler_preload_assist_power / 100.
+        self.log_debug("Parking preloaded filament with espooler: gate=%d distance=%.1f duration=%.2fs operation=%s" % (
+            gate, park_distance, duration, operation
+        ))
+        self.espooler.set_operation(gate, power, operation)
+        try:
+            self.reactor.pause(self.reactor.monotonic() + duration)
+        finally:
+            self.espooler.set_operation(gate, 0, self.ESPOOLER_OFF)
 
     # Eject final clear of gate. Important for MMU's where filament is always gripped (e.g. most type-B)
     def _eject_from_gate(self, gate=None):
