@@ -368,14 +368,14 @@ class MmuCalibrationManager:
                 # Move forward
                 self.mmu._initialize_filament_position(dwell=True)
                 self.mmu.trace_filament_move(None, length, speed=test_speed, accel=accel, wait=True)
-                counts = self.mmu._get_encoder_counts(dwell=True)
+                counts = self.mmu._get_encoder_movement_counts(dwell=True)
                 pos_values.append(counts)
                 self.mmu.log_always("%s+ counts: %d" % (UI_SPACE*2, counts))
 
                 # Move backward
                 self.mmu._initialize_filament_position(dwell=True)
                 self.mmu.trace_filament_move(None, -length, speed=test_speed, accel=accel, wait=True)
-                counts = self.mmu._get_encoder_counts(dwell=True)
+                counts = self.mmu._get_encoder_movement_counts(dwell=True)
                 neg_values.append(counts)
                 self.mmu.log_always("%s- counts: %d" % (UI_SPACE*2, counts))
 
@@ -509,7 +509,7 @@ class MmuCalibrationManager:
                     raise MmuError("Could not establish the ending sync-feedback tension boundary")
                 reference += abs(actual)
 
-                counts = self.mmu._get_encoder_counts(dwell=True)
+                counts = self.mmu._get_encoder_movement_counts(dwell=True)
                 if counts == 0:
                     break
                 resolution = reference / counts
@@ -557,7 +557,7 @@ class MmuCalibrationManager:
                 direction = 1 if x % 2 == 0 else -1
                 self.mmu._initialize_filament_position(dwell=True)
                 self.mmu.trace_filament_move(None, direction * length, speed=speed, accel=accel, motor="extruder", wait=True, encoder_dwell=True)
-                counts = self.mmu._get_encoder_counts(dwell=True)
+                counts = self.mmu._get_encoder_movement_counts(dwell=True)
                 if direction > 0:
                     pos_values.append(counts)
                     self.mmu.log_always("%s+ counts: %d" % (UI_SPACE*2, counts))
@@ -596,14 +596,16 @@ class MmuCalibrationManager:
                 self.mmu._set_filament_pos_state(self.mmu.FILAMENT_POS_UNKNOWN)
 
     def calibrate_encoder_manual(self, length, save=True):
-        counts = self.mmu._get_encoder_counts(dwell=True)
+        counts = self.mmu._get_encoder_movement_counts(dwell=True)
         if counts == 0:
             msg = "No counts measured. Run 'MMU_CALIBRATE_ENCODER MOTOR=manual RESET=1', manually pull a measured length through the encoder, then run this command again with LENGTH=<measured_mm>"
             if self.mmu.encoder_sensor:
                 status = self.mmu.encoder_sensor.get_status(self.mmu.reactor.monotonic())
-                msg += "\nEncoder diagnostics: counts=%s distance=%smm angle_client=%s batches=%s empty_batches=%s samples=%s errors=%s last_raw=%s last_batch_samples=%s last_batch_delta=%s poll_reads=%s poll_errors=%s poll_crc_errors=%s" % (
+                msg += "\nEncoder diagnostics: counts=%s movement_counts=%s distance=%smm movement_distance=%smm angle_client=%s batches=%s empty_batches=%s samples=%s errors=%s last_raw=%s last_batch_samples=%s last_batch_delta=%s poll_reads=%s poll_errors=%s poll_crc_errors=%s" % (
                     status.get('encoder_counts', 'n/a'),
+                    status.get('encoder_movement_counts', 'n/a'),
                     status.get('encoder_pos', 'n/a'),
+                    status.get('encoder_movement_pos', 'n/a'),
                     status.get('angle_client_registered', 'n/a'),
                     status.get('angle_batches', 'n/a'),
                     status.get('angle_empty_batches', 'n/a'),
@@ -646,12 +648,12 @@ class MmuCalibrationManager:
             for _ in range(repeats):
                 self.mmu._initialize_filament_position(dwell=True)
                 _,_,measured,delta = self.mmu.trace_filament_move("Calibration load movement", length, encoder_dwell=True)
-                pos_values.append(measured)
-                self.mmu.log_always("%s+ measured: %.1fmm (counts: %d)" % (UI_SPACE*2, (length - delta), self.mmu._get_encoder_counts(dwell=None)))
+                pos_values.append(abs(measured))
+                self.mmu.log_always("%s+ measured: %.1fmm (counts: %d)" % (UI_SPACE*2, (length - delta), self.mmu._get_encoder_movement_counts(dwell=None)))
                 self.mmu._initialize_filament_position(dwell=True)
                 _,_,measured,delta = self.mmu.trace_filament_move("Calibration unload movement", -length, encoder_dwell=True)
-                neg_values.append(measured)
-                self.mmu.log_always("%s- measured: %.1fmm (counts: %d)" % (UI_SPACE*2, (length - delta), self.mmu._get_encoder_counts(dwell=None)))
+                neg_values.append(abs(measured))
+                self.mmu.log_always("%s- measured: %.1fmm (counts: %d)" % (UI_SPACE*2, (length - delta), self.mmu._get_encoder_movement_counts(dwell=None)))
 
             msg = "Load direction:   mean=%(mean).2f stdev=%(stdev).2f min=%(min).2f max=%(max).2f range=%(range).2f" % self.mmu._sample_stats(pos_values)
             msg += "\nUnload direction: mean=%(mean).2f stdev=%(stdev).2f min=%(min).2f max=%(max).2f range=%(range).2f" % self.mmu._sample_stats(neg_values)

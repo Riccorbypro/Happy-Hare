@@ -2666,7 +2666,9 @@ class Mmu:
                         self._initialize_encoder(dwell=True)
                         status = self.encoder_sensor.get_status(self.reactor.monotonic()) if self.encoder_sensor else {}
                         self.log_always("Manual encoder calibration counts reset. Pull a known length through the encoder, then run 'MMU_CALIBRATE_ENCODER MOTOR=manual LENGTH=<measured_mm>'"
-                                        "\nEncoder diagnostics: angle_client=%s batches=%s empty_batches=%s samples=%s errors=%s last_raw=%s poll_reads=%s poll_errors=%s poll_crc_errors=%s" % (
+                                        "\nEncoder diagnostics: counts=%s movement_counts=%s angle_client=%s batches=%s empty_batches=%s samples=%s errors=%s last_raw=%s poll_reads=%s poll_errors=%s poll_crc_errors=%s" % (
+                                            status.get('encoder_counts', 'n/a'),
+                                            status.get('encoder_movement_counts', 'n/a'),
                                             status.get('angle_client_registered', 'n/a'),
                                             status.get('angle_batches', 'n/a'),
                                             status.get('angle_empty_batches', 'n/a'),
@@ -3786,6 +3788,14 @@ class Mmu:
     def _get_encoder_counts(self, dwell=False):
         if self._encoder_dwell(dwell):
             return self.encoder_sensor.get_counts()
+        else:
+            return 0
+
+    def _get_encoder_movement_counts(self, dwell=False):
+        if self._encoder_dwell(dwell):
+            if hasattr(self.encoder_sensor, 'get_movement_counts'):
+                return self.encoder_sensor.get_movement_counts()
+            return abs(self.encoder_sensor.get_counts())
         else:
             return 0
 
@@ -6078,7 +6088,7 @@ class Mmu:
 
         encoder_end = self.get_encoder_distance(dwell=encoder_dwell)
         measured = encoder_end - encoder_start
-        delta = abs(actual) - measured # +ve means measured less than moved, -ve means measured more than moved
+        delta = abs(actual) - abs(measured) # +ve means measured less than moved, -ve means measured more than moved
         if trace_str:
             if homing_move != 0:
                 trace_str += ". Stepper: '%s' %s after moving %.1fmm (of max %.1fmm), encoder measured %.1fmm (delta %.1fmm)"
@@ -6196,7 +6206,7 @@ class Mmu:
 
         encoder_end = self.get_encoder_distance(dwell=False)
         measured = encoder_end - encoder_start
-        delta = abs(actual) - measured
+        delta = abs(actual) - abs(measured)
 
         if trace_str and halt_pos is not None:
             trace_str += ". BLDC: '%s' %s after moving %.1fmm (of max %.1fmm), encoder measured %.1fmm (delta %.1fmm)"

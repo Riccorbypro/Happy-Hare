@@ -38,6 +38,7 @@ class MmuEncoderMt6826s:
 
         self._logger = None
         self._counts = 0.
+        self._movement_counts = 0.
         self._last_angle = None
         self._last_raw_angle = None
         self._last_time = None
@@ -51,6 +52,7 @@ class MmuEncoderMt6826s:
         self._angle_last_batch_samples = 0
         self._angle_last_batch_time = None
         self._angle_last_position_offset = None
+        self._last_signed_delta = 0.
         self._angle_logged_batches = 0
         self._angle_last_log_systime = 0.
         self._poll_timer = None
@@ -144,7 +146,9 @@ class MmuEncoderMt6826s:
             delta += RAW_ANGLE_TICKS
         abs_delta = abs(delta)
         if abs_delta:
-            self._counts += abs_delta
+            self._counts += delta
+            self._movement_counts += abs_delta
+            self._last_signed_delta = delta
             self._movement = True
         self._last_angle = raw_angle if angle is None else angle
         self._last_raw_angle = raw_angle
@@ -193,8 +197,9 @@ class MmuEncoderMt6826s:
             return
         self._poll_last_log_systime = self.reactor.monotonic()
         self._log_encoder(
-            "MT6826S encoder '%s' poll_reads=%d raw=%.1f delta=%.1f total_counts=%.1f distance=%.3fmm status=0x%02x crc_errors=%d"
-            % (self.name, self._poll_reads, raw_angle, delta, self._counts, self.get_distance(),
+            "MT6826S encoder '%s' poll_reads=%d raw=%.1f signed_delta=%.1f movement_delta=%.1f net_counts=%.1f movement_counts=%.1f distance=%.3fmm status=0x%02x crc_errors=%d"
+            % (self.name, self._poll_reads, raw_angle, self._last_signed_delta, delta,
+               self._counts, self._movement_counts, self.get_distance(),
                self._poll_last_status if self._poll_last_status is not None else 0, self._poll_crc_errors))
 
     def _log_angle_batch(self, samples, first_angle, first_raw_angle, batch_delta, errors):
@@ -212,9 +217,9 @@ class MmuEncoderMt6826s:
         last_raw_angle = last_angle % RAW_ANGLE_TICKS
         self._log_encoder(
             "MT6826S encoder '%s' batch=%d samples=%d errors=%d first_angle=%.1f last_angle=%.1f "
-            "first_raw=%.1f last_raw=%.1f batch_counts=%.1f total_counts=%.1f distance=%.3fmm"
+            "first_raw=%.1f last_raw=%.1f batch_counts=%.1f net_counts=%.1f movement_counts=%.1f distance=%.3fmm"
             % (self.name, self._angle_batches, len(samples), errors, first_angle, last_angle,
-               first_raw_angle, last_raw_angle, batch_delta, self._counts, self.get_distance()))
+               first_raw_angle, last_raw_angle, batch_delta, self._counts, self._movement_counts, self.get_distance()))
 
     def _handle_connect(self):
         try:
@@ -393,11 +398,18 @@ class MmuEncoderMt6826s:
     def get_counts(self):
         return int(round(self._counts))
 
+    def get_movement_counts(self):
+        return int(round(self._movement_counts))
+
     def get_distance(self):
         return self._counts * self.resolution
 
+    def get_movement_distance(self):
+        return self._movement_counts * self.resolution
+
     def set_distance(self, new_distance):
-        self._counts = max(0., new_distance / self.resolution)
+        self._counts = new_distance / self.resolution
+        self._movement_counts = abs(self._counts)
 
     def reset_counts(self):
         try:
@@ -405,7 +417,9 @@ class MmuEncoderMt6826s:
         except Exception as e:
             self._log_encoder("MT6826S encoder '%s' could not seed angle during reset: %s" % (self.name, str(e)))
         self._counts = 0.
+        self._movement_counts = 0.
         self._movement = False
+        self._last_signed_delta = 0.
         self._angle_last_batch_delta = 0.
         self._log_encoder("MT6826S encoder '%s' counts reset (last_raw=%s, batches=%d, samples=%d, poll_reads=%d)"
                           % (self.name, "unknown" if self._last_raw_angle is None else "%.1f" % self._last_raw_angle,
@@ -416,6 +430,8 @@ class MmuEncoderMt6826s:
         return {
             'encoder_pos': round(self.get_distance(), 1),
             'encoder_counts': self.get_counts(),
+            'encoder_movement_pos': round(self.get_movement_distance(), 1),
+            'encoder_movement_counts': self.get_movement_counts(),
             'encoder_resolution': self.get_resolution(),
             'angle_temperature': angle_status.get('temperature', None),
             'angle_client_registered': self._angle_client_registered,
@@ -426,6 +442,7 @@ class MmuEncoderMt6826s:
             'angle_last': self._last_angle,
             'angle_last_raw': self._last_raw_angle,
             'angle_last_time': self._last_time,
+            'angle_last_signed_delta': round(self._last_signed_delta, 3),
             'angle_last_batch_samples': self._angle_last_batch_samples,
             'angle_last_batch_delta': round(self._angle_last_batch_delta, 3),
             'angle_last_position_offset': self._angle_last_position_offset,
