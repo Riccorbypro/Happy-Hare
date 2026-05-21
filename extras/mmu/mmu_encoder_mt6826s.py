@@ -74,6 +74,10 @@ class MmuEncoderMt6826s:
             self.angle_sensor.add_client(self._angle_batch_cb)
             self._angle_client_registered = True
 
+    def _register_angle_client_event(self, eventtime):
+        self._register_angle_client()
+        return self.reactor.NEVER
+
     def _angle_batch_cb(self, msg):
         samples = msg.get('data', [])
         for sample_time, angle in samples:
@@ -100,10 +104,10 @@ class MmuEncoderMt6826s:
             pass
 
     def _handle_ready(self):
-        self._register_angle_client()
         self.min_event_systime = self.reactor.monotonic() + 2.
         self._reset_filament_runout_params()
         self._extruder_pos_update_timer = self.reactor.register_timer(self._extruder_pos_update_event)
+        self.reactor.register_callback(self._register_angle_client_event, self.reactor.monotonic() + 0.1)
 
     def _handle_printing(self, print_time):
         self.reactor.update_timer(self._extruder_pos_update_timer, self.reactor.NOW)
