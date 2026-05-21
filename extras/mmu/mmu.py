@@ -476,6 +476,8 @@ class Mmu:
         self.bldc_encoder_brake = config.getboolean('bldc_encoder_brake', True)
         self.bldc_encoder_settle_time = config.getfloat('bldc_encoder_settle_time', 0.05, minval=0., maxval=0.5)
         self.bldc_encoder_espooler_stop_time = config.getfloat('bldc_encoder_espooler_stop_time', 0.25, minval=0., maxval=1.)
+        self.bldc_encoder_min_move = config.getfloat('bldc_encoder_min_move', 1., minval=0.)
+        self.bldc_encoder_overrun_guard = config.getfloat('bldc_encoder_overrun_guard', 100., minval=0.)
         self.spoolman_support = config.getchoice('spoolman_support', {o: o for o in self.SPOOLMAN_OPTIONS}, self.SPOOLMAN_OFF)
         self.t_macro_color = config.getchoice('t_macro_color', {o: o for o in self.T_MACRO_COLOR_OPTIONS}, self.T_MACRO_COLOR_SLICER)
         self.default_endless_spool_enabled = config.getint('endless_spool_enabled', 0, minval=0, maxval=1)
@@ -2687,7 +2689,7 @@ class Mmu:
                     else:
                         self.calibration_manager.calibrate_encoder_manual(length, save)
                 else:
-                    with self.wrap_sync_gear_to_extruder():
+                    with self.wrap_sync_gear_to_extruder(restore_sync=False):
                         self.selector.filament_drive()
                         if motor == "extruder":
                             self.calibration_manager.calibrate_encoder_with_extruder(length, repeats, speed, accel, save, assist=assist)
@@ -6038,7 +6040,10 @@ class Mmu:
                 else:
                     if self.log_enabled(self.LOG_STEPPER):
                         self.log_stepper("%s MOVE: dist=%.1f, speed=%.1f, accel=%.1f, wait=%s" % (motor.upper(), dist, speed, accel, wait))
-                    encoder_bounded_bldc = bldc_active_move and motor == "gear" and self.encoder_bounded_bldc and self.has_encoder()
+                    encoder_bounded_bldc = (
+                        bldc_active_move and motor == "gear" and self.encoder_bounded_bldc and
+                        self.has_encoder() and abs(dist) >= self.bldc_encoder_min_move
+                    )
                     if bldc_active_move:
                         bldc.start_move(dist, speed, use_tach_position=not encoder_bounded_bldc)
                     if encoder_bounded_bldc:
@@ -6101,7 +6106,11 @@ class Mmu:
                                 settle_time += self.bldc_encoder_espooler_stop_time
                             if settle_time > 0.:
                                 self.reactor.pause(self.reactor.monotonic() + settle_time)
+                            if brake_used:
+                                bldc.stop()
                             measured = abs(self._get_encoder_distance_unvalidated(dwell=None) - encoder_start)
+                            if measured > target + self.bldc_encoder_overrun_guard:
+                                raise MmuError("BLDC encoder-bounded move overran safety guard: requested %.1fmm, encoder measured %.1fmm" % (target, measured))
                         actual = direction * measured
                         pos[1] += actual
                         self.mmu_toolhead.set_position(pos)
@@ -6647,7 +6656,7 @@ class Mmu:
 
 
     @contextlib.contextmanager
-    def wrap_sync_gear_to_extruder(self):
+    def wrap_sync_gear_to_extruder(self, restore_sync=True):
         """
         Context manager that protects gear/extruder synchronization, current,
         and filament grip state.
@@ -6688,9 +6697,9 @@ class Mmu:
             if outermost_wrapper:
                 self._suppress_release_grip = False
 
-            # Restore prior sync state. Logic inside reset_sync_gear_to_extruder
-            # may consult the global suppression flag when reconciling grip.
-            self.reset_sync_gear_to_extruder(previous_sync)
+            # Restore prior sync state unless a standalone command explicitly
+            # asked to leave sync disabled after direct MMU motion.
+            self.reset_sync_gear_to_extruder(previous_sync and restore_sync)
 
 
     # ---------- TMC Stepper Current Control ----------
@@ -7977,7 +7986,8 @@ class Mmu:
         debug = bool(gcmd.get_int('DEBUG', 0, minval=0, maxval=1)) # Hidden option
         allow_bypass = bool(gcmd.get_int('ALLOW_BYPASS', 0, minval=0, maxval=1))
 
-        with self.wrap_sync_gear_to_extruder():
+        restore_sync = bool(gcmd.get_int('RESTORE_SYNC', 0, minval=0, maxval=1))
+        with self.wrap_sync_gear_to_extruder(restore_sync=restore_sync):
             with DebugStepperMovement(self, debug):
                 actual,_,measured,_ = self._move_cmd(gcmd, "Test move", allow_bypass=allow_bypass)
             self.log_always("Moved %.1fmm%s" % (actual, (" (measured %.1fmm)" % measured) if self._can_use_encoder() else ""))
@@ -8139,6 +8149,8 @@ class Mmu:
         self.bldc_encoder_brake = bool(gcmd.get_int('BLDC_ENCODER_BRAKE', int(self.bldc_encoder_brake), minval=0, maxval=1))
         self.bldc_encoder_settle_time = gcmd.get_float('BLDC_ENCODER_SETTLE_TIME', self.bldc_encoder_settle_time, minval=0., maxval=0.5)
         self.bldc_encoder_espooler_stop_time = gcmd.get_float('BLDC_ENCODER_ESPOOLER_STOP_TIME', self.bldc_encoder_espooler_stop_time, minval=0., maxval=1.)
+        self.bldc_encoder_min_move = gcmd.get_float('BLDC_ENCODER_MIN_MOVE', self.bldc_encoder_min_move, minval=0.)
+        self.bldc_encoder_overrun_guard = gcmd.get_float('BLDC_ENCODER_OVERRUN_GUARD', self.bldc_encoder_overrun_guard, minval=0.)
         self.autotune_rotation_distance = gcmd.get_int('AUTOTUNE_ROTATION_DISTANCE', self.autotune_rotation_distance, minval=0, maxval=1)
         self.autotune_bowden_length = gcmd.get_int('AUTOTUNE_BOWDEN_LENGTH', self.autotune_bowden_length, minval=0, maxval=1)
         self.retry_tool_change_on_error = gcmd.get_int('RETRY_TOOL_CHANGE_ON_ERROR', self.retry_tool_change_on_error, minval=0, maxval=1)
@@ -8245,6 +8257,8 @@ class Mmu:
                 msg += "\nbldc_encoder_brake = %d" % self.bldc_encoder_brake
                 msg += "\nbldc_encoder_settle_time = %.3f" % self.bldc_encoder_settle_time
                 msg += "\nbldc_encoder_espooler_stop_time = %.3f" % self.bldc_encoder_espooler_stop_time
+                msg += "\nbldc_encoder_min_move = %.3f" % self.bldc_encoder_min_move
+                msg += "\nbldc_encoder_overrun_guard = %.1f" % self.bldc_encoder_overrun_guard
             msg += "\nextruder_force_homing = %d" % self.extruder_force_homing
             msg += "\nextruder_homing_endstop = %s" % self.extruder_homing_endstop
             msg += "\nextruder_homing_max = %.1f" % self.extruder_homing_max

@@ -885,12 +885,12 @@ class MmuGearBldc:
         return True
 
     def _motion_timer_callback(self, eventtime):
-        if self.motion_state != self.MOTION_STATE_MOVING:
+        if self.motion_state not in [self.MOTION_STATE_MOVING, self.MOTION_STATE_BRAKE]:
             return self.reactor.NEVER
 
         current_print_time = self.mcu_pwm_pin.get_mcu().estimated_print_time(eventtime)
 
-        if self._check_tach_position_complete():
+        if self.motion_state == self.MOTION_STATE_MOVING and self._check_tach_position_complete():
             return self.reactor.NEVER
 
         self.motion_queue = [
@@ -899,7 +899,7 @@ class MmuGearBldc:
         ]
 
         if not self.motion_queue:
-            if not self.sync_active:
+            if self.motion_state == self.MOTION_STATE_BRAKE or not self.sync_active:
                 self.stop()
                 return self.reactor.NEVER
             return self._get_motion_waketime(eventtime, current_print_time)
@@ -928,6 +928,8 @@ class MmuGearBldc:
             return self._get_motion_waketime(eventtime, current_print_time)
         if wake_delay >= INFINITY - EPSILON:
             self.motion_queue = []
+            if self.motion_state == self.MOTION_STATE_BRAKE:
+                self.stop()
             return self.reactor.NEVER
         return eventtime + wake_delay
 
