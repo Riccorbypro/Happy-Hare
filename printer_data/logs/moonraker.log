@@ -1,4 +1,4 @@
--------------------- Log Start | Wed May 20 20:33:25 2026 --------------------
+-------------------- Log Start | Thu May 21 06:04:21 2026 --------------------
 platform: Linux-6.1.115-btt-rk35xx-aarch64-with-glibc2.36
 data_path: /home/riccorbypro/printer_data
 is_default_data_path: False
@@ -169,7 +169,7 @@ All Configuration Files:
 /home/riccorbypro/printer_data/config/octoapp-system.cfg
 #################################################################
 Loading Sqlite database provider. Sqlite Version: 3.40.1
-Unsafe Shutdown Count: 108
+Unsafe Shutdown Count: 109
 
 System Info:
 
@@ -228,8 +228,8 @@ unit_name: moonraker.service
 is_default: True
 manager: systemd
 Properties:
-**Requires=['system.slice', '-.mount', 'network-online.target', 'sysinit.target']
-**After=['sysinit.target', 'system.slice', 'systemd-journald.socket', 'basic.target', '-.mount', 'network-online.target']
+**Requires=['sysinit.target', '-.mount', 'system.slice', 'network-online.target']
+**After=['basic.target', 'sysinit.target', '-.mount', 'systemd-journald.socket', 'system.slice', 'network-online.target']
 **SupplementaryGroups=['moonraker-admin']
 **EnvironmentFiles=/home/riccorbypro/printer_data/systemd/moonraker.env
 **ExecStart=/home/riccorbypro/moonraker-env/bin/python $MOONRAKER_ARGS
@@ -243,8 +243,8 @@ unit_name: klipper.service
 is_default: True
 manager: systemd
 Properties:
-**Requires=['sysinit.target', '-.mount', 'system.slice']
-**After=['system.slice', 'basic.target', 'sysinit.target', '-.mount', 'network-online.target', 'systemd-journald.socket']
+**Requires=['system.slice', 'sysinit.target', '-.mount']
+**After=['sysinit.target', 'systemd-journald.socket', 'system.slice', 'basic.target', '-.mount', 'network-online.target']
 **SupplementaryGroups=[]
 **EnvironmentFiles=/home/riccorbypro/printer_data/systemd/klipper.env
 **ExecStart=/home/riccorbypro/klippy-env/bin/python $KLIPPER_ARGS
@@ -267,24 +267,18 @@ Git Repo cartographer_firmware: Warnings detected:
   Repo not on official remote/branch, expected: origin/master, detected: origin/main
 Git Repo katapult: No warnings detected
 Klipper Version: v0.13.0-658-gbd09e017-dirty
-2026-05-20 22:33:25,984 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
-2026-05-20 22:33:25,995 [websockets.py:on_close()] - Websocket Closed: ID: 281472925076176 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 4.35
-2026-05-20 22:33:27,002 [klippy_connection.py:_do_connect()] - Klippy Connection Established
-2026-05-20 22:33:28,014 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 3.06ms
-2026-05-20 22:33:28,015 [websockets.py:open()] - Websocket Opened: ID: 281472925045776, Proxied: False, User Agent: , Host Name: 0.0.0.0
-2026-05-20 22:33:28,024 [websockets.py:_handle_identify()] - Websocket 281472925045776 Client Identified - Name: OctoApp, Version: 3.1.0, Type: agent
-2026-05-20 22:33:38,831 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
-2026-05-20 22:33:38,834 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
-2026-05-20 22:33:39,082 [job_state.py:_handle_started()] - Job state initialized: standby
-2026-05-20 22:33:39,336 [klippy_connection.py:_check_ready()] - Klippy ready
-2026-05-20 22:33:39,382 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: machine.device_power.devices, Code: -32601, Message: Method not found
-2026-05-20 22:33:39,382 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.sensors.list, Code: -32601, Message: Method not found
-2026-05-20 22:33:39,432 [application.py:log_request()] - 404 GET /machine/wled/strips (127.0.0.1) [_TRUSTED_USER_] 4.21ms
-2026-05-20 22:33:39,836 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor toolhead_mcu_temp', 'temperature_sensor cartographer_coil', 'temperature_sensor cartographer', 'temperature_sensor catalyst_mcu_temp', 'temperature_sensor BTT_Pi_temp', 'heater_bed', 'temperature_fan chamber_fan', 'temperature_fan _board_fan', 'temperature_fan _pi_fan', 'heater_generic chamber', 'extruder']
-2026-05-20 22:33:40,592 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
-2026-05-20 22:33:40,896 [file_manager.py:get_file_list()] - Updating File List <config>...
-2026-05-20 22:33:41,109 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.helix.status, Code: -32601, Message: Method not found
-2026-05-20 22:33:41,109 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.spoolman.status, Code: -32601, Message: Method not found
-2026-05-20 22:33:41,154 [mmu_server.py:cleanup_lane_data()] - Removed old lane data: []
-2026-05-20 22:33:41,395 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
-2026-05-20 22:33:41,430 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
+2026-05-21 08:04:21,247 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-05-21 08:04:21,265 [websockets.py:on_close()] - Websocket Closed: ID: 281473041369616 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 7.42
+2026-05-21 08:04:22,275 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-05-21 08:04:23,298 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 5.46ms
+2026-05-21 08:04:23,298 [websockets.py:open()] - Websocket Opened: ID: 281472909707792, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2026-05-21 08:04:23,309 [websockets.py:_handle_identify()] - Websocket 281472909707792 Client Identified - Name: OctoApp, Version: 3.1.0, Type: agent
+2026-05-21 08:04:29,745 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-05-21 08:04:29,746 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-05-21 08:04:29,750 [klippy_connection.py:_check_ready()] - 
+Internal error during connect: 'NoneType' object has no attribute 'send'
+
+Once the underlying issue is corrected, use the "RESTART"
+command to reload the config and restart the host software.
+Printer is halted
+
