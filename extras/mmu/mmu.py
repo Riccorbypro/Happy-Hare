@@ -467,6 +467,7 @@ class Mmu:
         self.espooler_operations = list(config.getlist('espooler_operations', self.ESPOOLER_OPERATIONS))
         self.espooler_preload_assist_power = config.getint("espooler_preload_assist_power", 100, minval=0, maxval=100)
         self.espooler_preload_assist_speed = config.getfloat("espooler_preload_assist_speed", self.gear_homing_speed, above=0.)
+        self.espooler_load_handoff_time = config.getfloat("espooler_load_handoff_time", 2., minval=0., maxval=10.)
 
         # Optional features
         self.has_filament_buffer = bool(config.getint('has_filament_buffer', 1, minval=0, maxval=1))
@@ -4787,6 +4788,65 @@ class Mmu:
         finally:
             self.espooler.set_operation(gate, 0, self.ESPOOLER_OFF)
 
+    def _can_espooler_gate_load(self, endstop_name):
+        if not self.has_espooler():
+            return False
+        if self.ESPOOLER_ASSIST not in self.espooler_operations:
+            return False
+        if self.espooler_preload_assist_power <= 0:
+            return False
+        sensor_name = self.sensor_manager.get_mapped_endstop_name(endstop_name)
+        return bool(
+            self.sensor_manager.check_sensor(sensor_name)
+            or self.sensor_manager.check_gate_sensor(self.SENSOR_PRE_GATE_PREFIX, self.gate_selected)
+        )
+
+    def _espooler_load_gate_to_handoff(self, endstop_name):
+        gate = self.gate_selected
+        sensor_name = self.sensor_manager.get_mapped_endstop_name(endstop_name)
+        power = self.espooler_preload_assist_power / 100.
+        speed = max(self.espooler_preload_assist_speed, 1e-6)
+        advanced = 0.
+
+        if not self.sensor_manager.check_sensor(sensor_name):
+            homed = self._espooler_preload_to_gate_sensor(endstop_name)
+            if not homed:
+                return None
+
+        if self.gate_endstop_to_encoder > 0:
+            duration = self.gate_endstop_to_encoder / speed
+            self.log_debug("Advancing gate %d with espooler %.1fmm past %s toward encoder" % (
+                gate, self.gate_endstop_to_encoder, sensor_name
+            ))
+            self.espooler.set_operation(gate, power, self.ESPOOLER_ASSIST)
+            try:
+                self.reactor.pause(self.reactor.monotonic() + duration)
+            finally:
+                self.espooler.set_operation(gate, 0, self.ESPOOLER_OFF)
+            advanced += self.gate_endstop_to_encoder
+
+        handoff = self.espooler_load_handoff_time * speed
+        if handoff > 0:
+            self.log_debug("Handing off gate %d load to BLDC with %.1fs assisted move" % (
+                gate, self.espooler_load_handoff_time
+            ))
+            _,_,measured,_ = self.trace_filament_move(
+                "CFS espooler-to-BLDC handoff",
+                handoff,
+                speed=self.espooler_preload_assist_speed,
+                motor="gear",
+                wait=True
+            )
+            if self._can_use_encoder() and measured < self.encoder_min:
+                raise MmuError("CFS handoff failed because encoder did not detect BLDC movement")
+            advanced += handoff
+
+        if self.log_enabled(self.LOG_STEPPER):
+            self.log_stepper("ESPOOLER LOAD HANDOFF: gate=%d sensor=%s power=%.2f speed=%.1f advanced=%.1f handoff_time=%.2f" % (
+                gate, sensor_name, power, self.espooler_preload_assist_speed, advanced, self.espooler_load_handoff_time
+            ))
+        return advanced
+
     # Eject final clear of gate. Important for MMU's where filament is always gripped (e.g. most type-B)
     def _eject_from_gate(self, gate=None):
         # If gate not specified assume current gate
@@ -4850,6 +4910,20 @@ class Mmu:
             for i in range(retries):
                 endstop_name = self.sensor_manager.get_mapped_endstop_name(self.gate_homing_endstop)
                 msg = ("Initial homing to %s sensor" % endstop_name) if i == 0 else ("Retry homing to gate sensor (retry #%d)" % i)
+                if self._can_espooler_gate_load(endstop_name):
+                    advanced = self._espooler_load_gate_to_handoff(endstop_name)
+                    if advanced is not None:
+                        self.log_debug("Gate %d loaded by espooler handoff after advancing %.1fmm past %s" % (
+                            self.gate_selected, advanced, endstop_name
+                        ))
+                        self._set_gate_status(self.gate_selected, max(self.gate_status[self.gate_selected], self.GATE_AVAILABLE))
+                        self._set_filament_pos_state(self.FILAMENT_POS_HOMED_GATE)
+                        return advanced
+                    self.log_debug("Error loading filament - espooler did not reach gate homing sensor. %s" % ("Retrying..." if i < retries - 1 else ""))
+                    if i < retries - 1:
+                        self.selector.filament_release()
+                        self.selector.filament_drive()
+                    continue
                 h_dir = -1 if self.gate_parking_distance < 0 and self.sensor_manager.check_sensor(endstop_name) else 1 # Reverse home?
                 actual,homed,measured,_ = self.trace_filament_move(msg, h_dir * self.gate_homing_max, motor="gear", homing_move=h_dir, endstop_name=endstop_name)
                 if homed:

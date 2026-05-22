@@ -1,4 +1,4 @@
--------------------- Log Start | Thu May 21 19:56:17 2026 --------------------
+-------------------- Log Start | Fri May 22 17:55:27 2026 --------------------
 platform: Linux-6.1.115-btt-rk35xx-aarch64-with-glibc2.36
 data_path: /home/riccorbypro/printer_data
 is_default_data_path: False
@@ -169,7 +169,7 @@ All Configuration Files:
 /home/riccorbypro/printer_data/config/octoapp-system.cfg
 #################################################################
 Loading Sqlite database provider. Sqlite Version: 3.40.1
-Unsafe Shutdown Count: 113
+Unsafe Shutdown Count: 114
 
 System Info:
 
@@ -228,8 +228,8 @@ unit_name: moonraker.service
 is_default: True
 manager: systemd
 Properties:
-**Requires=['system.slice', '-.mount', 'network-online.target', 'sysinit.target']
-**After=['system.slice', '-.mount', 'systemd-journald.socket', 'network-online.target', 'basic.target', 'sysinit.target']
+**Requires=['network-online.target', 'system.slice', '-.mount', 'sysinit.target']
+**After=['sysinit.target', 'network-online.target', 'systemd-journald.socket', 'system.slice', 'basic.target', '-.mount']
 **SupplementaryGroups=['moonraker-admin']
 **EnvironmentFiles=/home/riccorbypro/printer_data/systemd/moonraker.env
 **ExecStart=/home/riccorbypro/moonraker-env/bin/python $MOONRAKER_ARGS
@@ -243,8 +243,8 @@ unit_name: klipper.service
 is_default: True
 manager: systemd
 Properties:
-**Requires=['sysinit.target', 'system.slice', '-.mount']
-**After=['-.mount', 'sysinit.target', 'basic.target', 'network-online.target', 'system.slice', 'systemd-journald.socket']
+**Requires=['-.mount', 'system.slice', 'sysinit.target']
+**After=['basic.target', 'network-online.target', 'systemd-journald.socket', '-.mount', 'system.slice', 'sysinit.target']
 **SupplementaryGroups=[]
 **EnvironmentFiles=/home/riccorbypro/printer_data/systemd/klipper.env
 **ExecStart=/home/riccorbypro/klippy-env/bin/python $KLIPPER_ARGS
@@ -267,24 +267,24 @@ Git Repo cartographer_firmware: Warnings detected:
   Repo not on official remote/branch, expected: origin/master, detected: origin/main
 Git Repo katapult: No warnings detected
 Klipper Version: v0.13.0-658-gbd09e017-dirty
-2026-05-21 21:56:17,161 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
-2026-05-21 21:56:17,185 [websockets.py:on_close()] - Websocket Closed: ID: 281472898912528 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 8.30
-2026-05-21 21:56:18,207 [klippy_connection.py:_do_connect()] - Klippy Connection Established
-2026-05-21 21:56:19,261 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 4.25ms
-2026-05-21 21:56:19,262 [websockets.py:open()] - Websocket Opened: ID: 281472901184976, Proxied: False, User Agent: , Host Name: 0.0.0.0
-2026-05-21 21:56:19,272 [websockets.py:_handle_identify()] - Websocket 281472901184976 Client Identified - Name: OctoApp, Version: 3.1.0, Type: agent
-2026-05-21 21:56:29,501 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
-2026-05-21 21:56:29,506 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
-2026-05-21 21:56:29,749 [job_state.py:_handle_started()] - Job state initialized: standby
-2026-05-21 21:56:30,008 [klippy_connection.py:_check_ready()] - Klippy ready
-2026-05-21 21:56:30,089 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: machine.device_power.devices, Code: -32601, Message: Method not found
-2026-05-21 21:56:30,089 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.sensors.list, Code: -32601, Message: Method not found
-2026-05-21 21:56:30,111 [application.py:log_request()] - 404 GET /machine/wled/strips (127.0.0.1) [_TRUSTED_USER_] 6.18ms
-2026-05-21 21:56:30,507 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor toolhead_mcu_temp', 'temperature_sensor cartographer_coil', 'temperature_sensor cartographer', 'temperature_sensor catalyst_mcu_temp', 'temperature_sensor BTT_Pi_temp', 'heater_bed', 'temperature_fan chamber_fan', 'temperature_fan _board_fan', 'temperature_fan _pi_fan', 'heater_generic chamber', 'extruder']
-2026-05-21 21:56:31,010 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
-2026-05-21 21:56:31,305 [file_manager.py:get_file_list()] - Updating File List <config>...
-2026-05-21 21:56:31,519 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.helix.status, Code: -32601, Message: Method not found
-2026-05-21 21:56:31,519 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.spoolman.status, Code: -32601, Message: Method not found
-2026-05-21 21:56:31,865 [mmu_server.py:cleanup_lane_data()] - Removed old lane data: []
-2026-05-21 21:56:32,293 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
-2026-05-21 21:56:32,317 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
+2026-05-22 19:55:27,800 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-05-22 19:55:27,812 [websockets.py:on_close()] - Websocket Closed: ID: 281472833030672 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 3.70
+2026-05-22 19:55:28,821 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-05-22 19:55:29,836 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 6.27ms
+2026-05-22 19:55:29,837 [websockets.py:open()] - Websocket Opened: ID: 281472834406928, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2026-05-22 19:55:29,846 [websockets.py:_handle_identify()] - Websocket 281472834406928 Client Identified - Name: OctoApp, Version: 3.1.0, Type: agent
+2026-05-22 19:55:40,403 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-05-22 19:55:40,407 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-05-22 19:55:40,653 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-05-22 19:55:40,908 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-05-22 19:55:40,956 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: machine.device_power.devices, Code: -32601, Message: Method not found
+2026-05-22 19:55:40,957 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.sensors.list, Code: -32601, Message: Method not found
+2026-05-22 19:55:40,999 [application.py:log_request()] - 404 GET /machine/wled/strips (127.0.0.1) [_TRUSTED_USER_] 4.76ms
+2026-05-22 19:55:41,405 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor toolhead_mcu_temp', 'temperature_sensor cartographer_coil', 'temperature_sensor cartographer', 'temperature_sensor catalyst_mcu_temp', 'temperature_sensor BTT_Pi_temp', 'heater_bed', 'temperature_fan chamber_fan', 'temperature_fan _board_fan', 'temperature_fan _pi_fan', 'heater_generic chamber', 'extruder']
+2026-05-22 19:55:42,173 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-05-22 19:55:42,537 [file_manager.py:get_file_list()] - Updating File List <config>...
+2026-05-22 19:55:42,789 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.helix.status, Code: -32601, Message: Method not found
+2026-05-22 19:55:42,790 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.spoolman.status, Code: -32601, Message: Method not found
+2026-05-22 19:55:42,839 [mmu_server.py:cleanup_lane_data()] - Removed old lane data: []
+2026-05-22 19:55:43,165 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
+2026-05-22 19:55:43,215 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
