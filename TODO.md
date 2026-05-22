@@ -144,28 +144,48 @@ Acceptance criteria:
 
 Pins:
 
-- Display comms: `PC1`, `PC2`, `PC3`, `PC4`
+- TM1621B chip select: `PC1`
+- TM1621B read: `PC2`
+- TM1621B write: `PC3`
+- TM1621B data: `PC4`
 - Backlight: `PB0`
 
 Goal: restore the stock-style exterior display behavior, starting with
-temperature and humidity display.
+temperature and humidity display. The CFS front LCD panel uses a TM1621B LCD
+controller to drive the two numeric displays. This likely needs a custom
+Klipper extra module because the controller appears to use a custom serial
+communication protocol rather than a Klipper-native display interface.
+
+References:
+
+- ESPHome TM1621 implementation:
+  <https://api-docs.esphome.io/tm1621_8cpp_source>
+- TM1621B part information:
+  <https://jlcpcb.com/partdetail/5826724-TM1621B/C5174490>
 
 Tasks:
 
-- Identify the display controller and physical protocol.
-- Determine what `PC1`-`PC4` represent: SPI, parallel, bit-banged serial, custom
-  protocol, or control lines.
+- Review the TM1621B datasheet and ESPHome TM1621 implementation for timing,
+  command format, segment addressing, and read/write behavior.
+- Determine whether the CFS wiring matches normal TM1621B signaling or a
+  Creality-specific bit-banged serial variant.
+- Map the two numeric displays to TM1621B segment addresses.
 - Confirm `PB0` backlight polarity and safe PWM range.
 - Create a standalone display probe that can turn the backlight on/off without
   touching filament movement.
-- Capture or infer the stock display protocol if needed.
-- Implement a minimal display driver that shows temperature and humidity.
+- Create a standalone TM1621B probe that can initialize the controller and write
+  known digit/segment test patterns.
+- Implement a CFS-specific Klipper extra module for the front LCD protocol.
+- Add config for the TM1621B pins and optional backlight control.
+- Implement a minimal display driver that shows temperature and humidity on the
+  two numeric displays.
 - Add optional status pages only after the basic display is reliable.
 - Document what is supported and what remains stock-firmware-only.
 
 Acceptance criteria:
 
 - Backlight can be controlled safely.
+- Each numeric display can show known test digits.
 - Display can show CFS temperature and humidity.
 - Display failure does not prevent the MMU from operating.
 
