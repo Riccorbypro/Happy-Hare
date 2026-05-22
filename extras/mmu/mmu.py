@@ -3736,6 +3736,16 @@ class Mmu:
             bldc.set_sync_enabled(sync_enabled and bldc is selected)
         return selected
 
+    def refresh_bldc_sync_speed(self):
+        bldc = self.get_bldc_for_gate(self.gate_selected)
+        if bldc is None or not getattr(bldc, 'sync_active', False):
+            return
+        speed = getattr(bldc, 'commanded_linear_speed', 0.)
+        source = getattr(bldc, 'commanded_source', None)
+        if abs(speed) <= 0.:
+            return
+        bldc.set_speed(speed, source=source or 'sync_feedback')
+
     def _check_has_espooler(self):
         if not self.has_espooler():
             self.log_error("No espooler fitted to this MMU unit")
