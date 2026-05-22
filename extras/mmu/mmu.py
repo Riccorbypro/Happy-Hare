@@ -468,6 +468,9 @@ class Mmu:
         self.espooler_preload_assist_power = config.getint("espooler_preload_assist_power", 100, minval=0, maxval=100)
         self.espooler_preload_assist_speed = config.getfloat("espooler_preload_assist_speed", self.gear_homing_speed, above=0.)
         self.espooler_load_handoff_time = config.getfloat("espooler_load_handoff_time", 2., minval=0., maxval=10.)
+        self.espooler_unload_rewind_power = config.getint("espooler_unload_rewind_power", self.espooler_preload_assist_power, minval=0, maxval=100)
+        self.espooler_unload_rewind_speed = config.getfloat("espooler_unload_rewind_speed", self.espooler_preload_assist_speed, above=0.)
+        self.espooler_unload_park_distance = config.getfloat("espooler_unload_park_distance", self.gate_unload_buffer, minval=0.)
 
         # Optional features
         self.has_filament_buffer = bool(config.getint('has_filament_buffer', 1, minval=0, maxval=1))
@@ -4857,6 +4860,55 @@ class Mmu:
             ))
         return advanced
 
+    def _can_espooler_unload(self):
+        if not self.has_espooler():
+            return False
+        if self.ESPOOLER_REWIND not in self.espooler_operations:
+            return False
+        return self.espooler_unload_rewind_power > 0
+
+    def _espooler_assisted_unload_from_gate(self, endstop_name, homing_max):
+        gate = self.gate_selected
+        power = self.espooler_unload_rewind_power / 100.
+        sensor_name = self.sensor_manager.get_mapped_endstop_name(endstop_name)
+        self.log_debug("Reverse homing off %s sensor with espooler rewind assist" % sensor_name)
+        self.espooler.set_operation(gate, power, self.ESPOOLER_REWIND)
+        try:
+            actual,homed,measured,delta = self.trace_filament_move(
+                "Reverse homing off %s sensor" % sensor_name,
+                -homing_max,
+                motor="gear",
+                homing_move=-1,
+                endstop_name=sensor_name
+            )
+        finally:
+            self.espooler.set_operation(gate, 0, self.ESPOOLER_OFF)
+
+        if self.log_enabled(self.LOG_STEPPER):
+            self.log_stepper("ESPOOLER UNLOAD ASSIST: gate=%d sensor=%s power=%.2f homing_max=%.1f actual=%.1f measured=%.1f homed=%s" % (
+                gate, sensor_name, power, homing_max, actual, measured, homed
+            ))
+        return actual, homed, measured, delta
+
+    def _espooler_unload_park(self):
+        park_distance = self.espooler_unload_park_distance
+        if park_distance <= 0:
+            return
+        if not self._can_espooler_unload():
+            self.log_debug("Skipping espooler unload park because rewind operation is disabled")
+            return
+        gate = self.gate_selected
+        power = self.espooler_unload_rewind_power / 100.
+        duration = park_distance / max(self.espooler_unload_rewind_speed, 1e-6)
+        self.log_debug("Parking unloaded filament with espooler rewind: gate=%d distance=%.1f duration=%.2fs" % (
+            gate, park_distance, duration
+        ))
+        self.espooler.set_operation(gate, power, self.ESPOOLER_REWIND)
+        try:
+            self.reactor.pause(self.reactor.monotonic() + duration)
+        finally:
+            self.espooler.set_operation(gate, 0, self.ESPOOLER_OFF)
+
     # Eject final clear of gate. Important for MMU's where filament is always gripped (e.g. most type-B)
     def _eject_from_gate(self, gate=None):
         # If gate not specified assume current gate
@@ -4990,7 +5042,10 @@ class Mmu:
                 # "somewhere in the bowden tube"
                 if homed:
                     self._set_filament_pos_state(self.FILAMENT_POS_HOMED_GATE)
-                    self.trace_filament_move("Final parking", -self.gate_parking_distance)
+                    if self._can_espooler_unload():
+                        self._espooler_unload_park()
+                    else:
+                        self.trace_filament_move("Final parking", -self.gate_parking_distance)
                     self._set_filament_pos_state(self.FILAMENT_POS_UNLOADED)
                     gear_pos = self.mmu_toolhead.get_position()
                     gear_pos[1] = 0.
@@ -5019,10 +5074,16 @@ class Mmu:
 
         else: # Using mmu_gate or mmu_gear_N sensor
             endstop_name = self.sensor_manager.get_mapped_endstop_name(self.gate_homing_endstop)
-            actual,homed,_,_ = self.trace_filament_move("Reverse homing off %s sensor" % endstop_name, -homing_max, motor="gear", homing_move=-1, endstop_name=endstop_name)
+            if self._can_espooler_unload():
+                actual,homed,_,_ = self._espooler_assisted_unload_from_gate(endstop_name, homing_max)
+            else:
+                actual,homed,_,_ = self.trace_filament_move("Reverse homing off %s sensor" % endstop_name, -homing_max, motor="gear", homing_move=-1, endstop_name=endstop_name)
             if homed:
                 self._set_filament_pos_state(self.FILAMENT_POS_HOMED_GATE)
-                self.trace_filament_move("Final parking", -self.gate_parking_distance)
+                if self._can_espooler_unload():
+                    self._espooler_unload_park()
+                else:
+                    self.trace_filament_move("Final parking", -self.gate_parking_distance)
                 self._set_filament_pos_state(self.FILAMENT_POS_UNLOADED)
                 gear_pos = self.mmu_toolhead.get_position()
                 gear_pos[1] = 0.
