@@ -2,11 +2,11 @@
 
 <p align="center">
   <img src="https://github.com/moggieuk/Happy-Hare/wiki/resources/happy_hare_logo.jpg" alt='Happy Hare' width='30%'>
-  <h1 align="center">~~Happy Hare~~Irate Rabbit</h1>
+  <h1 align="center"><s>Happy Hare</s>Irate Rabbit</h1>
 </p>
 
 <p align="center">
-~~Universal~~ Automated Filament Changer / MMU driver for Klipper. Supports **ONLY** Creality's CFS.
+<s>Universal</s> Automated Filament Changer / MMU driver for Klipper. Supports <b>ONLY</b> Creality's CFS.
 </p>
 
 <p align="center">
