@@ -1,12 +1,12 @@
-# Fair warning: This repo is likely unusable. I am using this as a learning ground. Continue at your own risk.
+# Fair Warning: This is garbage, as is the CFS. I recommend against using it unless you really know what you're doing.
 
 <p align="center">
   <img src="https://github.com/moggieuk/Happy-Hare/wiki/resources/happy_hare_logo.jpg" alt='Happy Hare' width='30%'>
-  <h1 align="center">Happy Hare</h1>
+  <h1 align="center">~~Happy Hare~~Irate Rabbit</h1>
 </p>
 
 <p align="center">
-Universal Automated Filament Changer / MMU driver for Klipper
+~~Universal~~ Automated Filament Changer / MMU driver for Klipper. Supports **ONLY** Creality's CFS.
 </p>
 
 <p align="center">
