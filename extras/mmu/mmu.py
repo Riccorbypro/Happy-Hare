@@ -5035,7 +5035,11 @@ class Mmu:
                 _,_,_,_ = self.trace_filament_move("Bowden safety pre-unload move", -length, motor="gear+extruder")
             else:
                 endstop_name = self.sensor_manager.get_mapped_endstop_name(self.gate_homing_endstop)
-                actual,homed,_,_ = self.trace_filament_move("Bowden safety pre-unload move", -length, motor="gear+extruder", homing_move=-1, endstop_name=endstop_name)
+                if self.has_bldc_gear(self.gate_selected):
+                    actual,_,_,_ = self.trace_filament_move("Bowden safety pre-unload move", -length, motor="gear+extruder")
+                    homed = self.sensor_manager.check_sensor(endstop_name) is False
+                else:
+                    actual,homed,_,_ = self.trace_filament_move("Bowden safety pre-unload move", -length, motor="gear+extruder", homing_move=-1, endstop_name=endstop_name)
                 # In case we ended up homing during the safety pre-unload, lets just do our parking and be done
                 # This can easily happen when your parking distance is configured to park the filament past the
                 # gate sensor instead of behind the gate sensor and the filament position is determined to be
