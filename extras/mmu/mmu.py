@@ -9213,6 +9213,10 @@ class Mmu:
         raw_sensor = gcmd.get('SENSOR', "")
         sensor = self.sensor_manager.get_unitless_sensor_name(raw_sensor)
 
+        if self.action != self.ACTION_IDLE:
+            self.log_debug("Ignoring sensor insertion on %s because MMU is %s" % (raw_sensor, self._get_action_string()))
+            return
+
         try:
             with self.wrap_sync_gear_to_extruder():
                 if sensor.startswith(self.SENSOR_PRE_GATE_PREFIX) and gate is not None:

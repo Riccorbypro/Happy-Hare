@@ -4,7 +4,7 @@
     "toolhead_style": 0
   },
   "brightness": 100,
-  "config_version": 16,
+  "config_version": 17,
   "dark_mode": true,
   "display": {
     "animations_enabled": true,
@@ -223,18 +223,18 @@
             "output_pin LED"
           ],
           "sensors": [
-            "temperature_sensor toolhead_mcu_temp",
             "tmc5160 stepper_x",
             "tmc5160 stepper_y",
+            "temperature_sensor toolhead_mcu_temp",
             "temperature_sensor cartographer_coil",
-            "temperature_sensor cartographer",
+            "temperature_sensor cartographer_mcu",
             "temperature_sensor catalyst_mcu_temp",
-            "temperature_sensor BTT_Pi_temp",
+            "temperature_sensor Klipper_Host",
             "temperature_fan chamber_fan",
             "temperature_fan _board_fan",
             "temperature_fan _pi_fan"
           ],
-          "timestamp": "2026-05-22T18:31:31Z"
+          "timestamp": "2026-05-24T15:56:53Z"
         },
         "optional": [
           "controller_fan board_driver_fan",
@@ -261,7 +261,8 @@
           "filament_switch_sensor _cfs_gate_2",
           "filament_switch_sensor _cfs_gate_3",
           "filament_switch_sensor _cfs_buffer_0",
-          "filament_switch_sensor _cfs_buffer_1"
+          "filament_switch_sensor _cfs_buffer_1",
+          "fan_generic cfs_drive_motor"
         ]
       },
       "heaters": {

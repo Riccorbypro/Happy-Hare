@@ -1,7 +1,23 @@
 [server]
 host = 0.0.0.0
 port = 7125
-klippy_uds_address = /home/riccorbypro/printer_data/comms/klippy.sock
+klippy_uds_address = ~/printer_data/comms/klippy.sock
+max_upload_size = 2048
+
+[file_manager]
+queue_gcode_uploads = False
+enable_object_processing = True
+
+[database]
+
+[data_store]
+temperature_store_size = 600
+gcode_store_size = 1000
+
+[machine]
+provider = systemd_dbus
+validate_service = False
+validate_config = False
 
 [authorization]
 trusted_clients = 
@@ -18,21 +34,82 @@ cors_domains =
 
 [octoprint_compat]
 
+[secrets]
+
 [history]
 
-[file_manager]
-default_metadata_parser_timeout = 120
+[update_manager]
+enable_auto_refresh = True
+refresh_interval = 6
+enable_system_updates = True
+
+[update_manager klipper]
+channel = dev
+pinned_commit = 2f08ab418c42fefd156037eb0db3c2edfb9ab52e
+
+[update_manager moonraker]
+channel = dev
+pinned_commit = abd2026b90d86fb738c6619be3ceefcedee2006c
+
+[update_manager fluidd]
+type = web
+channel = beta
+repo = fluidd-core/fluidd
+path = ~/fluidd
 
 [timelapse]
 output_path = ~/printer_data/timelapse/
-frame_path = /tmp/timelapse/printer
+frame_path = ~/printer_data/frames/
+camera = default
+parkpos = back_right
+park_travel_speed = 400
+park_retract_speed = 40
+park_extrude_speed = 40
+park_retract_distance = 0.5
+park_extrude_distance = 0.5
+extraoutputparams = -preset superfast
 
-[update_manager]
-channel = dev
-refresh_interval = 168
+[update_manager timelapse]
+type = git_repo
+primary_branch = main
+path = ~/moonraker-timelapse
+origin = https://github.com/mainsail-crew/moonraker-timelapse.git
+managed_services = klipper moonraker
 
-[update_manager klipper]
-report_anomalies = False
+[update_manager cartographer]
+type = python
+channel = stable
+virtualenv = ~/klippy-env
+project_name = cartographer3d-plugin
+is_system_service = False
+managed_services = klipper
+info_tags = desc=Cartographer
+
+[update_manager crowsnest]
+type = git_repo
+path = ~/crowsnest
+origin = https://github.com/mainsail-crew/crowsnest.git
+primary_branch = v5
+managed_services = crowsnest
+system_dependencies = system-dependencies.json
+virtualenv = ~/crowsnest-env
+requirements = requirements.txt
+
+[update_manager Klippain-ShakeTune]
+type = git_repo
+origin = https://github.com/Frix-x/klippain-shaketune.git
+path = ~/klippain_shaketune
+virtualenv = /home/riccorbypro/klippy-env
+requirements = requirements.txt
+system_dependencies = system-dependencies.json
+primary_branch = main
+managed_services = klipper
+
+[update_manager led_effect]
+type = git_repo
+path = ~/klipper-led_effect
+origin = https://github.com/julianschill/klipper-led_effect.git
+is_system_service = False
 
 [update_manager octoapp]
 type = git_repo
@@ -50,87 +127,17 @@ managed_services =
 subscriptions = 
 	octoapp.
 
-[update_manager fluidd]
-path = /home/riccorbypro/fluidd
-repo = fluidd-core/fluidd
-channel = stable
-type = web
-persistent_files = 
-	config.json
-
-[update_manager fluidd-config]
-managed_services = klipper
-origin = https://github.com/fluidd-core/fluidd-config.git
-path = /home/riccorbypro/fluidd-config
-primary_branch = master
-type = git_repo
-
-[update_manager crowsnest]
-type = git_repo
-path = ~/crowsnest
-origin = https://github.com/mainsail-crew/crowsnest.git
-managed_services = crowsnest
-install_script = tools/pkglist.sh
-
-[update_manager led_effect]
-type = git_repo
-path = ~/klipper-led_effect
-origin = https://github.com/julianschill/klipper-led_effect.git
-is_system_service = False
-
-[update_manager timelapse]
-type = git_repo
-primary_branch = main
-path = ~/moonraker-timelapse
-origin = https://github.com/mainsail-crew/moonraker-timelapse.git
-managed_services = klipper moonraker
-
 [update_manager helixscreen]
 type = web
 channel = stable
 repo = prestonbrown/helixscreen
-path = ~/helixscreen
+path = /home/riccorbypro/helixscreen
 
-[update_manager Klippain-ShakeTune]
+[update_manager KOMB]
 type = git_repo
-origin = https://github.com/Frix-x/klippain-shaketune.git
-path = ~/klippain_shaketune
-virtualenv = /home/riccorbypro/klippy-env
-requirements = requirements.txt
-system_dependencies = system-dependencies.json
-primary_branch = main
+channel = dev
+path = ~/KOMB
+origin = https://github.com/TmRxJD/KOMB
 managed_services = klipper
-
-[mmu_server]
-enable_file_preprocessor = True
-enable_toolchange_next_pos = True
-update_spoolman_location = True
-
-[update_manager klipper-backup]
-type = git_repo
-path = ~/klipper-backup
-origin = https://github.com/Staubgeborener/klipper-backup.git
-managed_services = moonraker
 primary_branch = main
-
-[update_manager cartographer_plugin]
-type = python
-channel = stable
-virtualenv = ~/klippy-env
-project_name = cartographer3d-plugin
-is_system_service = False
-managed_services = klipper
-info_tags = desc=Cartographer Plugin
-
-[update_manager cartographer_firmware]
-type = git_repo
-path = ~/cartographer_firmware
-is_system_service = False
-origin = https://github.com/Cartographer3D/cartographer_firmware.git
-
-[update_manager katapult]
-type = git_repo
-path = ~/katapult
-is_system_service = False
-origin = https://github.com/Arksine/katapult.git
 
