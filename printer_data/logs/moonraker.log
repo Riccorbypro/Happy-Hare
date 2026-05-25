@@ -1,4 +1,4 @@
--------------------- Log Start | Mon May 25 16:21:29 2026 --------------------
+-------------------- Log Start | Mon May 25 16:50:03 2026 --------------------
 platform: Linux-6.1.115-btt-rk35xx-aarch64-with-glibc2.36
 data_path: /home/riccorbypro/printer_data
 is_default_data_path: False
@@ -269,48 +269,149 @@ Git Repo led_effect: No warnings detected
 Git Repo octoapp: No warnings detected
 Git Repo KOMB: No warnings detected
 Klipper Version: v0.13.0-176-g2f08ab41-dirty
-2026-05-25 18:21:29,747 [klippy_connection.py:close()] - Error closing Klippy Unix Socket
-Traceback (most recent call last):
-  File "/home/riccorbypro/moonraker/moonraker/components/klippy_connection.py", line 805, in close
-    await self.writer.wait_closed()
-  File "/usr/lib/python3.11/asyncio/streams.py", line 350, in wait_closed
-    await self._protocol._get_close_waiter(self)
-ConnectionResetError: [Errno 104] Connection reset by peer
-2026-05-25 18:21:29,747 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
-2026-05-25 18:21:29,756 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
-2026-05-25 18:21:29,757 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.list, Code: 503, Message: Klippy Disconnected
-2026-05-25 18:21:29,757 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
-2026-05-25 18:21:29,757 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.list, Code: 503, Message: Klippy Disconnected
-2026-05-25 18:21:29,757 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
-2026-05-25 18:21:29,757 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.objects.list, Code: 503, Message: Klippy Disconnected
-2026-05-25 18:21:29,758 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Disconnected
-2026-05-25 18:21:29,765 [websockets.py:on_close()] - Websocket Closed: ID: 281472651221712 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 1.84
-2026-05-25 18:21:30,775 [klippy_connection.py:_do_connect()] - Klippy Connection Established
-2026-05-25 18:21:31,779 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 2.96ms
-2026-05-25 18:21:31,780 [websockets.py:open()] - Websocket Opened: ID: 281472651217424, Proxied: False, User Agent: , Host Name: 0.0.0.0
-2026-05-25 18:21:31,789 [websockets.py:_handle_identify()] - Websocket 281472651217424 Client Identified - Name: OctoApp, Version: 3.1.0, Type: agent
-2026-05-25 18:21:43,872 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
-2026-05-25 18:21:43,878 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
-2026-05-25 18:21:44,116 [job_state.py:_handle_started()] - Job state initialized: standby
-2026-05-25 18:21:44,366 [klippy_connection.py:_check_ready()] - Klippy ready
-2026-05-25 18:21:44,429 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: machine.device_power.devices, Code: -32601, Message: Method not found
-2026-05-25 18:21:44,429 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.sensors.list, Code: -32601, Message: Method not found
-2026-05-25 18:21:44,535 [application.py:log_request()] - 404 GET /machine/wled/strips (127.0.0.1) [_TRUSTED_USER_] 4.55ms
-2026-05-25 18:21:44,877 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor toolhead_mcu_temp', 'temperature_sensor cartographer_coil', 'temperature_sensor cartographer_mcu', 'temperature_sensor catalyst_mcu_temp', 'temperature_sensor Klipper_Host', 'heater_bed', 'temperature_fan chamber_fan', 'temperature_fan _board_fan', 'temperature_fan _pi_fan', 'heater_generic chamber', 'extruder']
-2026-05-25 18:21:45,673 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
-2026-05-25 18:21:45,968 [file_manager.py:get_file_list()] - Updating File List <config>...
-2026-05-25 18:21:46,225 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.helix.status, Code: -32601, Message: Method not found
-2026-05-25 18:21:46,225 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.spoolman.status, Code: -32601, Message: Method not found
-2026-05-25 18:21:46,968 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
-2026-05-25 18:21:47,015 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
-2026-05-25 18:22:04,255 [klippy_apis.py:start_print()] - Requesting Job Start, filename = calicat_PETG_34m24s.gcode
-2026-05-25 18:22:04,480 [job_state.py:_send_job_event()] - Job Started: calicat_PETG_34m24s.gcode
-2026-05-25 18:22:04,733 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
-2026-05-25 18:25:51,245 [application.py:prepare()] - Upload Request Received from 192.168.0.50
+2026-05-25 18:50:04,058 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-05-25 18:50:04,072 [websockets.py:on_close()] - Websocket Closed: ID: 281472651217424 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 22.15
+2026-05-25 18:50:05,082 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-05-25 18:50:06,091 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 3.34ms
+2026-05-25 18:50:06,092 [websockets.py:open()] - Websocket Opened: ID: 281472651418256, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2026-05-25 18:50:06,103 [websockets.py:_handle_identify()] - Websocket 281472651418256 Client Identified - Name: OctoApp, Version: 3.1.0, Type: agent
+2026-05-25 18:50:18,064 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-05-25 18:50:18,070 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-05-25 18:50:18,309 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-05-25 18:50:18,561 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-05-25 18:50:18,624 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: machine.device_power.devices, Code: -32601, Message: Method not found
+2026-05-25 18:50:18,624 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.sensors.list, Code: -32601, Message: Method not found
+2026-05-25 18:50:18,739 [application.py:log_request()] - 404 GET /machine/wled/strips (127.0.0.1) [_TRUSTED_USER_] 4.40ms
+2026-05-25 18:50:19,064 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor toolhead_mcu_temp', 'temperature_sensor cartographer_coil', 'temperature_sensor cartographer_mcu', 'temperature_sensor catalyst_mcu_temp', 'temperature_sensor Klipper_Host', 'heater_bed', 'temperature_fan chamber_fan', 'temperature_fan _board_fan', 'temperature_fan _pi_fan', 'heater_generic chamber', 'extruder']
+2026-05-25 18:50:20,076 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-05-25 18:50:20,418 [file_manager.py:get_file_list()] - Updating File List <config>...
+2026-05-25 18:50:20,689 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.helix.status, Code: -32601, Message: Method not found
+2026-05-25 18:50:20,689 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.spoolman.status, Code: -32601, Message: Method not found
+2026-05-25 18:50:21,332 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
+2026-05-25 18:50:21,376 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
+2026-05-25 18:53:59,171 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-05-25 18:53:59,182 [websockets.py:on_close()] - Websocket Closed: ID: 281472651418256 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 13.07
+2026-05-25 18:54:00,192 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-05-25 18:54:01,202 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 3.21ms
+2026-05-25 18:54:01,203 [websockets.py:open()] - Websocket Opened: ID: 281472926372112, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2026-05-25 18:54:01,212 [websockets.py:_handle_identify()] - Websocket 281472926372112 Client Identified - Name: OctoApp, Version: 3.1.0, Type: agent
+2026-05-25 18:54:13,654 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-05-25 18:54:13,660 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-05-25 18:54:13,916 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-05-25 18:54:14,154 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-05-25 18:54:14,219 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: machine.device_power.devices, Code: -32601, Message: Method not found
+2026-05-25 18:54:14,219 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.sensors.list, Code: -32601, Message: Method not found
+2026-05-25 18:54:14,306 [application.py:log_request()] - 404 GET /machine/wled/strips (127.0.0.1) [_TRUSTED_USER_] 4.40ms
+2026-05-25 18:54:14,669 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor toolhead_mcu_temp', 'temperature_sensor cartographer_coil', 'temperature_sensor cartographer_mcu', 'temperature_sensor catalyst_mcu_temp', 'temperature_sensor Klipper_Host', 'heater_bed', 'temperature_fan chamber_fan', 'temperature_fan _board_fan', 'temperature_fan _pi_fan', 'heater_generic chamber', 'extruder']
+2026-05-25 18:54:15,436 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-05-25 18:54:15,735 [file_manager.py:get_file_list()] - Updating File List <config>...
+2026-05-25 18:54:15,993 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.helix.status, Code: -32601, Message: Method not found
+2026-05-25 18:54:15,993 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.spoolman.status, Code: -32601, Message: Method not found
+2026-05-25 18:54:16,416 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
+2026-05-25 18:54:16,447 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
+2026-05-25 18:57:47,994 [application.py:prepare()] - Upload Request Received from 192.168.0.50
 Content-Type: 
-2026-05-25 18:25:51,253 [application.py:prepare()] - Upload Request Received from 192.168.0.50
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundarygYZRKmAbObrMOSKd
-2026-05-25 18:25:51,275 [application.py:post()] - Processing Uploaded File: personal_macros.cfg
-2026-05-25 18:25:51,299 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.50) [_TRUSTED_USER_] 47.45ms
-2026-05-25 18:39:40,439 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
-2026-05-25 18:39:42,504 [klippy_apis.py:cancel_print()] - Requesting job cancel...
+2026-05-25 18:57:48,002 [application.py:prepare()] - Upload Request Received from 192.168.0.50
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary6xc5jmcv8EYliWsX
+2026-05-25 18:57:48,019 [application.py:post()] - Processing Uploaded File: mmu_macro_vars.cfg
+2026-05-25 18:57:48,047 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.50) [_TRUSTED_USER_] 45.94ms
+2026-05-25 19:04:45,916 [application.py:prepare()] - Upload Request Received from 192.168.0.50
+Content-Type: 
+2026-05-25 19:04:45,923 [application.py:prepare()] - Upload Request Received from 192.168.0.50
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryY8cBxDCGdCNQNsuu
+2026-05-25 19:04:45,940 [application.py:post()] - Processing Uploaded File: mmu_macro_vars.cfg
+2026-05-25 19:04:45,965 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.50) [_TRUSTED_USER_] 42.95ms
+2026-05-25 19:05:31,054 [application.py:prepare()] - Upload Request Received from 192.168.0.50
+Content-Type: 
+2026-05-25 19:05:31,061 [application.py:prepare()] - Upload Request Received from 192.168.0.50
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary9hazIgZXGp7c8K3z
+2026-05-25 19:05:31,075 [application.py:post()] - Processing Uploaded File: personal_macros.cfg
+2026-05-25 19:05:31,097 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.50) [_TRUSTED_USER_] 36.97ms
+2026-05-25 19:06:27,338 [application.py:prepare()] - Upload Request Received from 192.168.0.50
+Content-Type: 
+2026-05-25 19:06:27,345 [application.py:prepare()] - Upload Request Received from 192.168.0.50
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryYBeaqFSL2BW2d5AW
+2026-05-25 19:06:27,361 [application.py:post()] - Processing Uploaded File: personal_macros.cfg
+2026-05-25 19:06:27,383 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.50) [_TRUSTED_USER_] 39.09ms
+2026-05-25 19:06:41,695 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-05-25 19:06:41,709 [websockets.py:on_close()] - Websocket Closed: ID: 281472926372112 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 0.45
+2026-05-25 19:06:42,972 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-05-25 19:06:43,728 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 3.36ms
+2026-05-25 19:06:43,729 [websockets.py:open()] - Websocket Opened: ID: 281472916853584, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2026-05-25 19:06:43,739 [websockets.py:_handle_identify()] - Websocket 281472916853584 Client Identified - Name: OctoApp, Version: 3.1.0, Type: agent
+2026-05-25 19:06:56,881 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-05-25 19:06:56,889 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-05-25 19:06:57,141 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-05-25 19:06:57,376 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-05-25 19:06:57,437 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: machine.device_power.devices, Code: -32601, Message: Method not found
+2026-05-25 19:06:57,438 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.sensors.list, Code: -32601, Message: Method not found
+2026-05-25 19:06:57,483 [application.py:log_request()] - 404 GET /machine/wled/strips (127.0.0.1) [_TRUSTED_USER_] 4.20ms
+2026-05-25 19:06:57,879 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor toolhead_mcu_temp', 'temperature_sensor cartographer_coil', 'temperature_sensor cartographer_mcu', 'temperature_sensor catalyst_mcu_temp', 'temperature_sensor Klipper_Host', 'heater_bed', 'temperature_fan chamber_fan', 'temperature_fan _board_fan', 'temperature_fan _pi_fan', 'heater_generic chamber', 'extruder']
+2026-05-25 19:06:58,910 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
+2026-05-25 19:06:58,939 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.database.get_item, Code: -32601, Message: Key 'general' in namespace 'mainsail' not found
+2026-05-25 19:06:59,239 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-05-25 19:06:59,532 [file_manager.py:get_file_list()] - Updating File List <config>...
+2026-05-25 19:06:59,801 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.helix.status, Code: -32601, Message: Method not found
+2026-05-25 19:06:59,801 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: server.spoolman.status, Code: -32601, Message: Method not found
+2026-05-25 19:08:08,627 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2026-05-25 19:08:31,704 [klippy_connection.py:_read_stream()] - Error processing Klippy Host Response: =1331.4 (moved=0.7), start_pos=1330.7, encoder measured=0.0mm (delta 0.7mm)"}}
+Traceback (most recent call last):
+  File "/home/riccorbypro/moonraker/moonraker/components/klippy_connection.py", line 205, in _read_stream
+    decoded_cmd = jsonw.loads(data[:-1])
+                  ^^^^^^^^^^^^^^^^^^^^^^
+msgspec.DecodeError: JSON is malformed: invalid character (byte 0)
+2026-05-25 19:09:08,629 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 120.00 seconds
+2026-05-25 19:10:08,630 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 180.00 seconds
+2026-05-25 19:11:08,631 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 240.00 seconds
+2026-05-25 19:11:08,901 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'octoapp.': HTTP 404: Not Found
+2026-05-25 19:12:43,231 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: MCU 'mmu' shutdown: Timer too close
+This often indicates the host computer is overloaded. Check
+for other processes consuming excessive CPU time, high swap
+usage, disk errors, overheating, unstable voltage, or
+similar system problems on the host computer.
+Once the underlying issue is corrected, use the
+"FIRMWARE_RESTART" command to reset the firmware, reload the
+config, and restart the host software.
+Printer is shutdown
+
+2026-05-25 19:12:43,297 [klippy_connection.py:_process_status_update()] - Klippy has shutdown
+2026-05-25 19:12:43,311 [proc_stats.py:_handle_shutdown()] - 
+Moonraker System Usage Statistics:
+System Time: 1779729133.968384, Usage: 6.03%, Memory: 67952 kB
+System Time: 1779729134.971321, Usage: 3.88%, Memory: 67952 kB
+System Time: 1779729135.974392, Usage: 3.69%, Memory: 67952 kB
+System Time: 1779729136.973463, Usage: 3.92%, Memory: 67952 kB
+System Time: 1779729137.970474, Usage: 3.11%, Memory: 67952 kB
+System Time: 1779729138.968357, Usage: 3.19%, Memory: 67952 kB
+System Time: 1779729139.968027, Usage: 3.94%, Memory: 67952 kB
+System Time: 1779729140.968632, Usage: 3.25%, Memory: 67952 kB
+System Time: 1779729141.970273, Usage: 3.48%, Memory: 67952 kB
+System Time: 1779729142.972615, Usage: 3.7%, Memory: 67952 kB
+System Time: 1779729143.978016, Usage: 5.34%, Memory: 67952 kB
+System Time: 1779729144.971533, Usage: 4.64%, Memory: 67952 kB
+System Time: 1779729145.972532, Usage: 3.14%, Memory: 67952 kB
+System Time: 1779729146.972422, Usage: 3.69%, Memory: 67952 kB
+System Time: 1779729147.976064, Usage: 3.54%, Memory: 67952 kB
+System Time: 1779729148.974453, Usage: 3.25%, Memory: 67952 kB
+System Time: 1779729149.976086, Usage: 3.18%, Memory: 67952 kB
+System Time: 1779729151.121085, Usage: 23.58%, Memory: 67952 kB
+System Time: 1779729152.111225, Usage: 5.08%, Memory: 67952 kB
+System Time: 1779729153.112746, Usage: 3.5%, Memory: 67952 kB
+System Time: 1779729154.115688, Usage: 5.06%, Memory: 67952 kB
+System Time: 1779729155.115810, Usage: 3.42%, Memory: 67952 kB
+System Time: 1779729156.114515, Usage: 5.66%, Memory: 67952 kB
+System Time: 1779729157.114254, Usage: 5.08%, Memory: 67952 kB
+System Time: 1779729158.114470, Usage: 3.63%, Memory: 67952 kB
+System Time: 1779729159.116022, Usage: 3.89%, Memory: 67952 kB
+System Time: 1779729160.115725, Usage: 3.87%, Memory: 67952 kB
+System Time: 1779729161.116596, Usage: 3.2%, Memory: 67952 kB
+System Time: 1779729162.116090, Usage: 3.26%, Memory: 67952 kB
+System Time: 1779729163.126934, Usage: 8.37%, Memory: 67952 kB
+CPU Temperature: 32.5
+2026-05-25 19:12:43,315 [websockets.py:on_close()] - Websocket Closed: ID: 281472916853584 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 19.55
+2026-05-25 19:12:45,334 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 3.07ms
+2026-05-25 19:12:45,335 [websockets.py:open()] - Websocket Opened: ID: 281472896901904, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2026-05-25 19:12:45,345 [websockets.py:_handle_identify()] - Websocket 281472896901904 Client Identified - Name: OctoApp, Version: 3.1.0, Type: agent
+2026-05-25 19:13:11,694 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-05-25 19:13:11,712 [websockets.py:on_close()] - Websocket Closed: ID: 281472896901904 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 16.37
+2026-05-25 19:13:12,964 [klippy_connection.py:_do_connect()] - Klippy Connection Established

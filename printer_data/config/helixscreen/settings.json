@@ -234,7 +234,7 @@
             "temperature_fan _board_fan",
             "temperature_fan _pi_fan"
           ],
-          "timestamp": "2026-05-25T16:21:45Z"
+          "timestamp": "2026-05-25T17:06:59Z"
         },
         "optional": [
           "controller_fan board_driver_fan",
