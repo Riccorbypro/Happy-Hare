@@ -417,6 +417,9 @@ class MmuGearBldc:
     BRAKE_MIN_TIME_S = 0.03
     BRAKE_MIN_ACTIVE_PWM = 0.08
     LOG_INTERVAL = 0.5
+    MIN_SAFE_SCHEDULE_MARGIN = 0.10
+    PROCESS_MOVE_MIN_INTERVAL_S = 0.03
+    PROCESS_MOVE_SPEED_EPS = 0.05
 
     MOTION_STATE_IDLE = 'idle'
     MOTION_STATE_MOVING = 'moving'
@@ -437,6 +440,8 @@ class MmuGearBldc:
         self.motion_queue = []
         self.motion_timer = None
         self.motion_tach_start_count = self.motion_tach_target_delta = None
+        self.last_process_move_cruise_time = None
+        self.last_process_move_cruise_speed = None
 
         self.last_pwm = self.last_effective_pwm = 0.
         self._last_pwm_write_print_time = 0.
@@ -453,8 +458,11 @@ class MmuGearBldc:
         self.kick_start_time = config.getfloat('kick_start_time', 0.05, minval=0.)
         self.brake_pwm = config.getfloat('brake_pwm', 1., minval=0., maxval=1.)
         self.brake_max_time = config.getfloat('brake_max_time', 0.25, minval=0.)
-        # Default margin tuned for dense process_move bursts on MMU MCU.
-        self.schedule_margin = config.getfloat('schedule_margin', 0.10, minval=0.)
+        # Keep enough scheduling headroom on the MMU MCU even with dense process_move traffic.
+        configured_schedule_margin = config.getfloat('schedule_margin', 0.10, minval=0.)
+        self.schedule_margin = max(configured_schedule_margin, self.MIN_SAFE_SCHEDULE_MARGIN)
+        if self.schedule_margin > configured_schedule_margin:
+            self.mmu.log_warning("BLDC: Raising schedule_margin to safe minimum %.2fs (configured lower)" % self.MIN_SAFE_SCHEDULE_MARGIN)
 
         self.pwm_min = config.getfloat('pwm_min', 0.85, minval=0., maxval=1.)
         self.pwm_max = config.getfloat('pwm_max', 1.0, minval=0., maxval=1.)
@@ -792,6 +800,15 @@ class MmuGearBldc:
         start_v = move.start_v * axis_r
         cruise_v = move.cruise_v * axis_r
         end_v = move.end_v * axis_r
+        cruise_print_time = self._floored_print_time(print_time + move.accel_t)
+
+        if source == 'process_move_push' and move.accel_t <= EPSILON and move.decel_t <= EPSILON and move.cruise_t > EPSILON:
+            if self.last_process_move_cruise_time is not None and self.last_process_move_cruise_speed is not None:
+                if cruise_print_time - self.last_process_move_cruise_time < self.PROCESS_MOVE_MIN_INTERVAL_S and abs(cruise_v - self.last_process_move_cruise_speed) <= self.PROCESS_MOVE_SPEED_EPS:
+                    return
+            self.last_process_move_cruise_time = cruise_print_time
+            self.last_process_move_cruise_speed = cruise_v
+
         if move.accel_t > EPSILON:
             self.motion_queue.append((MotionTrapzoid(
                 direction, start_v, cruise_v, accel_mm_s2,
@@ -799,7 +816,7 @@ class MmuGearBldc:
             ), source))
         if move.cruise_t > EPSILON:
             self.motion_queue.append((MotionDescriptor(
-                cruise_v, True, self._floored_print_time(print_time + move.accel_t), direction,
+                cruise_v, True, cruise_print_time, direction,
             ), source))
         if move.decel_t > EPSILON:
             self.motion_queue.append((MotionTrapzoid(
