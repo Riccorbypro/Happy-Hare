@@ -5317,7 +5317,10 @@ class Mmu:
                 # Make adjustment based on sensor: extruder - move a little move, compression - back off a little
                 if self.extruder_homing_endstop == self.SENSOR_EXTRUDER_ENTRY:
                     extra = self.toolhead_entry_to_extruder
-                    _,_,measured,_ = self.trace_filament_move("Aligning filament to extruder gear", extra, motor="gear")
+                    # BLDC + always-gripped setups can already be at extruder bite point here,
+                    # so align with concurrent extruder assist to avoid false encoder-bounded stalls.
+                    align_motor = "gear+extruder" if self.has_bldc_gear(self.gate_selected) and self.mmu_machine.filament_always_gripped else "gear"
+                    _,_,measured,_ = self.trace_filament_move("Aligning filament to extruder gear", extra, motor=align_motor, wait=(align_motor == "gear+extruder"))
                 elif self.extruder_homing_endstop == self.SENSOR_COMPRESSION:
                     # We don't actually back off because the buffer absorbs the overrun but we still report for calibration
                     extra = -(self.sync_feedback_manager.sync_feedback_buffer_range / 2.)
