@@ -4,3 +4,4 @@ my_*.cfg
 # Byte-compiled / optimized / python files
 __pycache__
 *.pyc
+printer_data
