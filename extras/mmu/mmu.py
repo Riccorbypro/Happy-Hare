@@ -5434,7 +5434,10 @@ class Mmu:
                     self.log_debug("Monitoring extruder entrance transition for up to %.1fmm..." % max_range)
                     actual,success = self.sync_feedback_manager.adjust_filament_tension(use_gear_motor=False, max_move=max_range)
                     if success:
-                        length -= actual
+                        if -0.001 <= actual <= max_range + 0.001:
+                            length = max(length - actual, 0.)
+                        else:
+                            self.log_warning("Warning: Ignoring extruder entrance transition distance %.1fmm outside expected range 0..%.1fmm" % (actual, max_range))
                     else:
                         self._set_filament_pos_state(self.FILAMENT_POS_EXTRUDER_ENTRY) # But could also still be POS_IN_BOWDEN!
                         raise MmuError("Failed to load filament passed the extruder entrance (sync-feedback buffer didn't detect neutral tension)")

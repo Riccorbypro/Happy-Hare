@@ -453,7 +453,8 @@ class MmuGearBldc:
         self.kick_start_time = config.getfloat('kick_start_time', 0.05, minval=0.)
         self.brake_pwm = config.getfloat('brake_pwm', 1., minval=0., maxval=1.)
         self.brake_max_time = config.getfloat('brake_max_time', 0.25, minval=0.)
-        self.schedule_margin = config.getfloat('schedule_margin', 0.05, minval=0.)
+        # Default margin tuned for dense process_move bursts on MMU MCU.
+        self.schedule_margin = config.getfloat('schedule_margin', 0.10, minval=0.)
 
         self.pwm_min = config.getfloat('pwm_min', 0.85, minval=0., maxval=1.)
         self.pwm_max = config.getfloat('pwm_max', 1.0, minval=0., maxval=1.)
