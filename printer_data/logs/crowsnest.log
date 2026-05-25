@@ -1564,3 +1564,178 @@
 [24/05/26 17:56:39] Try to start configured Cams / Services ...
 [24/05/26 17:56:39] [cam 1]: Start ustreamer with device /dev/v4l/by-id/usb-UnionImage_Co._Ltd_CCX2F3299_1234567890-video-index0 ...
 [24/05/26 17:56:39] ... Done!
+[24/05/26 18:39:57] Received signal 15. Shutting down...
+[24/05/26 18:39:57] INFO: [cam 1] exited with code 0
+[24/05/26 18:39:57] Shutdown or Killed by User!
+[24/05/26 18:39:57] Please come again :)
+[24/05/26 18:39:57] Goodbye...
+[24/05/26 18:40:21] crowsnest - A webcam Service for multiple Cams and Stream Services.
+[24/05/26 18:40:21] Version: v5.0.7-1-g5dee31d
+[24/05/26 18:40:21] Prepare Startup ...
+[24/05/26 18:40:21] WARN: [crowsnest]: Parameter 'log_path' is not supported by section!
+[24/05/26 18:40:21] WARN: [crowsnest]: Parameter 'delete_log' is not supported by section!
+[24/05/26 18:40:21] INFO: Host Information:
+[24/05/26 18:40:21]       Distribution: Armbian 26.2.1 bookworm
+[24/05/26 18:40:21]       Kernel: Linux 6.1.115-btt-rk35xx aarch64
+[24/05/26 18:40:21]       Model: Unknown
+[24/05/26 18:40:21]       Available CPU Cores: 4
+[24/05/26 18:40:21]       Available Memory: 2014168 kB
+[24/05/26 18:40:21]       Diskspace (avail. / total): 19G / 28G
+[24/05/26 18:40:21] INFO: Found Streamer:
+[24/05/26 18:40:21]       camera-streamer: /usr/bin/camera-streamer
+[24/05/26 18:40:21]       ustreamer: /usr/bin/ustreamer
+[24/05/26 18:40:21] INFO: Print Configfile: '/home/riccorbypro/printer_data/config/crowsnest.conf'
+[24/05/26 18:40:21]       [crowsnest]
+[24/05/26 18:40:21]       log_path: /home/riccorbypro/printer_data/logs/crowsnest.log
+[24/05/26 18:40:21]       log_level: verbose
+[24/05/26 18:40:21]       delete_log: false
+[24/05/26 18:40:21]       no_proxy: false
+[24/05/26 18:40:21]       
+[24/05/26 18:40:21]       [cam 1]
+[24/05/26 18:40:21]       mode: ustreamer
+[24/05/26 18:40:21]       port: 8080
+[24/05/26 18:40:21]       device: /dev/v4l/by-id/usb-UnionImage_Co._Ltd_CCX2F3299_1234567890-video-index0
+[24/05/26 18:40:21]       resolution: 1280x720
+[24/05/26 18:40:21]       max_fps: 15
+[24/05/26 18:40:21] INFO: Detect available Devices
+[24/05/26 18:40:21] INFO: Found 1 total available Device(s)
+[24/05/26 18:40:21] INFO: Found 1 available v4l2 (UVC) camera(s)
+[24/05/26 18:40:21] /dev/v4l/by-id/usb-UnionImage_Co._Ltd_CCX2F3299_1234567890-video-index0 -> /dev/video10
+[24/05/26 18:40:21] Supported Formats:
+[24/05/26 18:40:21]       [0]: 'MJPG' (Motion-JPEG, compressed):
+[24/05/26 18:40:21]               Size: Discrete 1920x1080
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 1280x960
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 1280x720
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 800x600
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 640x480
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 640x360
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]       [1]: 'YUYV' (YUYV 4:2:2):
+[24/05/26 18:40:21]               Size: Discrete 1920x1080
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 1280x960
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 1280x720
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 800x600
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 640x480
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 640x360
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]       [2]: 'NV12' (Y/UV 4:2:0):
+[24/05/26 18:40:21]               Size: Discrete 1920x1080
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 1280x960
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 1280x720
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 800x600
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 640x480
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21]               Size: Discrete 640x360
+[24/05/26 18:40:21]                       Interval: Discrete 0.033s (30.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.040s (25.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.050s (20.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.067s (15.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.100s (10.000 fps)
+[24/05/26 18:40:21]                       Interval: Discrete 0.200s (5.000 fps)
+[24/05/26 18:40:21] Supported Controls:
+[24/05/26 18:40:21]       
+[24/05/26 18:40:21] Try to parse configured Cams / Services...
+[24/05/26 18:40:21] [cam 1]: Parse configuration ...
+[24/05/26 18:40:21] [cam 1]: Configuration looks good. Continue ...
+[24/05/26 18:40:21] Try to start configured Cams / Services ...
+[24/05/26 18:40:21] [cam 1]: Start ustreamer with device /dev/v4l/by-id/usb-UnionImage_Co._Ltd_CCX2F3299_1234567890-video-index0 ...
+[24/05/26 18:40:21] ... Done!
