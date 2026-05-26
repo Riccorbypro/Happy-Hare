@@ -482,6 +482,7 @@ class Mmu:
         self.bldc_encoder_brake = config.getboolean('bldc_encoder_brake', True)
         self.bldc_encoder_settle_time = config.getfloat('bldc_encoder_settle_time', 0.05, minval=0., maxval=0.5)
         self.bldc_encoder_espooler_stop_time = config.getfloat('bldc_encoder_espooler_stop_time', 0.25, minval=0., maxval=1.)
+        self.bldc_encoder_unload_nomotion_timeout = config.getfloat('bldc_encoder_unload_nomotion_timeout', 1.0, minval=0., maxval=10.)
         self.bldc_encoder_min_move = config.getfloat('bldc_encoder_min_move', 1., minval=0.)
         self.bldc_encoder_overrun_guard = config.getfloat('bldc_encoder_overrun_guard', 100., minval=0.)
         self.spoolman_support = config.getchoice('spoolman_support', {o: o for o in self.SPOOLMAN_OPTIONS}, self.SPOOLMAN_OFF)
@@ -5261,6 +5262,13 @@ class Mmu:
                     self.log_warning("Warning: Possible sensor malfunction - %s sensor indicated no filament present prior to unloading bowden\nWill ignore and attempt to continue..." % ", ".join(sname))
                     self.log_debug("Sensor state: %s" % sensor_msg)
 
+                # For BLDC main unload, pull extruder back a little more to ensure filament clears extruder.
+                if self.has_bldc_gear(self.gate_selected):
+                    extra_reverse = max(0., self.toolhead_extruder_to_nozzle)
+                    if extra_reverse > 0.:
+                        self.log_debug("Applying %.1fmm extruder reverse assist before BLDC main unload" % extra_reverse)
+                        self.trace_filament_move("BLDC pre-unload extruder reverse assist", -extra_reverse, speed=self.extruder_unload_speed, motor="extruder", wait=True)
+
                 # "Fast" unload
                 _,_,_,delta = self.trace_filament_move("Fast unloading move through bowden", -length, track=True, encoder_dwell=bool(self.autotune_rotation_distance))
                 delta -= self._get_encoder_dead_space()
@@ -6314,6 +6322,19 @@ class Mmu:
                         lead = self.encoder_min
                         brake_used = False
                         espooler_stopped = False
+                        if self.sensor_manager.has_sensor(self.SENSOR_EXTRUDER_ENTRY):
+                            filament_left_extruder = self.sensor_manager.check_sensor(self.SENSOR_EXTRUDER_ENTRY) is False
+                        else:
+                            filament_left_extruder = self.filament_pos <= self.FILAMENT_POS_END_BOWDEN
+                        espooler_unload_fallback = (
+                            direction < 0.
+                            and self._wrapped_espooler_active()
+                            and filament_left_extruder
+                            and self.bldc_encoder_unload_nomotion_timeout > 0.
+                        )
+                        if espooler_unload_fallback:
+                            timeout += self.bldc_encoder_unload_nomotion_timeout
+                        no_motion_since = None
                         try:
                             while True:
                                 now = self.reactor.monotonic()
@@ -6334,13 +6355,19 @@ class Mmu:
                                 if measured > last_measured + self.encoder_min:
                                     last_measured = measured
                                     last_progress_time = now
+                                    no_motion_since = None
+                                elif espooler_unload_fallback:
+                                    if no_motion_since is None:
+                                        no_motion_since = now
+                                    elif now - no_motion_since > self.bldc_encoder_unload_nomotion_timeout:
+                                        stop_measured = measured
+                                        break
                                 if now - start_time > timeout:
                                     raise MmuError("BLDC encoder-bounded move timed out after %.1fs: requested %.1fmm, encoder measured %.1fmm" % (timeout, target, measured))
-                                if now - last_progress_time > 2.0:
+                                if now - last_progress_time > 2.0 and not espooler_unload_fallback:
                                     raise MmuError("BLDC encoder-bounded move stalled: requested %.1fmm, encoder measured %.1fmm" % (target, measured))
                                 self.reactor.pause(now + poll_time)
                         finally:
-                            espooler_stopped = self._stop_wrapped_espooler()
                             brake_used = (
                                 self.bldc_encoder_brake and hasattr(bldc, 'brake_to_stop') and
                                 abs(getattr(bldc, 'last_pwm', 0.)) >= getattr(bldc, 'BRAKE_MIN_ACTIVE_PWM', 0.) and
@@ -6351,6 +6378,21 @@ class Mmu:
                             else:
                                 bldc.stop()
                             bldc_stopped = True
+                            if espooler_unload_fallback and self._wrapped_espooler_active():
+                                fallback_deadline = self.reactor.monotonic() + self.bldc_encoder_unload_nomotion_timeout
+                                last_fallback_measured = measured
+                                while True:
+                                    now = self.reactor.monotonic()
+                                    fallback_measured = abs(self._get_encoder_distance_unvalidated(dwell=None) - encoder_start)
+                                    if fallback_measured > last_fallback_measured + self.encoder_min:
+                                        measured = fallback_measured
+                                        stop_measured = max(stop_measured, fallback_measured)
+                                        last_fallback_measured = fallback_measured
+                                        fallback_deadline = now + self.bldc_encoder_unload_nomotion_timeout
+                                    if now >= fallback_deadline:
+                                        break
+                                    self.reactor.pause(now + poll_time)
+                            espooler_stopped = self._stop_wrapped_espooler()
                             settle_time = self.bldc_encoder_settle_time
                             if brake_used:
                                 settle_time += getattr(bldc, 'brake_max_time', 0.)
