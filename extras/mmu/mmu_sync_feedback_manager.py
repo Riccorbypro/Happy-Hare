@@ -590,6 +590,8 @@ class MmuSyncFeedbackManager:
         """
         # Allow dynamic changing of effective "sensor type" based on currently enabled sensors
         self.ctrl.cfg.sensor_type = self._get_sensor_type()
+        self.ctrl.cfg.rd_twolevel_speed_multiplier = self._get_twolevel_speed_multiplier()
+        self.ctrl.cfg.rd_twolevel_boost_multiplier = self._get_twolevel_boost_multiplier()
 
         # Reset controller with initial rd and sensor reading (will also reset flowguard and autotune on hard_reset)
         starting_state = self._get_sensor_state()
@@ -615,11 +617,21 @@ class MmuSyncFeedbackManager:
             buffer_max_range_mm = self.sync_feedback_buffer_maxrange,
             sensor_type = self._get_sensor_type(),
             use_twolevel_for_type_p = self.sync_feedback_force_twolevel,
+            rd_twolevel_speed_multiplier = self._get_twolevel_speed_multiplier(),
+            rd_twolevel_boost_multiplier = self._get_twolevel_boost_multiplier(),
             rd_start = rd_start,
             flowguard_relief_mm = self.flowguard_max_relief,
         )
         self.ctrl = SyncController(cfg)
         return self.ctrl
+
+
+    def _get_twolevel_speed_multiplier(self):
+        return max(0., min(0.99, self.sync_feedback_speed_multiplier / 100.))
+
+
+    def _get_twolevel_boost_multiplier(self):
+        return max(0., min(0.99, self.sync_feedback_boost_multiplier / 100.))
 
 
     def _config_flowguard_feature(self, enable):
