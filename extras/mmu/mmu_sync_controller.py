@@ -191,6 +191,8 @@ class SyncControllerConfig(object):
     rd_min_max_speed_multiplier = 0.25  # ±25% speed
     rd_twolevel_speed_multiplier = 0.05 # ±5% speed
     rd_twolevel_boost_multiplier = 0.05 # ±5% extra boost speed
+    twolevel_tension_pulse_mm = 0.0     # one-shot burst distance (mm) when switching into tension
+    twolevel_tension_pulse_strength = 1.0 # 0..1 blend from rd_low toward rd_min during burst
 
     # Distance-based smoothing & slew
     rd_filter_len_mm = 25.0          # exp smoothing length (mm of extruder motion for ~63% step @ r=1)
@@ -248,6 +250,9 @@ class SyncControllerConfig(object):
             raise ValueError("buffer_max_range_mm must be > 0")
         if self.buffer_max_range_mm < self.buffer_range_mm:
             raise ValueError("buffer_max_range_mm must be ≥ buffer_range_mm")
+
+        self.twolevel_tension_pulse_mm = max(0.0, float(self.twolevel_tension_pulse_mm))
+        self.twolevel_tension_pulse_strength = max(0.0, min(1.0, float(self.twolevel_tension_pulse_strength)))
 
         # Autotune window defaults
         if self.autotune_motion_mm is None:
@@ -1040,6 +1045,7 @@ class SyncController(object):
         # Two-level flip-flop state (reused for CO/TO and optional P/D)
         self._os_target_level = "low" # "low" or "high"
         self._os_since_flip_mm = 0.0
+        self._twolevel_tension_pulse_remaining_mm = 0.0
 
         # FlowGuard engine (encapsulates non-shared FlowGuard state/logic)
         self.flowguard = _FlowguardEngine(self)
@@ -1106,6 +1112,7 @@ class SyncController(object):
             else:
                 self._os_target_level = "low" if in_contact0 else "high"
             self._os_since_flip_mm = 0.0
+            self._twolevel_tension_pulse_remaining_mm = 0.0
 
         # Two-level init for P/D (optional)
         if self.cfg.sensor_type in ("P", "D") and self.twolevel_active:
@@ -1117,6 +1124,7 @@ class SyncController(object):
             else:
                 self._os_target_level = "low"  # neutral start; will flip on first extreme
             self._os_since_flip_mm = 0.0
+            self._twolevel_tension_pulse_remaining_mm = 0.0
 
         if hard_reset:
             # Rebase autotune helper on the new start
@@ -1530,8 +1538,23 @@ class SyncController(object):
             self._os_target_level = desired_level
             self._os_since_flip_mm = 0.0
 
+            # On entering tension side, apply a short refill burst to quickly return filament.
+            if desired_level == "low" and d_ext > 0.0 and cfg.twolevel_tension_pulse_mm > 0.0:
+                self._twolevel_tension_pulse_remaining_mm = cfg.twolevel_tension_pulse_mm
+
         # Map level to RD
         rd_target = self.rd_low if self._os_target_level == "low" else self.rd_high
+
+        # During pulse window, bias toward rd_min (more feed) while still bounded.
+        if self._twolevel_tension_pulse_remaining_mm > 0.0:
+            if self._os_target_level != "low":
+                self._twolevel_tension_pulse_remaining_mm = 0.0
+            elif d_ext > 0.0:
+                strength = cfg.twolevel_tension_pulse_strength
+                rd_target = self.rd_low + (self.rd_min - self.rd_low) * strength
+                self._twolevel_tension_pulse_remaining_mm = max(0.0, self._twolevel_tension_pulse_remaining_mm - abs(d_ext))
+        else:
+            self._twolevel_tension_pulse_remaining_mm = 0.0
 
         return rd_target
 

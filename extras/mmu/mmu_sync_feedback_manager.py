@@ -58,6 +58,8 @@ class MmuSyncFeedbackManager:
         self.sync_feedback_extrude_threshold = self.mmu.config.getfloat('sync_feedback_extrude_threshold', 5, above=1.)
         self.sync_feedback_debug_log         = self.mmu.config.getint('sync_feedback_debug_log', 0)
         self.sync_feedback_force_twolevel    = self.mmu.config.getint('sync_feedback_force_twolevel', 0) # Not exposed
+        self.sync_feedback_tension_pulse_mm = self.mmu.config.getfloat('sync_feedback_tension_pulse_mm', 8.0 if self.mmu.has_bldc_gear() else 0.0, minval=0.)
+        self.sync_feedback_tension_pulse_strength = self.mmu.config.getfloat('sync_feedback_tension_pulse_strength', 1.0 if self.mmu.has_bldc_gear() else 0.0, minval=0., maxval=1.)
 
         # FlowGuard
         self.flowguard_enabled               = self.mmu.config.getint('flowguard_enabled', 1, minval=0, maxval=1)
@@ -592,6 +594,8 @@ class MmuSyncFeedbackManager:
         self.ctrl.cfg.sensor_type = self._get_sensor_type()
         self.ctrl.cfg.rd_twolevel_speed_multiplier = self._get_twolevel_speed_multiplier()
         self.ctrl.cfg.rd_twolevel_boost_multiplier = self._get_twolevel_boost_multiplier()
+        self.ctrl.cfg.twolevel_tension_pulse_mm = self.sync_feedback_tension_pulse_mm
+        self.ctrl.cfg.twolevel_tension_pulse_strength = self.sync_feedback_tension_pulse_strength
 
         # Reset controller with initial rd and sensor reading (will also reset flowguard and autotune on hard_reset)
         starting_state = self._get_sensor_state()
@@ -619,6 +623,8 @@ class MmuSyncFeedbackManager:
             use_twolevel_for_type_p = self.sync_feedback_force_twolevel,
             rd_twolevel_speed_multiplier = self._get_twolevel_speed_multiplier(),
             rd_twolevel_boost_multiplier = self._get_twolevel_boost_multiplier(),
+            twolevel_tension_pulse_mm = self.sync_feedback_tension_pulse_mm,
+            twolevel_tension_pulse_strength = self.sync_feedback_tension_pulse_strength,
             rd_start = rd_start,
             flowguard_relief_mm = self.flowguard_max_relief,
         )
