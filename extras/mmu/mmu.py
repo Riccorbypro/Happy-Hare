@@ -3371,7 +3371,10 @@ class Mmu:
 
             # Establish syncing state and grip (servo) position
             # (must call after print_state is set)
-            self.reset_sync_gear_to_extruder(False) # Intention is not to sync unless we have to
+            if state in ["cancelled", "error"]:
+                self.sync_gear_to_extruder(False, force_grip=True)
+            else:
+                self.reset_sync_gear_to_extruder(False) # Intention is not to sync unless we have to
 
         if state == "standby" and not self.is_in_standby():
             self._set_print_state(state)
