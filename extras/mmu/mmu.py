@@ -5524,6 +5524,24 @@ class Mmu:
                 speed = self.extruder_unload_speed
                 motor = "extruder"
 
+            has_tension, has_compression, has_proportional = self.sync_feedback_manager.get_active_sensors()
+
+            def _apply_reverse_sync_unload_assist():
+                if extruder_only or not synced or self.gate_selected == self.TOOL_GATE_BYPASS:
+                    return
+                if not self.sync_feedback_manager.is_enabled() or not (has_tension or has_compression or has_proportional):
+                    return
+                if not has_compression or not self.sensor_manager.check_sensor(self.SENSOR_COMPRESSION):
+                    return
+
+                max_range = self.sync_feedback_manager.sync_feedback_buffer_maxrange * 2.
+                self.log_debug("Compression detected during unload, applying reverse sync assist up to %.1fmm" % max_range)
+                actual, success = self.sync_feedback_manager.adjust_filament_tension(use_gear_motor=True, max_move=max_range)
+                if success:
+                    self.log_info("Reverse sync assist moved %.1fmm during unload" % abs(actual))
+                else:
+                    self.log_warning("Unsuccessful reverse sync assist during unload after adjusting %.1fmm" % abs(actual))
+
             fhomed = False
             if self.sensor_manager.has_sensor(self.SENSOR_EXTRUDER_ENTRY) and not extruder_only:
                 # BEST Strategy: Extruder exit movement leveraging extruder entry sensor. Must be synced
@@ -5531,6 +5549,8 @@ class Mmu:
                 self.selector.filament_drive()
                 speed = self.extruder_sync_unload_speed
                 motor = "gear+extruder"
+
+                _apply_reverse_sync_unload_assist()
 
                 if not self.sensor_manager.check_sensor(self.SENSOR_EXTRUDER_ENTRY):
                     if self.sensor_manager.check_sensor(self.SENSOR_TOOLHEAD):
@@ -5574,10 +5594,19 @@ class Mmu:
                         self._set_filament_pos_state(self.FILAMENT_POS_HOMED_TS)
                         self._set_filament_position(-self.toolhead_sensor_to_nozzle)
 
+                    _apply_reverse_sync_unload_assist()
+
                 # Finish up with regular extruder exit movement. Optionally synced
                 length = max(0, self.toolhead_extruder_to_nozzle + self._get_filament_position()) + self.toolhead_unload_safety_margin
                 self.log_debug("Unloading last %.1fmm to exit the extruder%s" % (length, " (synced)" if synced else ""))
                 _,_,measured,delta = self.trace_filament_move("Unloading extruder", -length, speed=speed, motor=motor, wait=True)
+
+                _apply_reverse_sync_unload_assist()
+                if synced and has_compression and self.sensor_manager.check_sensor(self.SENSOR_COMPRESSION):
+                    extra_unload = max(self.sync_feedback_manager.sync_feedback_buffer_range, self.sync_feedback_manager.sync_feedback_buffer_maxrange / 2.)
+                    self.log_debug("Compression still active, unloading an additional %.1fmm from extruder" % extra_unload)
+                    _,_,_,_ = self.trace_filament_move("Additional extruder unload after reverse sync assist", -extra_unload, speed=self.extruder_unload_speed, motor="extruder", wait=True)
+                    _apply_reverse_sync_unload_assist()
 
                 # Best guess of filament position is right at extruder entrance or just beyond if synced
                 if synced:
