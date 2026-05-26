@@ -482,7 +482,7 @@ class Mmu:
         self.bldc_encoder_brake = config.getboolean('bldc_encoder_brake', True)
         self.bldc_encoder_settle_time = config.getfloat('bldc_encoder_settle_time', 0.05, minval=0., maxval=0.5)
         self.bldc_encoder_espooler_stop_time = config.getfloat('bldc_encoder_espooler_stop_time', 0.25, minval=0., maxval=1.)
-        self.bldc_encoder_unload_nomotion_timeout = config.getfloat('bldc_encoder_unload_nomotion_timeout', 1.0, minval=0., maxval=10.)
+        self.bldc_encoder_unload_nomotion_timeout = config.getfloat('bldc_encoder_unload_nomotion_timeout', 1.0, minval=0., maxval=120.)
         self.bldc_encoder_min_move = config.getfloat('bldc_encoder_min_move', 1., minval=0.)
         self.bldc_encoder_overrun_guard = config.getfloat('bldc_encoder_overrun_guard', 100., minval=0.)
         self.spoolman_support = config.getchoice('spoolman_support', {o: o for o in self.SPOOLMAN_OPTIONS}, self.SPOOLMAN_OFF)
