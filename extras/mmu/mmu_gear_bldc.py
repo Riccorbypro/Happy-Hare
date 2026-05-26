@@ -109,10 +109,14 @@ class ProcessMoveSyncMonitor:
         self.hooked_extruder = self.original_process_move = None
         self.hook_enabled = False
         self.active_bldc = None
+        self.last_process_move_time = None
+        self.last_process_move_speed = None
 
     def _attach_bldc(self, bldc):
         self.hook_enabled = True
         self.active_bldc = bldc
+        self.last_process_move_time = None
+        self.last_process_move_speed = None
 
     def activate(self, bldc):
         if self.hook_enabled and self.active_bldc is bldc:
@@ -175,6 +179,8 @@ class ProcessMoveSyncMonitor:
         self.hooked_extruder = self.original_process_move = None
         self.hook_enabled = False
         self.active_bldc = None
+        self.last_process_move_time = None
+        self.last_process_move_speed = None
 
     def _handle_process_move(self, print_time, move, ea_index):
         bldc = self.active_bldc
@@ -191,6 +197,14 @@ class ProcessMoveSyncMonitor:
         cruise_v = move.cruise_v * axis_r
         end_v = move.end_v * axis_r
         accel = move.accel if hasattr(move, 'accel') else 0.
+
+        # Skip redundant micro-cruise bursts early to reduce hook and queue load.
+        if move.accel_t <= EPSILON and move.decel_t <= EPSILON and move.cruise_t <= bldc.PROCESS_MOVE_MIN_CRUISE_T_S:
+            if self.last_process_move_time is not None and self.last_process_move_speed is not None:
+                if print_time - self.last_process_move_time < bldc.PROCESS_MOVE_MIN_INTERVAL_S and abs(cruise_v - self.last_process_move_speed) <= bldc.PROCESS_MOVE_SPEED_EPS:
+                    return
+            self.last_process_move_time = print_time
+            self.last_process_move_speed = cruise_v
 
         self.mmu.log_stepper("BLDC_PROCESS_MOVE: time=%.3f start_v=%.3f cruise_v=%.3f end_v=%.3f accel=%.1f accel_t=%.4f cruise_t=%.4f decel_t=%.4f unit=%s" % (print_time, start_v, cruise_v, end_v, accel, move.accel_t, move.cruise_t, move.decel_t, bldc.section_name))
         bldc.queue_trapzoid_move(move, axis_r, print_time, 'process_move_push')
@@ -418,8 +432,10 @@ class MmuGearBldc:
     BRAKE_MIN_ACTIVE_PWM = 0.08
     LOG_INTERVAL = 0.5
     MIN_SAFE_SCHEDULE_MARGIN = 0.10
-    PROCESS_MOVE_MIN_INTERVAL_S = 0.03
-    PROCESS_MOVE_SPEED_EPS = 0.05
+    PROCESS_MOVE_MIN_INTERVAL_S = 0.05
+    PROCESS_MOVE_SPEED_EPS = 0.10
+    PROCESS_MOVE_MIN_CRUISE_T_S = 0.025
+    PROCESS_MOVE_COALESCE_WINDOW_S = 0.20
 
     MOTION_STATE_IDLE = 'idle'
     MOTION_STATE_MOVING = 'moving'
@@ -803,6 +819,16 @@ class MmuGearBldc:
         cruise_print_time = self._floored_print_time(print_time + move.accel_t)
 
         if source == 'process_move_push' and move.accel_t <= EPSILON and move.decel_t <= EPSILON and move.cruise_t > EPSILON:
+            if self.motion_queue:
+                last_descriptor, last_source = self.motion_queue[-1]
+                if last_source == 'process_move_push' and isinstance(last_descriptor, MotionDescriptor) and not isinstance(last_descriptor, MotionTrapzoid) and last_descriptor.pwm is None and last_descriptor.pid_enable and last_descriptor.print_time is not None:
+                    if cruise_print_time >= last_descriptor.print_time and cruise_print_time - last_descriptor.print_time <= self.PROCESS_MOVE_COALESCE_WINDOW_S:
+                        last_descriptor.speed_mm_s = cruise_v
+                        last_descriptor.direction = direction
+                        last_descriptor.print_time = cruise_print_time
+                        self.last_process_move_cruise_time = cruise_print_time
+                        self.last_process_move_cruise_speed = cruise_v
+                        return
             if self.last_process_move_cruise_time is not None and self.last_process_move_cruise_speed is not None:
                 if cruise_print_time - self.last_process_move_cruise_time < self.PROCESS_MOVE_MIN_INTERVAL_S and abs(cruise_v - self.last_process_move_cruise_speed) <= self.PROCESS_MOVE_SPEED_EPS:
                     return
