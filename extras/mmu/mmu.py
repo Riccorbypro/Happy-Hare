@@ -5033,11 +5033,11 @@ class Mmu:
 
             self.log_debug("Performing synced pre-unload bowden move of %.1fmm to ensure filament is not trapped in extruder" % length)
             if self.gate_homing_endstop == self.SENSOR_ENCODER:
-                _,_,_,_ = self.trace_filament_move("Bowden safety pre-unload move", -length, motor="gear+extruder")
+                _,_,_,_ = self.trace_filament_move("Bowden safety pre-unload move", -length, speed=self._get_bldc_concurrent_unload_speed(), motor="gear+extruder")
             else:
                 endstop_name = self.sensor_manager.get_mapped_endstop_name(self.gate_homing_endstop)
                 if self.has_bldc_gear(self.gate_selected):
-                    actual,_,_,_ = self.trace_filament_move("Bowden safety pre-unload move", -length, motor="gear+extruder")
+                    actual,_,_,_ = self.trace_filament_move("Bowden safety pre-unload move", -length, speed=self._get_bldc_concurrent_unload_speed(), motor="gear+extruder")
                     homed = self.sensor_manager.check_sensor(endstop_name) is False
                 else:
                     actual,homed,_,_ = self.trace_filament_move("Bowden safety pre-unload move", -length, motor="gear+extruder", homing_move=-1, endstop_name=endstop_name)
@@ -5264,14 +5264,15 @@ class Mmu:
 
                 delta = 0.
                 concurrent_unload = 0.
+                concurrent_speed = self._get_bldc_concurrent_unload_speed()
                 if self.has_bldc_gear(self.gate_selected) and self.mmu_machine.filament_always_gripped:
                     concurrent_unload = min(length, max(0., self.toolhead_extruder_to_nozzle))
                     if concurrent_unload > 0.:
-                        self.log_debug("Applying %.1fmm concurrent extruder reverse assist during BLDC main unload" % concurrent_unload)
+                        self.log_debug("Applying %.1fmm concurrent extruder reverse assist during BLDC main unload at %.1fmm/s" % (concurrent_unload, concurrent_speed))
                         _,_,_,delta = self.trace_filament_move(
                             "Fast unloading move through bowden",
                             -concurrent_unload,
-                            speed=self.extruder_sync_unload_speed,
+                            speed=concurrent_speed,
                             motor="gear+extruder",
                             track=True,
                             wait=True,
@@ -5311,6 +5312,11 @@ class Mmu:
 
         finally:
             self.bowden_start_pos = None
+
+    def _get_bldc_concurrent_unload_speed(self):
+        if self.has_bldc_gear(self.gate_selected) and self.mmu_machine.filament_always_gripped:
+            return max(self.extruder_sync_unload_speed, self.gear_short_move_speed)
+        return self.extruder_sync_unload_speed
 
     # Optionally home filament to designated homing location at the extruder
     # Returns any homing distance and extra movement for automatic calibration logic
