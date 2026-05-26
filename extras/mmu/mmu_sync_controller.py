@@ -1533,14 +1533,20 @@ class SyncController(object):
             else:
                 desired_level = "high" if (pol > 0) else "low"
 
+        pulse_request = (desired_level == "low" and d_ext > 0.0 and cfg.twolevel_tension_pulse_mm > 0.0)
+
         # Flip only if we've moved enough since the last flip
         if desired_level != self._os_target_level and abs(self._os_since_flip_mm) >= cfg.os_min_flip_mm:
             self._os_target_level = desired_level
             self._os_since_flip_mm = 0.0
 
             # On entering tension side, apply a short refill burst to quickly return filament.
-            if desired_level == "low" and d_ext > 0.0 and cfg.twolevel_tension_pulse_mm > 0.0:
+            if pulse_request:
                 self._twolevel_tension_pulse_remaining_mm = cfg.twolevel_tension_pulse_mm
+
+        # If already on tension side, allow explicit tension requests to re-arm pulse.
+        if pulse_request and self._os_target_level == "low" and self._twolevel_tension_pulse_remaining_mm <= 0.0:
+            self._twolevel_tension_pulse_remaining_mm = cfg.twolevel_tension_pulse_mm
 
         # Map level to RD
         rd_target = self.rd_low if self._os_target_level == "low" else self.rd_high

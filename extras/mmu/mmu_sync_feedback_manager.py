@@ -60,6 +60,8 @@ class MmuSyncFeedbackManager:
         self.sync_feedback_force_twolevel    = self.mmu.config.getint('sync_feedback_force_twolevel', 0) # Not exposed
         self.sync_feedback_tension_pulse_mm = self.mmu.config.getfloat('sync_feedback_tension_pulse_mm', 8.0 if self.mmu.has_bldc_gear() else 0.0, minval=0.)
         self.sync_feedback_tension_pulse_strength = self.mmu.config.getfloat('sync_feedback_tension_pulse_strength', 1.0 if self.mmu.has_bldc_gear() else 0.0, minval=0., maxval=1.)
+        self.sync_feedback_refill_min_encoder_ratio = self.mmu.config.getfloat('sync_feedback_refill_min_encoder_ratio', 0.08, minval=0., maxval=1.) # Not exposed
+        self.sync_feedback_refill_events = self.mmu.config.getint('sync_feedback_refill_events', 2, minval=1, maxval=20) # Not exposed
 
         # FlowGuard
         self.flowguard_enabled               = self.mmu.config.getint('flowguard_enabled', 1, minval=0, maxval=1)
@@ -81,6 +83,8 @@ class MmuSyncFeedbackManager:
         self.mmu.gcode.register_command('MMU_FLOWGUARD',  self.cmd_MMU_FLOWGUARD, desc=self.cmd_MMU_FLOWGUARD_help)
 
         self.extruder_monitor = ExtruderMonitor(mmu)
+        self._sync_refill_encoder_pos = None
+        self._sync_refill_starvation_events = 0
 
 
     #
@@ -446,6 +450,8 @@ class MmuSyncFeedbackManager:
         # Enable sync feedback
         self.active = True
         self.new_autotuned_rd = None
+        self._sync_refill_starvation_events = 0
+        self._sync_refill_encoder_pos = self.mmu.get_encoder_distance(dwell=False) if self.mmu.has_encoder() else None
 
         # Throw away current autotune info and reset rd
         self._reset_controller(eventtime)
@@ -471,6 +477,8 @@ class MmuSyncFeedbackManager:
 
         # Deactivate sync feedback
         self.active = False
+        self._sync_refill_starvation_events = 0
+        self._sync_refill_encoder_pos = None
 
         if self.new_autotuned_rd is not None:
             self.mmu.log_info("MmuSyncFeedbackManager: New Autotuned rotation distance (%.4f) for gate %d\n" % (self.new_autotuned_rd, self.mmu.gate_selected))
@@ -493,7 +501,7 @@ class MmuSyncFeedbackManager:
 
         self.mmu.log_trace("MmuSyncFeedbackManager: Extruder movement event, move=%.1f" % move)
 
-        state = self._get_sensor_state()
+        state = self._get_sync_state_with_refill_fallback(move)
         status = self.ctrl.update(eventtime, move, state)
         self._process_status(eventtime, status)
 
@@ -514,8 +522,41 @@ class MmuSyncFeedbackManager:
             self.mmu.log_info(msg)
 
         move = self.extruder_monitor.get_and_reset_accumulated(self._handle_extruder_movement)
+        state = self._get_sync_state_with_refill_fallback(move, sensed_state=state)
         status = self.ctrl.update(eventtime, move, state)
         self._process_status(eventtime, status)
+
+
+    def _get_sync_state_with_refill_fallback(self, move, sensed_state=None):
+        if sensed_state is None:
+            sensed_state = self._get_sensor_state()
+
+        # Only force refill pulses in BLDC synced print motion when sensor state never leaves neutral
+        if not (self.mmu.has_bldc_gear(self.mmu.gate_selected) and self.mmu.has_encoder() and move > 0.):
+            self._sync_refill_starvation_events = 0
+            self._sync_refill_encoder_pos = self.mmu.get_encoder_distance(dwell=False) if self.mmu.has_encoder() else None
+            return sensed_state
+
+        encoder_pos = self.mmu.get_encoder_distance(dwell=False)
+        if self._sync_refill_encoder_pos is None:
+            self._sync_refill_encoder_pos = encoder_pos
+            self._sync_refill_starvation_events = 0
+            return sensed_state
+
+        encoder_move = encoder_pos - self._sync_refill_encoder_pos
+        self._sync_refill_encoder_pos = encoder_pos
+
+        starvation_limit = abs(move) * self.sync_feedback_refill_min_encoder_ratio
+        if sensed_state == self.SF_STATE_NEUTRAL and abs(encoder_move) < starvation_limit:
+            self._sync_refill_starvation_events += 1
+            if self._sync_refill_starvation_events >= self.sync_feedback_refill_events:
+                self._sync_refill_starvation_events = 0
+                self.mmu.log_debug("MmuSyncFeedbackManager: Forcing refill pulse from virtual tension (move=%.1fmm, encoder=%.2fmm, limit=%.2fmm)" % (move, encoder_move, starvation_limit))
+                return self.SF_STATE_TENSION
+        else:
+            self._sync_refill_starvation_events = 0
+
+        return sensed_state
 
 
     def _process_status(self, eventtime, status):
