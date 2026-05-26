@@ -5262,15 +5262,31 @@ class Mmu:
                     self.log_warning("Warning: Possible sensor malfunction - %s sensor indicated no filament present prior to unloading bowden\nWill ignore and attempt to continue..." % ", ".join(sname))
                     self.log_debug("Sensor state: %s" % sensor_msg)
 
-                # For BLDC main unload, pull extruder back a little more to ensure filament clears extruder.
-                if self.has_bldc_gear(self.gate_selected):
-                    extra_reverse = max(0., self.toolhead_extruder_to_nozzle)
-                    if extra_reverse > 0.:
-                        self.log_debug("Applying %.1fmm extruder reverse assist before BLDC main unload" % extra_reverse)
-                        self.trace_filament_move("BLDC pre-unload extruder reverse assist", -extra_reverse, speed=self.extruder_unload_speed, motor="extruder", wait=True)
+                delta = 0.
+                concurrent_unload = 0.
+                if self.has_bldc_gear(self.gate_selected) and self.mmu_machine.filament_always_gripped:
+                    concurrent_unload = min(length, max(0., self.toolhead_extruder_to_nozzle))
+                    if concurrent_unload > 0.:
+                        self.log_debug("Applying %.1fmm concurrent extruder reverse assist during BLDC main unload" % concurrent_unload)
+                        _,_,_,delta = self.trace_filament_move(
+                            "Fast unloading move through bowden",
+                            -concurrent_unload,
+                            speed=self.extruder_sync_unload_speed,
+                            motor="gear+extruder",
+                            track=True,
+                            wait=True,
+                            encoder_dwell=bool(self.autotune_rotation_distance),
+                        )
 
-                # "Fast" unload
-                _,_,_,delta = self.trace_filament_move("Fast unloading move through bowden", -length, track=True, encoder_dwell=bool(self.autotune_rotation_distance))
+                remaining_length = length - concurrent_unload
+                if remaining_length > 0.:
+                    _,_,_,remaining_delta = self.trace_filament_move(
+                        "Fast unloading move through bowden",
+                        -remaining_length,
+                        track=True,
+                        encoder_dwell=bool(self.autotune_rotation_distance),
+                    )
+                    delta += remaining_delta
                 delta -= self._get_encoder_dead_space()
                 ratio = (length - delta) / length
 
@@ -5437,10 +5453,11 @@ class Mmu:
                 and not has_toolhead
                 and self.sensor_manager.check_sensor(self.SENSOR_COMPRESSION)
             ):
+                use_gear_motor = self.has_bldc_gear(self.gate_selected) and self.mmu_machine.filament_always_gripped
                 max_range = self.sync_feedback_manager.sync_feedback_buffer_maxrange * 2 # Arbitary but buffer_maxrange is not enough to overcome bowden slack
                 if length > max_range:
                     self.log_debug("Monitoring extruder entrance transition for up to %.1fmm..." % max_range)
-                    actual,success = self.sync_feedback_manager.adjust_filament_tension(use_gear_motor=False, max_move=max_range)
+                    actual,success = self.sync_feedback_manager.adjust_filament_tension(use_gear_motor=use_gear_motor, max_move=max_range)
                     if success:
                         if -0.001 <= actual <= max_range + 0.001:
                             length = max(length - actual, 0.)
