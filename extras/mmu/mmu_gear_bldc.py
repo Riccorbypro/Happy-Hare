@@ -1014,7 +1014,7 @@ class MmuGearBldc:
         pwm = self.rpm_to_pwm(rpm)
 
         use_sync_unmapped_assist = (
-            self.sync_active and source in ('move', 'process_move_push')
+            self.sync_active and source in ('move', 'process_move_push', 'sync_feedback')
             and self.map_mode == 'linear' and self.map_fallback_reason == 'map_missing'
         )
         if use_sync_unmapped_assist:

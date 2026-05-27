@@ -546,6 +546,11 @@ class MmuSyncFeedbackManager:
         encoder_move = encoder_pos - self._sync_refill_encoder_pos
         self._sync_refill_encoder_pos = encoder_pos
 
+        # Rebase after encoder resets/wraps so first sync callback can still detect starvation.
+        if abs(encoder_move) > max(25.0, 2.0 * self.sync_feedback_buffer_maxrange):
+            self.mmu.log_debug("MmuSyncFeedbackManager: Rebased refill fallback after encoder discontinuity (move=%.1fmm, encoder_delta=%.2fmm)" % (move, encoder_move))
+            encoder_move = 0.0
+
         starvation_limit = abs(move) * self.sync_feedback_refill_min_encoder_ratio
         if sensed_state == self.SF_STATE_NEUTRAL and abs(encoder_move) < starvation_limit:
             self._sync_refill_starvation_events += 1
