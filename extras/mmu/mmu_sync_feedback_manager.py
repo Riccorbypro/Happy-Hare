@@ -61,7 +61,7 @@ class MmuSyncFeedbackManager:
         self.sync_feedback_tension_pulse_mm = self.mmu.config.getfloat('sync_feedback_tension_pulse_mm', 8.0 if self.mmu.has_bldc_gear() else 0.0, minval=0.)
         self.sync_feedback_tension_pulse_strength = self.mmu.config.getfloat('sync_feedback_tension_pulse_strength', 1.0 if self.mmu.has_bldc_gear() else 0.0, minval=0., maxval=1.)
         self.sync_feedback_refill_min_encoder_ratio = self.mmu.config.getfloat('sync_feedback_refill_min_encoder_ratio', 0.08, minval=0., maxval=1.) # Not exposed
-        self.sync_feedback_refill_events = self.mmu.config.getint('sync_feedback_refill_events', 2, minval=1, maxval=20) # Not exposed
+        self.sync_feedback_refill_events = self.mmu.config.getint('sync_feedback_refill_events', 1, minval=1, maxval=20) # Not exposed
 
         # FlowGuard
         self.flowguard_enabled               = self.mmu.config.getint('flowguard_enabled', 1, minval=0, maxval=1)

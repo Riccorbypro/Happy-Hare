@@ -483,6 +483,8 @@ class MmuGearBldc:
 
         self.pwm_min = config.getfloat('pwm_min', 0.85, minval=0., maxval=1.)
         self.pwm_max = config.getfloat('pwm_max', 1.0, minval=0., maxval=1.)
+        self.sync_unmapped_min_pwm = config.getfloat('sync_unmapped_min_pwm', 0.85, minval=0., maxval=1.) # Not exposed
+        self.sync_unmapped_kick_start_time = config.getfloat('sync_unmapped_kick_start_time', 0.05, minval=0.) # Not exposed
         if self.pwm_min > self.pwm_max:
             raise config.error("'pwm_min' cannot be greater than 'pwm_max' in [%s]" % config.get_name())
 
@@ -1010,6 +1012,19 @@ class MmuGearBldc:
         self.commanded_linear_speed = linear_speed
         self.tachometer.set_commanded(rpm, source)
         pwm = self.rpm_to_pwm(rpm)
+
+        use_sync_unmapped_assist = (
+            self.sync_active and source in ('move', 'process_move_push')
+            and self.map_mode == 'linear' and self.map_fallback_reason == 'map_missing'
+        )
+        if use_sync_unmapped_assist:
+            pwm = max(pwm, self.sync_unmapped_min_pwm)
+            if self.last_pwm <= EPSILON and self.sync_unmapped_kick_start_time > EPSILON:
+                self._safe_set_enable(True, t0)
+                self._safe_set_direction(forward, t0)
+                self._send_pin(self.mcu_pwm_pin, self.pwm_max, t0)
+                t0 = self._floored_print_time(t0 + self.sync_unmapped_kick_start_time)
+
         effective_pwm = self.tachometer.apply_control(pwm, source)
         self.last_effective_pwm = effective_pwm
         self._log_speed(source, linear_speed, requested_rpm, rpm, effective_pwm, forward)
